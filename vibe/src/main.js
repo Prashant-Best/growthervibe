@@ -42,25 +42,64 @@ const pageContent = {
         </div>
       </div>
 
-      <div class="hero-visual reveal-up" aria-hidden="true">
-        <div class="orbital-grid"></div>
-        <div class="signal-card signal-main">
-          <span>Organic search</span>
-          <strong>+184%</strong>
-          <p>Keyword lift powered by technical SEO and content clusters.</p>
+      <div class="hero-stack reveal-up">
+        <div class="hero-form-card">
+          <div class="form-intro">
+            <span class="eyebrow">Quick inquiry</span>
+            <h2>Tell us what kind of growth support you need.</h2>
+            <p>Share a few details and Growth Vibe can shape the right mix of SEO, creative, and performance strategy.</p>
+          </div>
+          <form class="lead-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span>Company</span>
+              <input type="text" name="company" placeholder="Your company name" />
+            </label>
+            <label>
+              <span>What do you need help with?</span>
+              <select name="service">
+                <option value="SEO Strategy">SEO Strategy</option>
+                <option value="Content Marketing">Content Marketing</option>
+                <option value="Paid Campaigns">Paid Campaigns</option>
+                <option value="Conversion Optimization">Conversion Optimization</option>
+                <option value="Full Growth Strategy">Full Growth Strategy</option>
+              </select>
+            </label>
+            <label class="field-wide">
+              <span>Project goals</span>
+              <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
+            </label>
+            <button class="button button-primary field-wide" type="submit">Send inquiry</button>
+          </form>
         </div>
-        <div class="signal-card signal-side">
-          <span>Paid social</span>
-          <strong>32% lower CPA</strong>
-          <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbital-grid"></div>
+          <div class="signal-card signal-main">
+            <span>Organic search</span>
+            <strong>+184%</strong>
+            <p>Keyword lift powered by technical SEO and content clusters.</p>
+          </div>
+          <div class="signal-card signal-side">
+            <span>Paid social</span>
+            <strong>32% lower CPA</strong>
+            <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
+          </div>
+          <div class="signal-card signal-bottom">
+            <span>Brand recall</span>
+            <strong>Creative that sticks</strong>
+            <p>Visual campaigns designed to feel premium without losing clarity.</p>
+          </div>
+          <div class="halo-ring ring-one"></div>
+          <div class="halo-ring ring-two"></div>
         </div>
-        <div class="signal-card signal-bottom">
-          <span>Brand recall</span>
-          <strong>Creative that sticks</strong>
-          <p>Visual campaigns designed to feel premium without losing clarity.</p>
-        </div>
-        <div class="halo-ring ring-one"></div>
-        <div class="halo-ring ring-two"></div>
       </div>
     </section>
 
@@ -307,7 +346,7 @@ const pageContent = {
   contact: `
     <section class="page-banner section reveal-up">
       <span class="eyebrow">Contact us</span>
-      <h1>Let’s build a digital presence that feels stronger and performs better.</h1>
+      <h1>Let's build a digital presence that feels stronger and performs better.</h1>
       <p>
         Reach out if you want help with SEO, campaigns, content, or a cleaner growth story across your website.
       </p>
@@ -315,19 +354,53 @@ const pageContent = {
 
     <section class="contact-layout section">
       <div class="contact-panel reveal-up">
-        <div class="contact-item">
-          <span>Email</span>
-          <a href="mailto:hello@grothervibe.com">hello@grothervibe.com</a>
+        <div class="form-intro">
+          <span class="eyebrow">Project form</span>
+          <h2>Send your project details directly to our team.</h2>
+          <p>Use this form to share your goals, timeline, and the kind of marketing support you are looking for.</p>
         </div>
-        <div class="contact-item">
-          <span>Phone</span>
-          <a href="tel:+910000000000">+91 00000 00000</a>
-        </div>
-        <div class="contact-item">
-          <span>Services</span>
-          <p>SEO, content strategy, paid campaigns, conversion design, and growth positioning.</p>
-        </div>
-        <a class="button button-primary contact-cta" href="mailto:hello@grothervibe.com">Start your project</a>
+        <form class="lead-form contact-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your full name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            <span>Phone</span>
+            <input type="tel" name="phone" placeholder="+91 98765 43210" />
+          </label>
+          <label>
+            <span>Business name</span>
+            <input type="text" name="business" placeholder="Your business name" />
+          </label>
+          <label>
+            <span>Primary service</span>
+            <select name="service">
+              <option value="SEO Strategy">SEO Strategy</option>
+              <option value="Content Marketing">Content Marketing</option>
+              <option value="Paid Campaigns">Paid Campaigns</option>
+              <option value="Conversion Optimization">Conversion Optimization</option>
+              <option value="Brand Positioning">Brand Positioning</option>
+            </select>
+          </label>
+          <label>
+            <span>Budget range</span>
+            <select name="budget">
+              <option value="Under 25k">Under 25k</option>
+              <option value="25k to 50k">25k to 50k</option>
+              <option value="50k to 100k">50k to 100k</option>
+              <option value="100k+">100k+</option>
+            </select>
+          </label>
+          <label class="field-wide">
+            <span>Project details</span>
+            <textarea name="message" rows="5" placeholder="What are you trying to grow, and what would success look like for your business?"></textarea>
+          </label>
+          <button class="button button-primary field-wide" type="submit">Submit project inquiry</button>
+        </form>
       </div>
 
       <div class="faq-panel reveal-up" style="transition-delay: 140ms;">
@@ -392,16 +465,23 @@ document.querySelector('#app').innerHTML = `
     </main>
 
     <footer class="site-footer">
-      <div>
+      <div class="footer-brand">
         <strong>Growth Vibe</strong>
-        <p>Creative marketing systems for brands that want to be seen and remembered.</p>
+        <p>Growth Vibe is a creative marketing studio focused on SEO, content, paid growth, and conversion-led brand experiences for ambitious businesses.</p>
       </div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./about.html">About Us</a>
-        <a href="./services.html">Services</a>
-        <a href="./case-studies.html">Case Studies</a>
-        <a href="./contact.html">Contact</a>
+      <div class="footer-details">
+        <div>
+          <span>Focus</span>
+          <p>SEO strategy, content marketing, paid campaigns, conversion optimization, and premium digital positioning.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <p><a href="mailto:hello@grothervibe.com">hello@grothervibe.com</a><br /><a href="tel:+910000000000">+91 00000 00000</a></p>
+        </div>
+        <div>
+          <span>Approach</span>
+          <p>We combine strategy, creative systems, and measurable performance so brands can look stronger and grow with more clarity.</p>
+        </div>
       </div>
       <p class="footer-note">Built for visibility, storytelling, and conversion.</p>
     </footer>
