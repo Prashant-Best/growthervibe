@@ -787,7 +787,9 @@ main {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  color: #f8ebff;
   padding-right: 54px;
+  background-color: rgba(255, 255, 255, 0.05);
   background-image:
     linear-gradient(135deg, transparent 50%, rgba(255, 205, 239, 0.95) 50%),
     linear-gradient(45deg, rgba(255, 205, 239, 0.95) 50%, transparent 50%);
@@ -796,6 +798,28 @@ main {
     calc(100% - 18px) calc(50% - 3px);
   background-size: 7px 7px, 7px 7px;
   background-repeat: no-repeat;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background-position 220ms ease,
+    background-color 220ms ease;
+}
+
+.lead-form select option {
+  color: #f8ebff;
+  background: #24103d;
+}
+
+.lead-form select option:checked {
+  background: #8b3dff;
+  color: #ffffff;
+}
+
+.lead-form select option:hover,
+.lead-form select option:focus {
+  background: #6d2fe0;
+  color: white;
 }
 
 .select-field::after {
@@ -808,13 +832,63 @@ main {
   border-radius: 999px;
   background: radial-gradient(circle, rgba(255, 79, 191, 0.28), rgba(139, 61, 255, 0.08));
   pointer-events: none;
-  transition: transform 220ms ease, opacity 220ms ease;
+  transition: transform 220ms ease, opacity 220ms ease, filter 220ms ease;
   opacity: 0.9;
+  animation: select-orb 3.4s ease-in-out infinite;
+}
+
+.select-field::before {
+  content: '';
+  position: absolute;
+  inset: auto 14px 12px auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139, 61, 255, 0.24), rgba(255, 79, 191, 0.16));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  transition: transform 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+  opacity: 0.95;
+  animation: select-shell 4.8s ease-in-out infinite;
+}
+
+.select-field .select-glow {
+  position: absolute;
+  inset: 28px 72px 6px 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(139, 61, 255, 0.18), rgba(255, 79, 191, 0.12), transparent 72%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+  transform: translateX(-10px);
 }
 
 .select-field:hover::after,
 .select-field:focus-within::after {
   transform: scale(1.16) rotate(12deg);
+  filter: saturate(1.25) brightness(1.1);
+}
+
+.select-field:hover::before,
+.select-field:focus-within::before {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 12px 26px rgba(139, 61, 255, 0.18);
+}
+
+.select-field:hover select,
+.select-field:focus-within select {
+  background-color: rgba(255, 255, 255, 0.075);
+  background-position:
+    calc(100% - 24px) calc(50% + 1px),
+    calc(100% - 18px) calc(50% + 1px);
+}
+
+.select-field:hover .select-glow,
+.select-field:focus-within .select-glow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .lead-form input::placeholder,
@@ -1042,6 +1116,28 @@ main {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes select-orb {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.12) translateY(-2px);
+  }
+}
+
+@keyframes select-shell {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+      0 10px 22px rgba(139, 61, 255, 0.12);
   }
 }
 

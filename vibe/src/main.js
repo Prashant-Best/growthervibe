@@ -185,6 +185,7 @@ const pageContent = {
           </label>
           <label class="select-field">
             <span>Where do you need help?</span>
+            <span class="select-glow" aria-hidden="true"></span>
             <select name="service">
               <option value="SEO Strategy">SEO Strategy</option>
               <option value="Content Marketing">Content Marketing</option>
@@ -428,6 +429,7 @@ const pageContent = {
           </label>
           <label class="select-field">
             <span>Primary service</span>
+            <span class="select-glow" aria-hidden="true"></span>
             <select name="service">
               <option value="SEO Strategy">SEO Strategy</option>
               <option value="Content Marketing">Content Marketing</option>
@@ -438,6 +440,7 @@ const pageContent = {
           </label>
           <label class="select-field">
             <span>Budget range</span>
+            <span class="select-glow" aria-hidden="true"></span>
             <select name="budget">
               <option value="Under 25k">Under 25k</option>
               <option value="25k to 50k">25k to 50k</option>
