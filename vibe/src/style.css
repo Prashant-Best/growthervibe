@@ -291,11 +291,6 @@ main {
   max-width: 640px;
 }
 
-.hero-stack {
-  display: grid;
-  gap: 18px;
-}
-
 .hero-copy h1,
 .page-banner h1 {
   margin: 0;
@@ -576,6 +571,13 @@ main {
   gap: 18px;
 }
 
+.insight-section,
+.process-band,
+.home-form-section {
+  display: grid;
+  gap: 18px;
+}
+
 .trust-strip p {
   margin: 0;
   color: rgba(255, 235, 253, 0.86);
@@ -636,11 +638,70 @@ main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.insight-grid,
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .glass-card,
 .service-card,
 .package-card {
   position: relative;
   overflow: hidden;
+}
+
+.insight-card,
+.process-step {
+  padding: 26px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  box-shadow: var(--shadow);
+}
+
+.insight-card strong,
+.process-step h3 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.insight-card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.insight-card p,
+.process-copy p,
+.process-step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.process-band {
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+}
+
+.process-copy h2 {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.03;
+}
+
+.process-step span {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139, 61, 255, 0.95), rgba(255, 79, 191, 0.95));
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
 }
 
 .glass-card h3,
@@ -705,6 +766,7 @@ main {
 .lead-form label {
   display: grid;
   gap: 8px;
+  position: relative;
 }
 
 .lead-form input,
@@ -718,6 +780,41 @@ main {
   color: white;
   outline: none;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.lead-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: 54px;
+  background-image:
+    linear-gradient(135deg, transparent 50%, rgba(255, 205, 239, 0.95) 50%),
+    linear-gradient(45deg, rgba(255, 205, 239, 0.95) 50%, transparent 50%);
+  background-position:
+    calc(100% - 24px) calc(50% - 3px),
+    calc(100% - 18px) calc(50% - 3px);
+  background-size: 7px 7px, 7px 7px;
+  background-repeat: no-repeat;
+}
+
+.select-field::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 79, 191, 0.28), rgba(139, 61, 255, 0.08));
+  pointer-events: none;
+  transition: transform 220ms ease, opacity 220ms ease;
+  opacity: 0.9;
+}
+
+.select-field:hover::after,
+.select-field:focus-within::after {
+  transform: scale(1.16) rotate(12deg);
 }
 
 .lead-form input::placeholder,
@@ -831,14 +928,16 @@ main {
 .site-footer {
   width: min(calc(100% - 24px), var(--max-width));
   margin: 20px auto 34px;
-  padding: 26px 28px;
+  padding: 34px;
   display: grid;
-  grid-template-columns: 1.2fr 1.4fr auto;
-  gap: 22px;
-  align-items: center;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 28px;
+  align-items: start;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 28px;
-  background: linear-gradient(90deg, rgba(116, 38, 233, 0.45), rgba(255, 79, 191, 0.36));
+  background:
+    radial-gradient(circle at top right, rgba(255, 205, 239, 0.12), transparent 24%),
+    linear-gradient(90deg, rgba(116, 38, 233, 0.45), rgba(255, 79, 191, 0.36));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
@@ -853,12 +952,25 @@ main {
 .footer-details {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
+}
+
+.footer-details > div {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-details a,
 .footer-note {
   color: rgba(255, 241, 255, 0.84);
+}
+
+.footer-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  max-width: 62ch;
 }
 
 .reveal-up {
@@ -956,6 +1068,9 @@ main {
   .story-grid,
   .contact-layout,
   .package-grid,
+  .insight-grid,
+  .process-band,
+  .process-steps,
   .site-footer,
   .footer-details,
   .timeline,

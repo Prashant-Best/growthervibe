@@ -42,64 +42,25 @@ const pageContent = {
         </div>
       </div>
 
-      <div class="hero-stack reveal-up">
-        <div class="hero-form-card">
-          <div class="form-intro">
-            <span class="eyebrow">Quick inquiry</span>
-            <h2>Tell us what kind of growth support you need.</h2>
-            <p>Share a few details and Growth Vibe can shape the right mix of SEO, creative, and performance strategy.</p>
-          </div>
-          <form class="lead-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your full name" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="you@example.com" required />
-            </label>
-            <label>
-              <span>Company</span>
-              <input type="text" name="company" placeholder="Your company name" />
-            </label>
-            <label>
-              <span>What do you need help with?</span>
-              <select name="service">
-                <option value="SEO Strategy">SEO Strategy</option>
-                <option value="Content Marketing">Content Marketing</option>
-                <option value="Paid Campaigns">Paid Campaigns</option>
-                <option value="Conversion Optimization">Conversion Optimization</option>
-                <option value="Full Growth Strategy">Full Growth Strategy</option>
-              </select>
-            </label>
-            <label class="field-wide">
-              <span>Project goals</span>
-              <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
-            </label>
-            <button class="button button-primary field-wide" type="submit">Send inquiry</button>
-          </form>
+      <div class="hero-visual reveal-up" aria-hidden="true">
+        <div class="orbital-grid"></div>
+        <div class="signal-card signal-main">
+          <span>Organic search</span>
+          <strong>+184%</strong>
+          <p>Keyword lift powered by technical SEO and content clusters.</p>
         </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="orbital-grid"></div>
-          <div class="signal-card signal-main">
-            <span>Organic search</span>
-            <strong>+184%</strong>
-            <p>Keyword lift powered by technical SEO and content clusters.</p>
-          </div>
-          <div class="signal-card signal-side">
-            <span>Paid social</span>
-            <strong>32% lower CPA</strong>
-            <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
-          </div>
-          <div class="signal-card signal-bottom">
-            <span>Brand recall</span>
-            <strong>Creative that sticks</strong>
-            <p>Visual campaigns designed to feel premium without losing clarity.</p>
-          </div>
-          <div class="halo-ring ring-one"></div>
-          <div class="halo-ring ring-two"></div>
+        <div class="signal-card signal-side">
+          <span>Paid social</span>
+          <strong>32% lower CPA</strong>
+          <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
         </div>
+        <div class="signal-card signal-bottom">
+          <span>Brand recall</span>
+          <strong>Creative that sticks</strong>
+          <p>Visual campaigns designed to feel premium without losing clarity.</p>
+        </div>
+        <div class="halo-ring ring-one"></div>
+        <div class="halo-ring ring-two"></div>
       </div>
     </section>
 
@@ -135,6 +96,52 @@ const pageContent = {
       </div>
     </section>
 
+    <section class="insight-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">What we improve</span>
+        <h2>We help brands look more premium, get found faster, and convert with less friction.</h2>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card reveal-up">
+          <strong>Visibility</strong>
+          <p>Search-first website structures and content systems that create compounding discovery.</p>
+        </article>
+        <article class="insight-card reveal-up" style="transition-delay: 120ms;">
+          <strong>Perception</strong>
+          <p>Sharper messaging and visual direction that position your company with more confidence.</p>
+        </article>
+        <article class="insight-card reveal-up" style="transition-delay: 240ms;">
+          <strong>Conversion</strong>
+          <p>Pages, offers, and campaign journeys designed to move visitors into action more clearly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="process-band section">
+      <div class="process-copy reveal-up">
+        <span class="eyebrow">Growth flow</span>
+        <h2>A website should not just look good. It should guide attention and create movement.</h2>
+        <p>We combine SEO structure, message clarity, and premium presentation so every visit feels more intentional and more persuasive.</p>
+      </div>
+      <div class="process-steps">
+        <article class="process-step reveal-up">
+          <span>01</span>
+          <h3>Audit the gap</h3>
+          <p>We identify where your current site is losing visibility, trust, or conversion momentum.</p>
+        </article>
+        <article class="process-step reveal-up" style="transition-delay: 120ms;">
+          <span>02</span>
+          <h3>Shape the story</h3>
+          <p>We refine positioning, offers, and content so visitors instantly understand what makes you valuable.</p>
+        </article>
+        <article class="process-step reveal-up" style="transition-delay: 240ms;">
+          <span>03</span>
+          <h3>Launch the engine</h3>
+          <p>We support stronger campaigns, cleaner journeys, and measurable growth across channels.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="marquee-section section reveal-up" aria-label="Marketing services ticker">
       <div class="marquee-track">
         <span>SEO Strategy</span>
@@ -149,6 +156,49 @@ const pageContent = {
         <span>Creative Direction</span>
         <span>Analytics</span>
         <span>Conversion Design</span>
+      </div>
+    </section>
+
+    <section class="home-form-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">Start here</span>
+        <h2>Share your goals and let’s map the right growth direction for your business.</h2>
+      </div>
+      <div class="hero-form-card reveal-up">
+        <div class="form-intro">
+          <span class="eyebrow">Quick inquiry</span>
+          <h2>Tell us where you need help.</h2>
+          <p>Drop in a few details and Growth Vibe can recommend the right mix of SEO, creative, and performance support.</p>
+        </div>
+        <form class="lead-form home-lead-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your full name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            <span>Company</span>
+            <input type="text" name="company" placeholder="Your company name" />
+          </label>
+          <label class="select-field">
+            <span>Where do you need help?</span>
+            <select name="service">
+              <option value="SEO Strategy">SEO Strategy</option>
+              <option value="Content Marketing">Content Marketing</option>
+              <option value="Paid Campaigns">Paid Campaigns</option>
+              <option value="Conversion Optimization">Conversion Optimization</option>
+              <option value="Full Growth Strategy">Full Growth Strategy</option>
+            </select>
+          </label>
+          <label class="field-wide">
+            <span>Project goals</span>
+            <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
+          </label>
+          <button class="button button-primary field-wide" type="submit">Send inquiry</button>
+        </form>
       </div>
     </section>
   `,
@@ -376,7 +426,7 @@ const pageContent = {
             <span>Business name</span>
             <input type="text" name="business" placeholder="Your business name" />
           </label>
-          <label>
+          <label class="select-field">
             <span>Primary service</span>
             <select name="service">
               <option value="SEO Strategy">SEO Strategy</option>
@@ -386,7 +436,7 @@ const pageContent = {
               <option value="Brand Positioning">Brand Positioning</option>
             </select>
           </label>
-          <label>
+          <label class="select-field">
             <span>Budget range</span>
             <select name="budget">
               <option value="Under 25k">Under 25k</option>
@@ -479,11 +529,11 @@ document.querySelector('#app').innerHTML = `
           <p><a href="mailto:hello@grothervibe.com">hello@grothervibe.com</a><br /><a href="tel:+910000000000">+91 00000 00000</a></p>
         </div>
         <div>
-          <span>Approach</span>
-          <p>We combine strategy, creative systems, and measurable performance so brands can look stronger and grow with more clarity.</p>
+          <span>What clients get</span>
+          <p>Sharper website positioning, clearer campaign direction, stronger search visibility, and a more premium digital presence.</p>
         </div>
       </div>
-      <p class="footer-note">Built for visibility, storytelling, and conversion.</p>
+      <p class="footer-note">Built for visibility, storytelling, and conversion with a more refined digital brand system.</p>
     </footer>
   </div>
 `
