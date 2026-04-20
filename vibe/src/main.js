@@ -1,6 +1,10 @@
 import './style.css'
 
 const page = document.body.dataset.page || 'home'
+const STORAGE_KEY = 'growth-vibe-site-data'
+const ADMIN_SESSION_KEY = 'growth-vibe-admin-auth'
+const ADMIN_PASSWORD = 'growthvibeadmin'
+let navDropdownController
 
 const navItems = [
   { key: 'home', label: 'Home', href: './index.html' },
@@ -10,546 +14,1431 @@ const navItems = [
   { key: 'contact', label: 'Contact Us', href: './contact.html' },
 ]
 
-const pageContent = {
-  home: `
-    <section class="hero-section section page-hero page-hero-home">
-      <div class="hero-copy reveal-up">
-        <span class="eyebrow">Performance-first digital marketing studio</span>
-        <h1>We turn attention into momentum for ambitious brands.</h1>
-        <p class="hero-text">
-          Growth Vibe blends SEO, creative direction, performance marketing, and conversion design
-          into campaigns that look sharp, rank well, and move people to act.
-        </p>
+const serviceCatalog = [
+  {
+    key: 'demand-generation',
+    title: 'Demand generation',
+    description: 'Qualified pipeline, every week',
+    href: './demand-generation.html',
+    eyebrow: 'Demand generation',
+    headline: 'Build a consistent pipeline with campaigns engineered for qualified demand.',
+    intro:
+      'We connect positioning, media, landing flow, and reporting so demand generation turns into a weekly operating system instead of random launch activity.',
+    outcomes: ['Predictable lead flow', 'Higher intent pipeline', 'Clear weekly reporting'],
+    deliverables: [
+      'Offer and campaign angle planning',
+      'Channel mix across search, social, and outbound support',
+      'Landing page and funnel alignment',
+    ],
+  },
+  {
+    key: 'content-marketing',
+    title: 'Content Marketing',
+    description: 'Content that drives pipeline',
+    href: './content-marketing.html',
+    eyebrow: 'Content marketing',
+    headline: 'Create content that compounds visibility and supports revenue conversations.',
+    intro:
+      'We plan content around buying journeys, category education, and search intent so every asset helps your team build trust before the sales call.',
+    outcomes: ['Stronger topical authority', 'Higher inbound quality', 'More reusable campaign assets'],
+    deliverables: [
+      'Editorial strategy and topic clusters',
+      'Bottom-funnel pages and comparison content',
+      'Repurposing systems for social, email, and sales',
+    ],
+  },
+  {
+    key: 'marketing-automation',
+    title: 'Marketing Automation',
+    description: 'Route, nurture, & convert faster',
+    href: './marketing-automation.html',
+    eyebrow: 'Marketing automation',
+    headline: 'Automate handoffs, nurture flows, and lead routing without losing the human feel.',
+    intro:
+      'We design automation that helps leads move faster through your funnel while keeping message timing, segmentation, and follow-up logic clean.',
+    outcomes: ['Faster lead response', 'Better nurture sequencing', 'Less leakage between stages'],
+    deliverables: [
+      'CRM and lifecycle mapping',
+      'Nurture workflow and trigger design',
+      'Lead scoring and routing logic',
+    ],
+  },
+  {
+    key: 'seo',
+    title: 'SEO',
+    description: 'Search that goes beyond rankings',
+    href: './seo.html',
+    eyebrow: 'SEO strategy',
+    headline: 'Grow organic visibility with structure, content, and technical fixes that support real revenue.',
+    intro:
+      'Our SEO work blends technical cleanup, topic strategy, and conversion thinking so search traffic translates into stronger business outcomes.',
+    outcomes: ['More qualified organic traffic', 'Sharper site architecture', 'Pages built for ranking and conversion'],
+    deliverables: [
+      'Technical audits and implementation priorities',
+      'Keyword mapping and information architecture',
+      'On-page optimization and content planning',
+    ],
+  },
+  {
+    key: 'saas-ppc-agency',
+    title: 'SaaS PPC Agency',
+    description: 'Scale smarter across Google, LinkedIn & Meta',
+    href: './saas-ppc-agency.html',
+    eyebrow: 'SaaS PPC',
+    headline: 'Run paid acquisition for SaaS with tighter creative loops and stronger conversion economics.',
+    intro:
+      'We manage paid search and paid social for SaaS teams that need faster learning cycles, sharper segmentation, and clearer CAC efficiency.',
+    outcomes: ['Lower wasted spend', 'Faster creative learning', 'More sales-ready trial and demo volume'],
+    deliverables: [
+      'Campaign structure across Google, LinkedIn, and Meta',
+      'Audience and message testing plans',
+      'Landing page and conversion path alignment',
+    ],
+  },
+  {
+    key: 'account-based-marketing',
+    title: 'Account based Marketing',
+    description: 'Campaigns that win key deals',
+    href: './account-based-marketing.html',
+    eyebrow: 'Account based marketing',
+    headline: 'Focus campaign spend and messaging around the accounts most likely to become your best customers.',
+    intro:
+      'We help teams coordinate targeting, personalization, and sales enablement so ABM campaigns feel relevant, premium, and commercially focused.',
+    outcomes: ['Better target account engagement', 'Stronger deal support', 'More aligned marketing and sales activity'],
+    deliverables: [
+      'Target account segmentation',
+      'Message frameworks by buying committee',
+      'Campaign and sales touchpoint planning',
+    ],
+  },
+  {
+    key: 'ai-seo',
+    title: 'AI SEO',
+    description: 'Enhance visibility and capture AI-driven traffic',
+    href: './ai-seo.html',
+    eyebrow: 'AI SEO',
+    headline: 'Prepare your site to win visibility in AI-assisted discovery, summaries, and answer engines.',
+    intro:
+      'We shape content and site signals so your brand is easier for AI systems to understand, cite, and surface across emerging search behavior.',
+    outcomes: ['Better AI answer visibility', 'Stronger entity clarity', 'Content built for new search journeys'],
+    deliverables: [
+      'Entity and semantic content improvements',
+      'FAQ, schema, and answer-oriented formatting',
+      'AI search opportunity mapping',
+    ],
+  },
+  {
+    key: 'geo',
+    title: 'GEO',
+    description: 'Increase conversions by appearing in Gen AI answers',
+    href: './geo.html',
+    eyebrow: 'Generative engine optimization',
+    headline: 'Show up in generative answers with content designed for authority, clarity, and conversion.',
+    intro:
+      'GEO work helps your brand earn mention-worthy coverage in AI responses by strengthening how your offer, evidence, and expertise are presented online.',
+    outcomes: ['More branded discovery', 'Better answer-engine presence', 'Higher trust from first touch'],
+    deliverables: [
+      'Source-worthy page restructuring',
+      'Authority and proof asset development',
+      'Generative answer visibility reviews',
+    ],
+  },
+]
 
-        <div class="hero-actions">
-          <a class="button button-primary" href="./contact.html">Book a strategy call</a>
-          <a class="button button-secondary" href="./case-studies.html">See case studies</a>
-        </div>
+const servicePageKeys = new Set(serviceCatalog.map((service) => service.key))
+const isServicePage = page === 'services' || servicePageKeys.has(page)
 
-        <div class="hero-metrics">
-          <article class="reveal-up">
-            <strong>120%</strong>
-            <span>average organic visibility growth across recent launches</span>
-          </article>
-          <article class="reveal-up" style="transition-delay: 120ms;">
-            <strong>4.7x</strong>
-            <span>return on focused funnel and campaign optimization</span>
-          </article>
-          <article class="reveal-up" style="transition-delay: 240ms;">
-            <strong>90 days</strong>
-            <span>to move from strategy gap to measurable demand generation</span>
-          </article>
-        </div>
-      </div>
-
-      <div class="hero-visual reveal-up" aria-hidden="true">
-        <div class="orbital-grid"></div>
-        <div class="signal-card signal-main">
-          <span>Organic search</span>
-          <strong>+184%</strong>
-          <p>Keyword lift powered by technical SEO and content clusters.</p>
-        </div>
-        <div class="signal-card signal-side">
-          <span>Paid social</span>
-          <strong>32% lower CPA</strong>
-          <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
-        </div>
-        <div class="signal-card signal-bottom">
-          <span>Brand recall</span>
-          <strong>Creative that sticks</strong>
-          <p>Visual campaigns designed to feel premium without losing clarity.</p>
-        </div>
-        <div class="halo-ring ring-one"></div>
-        <div class="halo-ring ring-two"></div>
-      </div>
-    </section>
-
-    <section class="trust-strip section reveal-up">
-      <p>Built for modern growth across SEO, social, content, analytics, and conversion systems.</p>
-      <div class="trust-items" aria-label="Capabilities">
-        <span>Search visibility</span>
-        <span>Performance campaigns</span>
-        <span>Content strategy</span>
-        <span>Landing page optimization</span>
-        <span>Brand storytelling</span>
-      </div>
-    </section>
-
-    <section class="feature-band section">
-      <div class="feature-intro reveal-up">
-        <span class="eyebrow">Why Growth Vibe</span>
-        <h2>Creative enough to stand out. Structured enough to scale.</h2>
-      </div>
-      <div class="about-grid">
-        <article class="glass-card reveal-up">
-          <h3>Search-first brand strategy</h3>
-          <p>We shape websites and campaigns around real demand, so your visibility starts compounding instead of restarting each month.</p>
-        </article>
-        <article class="glass-card reveal-up" style="transition-delay: 120ms;">
-          <h3>Premium creative systems</h3>
-          <p>Design, copy, and campaign concepts are built to feel modern, memorable, and strong enough to support premium positioning.</p>
-        </article>
-        <article class="glass-card reveal-up" style="transition-delay: 240ms;">
-          <h3>Clear growth accountability</h3>
-          <p>Every page and campaign is tied back to visibility, lead quality, engagement, and conversion signals that matter.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="insight-section section">
-      <div class="section-heading reveal-up">
-        <span class="eyebrow">What we improve</span>
-        <h2>We help brands look more premium, get found faster, and convert with less friction.</h2>
-      </div>
-      <div class="insight-grid">
-        <article class="insight-card reveal-up">
-          <strong>Visibility</strong>
-          <p>Search-first website structures and content systems that create compounding discovery.</p>
-        </article>
-        <article class="insight-card reveal-up" style="transition-delay: 120ms;">
-          <strong>Perception</strong>
-          <p>Sharper messaging and visual direction that position your company with more confidence.</p>
-        </article>
-        <article class="insight-card reveal-up" style="transition-delay: 240ms;">
-          <strong>Conversion</strong>
-          <p>Pages, offers, and campaign journeys designed to move visitors into action more clearly.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="process-band section">
-      <div class="process-copy reveal-up">
-        <span class="eyebrow">Growth flow</span>
-        <h2>A website should not just look good. It should guide attention and create movement.</h2>
-        <p>We combine SEO structure, message clarity, and premium presentation so every visit feels more intentional and more persuasive.</p>
-      </div>
-      <div class="process-steps">
-        <article class="process-step reveal-up">
-          <span>01</span>
-          <h3>Audit the gap</h3>
-          <p>We identify where your current site is losing visibility, trust, or conversion momentum.</p>
-        </article>
-        <article class="process-step reveal-up" style="transition-delay: 120ms;">
-          <span>02</span>
-          <h3>Shape the story</h3>
-          <p>We refine positioning, offers, and content so visitors instantly understand what makes you valuable.</p>
-        </article>
-        <article class="process-step reveal-up" style="transition-delay: 240ms;">
-          <span>03</span>
-          <h3>Launch the engine</h3>
-          <p>We support stronger campaigns, cleaner journeys, and measurable growth across channels.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="marquee-section section reveal-up" aria-label="Marketing services ticker">
-      <div class="marquee-track">
-        <span>SEO Strategy</span>
-        <span>Paid Growth</span>
-        <span>Content Marketing</span>
-        <span>Creative Direction</span>
-        <span>Analytics</span>
-        <span>Conversion Design</span>
-        <span>SEO Strategy</span>
-        <span>Paid Growth</span>
-        <span>Content Marketing</span>
-        <span>Creative Direction</span>
-        <span>Analytics</span>
-        <span>Conversion Design</span>
-      </div>
-    </section>
-
-    <section class="home-form-section section">
-      <div class="section-heading reveal-up">
-        <span class="eyebrow">Start here</span>
-        <h2>Share your goals and let’s map the right growth direction for your business.</h2>
-      </div>
-      <div class="hero-form-card reveal-up">
-        <div class="form-intro">
-          <span class="eyebrow">Quick inquiry</span>
-          <h2>Tell us where you need help.</h2>
-          <p>Drop in a few details and Growth Vibe can recommend the right mix of SEO, creative, and performance support.</p>
-        </div>
-        <form class="lead-form home-lead-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" placeholder="Your full name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" placeholder="you@example.com" required />
-          </label>
-          <label>
-            <span>Company</span>
-            <input type="text" name="company" placeholder="Your company name" />
-          </label>
-          <label class="select-field">
-            <span>Where do you need help?</span>
-            <span class="select-glow" aria-hidden="true"></span>
-            <select name="service">
-              <option value="SEO Strategy">SEO Strategy</option>
-              <option value="Content Marketing">Content Marketing</option>
-              <option value="Paid Campaigns">Paid Campaigns</option>
-              <option value="Conversion Optimization">Conversion Optimization</option>
-              <option value="Full Growth Strategy">Full Growth Strategy</option>
-            </select>
-          </label>
-          <label class="field-wide">
-            <span>Project goals</span>
-            <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
-          </label>
-          <button class="button button-primary field-wide" type="submit">Send inquiry</button>
-        </form>
-      </div>
-    </section>
-  `,
-  about: `
-    <section class="page-banner section reveal-up">
-      <span class="eyebrow">About us</span>
-      <h1>Growth Vibe is a creative growth partner for brands that want better visibility and sharper presentation.</h1>
-      <p>
-        We connect search strategy, brand language, campaign design, and conversion thinking so your marketing feels cohesive instead of scattered.
-      </p>
-    </section>
-
-    <section class="story-grid section">
-      <article class="story-panel reveal-up">
-        <h2>What we believe</h2>
-        <p>Strong marketing should make a business easier to understand, easier to discover, and easier to trust.</p>
-      </article>
-      <article class="story-panel reveal-up" style="transition-delay: 140ms;">
-        <h2>How we operate</h2>
-        <p>We start with audience clarity, search opportunities, offer positioning, and messaging priorities before designing execution.</p>
-      </article>
-    </section>
-
-    <section class="section">
-      <div class="section-heading reveal-up">
-        <span class="eyebrow">Our values</span>
-        <h2>Everything we build is guided by clarity, momentum, and good taste.</h2>
-      </div>
-      <div class="services-grid">
-        <article class="service-card reveal-up">
-          <div class="service-icon">01</div>
-          <h3>Clarity over noise</h3>
-          <p>We simplify positioning so your audience understands the value faster.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 120ms;">
-          <div class="service-icon">02</div>
-          <h3>Momentum over random tactics</h3>
-          <p>Each move is designed to stack on top of the last instead of chasing novelty.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 240ms;">
-          <div class="service-icon">03</div>
-          <h3>Design with purpose</h3>
-          <p>We use visual direction to strengthen trust, recall, and conversion.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="timeline-section section">
-      <div class="section-heading reveal-up">
-        <span class="eyebrow">How we work</span>
-        <h2>A process that keeps research, creativity, and execution connected.</h2>
-      </div>
-      <div class="timeline">
-        <article class="timeline-item reveal-up">
-          <span>01</span>
-          <h3>Discovery</h3>
-          <p>Audience research, competitor review, and visibility mapping.</p>
-        </article>
-        <article class="timeline-item reveal-up" style="transition-delay: 100ms;">
-          <span>02</span>
-          <h3>Positioning</h3>
-          <p>Offer framing, messaging structure, and page hierarchy decisions.</p>
-        </article>
-        <article class="timeline-item reveal-up" style="transition-delay: 200ms;">
-          <span>03</span>
-          <h3>Activation</h3>
-          <p>Campaign buildout, SEO implementation, and content rollout.</p>
-        </article>
-        <article class="timeline-item reveal-up" style="transition-delay: 300ms;">
-          <span>04</span>
-          <h3>Optimization</h3>
-          <p>Iterative testing based on rankings, lead quality, and conversion patterns.</p>
-        </article>
-      </div>
-    </section>
-  `,
-  services: `
-    <section class="page-banner section reveal-up">
-      <span class="eyebrow">Services</span>
-      <h1>Marketing services designed to grow traffic, trust, and revenue together.</h1>
-      <p>
-        From SEO foundations to paid performance and conversion refinement, we build systems that make your digital presence work harder.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="services-grid">
-        <article class="service-card reveal-up">
-          <div class="service-icon">01</div>
-          <h3>SEO Strategy</h3>
-          <p>Technical audits, information architecture, keyword planning, and on-page systems.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 80ms;">
-          <div class="service-icon">02</div>
-          <h3>Content Marketing</h3>
-          <p>Topic clusters, thought-leadership planning, and search-informed editorial direction.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 160ms;">
-          <div class="service-icon">03</div>
-          <h3>Paid Campaigns</h3>
-          <p>Creative testing, landing page alignment, and better paid acquisition efficiency.</p>
-        </article>
-        <article class="service-card reveal-up">
-          <div class="service-icon">04</div>
-          <h3>Brand Positioning</h3>
-          <p>Sharper messaging, clearer offers, and premium-facing communication systems.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 80ms;">
-          <div class="service-icon">05</div>
-          <h3>Conversion Optimization</h3>
-          <p>CTA systems, page structure improvements, and more confident journeys from click to inquiry.</p>
-        </article>
-        <article class="service-card reveal-up" style="transition-delay: 160ms;">
-          <div class="service-icon">06</div>
-          <h3>Marketing Analytics</h3>
-          <p>Measurement frameworks that show what is driving visibility, leads, and real growth.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="pricing-showcase section">
-      <div class="section-heading reveal-up">
-        <span class="eyebrow">Engagement style</span>
-        <h2>Flexible ways to work together depending on what your business needs now.</h2>
-      </div>
-      <div class="package-grid">
-        <article class="package-card reveal-up">
-          <h3>Foundation Sprint</h3>
-          <p>For businesses that need clear positioning, page structure, and a sharper online base.</p>
-        </article>
-        <article class="package-card reveal-up" style="transition-delay: 140ms;">
-          <h3>Growth Engine</h3>
-          <p>For brands ready to combine SEO, content, and campaign execution into one system.</p>
-        </article>
-        <article class="package-card reveal-up" style="transition-delay: 280ms;">
-          <h3>Ongoing Partner</h3>
-          <p>For teams that want a strategic creative partner refining performance month after month.</p>
-        </article>
-      </div>
-    </section>
-  `,
-  'case-studies': `
-    <section class="page-banner section reveal-up">
-      <span class="eyebrow">Case studies</span>
-      <h1>Selected work showing how strategy and presentation can lift performance together.</h1>
-      <p>
-        These examples are framed around visibility, lead quality, and perception shifts rather than vanity metrics alone.
-      </p>
-    </section>
-
-    <section class="case-study-stack section">
-      <article class="case-deep-dive reveal-up">
-        <div class="case-meta">
-          <span class="case-tag">B2B SaaS</span>
-          <strong>Search-led repositioning</strong>
-        </div>
-        <h2>From unclear messaging to a search system that produced more qualified demos.</h2>
-        <p>Growth Vibe reworked the homepage story, clarified service language, and aligned content with high-intent search demand.</p>
-        <ul class="case-points">
-          <li>+184% organic impressions</li>
-          <li>+71% demo requests from non-brand search</li>
-          <li>38% lower bounce on key solution pages</li>
-        </ul>
-      </article>
-
-      <article class="case-deep-dive alt reveal-up">
-        <div class="case-meta">
-          <span class="case-tag">E-commerce</span>
-          <strong>Paid creative optimization</strong>
-        </div>
-        <h2>Lower customer acquisition costs through sharper creative framing and landing-page flow.</h2>
-        <p>We tightened audience-message fit, refreshed visual hooks, and removed friction between ad promise and product page experience.</p>
-        <ul class="case-points">
-          <li>32% lower CPA</li>
-          <li>+48% higher add-to-cart rate</li>
-          <li>More efficient spend across best-performing campaigns</li>
-        </ul>
-      </article>
-
-      <article class="case-deep-dive reveal-up">
-        <div class="case-meta">
-          <span class="case-tag">Local services</span>
-          <strong>Regional discovery growth</strong>
-        </div>
-        <h2>Better local visibility without making the brand feel small or generic.</h2>
-        <p>We created location-led landing structure, optimized service pages, and supported trust-building with cleaner proof and stronger CTAs.</p>
-        <ul class="case-points">
-          <li>Significant Maps and local search improvement</li>
-          <li>Higher lead quality from location pages</li>
-          <li>Stronger premium perception at first visit</li>
-        </ul>
-      </article>
-    </section>
-  `,
-  contact: `
-    <section class="page-banner section reveal-up">
-      <span class="eyebrow">Contact us</span>
-      <h1>Let's build a digital presence that feels stronger and performs better.</h1>
-      <p>
-        Reach out if you want help with SEO, campaigns, content, or a cleaner growth story across your website.
-      </p>
-    </section>
-
-    <section class="contact-layout section">
-      <div class="contact-panel reveal-up">
-        <div class="form-intro">
-          <span class="eyebrow">Project form</span>
-          <h2>Send your project details directly to our team.</h2>
-          <p>Use this form to share your goals, timeline, and the kind of marketing support you are looking for.</p>
-        </div>
-        <form class="lead-form contact-form" action="mailto:hello@grothervibe.com" method="post" enctype="text/plain">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" placeholder="Your full name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" placeholder="you@example.com" required />
-          </label>
-          <label>
-            <span>Phone</span>
-            <input type="tel" name="phone" placeholder="+91 98765 43210" />
-          </label>
-          <label>
-            <span>Business name</span>
-            <input type="text" name="business" placeholder="Your business name" />
-          </label>
-          <label class="select-field">
-            <span>Primary service</span>
-            <span class="select-glow" aria-hidden="true"></span>
-            <select name="service">
-              <option value="SEO Strategy">SEO Strategy</option>
-              <option value="Content Marketing">Content Marketing</option>
-              <option value="Paid Campaigns">Paid Campaigns</option>
-              <option value="Conversion Optimization">Conversion Optimization</option>
-              <option value="Brand Positioning">Brand Positioning</option>
-            </select>
-          </label>
-          <label class="select-field">
-            <span>Budget range</span>
-            <span class="select-glow" aria-hidden="true"></span>
-            <select name="budget">
-              <option value="Under 25k">Under 25k</option>
-              <option value="25k to 50k">25k to 50k</option>
-              <option value="50k to 100k">50k to 100k</option>
-              <option value="100k+">100k+</option>
-            </select>
-          </label>
-          <label class="field-wide">
-            <span>Project details</span>
-            <textarea name="message" rows="5" placeholder="What are you trying to grow, and what would success look like for your business?"></textarea>
-          </label>
-          <button class="button button-primary field-wide" type="submit">Submit project inquiry</button>
-        </form>
-      </div>
-
-      <div class="faq-panel reveal-up" style="transition-delay: 140ms;">
-        <h2>What usually happens next?</h2>
-        <div class="faq-item">
-          <h3>1. Discovery conversation</h3>
-          <p>We understand your business, goals, audience, and what already exists.</p>
-        </div>
-        <div class="faq-item">
-          <h3>2. Opportunity mapping</h3>
-          <p>We identify where positioning, SEO, content, or paid performance can create the biggest lift.</p>
-        </div>
-        <div class="faq-item">
-          <h3>3. Focused proposal</h3>
-          <p>You get a clear direction for the work, not a generic menu of disconnected tasks.</p>
-        </div>
-      </div>
-    </section>
-  `,
+const defaultSiteData = {
+  home: {
+    eyebrow: 'Performance-first digital marketing studio',
+    title: 'We turn attention into momentum for ambitious brands.',
+    text: 'Growth Vibe blends SEO, creative direction, performance marketing, and conversion design into campaigns that look sharp, rank well, and move people to act.',
+    ctaTitle: 'Bring clarity, creativity, and measurable momentum into the same website.',
+  },
+  contact: {
+    email: 'hello@grothervibe.com',
+    phone: '+91 00000 00000',
+  },
+  footer: {
+    note: 'Built for visibility, storytelling, and conversion with a more refined digital brand system.',
+  },
+  caseStudies: [
+    {
+      id: 'saas-search',
+      category: 'B2B SaaS',
+      label: 'Search-led repositioning',
+      title: 'From unclear messaging to a search system that produced more qualified demos.',
+      description:
+        'Growth Vibe reworked the homepage story, clarified service language, and aligned content with high-intent search demand.',
+      metrics: ['+184% organic impressions', '+71% demo requests', '38% lower bounce'],
+    },
+    {
+      id: 'ecommerce-paid',
+      category: 'E-commerce',
+      label: 'Paid creative optimization',
+      title: 'Lower customer acquisition costs through sharper creative framing and landing-page flow.',
+      description:
+        'We tightened audience-message fit, refreshed visual hooks, and removed friction between ad promise and product page experience.',
+      metrics: ['32% lower CPA', '+48% add-to-cart rate', 'Higher ROAS efficiency'],
+    },
+    {
+      id: 'local-growth',
+      category: 'Local services',
+      label: 'Regional discovery growth',
+      title: 'Better local visibility without making the brand feel small or generic.',
+      description:
+        'We created location-led landing structure, optimized service pages, and supported trust-building with cleaner proof and stronger CTAs.',
+      metrics: ['Maps visibility up', 'Higher lead quality', 'Stronger first-visit trust'],
+    },
+  ],
 }
 
-function navMarkup() {
-  return navItems
+function escapeHtml(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
+function mergeSiteData(storedData = {}) {
+  return {
+    home: {
+      ...defaultSiteData.home,
+      ...(storedData.home || {}),
+    },
+    contact: {
+      ...defaultSiteData.contact,
+      ...(storedData.contact || {}),
+    },
+    footer: {
+      ...defaultSiteData.footer,
+      ...(storedData.footer || {}),
+    },
+    caseStudies: Array.isArray(storedData.caseStudies) && storedData.caseStudies.length
+      ? storedData.caseStudies.map((study, index) => ({
+          ...defaultSiteData.caseStudies[index % defaultSiteData.caseStudies.length],
+          ...study,
+          id: study.id || `case-${index + 1}`,
+          metrics: Array.isArray(study.metrics) ? study.metrics.filter(Boolean).slice(0, 3) : [],
+        }))
+      : defaultSiteData.caseStudies.map((study) => ({ ...study })),
+  }
+}
+
+function getSiteData() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    return mergeSiteData(stored ? JSON.parse(stored) : {})
+  } catch {
+    return mergeSiteData()
+  }
+}
+
+function saveSiteData(siteData) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData))
+}
+
+function serviceOverviewCardsMarkup() {
+  return serviceCatalog
     .map(
-      (item) =>
-        `<a href="${item.href}" class="${item.key === page ? 'is-active' : ''}">${item.label}</a>`,
+      (service, index) => `
+        <a href="${service.href}" class="service-overview-card reveal-up" style="transition-delay: ${index * 70}ms;">
+          <span class="service-overview-index">${String(index + 1).padStart(2, '0')}</span>
+          <strong>${escapeHtml(service.title)}</strong>
+          <p>${escapeHtml(service.description)}</p>
+        </a>
+      `,
     )
     .join('')
 }
 
-document.querySelector('#app').innerHTML = `
-  <div class="site-shell">
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
-    <div class="ambient ambient-three"></div>
-    <div class="ambient ambient-four"></div>
+function serviceSelectOptionsMarkup() {
+  return serviceCatalog
+    .map((service) => `<option value="${escapeHtml(service.title)}">${escapeHtml(service.title)}</option>`)
+    .join('')
+}
 
-    <header class="top-ribbon">
-      <a class="brand" href="./index.html" aria-label="Growth Vibe home">
-        <span class="brand-mark">GV</span>
-        <span class="brand-text">
-          <strong>Growth Vibe</strong>
-          <small>SEO and growth marketing</small>
-        </span>
-      </a>
+function timezoneOptionsMarkup() {
+  const timezones = [
+    'Asia/Kolkata',
+    'UTC',
+    'Europe/London',
+    'America/New_York',
+    'America/Los_Angeles',
+    'Asia/Dubai',
+    'Asia/Singapore',
+    'Australia/Sydney',
+  ]
 
-      <nav class="ribbon-nav" aria-label="Primary">
-        ${navMarkup()}
-      </nav>
-    </header>
+  return timezones
+    .map(
+      (timezone) =>
+        `<button type="button" class="appointment-timezone-option${timezone === 'Asia/Kolkata' ? ' is-selected' : ''}" data-timezone-option="${escapeHtml(timezone)}">${escapeHtml(timezone)}</button>`,
+    )
+    .join('')
+}
 
-    <main>
-      ${pageContent[page] ?? pageContent.home}
-
-      <section class="cta-banner section reveal-up">
-        <div class="cta-copy">
-          <span class="eyebrow">Ready to grow</span>
-          <h2>Bring clarity, creativity, and measurable momentum into the same website.</h2>
-        </div>
-        <a class="button button-primary" href="./contact.html">Talk to Growth Vibe</a>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-brand">
-        <strong>Growth Vibe</strong>
-        <p>Growth Vibe is a creative marketing studio focused on SEO, content, paid growth, and conversion-led brand experiences for ambitious businesses.</p>
-      </div>
-      <div class="footer-details">
-        <div>
-          <span>Focus</span>
-          <p>SEO strategy, content marketing, paid campaigns, conversion optimization, and premium digital positioning.</p>
-        </div>
-        <div>
-          <span>Contact</span>
-          <p><a href="mailto:hello@grothervibe.com">hello@grothervibe.com</a><br /><a href="tel:+910000000000">+91 00000 00000</a></p>
-        </div>
-        <div>
-          <span>What clients get</span>
-          <p>Sharper website positioning, clearer campaign direction, stronger search visibility, and a more premium digital presence.</p>
+function servicePageMarkup(service, index) {
+  return `
+    <section class="service-detail-hero section reveal-up">
+      <div class="service-detail-copy">
+        <span class="eyebrow">${escapeHtml(service.eyebrow)}</span>
+        <h1>${escapeHtml(service.headline)}</h1>
+        <p>${escapeHtml(service.intro)}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="./contact.html">Talk to Growth Vibe</a>
+          <a class="button button-secondary" href="./services.html">View all services</a>
         </div>
       </div>
-      <p class="footer-note">Built for visibility, storytelling, and conversion with a more refined digital brand system.</p>
-    </footer>
-  </div>
-`
+      <div class="service-detail-panel reveal-up" style="transition-delay: 120ms;">
+        <span class="service-detail-label">What this service drives</span>
+        <div class="service-detail-outcomes">
+          ${service.outcomes
+            .map((outcome) => `<span>${escapeHtml(outcome)}</span>`)
+            .join('')}
+        </div>
+        <div class="service-detail-accent service-accent-${(index % 4) + 1}"></div>
+      </div>
+    </section>
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
+    <section class="service-detail-layout section">
+      <article class="service-detail-card reveal-up">
+        <span class="service-detail-label">Deliverables</span>
+        <ul class="service-detail-list">
+          ${service.deliverables
+            .map((item) => `<li>${escapeHtml(item)}</li>`)
+            .join('')}
+        </ul>
+      </article>
+
+      <article class="service-detail-card reveal-up" style="transition-delay: 120ms;">
+        <span class="service-detail-label">Why teams choose it</span>
+        <p>Growth Vibe combines strategy, messaging, and execution so this service strengthens both visibility and conversion instead of optimizing one at the expense of the other.</p>
+        <p>Every engagement is designed to create a clearer path from attention to inquiry, with reporting that keeps priorities visible.</p>
+      </article>
+    </section>
+  `
+}
+
+function navMarkup() {
+  return navItems
+    .map((item) => {
+      if (item.key === 'services') {
+        return `
+          <div class="nav-dropdown ${isServicePage ? 'is-active' : ''}" data-nav-dropdown>
+            <button
+              type="button"
+              class="nav-dropdown-trigger ${isServicePage ? 'is-active' : ''}"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="services-menu"
+              data-nav-dropdown-trigger
+            >
+              <span>${item.label}</span>
+              <span class="nav-caret" aria-hidden="true"></span>
+            </button>
+            <div class="service-mega-menu" id="services-menu" role="menu" aria-label="Services menu" hidden>
+              <div class="service-mega-head">
+                <div>
+                  <span class="service-mega-kicker">Service menu</span>
+                  <strong>Choose a service page</strong>
+                </div>
+                <a href="${item.href}" class="service-mega-link">All services</a>
+              </div>
+              <div class="service-mega-grid">
+                ${serviceCatalog
+                  .map(
+                    (service) => `
+                      <a
+                        href="${service.href}"
+                        class="service-mega-item"
+                        role="menuitem"
+                      >
+                        <strong>${escapeHtml(service.title)}</strong>
+                      </a>
+                    `,
+                  )
+                  .join('')}
+              </div>
+            </div>
+          </div>
+        `
       }
-    })
-  },
-  { threshold: 0.18 },
-)
 
-document.querySelectorAll('.reveal-up').forEach((element) => observer.observe(element))
+      return `<a href="${item.href}" class="${item.key === page ? 'is-active' : ''}">${item.label}</a>`
+    })
+    .join('')
+}
+
+function caseStudyCardsMarkup(caseStudies) {
+  return caseStudies
+    .map(
+      (study, index) => `
+        <article class="case-thumb-card reveal-up" style="transition-delay: ${index * 90}ms;">
+          <div class="case-thumb-media case-theme-${(index % 4) + 1}">
+            <div class="case-thumb-overlay">
+              <div class="case-meta">
+                <span class="case-tag">${escapeHtml(study.category)}</span>
+                <strong>${escapeHtml(study.label)}</strong>
+              </div>
+              <h2>${escapeHtml(study.title)}</h2>
+              <div class="case-thumb-metrics">
+                ${(study.metrics || [])
+                  .map((metric) => `<span>${escapeHtml(metric)}</span>`)
+                  .join('')}
+              </div>
+            </div>
+          </div>
+          <div class="case-thumb-copy">
+            <p>${escapeHtml(study.description)}</p>
+          </div>
+        </article>
+      `,
+    )
+    .join('')
+}
+
+function sitePages(siteData) {
+  const serviceDetailPages = Object.fromEntries(
+    serviceCatalog.map((service, index) => [service.key, servicePageMarkup(service, index)]),
+  )
+
+  return {
+    home: `
+      <section class="hero-section section page-hero page-hero-home">
+        <div class="hero-copy reveal-up">
+          <span class="eyebrow">${escapeHtml(siteData.home.eyebrow)}</span>
+          <h1>${escapeHtml(siteData.home.title)}</h1>
+          <p class="hero-text">${escapeHtml(siteData.home.text)}</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="./contact.html">Book a strategy call</a>
+            <a class="button button-secondary" href="./case-studies.html">See case studies</a>
+          </div>
+
+          <div class="hero-metrics">
+            <article class="reveal-up">
+              <strong>120%</strong>
+              <span>average organic visibility growth across recent launches</span>
+            </article>
+            <article class="reveal-up" style="transition-delay: 120ms;">
+              <strong>4.7x</strong>
+              <span>return on focused funnel and campaign optimization</span>
+            </article>
+            <article class="reveal-up" style="transition-delay: 240ms;">
+              <strong>90 days</strong>
+              <span>to move from strategy gap to measurable demand generation</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal-up" aria-hidden="true">
+          <div class="orbital-grid"></div>
+          <div class="signal-card signal-main">
+            <span>Organic search</span>
+            <strong>+184%</strong>
+            <p>Keyword lift powered by technical SEO and content clusters.</p>
+          </div>
+          <div class="signal-card signal-side">
+            <span>Paid social</span>
+            <strong>32% lower CPA</strong>
+            <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
+          </div>
+          <div class="signal-card signal-bottom">
+            <span>Brand recall</span>
+            <strong>Creative that sticks</strong>
+            <p>Visual campaigns designed to feel premium without losing clarity.</p>
+          </div>
+          <div class="halo-ring ring-one"></div>
+          <div class="halo-ring ring-two"></div>
+        </div>
+      </section>
+
+      <section class="trust-strip section reveal-up">
+        <p>Built for modern growth across SEO, social, content, analytics, and conversion systems.</p>
+        <div class="trust-items" aria-label="Capabilities">
+          <span>Search visibility</span>
+          <span>Performance campaigns</span>
+          <span>Content strategy</span>
+          <span>Landing page optimization</span>
+          <span>Brand storytelling</span>
+        </div>
+      </section>
+
+      <section class="feature-band section">
+        <div class="feature-intro reveal-up">
+          <span class="eyebrow">Why Growth Vibe</span>
+          <h2>Creative enough to stand out. Structured enough to scale.</h2>
+        </div>
+        <div class="about-grid">
+          <article class="glass-card reveal-up">
+            <h3>Search-first brand strategy</h3>
+            <p>We shape websites and campaigns around real demand, so your visibility starts compounding instead of restarting each month.</p>
+          </article>
+          <article class="glass-card reveal-up" style="transition-delay: 120ms;">
+            <h3>Premium creative systems</h3>
+            <p>Design, copy, and campaign concepts are built to feel modern, memorable, and strong enough to support premium positioning.</p>
+          </article>
+          <article class="glass-card reveal-up" style="transition-delay: 240ms;">
+            <h3>Clear growth accountability</h3>
+            <p>Every page and campaign is tied back to visibility, lead quality, engagement, and conversion signals that matter.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="insight-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">What we improve</span>
+          <h2>We help brands look more premium, get found faster, and convert with less friction.</h2>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card reveal-up">
+            <strong>Visibility</strong>
+            <p>Search-first website structures and content systems that create compounding discovery.</p>
+          </article>
+          <article class="insight-card reveal-up" style="transition-delay: 120ms;">
+            <strong>Perception</strong>
+            <p>Sharper messaging and visual direction that position your company with more confidence.</p>
+          </article>
+          <article class="insight-card reveal-up" style="transition-delay: 240ms;">
+            <strong>Conversion</strong>
+            <p>Pages, offers, and campaign journeys designed to move visitors into action more clearly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="process-band section">
+        <div class="process-copy reveal-up">
+          <span class="eyebrow">Growth flow</span>
+          <h2>A website should not just look good. It should guide attention and create movement.</h2>
+          <p>We combine SEO structure, message clarity, and premium presentation so every visit feels more intentional and more persuasive.</p>
+        </div>
+        <div class="process-steps">
+          <article class="process-step reveal-up">
+            <span>01</span>
+            <h3>Audit the gap</h3>
+            <p>We identify where your current site is losing visibility, trust, or conversion momentum.</p>
+          </article>
+          <article class="process-step reveal-up" style="transition-delay: 120ms;">
+            <span>02</span>
+            <h3>Shape the story</h3>
+            <p>We refine positioning, offers, and content so visitors instantly understand what makes you valuable.</p>
+          </article>
+          <article class="process-step reveal-up" style="transition-delay: 240ms;">
+            <span>03</span>
+            <h3>Launch the engine</h3>
+            <p>We support stronger campaigns, cleaner journeys, and measurable growth across channels.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="marquee-section section reveal-up" aria-label="Marketing services ticker">
+        <div class="marquee-track">
+          <span>SEO Strategy</span>
+          <span>Paid Growth</span>
+          <span>Content Marketing</span>
+          <span>Creative Direction</span>
+          <span>Analytics</span>
+          <span>Conversion Design</span>
+          <span>SEO Strategy</span>
+          <span>Paid Growth</span>
+          <span>Content Marketing</span>
+          <span>Creative Direction</span>
+          <span>Analytics</span>
+          <span>Conversion Design</span>
+        </div>
+      </section>
+
+      <section class="home-form-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">Start here</span>
+          <h2>Share your goals and let's map the right growth direction for your business.</h2>
+        </div>
+        <div class="hero-form-card reveal-up">
+          <div class="form-intro">
+            <span class="eyebrow">Quick inquiry</span>
+            <h2>Tell us where you need help.</h2>
+            <p>Drop in a few details and Growth Vibe can recommend the right mix of SEO, creative, and performance support.</p>
+          </div>
+          <form class="lead-form home-lead-form" action="mailto:${escapeHtml(siteData.contact.email)}" method="post" enctype="text/plain">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span>Company</span>
+              <input type="text" name="company" placeholder="Your company name" />
+            </label>
+            <label class="select-field">
+              <span>Where do you need help?</span>
+              <span class="select-glow" aria-hidden="true"></span>
+              <select name="service">
+                ${serviceSelectOptionsMarkup()}
+              </select>
+            </label>
+            <label class="field-wide">
+              <span>Project goals</span>
+              <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
+            </label>
+            <button class="button button-primary field-wide" type="submit">Send inquiry</button>
+          </form>
+        </div>
+      </section>
+    `,
+    about: `
+      <section class="page-banner section reveal-up">
+        <span class="eyebrow">About us</span>
+        <h1>Growth Vibe is a creative growth partner for brands that want better visibility and sharper presentation.</h1>
+        <p>
+          We connect search strategy, brand language, campaign design, and conversion thinking so your marketing feels cohesive instead of scattered.
+        </p>
+      </section>
+
+      <section class="story-grid section">
+        <article class="story-panel reveal-up">
+          <h2>What we believe</h2>
+          <p>Strong marketing should make a business easier to understand, easier to discover, and easier to trust.</p>
+        </article>
+        <article class="story-panel reveal-up" style="transition-delay: 140ms;">
+          <h2>How we operate</h2>
+          <p>We start with audience clarity, search opportunities, offer positioning, and messaging priorities before designing execution.</p>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">Our values</span>
+          <h2>Everything we build is guided by clarity, momentum, and good taste.</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal-up">
+            <div class="service-icon">01</div>
+            <h3>Clarity over noise</h3>
+            <p>We simplify positioning so your audience understands the value faster.</p>
+          </article>
+          <article class="service-card reveal-up" style="transition-delay: 120ms;">
+            <div class="service-icon">02</div>
+            <h3>Momentum over random tactics</h3>
+            <p>Each move is designed to stack on top of the last instead of chasing novelty.</p>
+          </article>
+          <article class="service-card reveal-up" style="transition-delay: 240ms;">
+            <div class="service-icon">03</div>
+            <h3>Design with purpose</h3>
+            <p>We use visual direction to strengthen trust, recall, and conversion.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="timeline-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">How we work</span>
+          <h2>A process that keeps research, creativity, and execution connected.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal-up">
+            <span>01</span>
+            <h3>Discovery</h3>
+            <p>Audience research, competitor review, and visibility mapping.</p>
+          </article>
+          <article class="timeline-item reveal-up" style="transition-delay: 100ms;">
+            <span>02</span>
+            <h3>Positioning</h3>
+            <p>Offer framing, messaging structure, and page hierarchy decisions.</p>
+          </article>
+          <article class="timeline-item reveal-up" style="transition-delay: 200ms;">
+            <span>03</span>
+            <h3>Activation</h3>
+            <p>Campaign buildout, SEO implementation, and content rollout.</p>
+          </article>
+          <article class="timeline-item reveal-up" style="transition-delay: 300ms;">
+            <span>04</span>
+            <h3>Optimization</h3>
+            <p>Iterative testing based on rankings, lead quality, and conversion patterns.</p>
+          </article>
+        </div>
+      </section>
+    `,
+    services: `
+      <section class="page-banner section reveal-up">
+        <span class="eyebrow">Services</span>
+        <h1>Explore focused service pages for each growth offering.</h1>
+        <p>
+          Pick the area you want help with and jump into a dedicated page built around that service, its outcomes, and how Growth Vibe approaches the work.
+        </p>
+      </section>
+
+      <section class="service-overview-grid section">
+        ${serviceOverviewCardsMarkup()}
+      </section>
+
+      <section class="pricing-showcase section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">How we engage</span>
+          <h2>Choose one service or combine multiple areas into a single growth system.</h2>
+        </div>
+        <div class="package-grid">
+          <article class="package-card reveal-up">
+            <h3>Single-service focus</h3>
+            <p>Best when you know exactly which growth function needs attention first.</p>
+          </article>
+          <article class="package-card reveal-up" style="transition-delay: 140ms;">
+            <h3>Integrated growth program</h3>
+            <p>Combine SEO, content, automation, and paid support into one connected roadmap.</p>
+          </article>
+          <article class="package-card reveal-up" style="transition-delay: 280ms;">
+            <h3>Ongoing partner model</h3>
+            <p>For teams that want a strategic operator refining growth channels month after month.</p>
+          </article>
+        </div>
+      </section>
+    `,
+    'case-studies': `
+      <section class="page-banner section reveal-up case-banner">
+        <span class="eyebrow">Case studies</span>
+        <h1>Case studies presented with stronger visual hooks and clear performance wins.</h1>
+        <p>
+          Each card is designed like a thumbnail preview so visitors can scan the category, big promise, and proof points at a glance.
+        </p>
+      </section>
+
+      <section class="case-thumbnail-grid section">
+        ${caseStudyCardsMarkup(siteData.caseStudies)}
+      </section>
+    `,
+    contact: `
+      <section class="page-banner section reveal-up">
+        <span class="eyebrow">Contact us</span>
+        <h1>Let's build a digital presence that feels stronger and performs better.</h1>
+        <p>
+          Reach out if you want help with SEO, campaigns, content, or a cleaner growth story across your website.
+        </p>
+      </section>
+
+      <section class="contact-layout section">
+        <div class="contact-panel reveal-up">
+          <div class="form-intro">
+            <span class="eyebrow">Project form</span>
+            <h2>Send your project details directly to our team.</h2>
+            <p>Use this form to share your goals, timeline, and the kind of marketing support you are looking for.</p>
+          </div>
+          <form class="lead-form contact-form" action="mailto:${escapeHtml(siteData.contact.email)}" method="post" enctype="text/plain">
+            <input type="hidden" name="appointment_date" data-appointment-date-input />
+            <input type="hidden" name="appointment_time" data-appointment-time-input />
+            <input type="hidden" name="appointment_timezone" data-appointment-timezone-input />
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span>Phone</span>
+              <input type="tel" name="phone" placeholder="+91 98765 43210" />
+            </label>
+            <label>
+              <span>Business name</span>
+              <input type="text" name="business" placeholder="Your business name" />
+            </label>
+            <label class="select-field">
+              <span>Primary service</span>
+              <span class="select-glow" aria-hidden="true"></span>
+              <select name="service">
+                ${serviceSelectOptionsMarkup()}
+              </select>
+            </label>
+            <label class="select-field">
+              <span>Budget range</span>
+              <span class="select-glow" aria-hidden="true"></span>
+              <select name="budget">
+                <option value="Under 25k">Under 25k</option>
+                <option value="25k to 50k">25k to 50k</option>
+                <option value="50k to 100k">50k to 100k</option>
+                <option value="100k+">100k+</option>
+              </select>
+            </label>
+            <label class="field-wide">
+              <span>Project details</span>
+              <textarea name="message" rows="5" placeholder="What are you trying to grow, and what would success look like for your business?"></textarea>
+            </label>
+            <button class="button button-primary field-wide" type="submit">Submit project inquiry</button>
+          </form>
+        </div>
+
+        <div class="appointment-panel reveal-up" style="transition-delay: 140ms;" data-appointment-panel>
+          <div class="appointment-intro">
+            <span class="eyebrow">Appointment</span>
+            <h2>Book a meeting with a cleaner scheduling flow.</h2>
+            <p>Choose your timezone, pick a date, select a time slot, and check mutual availability before you send the inquiry.</p>
+          </div>
+
+          <div class="appointment-topbar">
+            <div class="appointment-timezone-field">
+              <span class="appointment-mini-label">Time zone</span>
+              <div class="appointment-timezone-list" data-timezone-list>
+                ${timezoneOptionsMarkup()}
+              </div>
+            </div>
+
+            <div class="appointment-clock" aria-live="polite">
+              <span class="appointment-clock-label">Current time</span>
+              <strong data-clock-time>--:--</strong>
+              <small data-clock-zone>Asia/Kolkata</small>
+            </div>
+          </div>
+
+          <div class="appointment-calendar-card">
+            <div class="appointment-calendar-header">
+              <button class="appointment-nav" type="button" data-calendar-nav="prev" aria-label="Previous month">‹</button>
+              <strong data-calendar-title>Month</strong>
+              <button class="appointment-nav" type="button" data-calendar-nav="next" aria-label="Next month">›</button>
+            </div>
+            <div class="appointment-weekdays">
+              <span>Sun</span>
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+            </div>
+            <div class="appointment-calendar-grid" data-calendar-grid></div>
+          </div>
+
+          <div class="appointment-slot-card">
+            <div class="appointment-slot-head">
+              <div>
+                <span class="appointment-mini-label">Selected date</span>
+                <strong data-selected-date>Choose a date</strong>
+              </div>
+              <div>
+                <span class="appointment-mini-label">Selected time</span>
+                <strong data-selected-time>No time selected</strong>
+              </div>
+            </div>
+
+            <div class="appointment-slot-grid" data-slot-grid>
+              <button type="button" data-slot-time="09:00">09:00</button>
+              <button type="button" data-slot-time="10:30">10:30</button>
+              <button type="button" data-slot-time="12:00">12:00</button>
+              <button type="button" data-slot-time="14:00">14:00</button>
+              <button type="button" data-slot-time="15:30">15:30</button>
+              <button type="button" data-slot-time="17:00">17:00</button>
+            </div>
+
+            <button class="button button-primary appointment-availability-button" type="button" data-check-availability>
+              Check mutual availability
+            </button>
+            <p class="appointment-status" data-availability-status>Select a date and time to see the meeting summary.</p>
+          </div>
+
+          <div class="faq-panel appointment-faq">
+            <h2>What usually happens next?</h2>
+            <div class="faq-item">
+              <h3>1. Discovery conversation</h3>
+              <p>We understand your business, goals, audience, and what already exists.</p>
+            </div>
+            <div class="faq-item">
+              <h3>2. Opportunity mapping</h3>
+              <p>We identify where positioning, SEO, content, or paid performance can create the biggest lift.</p>
+            </div>
+            <div class="faq-item">
+              <h3>3. Focused proposal</h3>
+              <p>You get a clear direction for the work, not a generic menu of disconnected tasks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    `,
+    admin: `
+      <section class="admin-shell">
+        <section class="admin-auth-card" data-admin-auth-card>
+          <span class="admin-kicker">Private admin</span>
+          <h1>Admin controls for updating website content.</h1>
+          <p>Enter the password to unlock content editing. This page stays off the public navigation and is only available at the admin URL.</p>
+          <form class="admin-auth-form" data-admin-auth-form>
+            <label>
+              <span>Password</span>
+              <input type="password" name="password" placeholder="Enter password" required />
+            </label>
+            <button class="admin-button admin-button-dark" type="submit">Unlock admin</button>
+          </form>
+          <p class="admin-message" data-admin-message></p>
+        </section>
+
+        <section class="admin-panel" data-admin-panel hidden>
+          <div class="admin-topbar">
+            <div>
+              <span class="admin-kicker">Content manager</span>
+              <h2>Update core website text and case studies.</h2>
+            </div>
+            <button class="admin-button" type="button" data-admin-logout>Log out</button>
+          </div>
+
+          <div class="admin-grid">
+            <form class="admin-card admin-site-form" data-admin-site-form>
+              <h3>Site information</h3>
+              <label>
+                <span>Home eyebrow</span>
+                <input type="text" name="homeEyebrow" value="${escapeHtml(siteData.home.eyebrow)}" />
+              </label>
+              <label>
+                <span>Home title</span>
+                <textarea name="homeTitle" rows="3">${escapeHtml(siteData.home.title)}</textarea>
+              </label>
+              <label>
+                <span>Home description</span>
+                <textarea name="homeText" rows="4">${escapeHtml(siteData.home.text)}</textarea>
+              </label>
+              <label>
+                <span>CTA heading</span>
+                <textarea name="ctaTitle" rows="3">${escapeHtml(siteData.home.ctaTitle)}</textarea>
+              </label>
+              <label>
+                <span>Contact email</span>
+                <input type="email" name="contactEmail" value="${escapeHtml(siteData.contact.email)}" />
+              </label>
+              <label>
+                <span>Contact phone</span>
+                <input type="text" name="contactPhone" value="${escapeHtml(siteData.contact.phone)}" />
+              </label>
+              <label>
+                <span>Footer note</span>
+                <textarea name="footerNote" rows="3">${escapeHtml(siteData.footer.note)}</textarea>
+              </label>
+              <button class="admin-button admin-button-dark" type="submit">Save site info</button>
+            </form>
+
+            <div class="admin-card">
+              <form class="admin-case-form" data-admin-case-form>
+                <input type="hidden" name="caseId" value="" />
+                <h3>Add or edit case study</h3>
+                <label>
+                  <span>Category</span>
+                  <input type="text" name="category" placeholder="B2B SaaS" required />
+                </label>
+                <label>
+                  <span>Small label</span>
+                  <input type="text" name="label" placeholder="Search-led repositioning" required />
+                </label>
+                <label>
+                  <span>Thumbnail headline</span>
+                  <textarea name="title" rows="3" placeholder="Big headline shown on the case study card" required></textarea>
+                </label>
+                <label>
+                  <span>Description</span>
+                  <textarea name="description" rows="4" placeholder="Short summary below the thumbnail" required></textarea>
+                </label>
+                <label>
+                  <span>Metric 1</span>
+                  <input type="text" name="metricOne" placeholder="+184% organic impressions" />
+                </label>
+                <label>
+                  <span>Metric 2</span>
+                  <input type="text" name="metricTwo" placeholder="+71% demo requests" />
+                </label>
+                <label>
+                  <span>Metric 3</span>
+                  <input type="text" name="metricThree" placeholder="38% lower bounce" />
+                </label>
+                <div class="admin-actions">
+                  <button class="admin-button admin-button-dark" type="submit">Save case study</button>
+                  <button class="admin-button" type="button" data-admin-clear-form>Clear form</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <section class="admin-card admin-case-list">
+            <div class="admin-list-head">
+              <h3>Current case studies</h3>
+              <button class="admin-button" type="button" data-admin-reset>Reset to defaults</button>
+            </div>
+            <div class="admin-case-items" data-admin-case-items>
+              ${siteData.caseStudies
+                .map(
+                  (study) => `
+                    <article class="admin-case-item">
+                      <div>
+                        <span>${escapeHtml(study.category)}</span>
+                        <h4>${escapeHtml(study.title)}</h4>
+                        <p>${escapeHtml(study.description)}</p>
+                      </div>
+                      <div class="admin-actions">
+                        <button class="admin-button" type="button" data-edit-case="${escapeHtml(study.id)}">Edit</button>
+                        <button class="admin-button admin-button-danger" type="button" data-delete-case="${escapeHtml(study.id)}">Delete</button>
+                      </div>
+                    </article>
+                  `,
+                )
+                .join('')}
+            </div>
+          </section>
+        </section>
+      </section>
+    `,
+    ...serviceDetailPages,
+  }
+}
+
+function appMarkup(siteData) {
+  const pages = sitePages(siteData)
+
+  if (page === 'admin') {
+    return `
+      <div class="admin-site-shell">
+        <main class="admin-main">
+          ${pages.admin}
+        </main>
+      </div>
+    `
+  }
+
+  return `
+    <div class="site-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="ambient ambient-three"></div>
+      <div class="ambient ambient-four"></div>
+
+      <header class="top-ribbon">
+        <a class="brand" href="./index.html" aria-label="Growth Vibe home">
+          <span class="brand-mark">GV</span>
+          <span class="brand-text">
+            <strong>Growth Vibe</strong>
+            <small>SEO and growth marketing</small>
+          </span>
+        </a>
+
+        <nav class="ribbon-nav" aria-label="Primary">
+          ${navMarkup()}
+        </nav>
+      </header>
+
+      <main>
+        ${pages[page] ?? pages.home}
+
+        <section class="cta-banner section reveal-up">
+          <div class="cta-copy">
+            <span class="eyebrow">Ready to grow</span>
+            <h2>${escapeHtml(siteData.home.ctaTitle)}</h2>
+          </div>
+          <a class="button button-primary" href="./contact.html">Talk to Growth Vibe</a>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <strong>Growth Vibe</strong>
+          <p>Growth Vibe is a creative marketing studio focused on SEO, content, paid growth, and conversion-led brand experiences for ambitious businesses.</p>
+        </div>
+        <div class="footer-details">
+          <div>
+            <span>Focus</span>
+            <p>SEO strategy, content marketing, paid campaigns, conversion optimization, and premium digital positioning.</p>
+          </div>
+          <div>
+            <span>Contact</span>
+            <p><a href="mailto:${escapeHtml(siteData.contact.email)}">${escapeHtml(siteData.contact.email)}</a><br /><a href="tel:${escapeHtml(siteData.contact.phone.replaceAll(' ', ''))}">${escapeHtml(siteData.contact.phone)}</a></p>
+          </div>
+          <div>
+            <span>What clients get</span>
+            <p>Sharper website positioning, clearer campaign direction, stronger search visibility, and a more premium digital presence.</p>
+          </div>
+        </div>
+        <p class="footer-note">${escapeHtml(siteData.footer.note)}</p>
+      </footer>
+    </div>
+  `
+}
+
+function renderApp() {
+  const siteData = getSiteData()
+  document.querySelector('#app').innerHTML = appMarkup(siteData)
+  initRevealObserver()
+  initNavDropdown()
+  initContactScheduler()
+
+  if (page === 'admin') {
+    initAdminPage()
+  }
+}
+
+function initRevealObserver() {
+  const revealElements = document.querySelectorAll('.reveal-up')
+
+  if (!revealElements.length) {
+    return
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+        }
+      })
+    },
+    { threshold: 0.18 },
+  )
+
+  revealElements.forEach((element) => observer.observe(element))
+}
+
+function initNavDropdown() {
+  navDropdownController?.abort()
+  const dropdown = document.querySelector('[data-nav-dropdown]')
+  const trigger = document.querySelector('[data-nav-dropdown-trigger]')
+  const menu = document.querySelector('#services-menu')
+
+  if (!dropdown || !trigger || !menu) {
+    return
+  }
+
+  navDropdownController = new AbortController()
+  const { signal } = navDropdownController
+
+  const closeMenu = () => {
+    dropdown.classList.remove('is-open')
+    trigger.setAttribute('aria-expanded', 'false')
+    menu.hidden = true
+  }
+
+  const openMenu = () => {
+    dropdown.classList.add('is-open')
+    trigger.setAttribute('aria-expanded', 'true')
+    menu.hidden = false
+  }
+
+  trigger.addEventListener('click', () => {
+    if (dropdown.classList.contains('is-open')) {
+      closeMenu()
+    } else {
+      openMenu()
+    }
+  }, { signal })
+
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+      closeMenu()
+    }
+  }, { signal })
+
+  dropdown.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu()
+      trigger.focus()
+    }
+  }, { signal })
+}
+
+function initContactScheduler() {
+  const panel = document.querySelector('[data-appointment-panel]')
+
+  if (!panel) {
+    return
+  }
+
+  const timezoneButtons = [...panel.querySelectorAll('[data-timezone-option]')]
+  const clockTime = panel.querySelector('[data-clock-time]')
+  const clockZone = panel.querySelector('[data-clock-zone]')
+  const calendarTitle = panel.querySelector('[data-calendar-title]')
+  const calendarGrid = panel.querySelector('[data-calendar-grid]')
+  const selectedDateLabel = panel.querySelector('[data-selected-date]')
+  const selectedTimeLabel = panel.querySelector('[data-selected-time]')
+  const availabilityStatus = panel.querySelector('[data-availability-status]')
+  const availabilityButton = panel.querySelector('[data-check-availability]')
+  const dateInput = document.querySelector('[data-appointment-date-input]')
+  const timeInput = document.querySelector('[data-appointment-time-input]')
+  const timezoneInput = document.querySelector('[data-appointment-timezone-input]')
+
+  let currentMonth = new Date()
+  currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
+  let selectedDate = null
+  let selectedTime = ''
+  let selectedTimezone =
+    timezoneButtons.find((button) => button.classList.contains('is-selected'))?.getAttribute('data-timezone-option') ||
+    'Asia/Kolkata'
+
+  const monthFormatter = new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+  })
+
+  const dateFormatter = (timezone) =>
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    })
+
+  const timeFormatter = (timezone) =>
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    })
+
+  const updateClock = () => {
+    const timezone = selectedTimezone
+    const now = new Date()
+    clockTime.textContent = timeFormatter(timezone).format(now)
+    clockZone.textContent = timezone
+    timezoneInput.value = timezone
+  }
+
+  const updateSelectionLabels = () => {
+    const timezone = selectedTimezone
+    selectedDateLabel.textContent = selectedDate ? dateFormatter(timezone).format(selectedDate) : 'Choose a date'
+    selectedTimeLabel.textContent = selectedTime || 'No time selected'
+    dateInput.value = selectedDate ? selectedDate.toISOString().slice(0, 10) : ''
+    timeInput.value = selectedTime
+  }
+
+  const renderCalendar = () => {
+    const today = new Date()
+    const year = currentMonth.getFullYear()
+    const month = currentMonth.getMonth()
+    const firstDay = new Date(year, month, 1)
+    const lastDay = new Date(year, month + 1, 0)
+    const startOffset = firstDay.getDay()
+
+    calendarTitle.textContent = monthFormatter.format(firstDay)
+    calendarGrid.innerHTML = ''
+
+    for (let index = 0; index < startOffset; index += 1) {
+      const filler = document.createElement('span')
+      filler.className = 'calendar-filler'
+      calendarGrid.append(filler)
+    }
+
+    for (let day = 1; day <= lastDay.getDate(); day += 1) {
+      const date = new Date(year, month, day)
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'calendar-day'
+      button.textContent = String(day)
+
+      const isPast =
+        date.getFullYear() < today.getFullYear() ||
+        (date.getFullYear() === today.getFullYear() &&
+          (date.getMonth() < today.getMonth() ||
+            (date.getMonth() === today.getMonth() && date.getDate() < today.getDate())))
+
+      if (isPast) {
+        button.disabled = true
+      } else {
+        button.addEventListener('click', () => {
+          selectedDate = date
+          renderCalendar()
+          updateSelectionLabels()
+        })
+      }
+
+      if (
+        selectedDate &&
+        date.getFullYear() === selectedDate.getFullYear() &&
+        date.getMonth() === selectedDate.getMonth() &&
+        date.getDate() === selectedDate.getDate()
+      ) {
+        button.classList.add('is-selected')
+      }
+
+      calendarGrid.append(button)
+    }
+  }
+
+  panel.querySelectorAll('[data-slot-time]').forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedTime = button.getAttribute('data-slot-time') || ''
+      panel.querySelectorAll('[data-slot-time]').forEach((slotButton) => {
+        slotButton.classList.toggle('is-selected', slotButton === button)
+      })
+      updateSelectionLabels()
+    })
+  })
+
+  panel.querySelectorAll('[data-calendar-nav]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const direction = button.getAttribute('data-calendar-nav')
+      currentMonth = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth() + (direction === 'next' ? 1 : -1),
+        1,
+      )
+      renderCalendar()
+    })
+  })
+
+  timezoneButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedTimezone = button.getAttribute('data-timezone-option') || 'Asia/Kolkata'
+      timezoneButtons.forEach((item) => {
+        item.classList.toggle('is-selected', item === button)
+      })
+      updateClock()
+      updateSelectionLabels()
+    })
+  })
+
+  availabilityButton.addEventListener('click', () => {
+    if (!selectedDate || !selectedTime) {
+      availabilityStatus.textContent = 'Choose a date and time first to check mutual availability.'
+      return
+    }
+
+    availabilityStatus.textContent = `Mutual availability request ready for ${dateFormatter(selectedTimezone).format(selectedDate)} at ${selectedTime} (${selectedTimezone}).`
+  })
+
+  updateClock()
+  updateSelectionLabels()
+  renderCalendar()
+  window.setInterval(updateClock, 1000)
+}
+
+function initAdminPage() {
+  const authCard = document.querySelector('[data-admin-auth-card]')
+  const authForm = document.querySelector('[data-admin-auth-form]')
+  const adminPanel = document.querySelector('[data-admin-panel]')
+  const message = document.querySelector('[data-admin-message]')
+  const siteForm = document.querySelector('[data-admin-site-form]')
+  const caseForm = document.querySelector('[data-admin-case-form]')
+  const logoutButton = document.querySelector('[data-admin-logout]')
+  const resetButton = document.querySelector('[data-admin-reset]')
+  const clearFormButton = document.querySelector('[data-admin-clear-form]')
+
+  const toggleAdminState = () => {
+    const unlocked = sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true'
+    authCard.hidden = unlocked
+    adminPanel.hidden = !unlocked
+  }
+
+  toggleAdminState()
+
+  authForm?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const password = new FormData(authForm).get('password')
+
+    if (password === ADMIN_PASSWORD) {
+      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true')
+      toggleAdminState()
+      authForm.reset()
+      if (message) {
+        message.textContent = ''
+      }
+      return
+    }
+
+    if (message) {
+      message.textContent = 'Incorrect password. Please try again.'
+    }
+  })
+
+  logoutButton?.addEventListener('click', () => {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY)
+    renderApp()
+  })
+
+  siteForm?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = new FormData(siteForm)
+    const siteData = getSiteData()
+
+    siteData.home.eyebrow = String(formData.get('homeEyebrow') || '').trim()
+    siteData.home.title = String(formData.get('homeTitle') || '').trim()
+    siteData.home.text = String(formData.get('homeText') || '').trim()
+    siteData.home.ctaTitle = String(formData.get('ctaTitle') || '').trim()
+    siteData.contact.email = String(formData.get('contactEmail') || '').trim()
+    siteData.contact.phone = String(formData.get('contactPhone') || '').trim()
+    siteData.footer.note = String(formData.get('footerNote') || '').trim()
+
+    saveSiteData(siteData)
+    renderApp()
+  })
+
+  caseForm?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = new FormData(caseForm)
+    const siteData = getSiteData()
+    const caseId = String(formData.get('caseId') || '').trim()
+    const nextStudy = {
+      id: caseId || `case-${Date.now()}`,
+      category: String(formData.get('category') || '').trim(),
+      label: String(formData.get('label') || '').trim(),
+      title: String(formData.get('title') || '').trim(),
+      description: String(formData.get('description') || '').trim(),
+      metrics: [
+        String(formData.get('metricOne') || '').trim(),
+        String(formData.get('metricTwo') || '').trim(),
+        String(formData.get('metricThree') || '').trim(),
+      ].filter(Boolean),
+    }
+
+    const existingIndex = siteData.caseStudies.findIndex((study) => study.id === nextStudy.id)
+
+    if (existingIndex >= 0) {
+      siteData.caseStudies[existingIndex] = nextStudy
+    } else {
+      siteData.caseStudies.unshift(nextStudy)
+    }
+
+    saveSiteData(siteData)
+    renderApp()
+  })
+
+  clearFormButton?.addEventListener('click', () => {
+    caseForm?.reset()
+    const hiddenField = caseForm?.querySelector('[name="caseId"]')
+    if (hiddenField) {
+      hiddenField.value = ''
+    }
+  })
+
+  resetButton?.addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEY)
+    renderApp()
+  })
+
+  document.querySelectorAll('[data-edit-case]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const caseId = button.getAttribute('data-edit-case')
+      const study = getSiteData().caseStudies.find((entry) => entry.id === caseId)
+
+      if (!study || !caseForm) {
+        return
+      }
+
+      caseForm.querySelector('[name="caseId"]').value = study.id
+      caseForm.querySelector('[name="category"]').value = study.category
+      caseForm.querySelector('[name="label"]').value = study.label
+      caseForm.querySelector('[name="title"]').value = study.title
+      caseForm.querySelector('[name="description"]').value = study.description
+      caseForm.querySelector('[name="metricOne"]').value = study.metrics?.[0] || ''
+      caseForm.querySelector('[name="metricTwo"]').value = study.metrics?.[1] || ''
+      caseForm.querySelector('[name="metricThree"]').value = study.metrics?.[2] || ''
+      caseForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  })
+
+  document.querySelectorAll('[data-delete-case]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const caseId = button.getAttribute('data-delete-case')
+      const siteData = getSiteData()
+      siteData.caseStudies = siteData.caseStudies.filter((study) => study.id !== caseId)
+      saveSiteData(siteData)
+      renderApp()
+    })
+  })
+}
+
+renderApp()
