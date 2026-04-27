@@ -10,6 +10,27 @@ const ADMIN_SESSION_KEY = 'growth-vibe-admin-auth'
 const ADMIN_PASSWORD = 'growthvibeadmin'
 let navDropdownController
 
+const sampleVideoReel = [
+  {
+    tag: 'Meta UGC',
+    title: 'Hook-first product storytelling',
+    caption: 'Sample motion reel for short-form ad concepts and creator-led edits.',
+    image: sampleUgcAd,
+  },
+  {
+    tag: 'Marketplace',
+    title: 'Product benefits in fast cuts',
+    caption: 'Sample showcase card for catalog creatives, before-after frames, and CTA sequences.',
+    image: sampleMarketplaceAd,
+  },
+  {
+    tag: 'Quick Commerce',
+    title: 'Speed, offer, urgency, repeat',
+    caption: 'Sample looping visual for quick commerce promos and conversion-led launch edits.',
+    image: sampleQuickCommerceAd,
+  },
+]
+
 const navItems = [
   { key: 'home', label: 'Home', href: './index.html' },
   { key: 'about', label: 'About Us', href: './about.html' },
@@ -406,6 +427,38 @@ function caseStudyCardsMarkup(caseStudies) {
     .join('')
 }
 
+function homeVideoRailMarkup() {
+  const items = [...sampleVideoReel, ...sampleVideoReel]
+
+  return items
+    .map(
+      (item, index) => `
+        <article class="video-rail-card" aria-label="${escapeHtml(item.title)} sample video card">
+          <div class="video-rail-shell">
+            <div class="video-rail-chrome">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="video-rail-screen video-theme-${(index % sampleVideoReel.length) + 1}">
+              <img src="${item.image}" alt="${escapeHtml(item.title)} sample creative frame" />
+              <div class="video-rail-glow" aria-hidden="true"></div>
+              <div class="video-rail-play" aria-hidden="true"></div>
+              <div class="video-rail-timecode" aria-hidden="true">00:${18 + (index % 3) * 7}</div>
+              <div class="video-rail-progress" aria-hidden="true"><span></span></div>
+            </div>
+          </div>
+          <div class="video-rail-copy">
+            <span>${escapeHtml(item.tag)}</span>
+            <strong>${escapeHtml(item.title)}</strong>
+            <p>${escapeHtml(item.caption)}</p>
+          </div>
+        </article>
+      `,
+    )
+    .join('')
+}
+
 function sitePages(siteData) {
   const serviceDetailPages = Object.fromEntries(
     serviceCatalog.map((service, index) => [service.key, servicePageMarkup(service, index)]),
@@ -575,6 +628,19 @@ function sitePages(siteData) {
             </div>
             <p>Scale content without scaling production cost.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="video-rail-section section reveal-up" aria-label="Work video showcase">
+        <div class="section-heading">
+          <span class="eyebrow">Video Showcase</span>
+          <h2>A moving wall for your work videos.</h2>
+          <p>Right now this uses sample creative frames. Later we can replace each one with your real ad videos from <code>src/assets/homepage/videos</code>.</p>
+        </div>
+        <div class="video-rail-wrap">
+          <div class="video-rail-track">
+            ${homeVideoRailMarkup()}
+          </div>
         </div>
       </section>
 

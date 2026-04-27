@@ -3147,6 +3147,262 @@ body:not([data-page='admin']) .service-pillar h3 {
   line-height: 1.12;
 }
 
+body:not([data-page='admin']) .video-rail-section {
+  display: grid;
+  gap: 22px;
+}
+
+body:not([data-page='admin']) .video-rail-section .section-heading {
+  max-width: 760px;
+}
+
+body:not([data-page='admin']) .video-rail-section .section-heading p {
+  margin: 0;
+  color: #667487;
+}
+
+body:not([data-page='admin']) .video-rail-wrap {
+  position: relative;
+  margin-inline: calc(50% - 50vw);
+  padding: 14px 0;
+  overflow: hidden;
+}
+
+body:not([data-page='admin']) .video-rail-wrap::before,
+body:not([data-page='admin']) .video-rail-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(42px, 8vw, 120px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+body:not([data-page='admin']) .video-rail-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(250, 240, 228, 0.98), rgba(250, 240, 228, 0));
+}
+
+body:not([data-page='admin']) .video-rail-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(250, 240, 228, 0.98), rgba(250, 240, 228, 0));
+}
+
+body:not([data-page='admin']) .video-rail-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  padding-inline: 22px;
+  animation: video-rail-scroll 26s linear infinite;
+}
+
+body:not([data-page='admin']) .video-rail-wrap:hover .video-rail-track,
+body:not([data-page='admin']) .video-rail-wrap:focus-within .video-rail-track {
+  animation-play-state: paused;
+}
+
+body:not([data-page='admin']) .video-rail-card {
+  width: min(82vw, 340px);
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(224, 210, 193, 0.88);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(252, 244, 235, 0.94));
+  box-shadow: 0 22px 52px rgba(194, 172, 147, 0.18);
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+body:not([data-page='admin']) .video-rail-card:hover,
+body:not([data-page='admin']) .video-rail-card:focus-within {
+  transform: translateY(-8px) rotateX(4deg);
+  border-color: rgba(212, 178, 143, 0.96);
+  box-shadow: 0 30px 64px rgba(194, 172, 147, 0.24);
+}
+
+body:not([data-page='admin']) .video-rail-shell {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(247, 234, 220, 0.78));
+  border: 1px solid rgba(228, 214, 198, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 16px 34px rgba(200, 178, 153, 0.16);
+}
+
+body:not([data-page='admin']) .video-rail-chrome {
+  display: flex;
+  gap: 6px;
+}
+
+body:not([data-page='admin']) .video-rail-chrome span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(193, 149, 110, 0.45);
+}
+
+body:not([data-page='admin']) .video-rail-screen {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 40px rgba(60, 40, 24, 0.26);
+  isolation: isolate;
+  transform: translateZ(12px);
+}
+
+body:not([data-page='admin']) .video-rail-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08) contrast(1.02);
+  transform: scale(1.02);
+  animation: video-frame-breathe 8s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .video-rail-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 10, 18, 0.06), rgba(7, 10, 18, 0.48)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 42%);
+  z-index: 1;
+}
+
+body:not([data-page='admin']) .video-rail-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 20%, transparent 80%, rgba(255, 255, 255, 0.1));
+  opacity: 0.9;
+  z-index: 1;
+}
+
+body:not([data-page='admin']) .video-rail-glow {
+  position: absolute;
+  inset: auto -18% -12% auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 68%);
+  z-index: 1;
+  animation: portfolio-glow-drift 8s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .video-rail-play {
+  position: absolute;
+  left: 18px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+body:not([data-page='admin']) .video-rail-play::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 18px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid rgba(255, 250, 244, 0.96);
+}
+
+body:not([data-page='admin']) .video-rail-timecode {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(16, 22, 33, 0.52);
+  color: rgba(255, 250, 244, 0.92);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+body:not([data-page='admin']) .video-rail-progress {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  z-index: 2;
+}
+
+body:not([data-page='admin']) .video-rail-progress span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #fff5ea, #efb06f);
+  animation: video-progress-move 4.6s linear infinite;
+}
+
+body:not([data-page='admin']) .video-rail-copy {
+  display: grid;
+  gap: 8px;
+}
+
+body:not([data-page='admin']) .video-rail-copy span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #b76c35;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body:not([data-page='admin']) .video-rail-copy strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.08;
+  color: #1d2736;
+}
+
+body:not([data-page='admin']) .video-rail-copy p {
+  margin: 0;
+  color: #667487;
+  line-height: 1.65;
+}
+
+body:not([data-page='admin']) .video-theme-1 {
+  background: linear-gradient(160deg, #f3c396, #8d532f);
+}
+
+body:not([data-page='admin']) .video-theme-2 {
+  background: linear-gradient(160deg, #f5dcc6, #7f5134);
+}
+
+body:not([data-page='admin']) .video-theme-3 {
+  background: linear-gradient(160deg, #f0cba7, #6e4a34);
+}
+
 body:not([data-page='admin']) .lead-form {
   gap: 18px;
   perspective: 1200px;
@@ -3411,6 +3667,34 @@ body:not([data-page='admin']) .footer-note {
   }
 }
 
+@keyframes video-rail-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 11px));
+  }
+}
+
+@keyframes video-progress-move {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes video-frame-breathe {
+  0%,
+  100% {
+    transform: scale(1.02) translateY(0);
+  }
+  50% {
+    transform: scale(1.06) translateY(-6px);
+  }
+}
+
 @keyframes float-3d-main {
   0%,
   100% {
@@ -3643,6 +3927,10 @@ body:not([data-page='admin']) .footer-note {
     grid-template-columns: 1fr;
   }
 
+  body:not([data-page='admin']) .video-rail-card {
+    width: min(78vw, 320px);
+  }
+
   body:not([data-page='admin']) .hero-proof-badges {
     position: static;
     margin-top: 18px;
@@ -3697,6 +3985,16 @@ body:not([data-page='admin']) .footer-note {
 
   .service-mega-grid {
     grid-template-columns: 1fr;
+  }
+
+  body:not([data-page='admin']) .video-rail-track {
+    gap: 16px;
+    padding-inline: 16px;
+  }
+
+  body:not([data-page='admin']) .video-rail-card {
+    width: min(86vw, 292px);
+    padding: 14px;
   }
 
   .service-mega-item {
