@@ -1,0 +1,31 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1200" rx="48" fill="#FFF8F0"/>
+  <rect x="36" y="36" width="828" height="1128" rx="36" fill="url(#bg)"/>
+  <circle cx="710" cy="178" r="122" fill="#FFD9B1"/>
+  <circle cx="182" cy="1012" r="144" fill="#E7A76A" fill-opacity="0.22"/>
+  <rect x="94" y="108" width="224" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="126" y="138" fill="#B66D35" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">QUICK COMMERCE</text>
+  <text x="94" y="254" fill="#1E2838" font-family="Arial, sans-serif" font-size="84" font-weight="700">Delivered</text>
+  <text x="94" y="332" fill="#1E2838" font-family="Arial, sans-serif" font-size="84" font-weight="700">in minutes</text>
+  <text x="94" y="392" fill="#5E6C80" font-family="Arial, sans-serif" font-size="30">Urgency-first visual pacing with offer clarity</text>
+  <rect x="94" y="488" width="714" height="438" rx="36" fill="#FFFFFF" fill-opacity="0.82"/>
+  <rect x="142" y="546" width="236" height="320" rx="34" fill="#1F2A39"/>
+  <rect x="174" y="588" width="172" height="172" rx="26" fill="#E9A25E"/>
+  <text x="184" y="822" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Blink fast. Buy faster.</text>
+  <rect x="426" y="552" width="328" height="74" rx="24" fill="#FFF2E3"/>
+  <text x="454" y="598" fill="#1F2A39" font-family="Arial, sans-serif" font-size="34" font-weight="700">10 min delivery</text>
+  <rect x="426" y="652" width="286" height="24" rx="12" fill="#CBD4E0"/>
+  <rect x="426" y="696" width="248" height="24" rx="12" fill="#CBD4E0"/>
+  <rect x="426" y="760" width="214" height="88" rx="28" fill="#E9A25E"/>
+  <text x="470" y="816" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Order Now</text>
+  <rect x="94" y="972" width="250" height="110" rx="30" fill="#1F2A39"/>
+  <text x="136" y="1040" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="42" font-weight="700">Instant click</text>
+  <text x="382" y="1028" fill="#1E2838" font-family="Arial, sans-serif" font-size="42" font-weight="700">Offer + urgency + motion</text>
+  <text x="382" y="1076" fill="#5E6C80" font-family="Arial, sans-serif" font-size="26">Designed for impulse purchase behavior</text>
+  <defs>
+    <linearGradient id="bg" x1="90" y1="76" x2="756" y2="1120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F4DFCB"/>
+    </linearGradient>
+  </defs>
+</svg>

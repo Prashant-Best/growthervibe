@@ -1,4 +1,8 @@
 import './style.css'
+import brandLogo from './assets/logo/gr png logo.png'
+import sampleMarketplaceAd from './assets/homepage/images/sample-marketplace-ad.svg'
+import sampleUgcAd from './assets/homepage/images/sample-ugc-ad.svg'
+import sampleQuickCommerceAd from './assets/homepage/images/sample-quick-commerce-ad.svg'
 
 const page = document.body.dataset.page || 'home'
 const STORAGE_KEY = 'growth-vibe-site-data'
@@ -150,17 +154,17 @@ const isServicePage = page === 'services' || servicePageKeys.has(page)
 
 const defaultSiteData = {
   home: {
-    eyebrow: 'Performance-first digital marketing studio',
-    title: 'We turn attention into momentum for ambitious brands.',
-    text: 'Growth Vibe blends SEO, creative direction, performance marketing, and conversion design into campaigns that look sharp, rank well, and move people to act.',
-    ctaTitle: 'Bring clarity, creativity, and measurable momentum into the same website.',
+    eyebrow: 'Creative-first performance marketing studio',
+    title: "We create ads people don't skip.",
+    text: 'Amazon. Meta. Quick Commerce. We design creatives that convert, not just look good.',
+    ctaTitle: 'Bring creative production, performance thinking, and conversion-focused execution into one team.',
   },
   contact: {
     email: 'hello@grothervibe.com',
     phone: '+91 00000 00000',
   },
   footer: {
-    note: 'Built for visibility, storytelling, and conversion with a more refined digital brand system.',
+    note: 'Creative-first campaigns for brands that want stronger hooks, better click-through rates, and cleaner scaling.',
   },
   caseStudies: [
     {
@@ -378,6 +382,8 @@ function caseStudyCardsMarkup(caseStudies) {
       (study, index) => `
         <article class="case-thumb-card reveal-up" style="transition-delay: ${index * 90}ms;">
           <div class="case-thumb-media case-theme-${(index % 4) + 1}">
+            <div class="case-thumb-gridline" aria-hidden="true"></div>
+            <div class="case-thumb-sigil" aria-hidden="true">GV</div>
             <div class="case-thumb-overlay">
               <div class="case-meta">
                 <span class="case-tag">${escapeHtml(study.category)}</span>
@@ -414,153 +420,245 @@ function sitePages(siteData) {
           <p class="hero-text">${escapeHtml(siteData.home.text)}</p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="./contact.html">Book a strategy call</a>
-            <a class="button button-secondary" href="./case-studies.html">See case studies</a>
+            <a class="button button-primary" href="./case-studies.html">View Our Work</a>
+            <a class="button button-secondary" href="./contact.html">Get Creatives That Convert</a>
           </div>
 
-          <div class="hero-metrics">
-            <article class="reveal-up">
-              <strong>120%</strong>
-              <span>average organic visibility growth across recent launches</span>
-            </article>
-            <article class="reveal-up" style="transition-delay: 120ms;">
-              <strong>4.7x</strong>
-              <span>return on focused funnel and campaign optimization</span>
-            </article>
-            <article class="reveal-up" style="transition-delay: 240ms;">
-              <strong>90 days</strong>
-              <span>to move from strategy gap to measurable demand generation</span>
-            </article>
+          <div class="hero-client-strip reveal-up">
+            <span>Amazon creatives</span>
+            <span>Meta performance ads</span>
+            <span>Quick commerce launches</span>
+            <span>UGC + product shoots</span>
           </div>
         </div>
 
         <div class="hero-visual reveal-up" aria-hidden="true">
-          <div class="orbital-grid"></div>
-          <div class="signal-card signal-main">
-            <span>Organic search</span>
-            <strong>+184%</strong>
-            <p>Keyword lift powered by technical SEO and content clusters.</p>
+          <div class="hero-background-motion">
+            <div class="motion-ribbon motion-ribbon-one"></div>
+            <div class="motion-ribbon motion-ribbon-two"></div>
+            <div class="motion-ribbon motion-ribbon-three"></div>
+            <div class="motion-pulse motion-pulse-one"></div>
+            <div class="motion-pulse motion-pulse-two"></div>
+            <div class="motion-particle motion-particle-one"></div>
+            <div class="motion-particle motion-particle-two"></div>
+            <div class="motion-particle motion-particle-three"></div>
           </div>
-          <div class="signal-card signal-side">
-            <span>Paid social</span>
-            <strong>32% lower CPA</strong>
-            <p>Sharper creatives, cleaner landing journeys, faster learning loops.</p>
+          <div class="creative-stage">
+            <div class="creative-grid-plane"></div>
+            <div class="creative-beam creative-beam-one"></div>
+            <div class="creative-beam creative-beam-two"></div>
+            <div class="creative-float creative-float-main">
+              <span>Creative stack</span>
+              <strong>Hook. Product. Motion.</strong>
+            </div>
+            <div class="creative-float creative-float-side">
+              <span>Testing loop</span>
+              <strong>Angles that keep evolving</strong>
+            </div>
+            <div class="creative-orb creative-orb-one"></div>
+            <div class="creative-orb creative-orb-two"></div>
           </div>
-          <div class="signal-card signal-bottom">
-            <span>Brand recall</span>
-            <strong>Creative that sticks</strong>
-            <p>Visual campaigns designed to feel premium without losing clarity.</p>
+          <div class="hero-preview-wall">
+            <article class="preview-card preview-card-video">
+              <img class="preview-art" src="${sampleUgcAd}" alt="Sample UGC ad concept artwork" />
+              <span>Looping ad videos</span>
+              <strong>Fast hooks and hard stops</strong>
+              <p>Using a self-made sample ad visual here until you add real videos in <code>src/assets/homepage/videos</code></p>
+            </article>
+            <article class="preview-card preview-card-static">
+              <img class="preview-art" src="${sampleMarketplaceAd}" alt="Sample marketplace ad concept artwork" />
+              <span>Static creatives</span>
+              <strong>Product-led frames built for CTR</strong>
+              <p>Sample image from <code>src/assets/homepage/images</code></p>
+            </article>
+            <article class="preview-card preview-card-motion">
+              <img class="preview-art" src="${sampleQuickCommerceAd}" alt="Sample quick commerce ad concept artwork" />
+              <span>Animations</span>
+              <strong>Fast cuts, urgency, and motion</strong>
+              <p>Sample visual placeholder for future motion concepts</p>
+            </article>
           </div>
-          <div class="halo-ring ring-one"></div>
-          <div class="halo-ring ring-two"></div>
+          <div class="hero-proof-badges">
+            <span>Hooks</span>
+            <span>UGC</span>
+            <span>Product shots</span>
+            <span>Performance edits</span>
+          </div>
         </div>
       </section>
 
       <section class="trust-strip section reveal-up">
-        <p>Built for modern growth across SEO, social, content, analytics, and conversion systems.</p>
+        <p>Creative production for brands that want stronger scroll-stopping ads and cleaner performance scaling.</p>
         <div class="trust-items" aria-label="Capabilities">
-          <span>Search visibility</span>
-          <span>Performance campaigns</span>
-          <span>Content strategy</span>
-          <span>Landing page optimization</span>
-          <span>Brand storytelling</span>
+          <span>Amazon</span>
+          <span>Meta</span>
+          <span>Google</span>
+          <span>Flipkart</span>
+          <span>Meesho</span>
+          <span>Quick commerce</span>
+        </div>
+      </section>
+
+      <section class="portfolio-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">Work / Portfolio</span>
+          <h2>Visuals do the selling here.</h2>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card reveal-up">
+            <div class="portfolio-media portfolio-marketplace">
+              <div class="portfolio-glow" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-one" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-two" aria-hidden="true"></div>
+              <div class="portfolio-scanline" aria-hidden="true">
+                <span>Growth</span>
+                <span>Vibe</span>
+              </div>
+              <span class="portfolio-badge">Marketplace Ads</span>
+              <strong>Before / after creatives, A+ content, and product frames built for shelf clicks.</strong>
+            </div>
+            <p>Scroll-stopping creatives designed for high CTR on marketplaces.</p>
+          </article>
+          <article class="portfolio-card reveal-up" style="transition-delay: 90ms;">
+            <div class="portfolio-media portfolio-performance">
+              <div class="portfolio-glow" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-one" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-two" aria-hidden="true"></div>
+              <div class="portfolio-scanline" aria-hidden="true">
+                <span>Growth</span>
+                <span>Vibe</span>
+              </div>
+              <span class="portfolio-badge">Performance Ads</span>
+              <strong>UGC ads, static variations, hooks, and testing-ready ad sets.</strong>
+            </div>
+            <p>Creative testing engine behind profitable scaling.</p>
+          </article>
+          <article class="portfolio-card reveal-up" style="transition-delay: 180ms;">
+            <div class="portfolio-media portfolio-commerce">
+              <div class="portfolio-glow" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-one" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-two" aria-hidden="true"></div>
+              <div class="portfolio-scanline" aria-hidden="true">
+                <span>Growth</span>
+                <span>Vibe</span>
+              </div>
+              <span class="portfolio-badge">Quick Commerce Ads</span>
+              <strong>Urgency-led motion, offer-first cuts, and fast conversion creatives.</strong>
+            </div>
+            <p>Built for instant clicks and impulse buys.</p>
+          </article>
+          <article class="portfolio-card reveal-up" style="transition-delay: 270ms;">
+            <div class="portfolio-media portfolio-photo">
+              <div class="portfolio-glow" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-one" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-two" aria-hidden="true"></div>
+              <div class="portfolio-scanline" aria-hidden="true">
+                <span>Growth</span>
+                <span>Vibe</span>
+              </div>
+              <span class="portfolio-badge">Video + Photography</span>
+              <strong>Studio shots, lifestyle frames, and product storytelling in one system.</strong>
+            </div>
+            <p>Product shoots with a studio + UGC mix.</p>
+          </article>
+          <article class="portfolio-card reveal-up" style="transition-delay: 360ms;">
+            <div class="portfolio-media portfolio-ai">
+              <div class="portfolio-glow" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-one" aria-hidden="true"></div>
+              <div class="portfolio-orbit portfolio-orbit-two" aria-hidden="true"></div>
+              <div class="portfolio-scanline" aria-hidden="true">
+                <span>Growth</span>
+                <span>Vibe</span>
+              </div>
+              <span class="portfolio-badge">AI UGC Ads</span>
+              <strong>AI avatars, voiceover creatives, and scalable ad iterations.</strong>
+            </div>
+            <p>Scale content without scaling production cost.</p>
+          </article>
         </div>
       </section>
 
       <section class="feature-band section">
-        <div class="feature-intro reveal-up">
-          <span class="eyebrow">Why Growth Vibe</span>
-          <h2>Creative enough to stand out. Structured enough to scale.</h2>
-        </div>
-        <div class="about-grid">
-          <article class="glass-card reveal-up">
-            <h3>Search-first brand strategy</h3>
-            <p>We shape websites and campaigns around real demand, so your visibility starts compounding instead of restarting each month.</p>
-          </article>
-          <article class="glass-card reveal-up" style="transition-delay: 120ms;">
-            <h3>Premium creative systems</h3>
-            <p>Design, copy, and campaign concepts are built to feel modern, memorable, and strong enough to support premium positioning.</p>
-          </article>
-          <article class="glass-card reveal-up" style="transition-delay: 240ms;">
-            <h3>Clear growth accountability</h3>
-            <p>Every page and campaign is tied back to visibility, lead quality, engagement, and conversion signals that matter.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="insight-section section">
         <div class="section-heading reveal-up">
-          <span class="eyebrow">What we improve</span>
-          <h2>We help brands look more premium, get found faster, and convert with less friction.</h2>
+          <span class="eyebrow">Services</span>
+          <h2>We don't run ads without strong creatives.</h2>
         </div>
-        <div class="insight-grid">
-          <article class="insight-card reveal-up">
-            <strong>Visibility</strong>
-            <p>Search-first website structures and content systems that create compounding discovery.</p>
+        <div class="service-pillars">
+          <article class="service-pillar reveal-up">
+            <span>Creative Production</span>
+            <h3>Ad videos, UGC, AI creatives, and product photography.</h3>
+            <p>Built to give every campaign a stronger first impression.</p>
           </article>
-          <article class="insight-card reveal-up" style="transition-delay: 120ms;">
-            <strong>Perception</strong>
-            <p>Sharper messaging and visual direction that position your company with more confidence.</p>
+          <article class="service-pillar reveal-up" style="transition-delay: 120ms;">
+            <span>Performance Marketing</span>
+            <h3>Meta ads, Google ads, and scaling strategies.</h3>
+            <p>Creative and media work together so testing actually compounds.</p>
           </article>
-          <article class="insight-card reveal-up" style="transition-delay: 240ms;">
-            <strong>Conversion</strong>
-            <p>Pages, offers, and campaign journeys designed to move visitors into action more clearly.</p>
+          <article class="service-pillar reveal-up" style="transition-delay: 240ms;">
+            <span>Marketplace Growth</span>
+            <h3>Amazon, Flipkart, listing optimization, and catalog-first ad creatives.</h3>
+            <p>Sharper product pages and better-performing marketplace assets.</p>
+          </article>
+          <article class="service-pillar reveal-up" style="transition-delay: 360ms;">
+            <span>Quick Commerce</span>
+            <h3>Blinkit and Zepto style creatives with speed and urgency built in.</h3>
+            <p>Designed for fast conversion moments and impulse purchase behavior.</p>
           </article>
         </div>
       </section>
 
       <section class="process-band section">
         <div class="process-copy reveal-up">
-          <span class="eyebrow">Growth flow</span>
-          <h2>A website should not just look good. It should guide attention and create movement.</h2>
-          <p>We combine SEO structure, message clarity, and premium presentation so every visit feels more intentional and more persuasive.</p>
+          <span class="eyebrow">How we work</span>
+          <h2>Creative-first performance means the visuals lead and the metrics follow.</h2>
+          <p>We build ad systems around hooks, rapid testing, stronger product storytelling, and formats that fit the platform instead of fighting it.</p>
         </div>
         <div class="process-steps">
           <article class="process-step reveal-up">
             <span>01</span>
-            <h3>Audit the gap</h3>
-            <p>We identify where your current site is losing visibility, trust, or conversion momentum.</p>
+            <h3>Find the hook</h3>
+            <p>We identify the angle, product moment, and audience trigger worth building around.</p>
           </article>
           <article class="process-step reveal-up" style="transition-delay: 120ms;">
             <span>02</span>
-            <h3>Shape the story</h3>
-            <p>We refine positioning, offers, and content so visitors instantly understand what makes you valuable.</p>
+            <h3>Produce variations</h3>
+            <p>We turn concepts into videos, statics, UGC, AI creatives, and marketplace-ready assets.</p>
           </article>
           <article class="process-step reveal-up" style="transition-delay: 240ms;">
             <span>03</span>
-            <h3>Launch the engine</h3>
-            <p>We support stronger campaigns, cleaner journeys, and measurable growth across channels.</p>
+            <h3>Scale what converts</h3>
+            <p>We keep the winning hooks moving into new audiences, placements, and offers.</p>
           </article>
         </div>
       </section>
 
       <section class="marquee-section section reveal-up" aria-label="Marketing services ticker">
         <div class="marquee-track">
-          <span>SEO Strategy</span>
-          <span>Paid Growth</span>
-          <span>Content Marketing</span>
-          <span>Creative Direction</span>
-          <span>Analytics</span>
-          <span>Conversion Design</span>
-          <span>SEO Strategy</span>
-          <span>Paid Growth</span>
-          <span>Content Marketing</span>
-          <span>Creative Direction</span>
-          <span>Analytics</span>
-          <span>Conversion Design</span>
+          <span>Marketplace creatives</span>
+          <span>Meta ad videos</span>
+          <span>UGC production</span>
+          <span>AI UGC ads</span>
+          <span>Quick commerce edits</span>
+          <span>Product photography</span>
+          <span>Marketplace creatives</span>
+          <span>Meta ad videos</span>
+          <span>UGC production</span>
+          <span>AI UGC ads</span>
+          <span>Quick commerce edits</span>
+          <span>Product photography</span>
         </div>
       </section>
 
       <section class="home-form-section section">
         <div class="section-heading reveal-up">
           <span class="eyebrow">Start here</span>
-          <h2>Share your goals and let's map the right growth direction for your business.</h2>
+          <h2>Need creatives that perform, not just fill the feed?</h2>
         </div>
         <div class="hero-form-card reveal-up">
           <div class="form-intro">
             <span class="eyebrow">Quick inquiry</span>
-            <h2>Tell us where you need help.</h2>
-            <p>Drop in a few details and Growth Vibe can recommend the right mix of SEO, creative, and performance support.</p>
+            <h2>Tell us what you want to scale.</h2>
+            <p>Share the platform, product, and creative challenge. We’ll map the right production and performance mix.</p>
           </div>
           <form class="lead-form home-lead-form" action="mailto:${escapeHtml(siteData.contact.email)}" method="post" enctype="text/plain">
             <label>
@@ -586,7 +684,7 @@ function sitePages(siteData) {
               <span>Project goals</span>
               <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
             </label>
-            <button class="button button-primary field-wide" type="submit">Send inquiry</button>
+            <button class="button button-primary button-compact button-inquiry" type="submit">Send inquiry</button>
           </form>
         </div>
       </section>
@@ -1007,13 +1105,24 @@ function appMarkup(siteData) {
       <div class="ambient ambient-two"></div>
       <div class="ambient ambient-three"></div>
       <div class="ambient ambient-four"></div>
+      <div class="brand-atmosphere" aria-hidden="true">
+        <div class="brand-orbit brand-orbit-one"></div>
+        <div class="brand-orbit brand-orbit-two"></div>
+        <div class="brand-orbit brand-orbit-three"></div>
+        <div class="brand-wave brand-wave-one"></div>
+        <div class="brand-wave brand-wave-two"></div>
+        <div class="brand-sigil brand-sigil-one">GV</div>
+        <div class="brand-sigil brand-sigil-two">Growth Vibe</div>
+      </div>
 
       <header class="top-ribbon">
         <a class="brand" href="./index.html" aria-label="Growth Vibe home">
-          <span class="brand-mark">GV</span>
+          <span class="brand-mark">
+            <img src="${brandLogo}" alt="Growth Vibe logo" />
+          </span>
           <span class="brand-text">
             <strong>Growth Vibe</strong>
-            <small>SEO and growth marketing</small>
+            <small>Creative-first performance marketing</small>
           </span>
         </a>
 
@@ -1027,22 +1136,25 @@ function appMarkup(siteData) {
 
         <section class="cta-banner section reveal-up">
           <div class="cta-copy">
-            <span class="eyebrow">Ready to grow</span>
+            <span class="eyebrow">Ready to launch</span>
             <h2>${escapeHtml(siteData.home.ctaTitle)}</h2>
           </div>
-          <a class="button button-primary" href="./contact.html">Talk to Growth Vibe</a>
+          <a class="button button-primary" href="./contact.html">Get Creatives That Convert</a>
         </section>
       </main>
 
       <footer class="site-footer">
         <div class="footer-brand">
+          <span class="footer-logo">
+            <img src="${brandLogo}" alt="Growth Vibe logo" />
+          </span>
           <strong>Growth Vibe</strong>
-          <p>Growth Vibe is a creative marketing studio focused on SEO, content, paid growth, and conversion-led brand experiences for ambitious businesses.</p>
+          <p>Growth Vibe is a creative marketing studio focused on ad creatives, performance campaigns, marketplace assets, and conversion-led brand growth.</p>
         </div>
         <div class="footer-details">
           <div>
             <span>Focus</span>
-            <p>SEO strategy, content marketing, paid campaigns, conversion optimization, and premium digital positioning.</p>
+            <p>UGC ads, Meta and Google creatives, marketplace design systems, product shoots, and quick commerce formats.</p>
           </div>
           <div>
             <span>Contact</span>
@@ -1050,7 +1162,7 @@ function appMarkup(siteData) {
           </div>
           <div>
             <span>What clients get</span>
-            <p>Sharper website positioning, clearer campaign direction, stronger search visibility, and a more premium digital presence.</p>
+            <p>Stronger hooks, better-performing creatives, cleaner testing systems, and ad formats designed to scale.</p>
           </div>
         </div>
         <p class="footer-note">${escapeHtml(siteData.footer.note)}</p>
