@@ -82,7 +82,6 @@ body::after {
     radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.5), transparent 18%),
     radial-gradient(circle at 82% 32%, rgba(233, 173, 116, 0.18), transparent 18%),
     conic-gradient(from 180deg at 50% 50%, rgba(233, 173, 116, 0.1), transparent 26%, rgba(255, 255, 255, 0.22) 42%, transparent 58%, rgba(233, 173, 116, 0.08) 76%, transparent);
-  filter: blur(14px);
   opacity: 0.75;
   animation: atmosphere-swirl 28s linear infinite;
 }
@@ -117,14 +116,164 @@ select {
   z-index: 1;
 }
 
+.site-visuals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.site-visual-grid,
+.site-light,
+.site-streak,
+.site-particle,
+.site-ring {
+  position: absolute;
+}
+
+.site-visual-grid {
+  inset: 6% 4%;
+  border-radius: 42px;
+  border: 1px solid rgba(227, 205, 182, 0.14);
+  background:
+    linear-gradient(rgba(204, 171, 135, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204, 171, 135, 0.06) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.72), transparent 88%);
+  opacity: 0.58;
+  transform: perspective(1200px) rotateX(74deg) translateY(26%);
+  transform-origin: center top;
+  animation: grid-float 22s ease-in-out infinite;
+}
+
+.site-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(224, 182, 141, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  opacity: 0.5;
+}
+
+.site-light {
+  border-radius: 50%;
+  opacity: 0.34;
+  border: 1px solid rgba(255, 248, 238, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.site-light-one {
+  top: 8%;
+  left: 10%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 237, 214, 0.32), rgba(255, 237, 214, 0) 72%);
+  animation: site-light-drift 18s ease-in-out infinite;
+}
+
+.site-light-two {
+  top: 38%;
+  right: 8%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(239, 194, 149, 0.2), rgba(239, 194, 149, 0) 72%);
+  animation: site-light-drift 22s ease-in-out infinite reverse;
+}
+
+.site-light-three {
+  bottom: 2%;
+  left: 28%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(255, 248, 238, 0.26), rgba(255, 248, 238, 0) 74%);
+  animation: site-light-drift 26s ease-in-out infinite;
+}
+
+.site-ring-one {
+  top: 12%;
+  right: 12%;
+  width: 280px;
+  height: 280px;
+  animation: site-ring-spin 24s linear infinite;
+}
+
+.site-ring-two {
+  bottom: 14%;
+  left: 8%;
+  width: 360px;
+  height: 360px;
+  animation: site-ring-spin 32s linear infinite reverse;
+}
+
+.site-ring-three {
+  top: 44%;
+  left: 38%;
+  width: 180px;
+  height: 180px;
+  animation: site-ring-pulse 12s ease-in-out infinite;
+}
+
+.site-streak {
+  width: 42vw;
+  max-width: 620px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 176, 120, 0.42), rgba(255, 255, 255, 0));
+  opacity: 0.4;
+}
+
+.site-streak-one {
+  top: 24%;
+  left: -10%;
+  transform: rotate(-14deg);
+  animation: streak-slide 16s ease-in-out infinite;
+}
+
+.site-streak-two {
+  bottom: 22%;
+  right: -8%;
+  transform: rotate(12deg);
+  animation: streak-slide 19s ease-in-out infinite reverse;
+}
+
+.site-particle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.92), rgba(231, 174, 116, 0.16) 64%, rgba(231, 174, 116, 0));
+  box-shadow: 0 0 20px rgba(231, 174, 116, 0.22);
+}
+
+.site-particle-one {
+  top: 18%;
+  left: 22%;
+  animation: site-particle-drift 12s ease-in-out infinite;
+}
+
+.site-particle-two {
+  top: 52%;
+  right: 18%;
+  animation: site-particle-drift 15s ease-in-out infinite reverse;
+}
+
+.site-particle-three {
+  bottom: 20%;
+  left: 14%;
+  animation: site-particle-drift 17s ease-in-out infinite;
+}
+
+.site-particle-four {
+  bottom: 30%;
+  right: 34%;
+  animation: site-particle-drift 14s ease-in-out infinite reverse;
+}
+
 .ambient {
   position: fixed;
   border-radius: 999px;
-  filter: blur(24px);
-  opacity: 0.45;
+  opacity: 0.28;
   pointer-events: none;
   z-index: 0;
   animation: drift 14s ease-in-out infinite alternate;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .ambient-one {
@@ -248,9 +397,13 @@ select {
   left: 10%;
   width: 110px;
   height: 110px;
-  border: 1px solid rgba(228, 181, 136, 0.16);
-  background: rgba(255, 255, 255, 0.2);
-  font-size: 1.8rem;
+  border: 1px solid rgba(220, 160, 104, 0.34);
+  background: rgba(255, 250, 244, 0.56);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.54),
+    0 18px 44px rgba(212, 161, 111, 0.12);
+  color: rgba(167, 94, 38, 0.42);
+  font-size: 2rem;
   animation: sigil-drift 16s ease-in-out infinite;
 }
 
@@ -514,6 +667,28 @@ main {
 
 .section {
   padding: 56px 0;
+  position: relative;
+}
+
+body:not([data-page='admin']) .section::before {
+  content: '';
+  position: absolute;
+  inset: 6px -18px;
+  border-radius: 34px;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(232, 179, 125, 0.1), transparent 28%);
+  opacity: 0.34;
+  z-index: -1;
+  animation: section-aura 12s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .section:nth-of-type(2n)::before {
+  animation-delay: 2.4s;
+}
+
+body:not([data-page='admin']) .section:nth-of-type(3n)::before {
+  animation-delay: 4.8s;
 }
 
 .eyebrow {
@@ -2198,7 +2373,7 @@ body:not([data-page='admin']) .insight-card strong {
 
 .reveal-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(28px) scale(0.985);
   transition:
     opacity 700ms ease,
     transform 700ms ease;
@@ -2206,7 +2381,7 @@ body:not([data-page='admin']) .insight-card strong {
 
 .reveal-up.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 body:not([data-page='admin']) {
@@ -2226,7 +2401,22 @@ body:not([data-page='admin'])::before {
 
 body:not([data-page='admin']) .ambient {
   opacity: 0.55;
-  filter: blur(48px);
+}
+
+body:not([data-page='admin']) .site-visual-grid {
+  border-color: rgba(220, 188, 154, 0.18);
+}
+
+body:not([data-page='admin']) .site-light-one {
+  background: radial-gradient(circle, rgba(255, 242, 225, 0.34), rgba(255, 242, 225, 0) 72%);
+}
+
+body:not([data-page='admin']) .site-light-two {
+  background: radial-gradient(circle, rgba(240, 192, 144, 0.22), rgba(240, 192, 144, 0) 72%);
+}
+
+body:not([data-page='admin']) .site-light-three {
+  background: radial-gradient(circle, rgba(255, 251, 246, 0.3), rgba(255, 251, 246, 0) 74%);
 }
 
 body:not([data-page='admin']) .ambient-one {
@@ -2272,6 +2462,10 @@ body:not([data-page='admin']) .cta-copy h2,
 body:not([data-page='admin']) .form-intro h2,
 body:not([data-page='admin']) .faq-panel h2,
 body:not([data-page='admin']) .service-detail-copy h1,
+body:not([data-page='admin']) .service-overview-card strong,
+body:not([data-page='admin']) .service-detail-card h3,
+body:not([data-page='admin']) .service-detail-panel h3,
+body:not([data-page='admin']) .preview-card strong,
 body:not([data-page='admin']) .portfolio-media strong,
 body:not([data-page='admin']) .service-pillar h3 {
   color: #1d2736;
@@ -2293,8 +2487,19 @@ body:not([data-page='admin']) .form-intro p,
 body:not([data-page='admin']) .service-detail-copy p,
 body:not([data-page='admin']) .service-overview-card p,
 body:not([data-page='admin']) .service-detail-card p,
+body:not([data-page='admin']) .preview-card p,
+body:not([data-page='admin']) .portfolio-card p,
+body:not([data-page='admin']) .service-detail-list li,
 body:not([data-page='admin']) .case-thumb-copy p {
   color: #627084;
+}
+
+body:not([data-page='admin']) .service-overview-index,
+body:not([data-page='admin']) .service-detail-label,
+body:not([data-page='admin']) .preview-card span,
+body:not([data-page='admin']) .portfolio-badge,
+body:not([data-page='admin']) .service-pillar span {
+  color: #9c5a27;
 }
 
 body:not([data-page='admin']) .ribbon-nav a,
@@ -2344,6 +2549,10 @@ body:not([data-page='admin']) .site-footer {
   box-shadow: 0 22px 48px rgba(201, 183, 160, 0.16);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+body:not([data-page='admin']) .service-detail-list li::before {
+  background: linear-gradient(135deg, #d48642, #efb06f);
 }
 
 body:not([data-page='admin']) .page-banner,
@@ -2701,7 +2910,7 @@ body:not([data-page='admin']) .motion-particle-three {
 
 body:not([data-page='admin']) .hero-preview-wall {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   min-height: 100%;
   position: relative;
@@ -2724,6 +2933,7 @@ body:not([data-page='admin']) .preview-card {
   transform-style: preserve-3d;
   box-shadow: 0 22px 42px rgba(194, 172, 147, 0.18);
   animation: creative-card-float 10s ease-in-out infinite;
+  isolation: isolate;
 }
 
 body:not([data-page='admin']) .preview-card::before {
@@ -2742,9 +2952,9 @@ body:not([data-page='admin']) .preview-card::after {
   inset: auto -14% -18% auto;
   width: 180px;
   height: 180px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 66%);
+  background: radial-gradient(circle, rgba(255, 246, 235, 0.42), transparent 66%);
   transform: translateZ(30px);
-  opacity: 0.66;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -2780,6 +2990,9 @@ body:not([data-page='admin']) .preview-card strong {
   color: #1d2736;
   line-height: 1.04;
   transform: translateZ(44px);
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.26);
 }
 
 body:not([data-page='admin']) .preview-card p,
@@ -2789,6 +3002,8 @@ body:not([data-page='admin']) .service-pillar p {
   color: #627084;
   line-height: 1.65;
   transform: translateZ(28px);
+  position: relative;
+  z-index: 2;
 }
 
 body:not([data-page='admin']) .preview-card code {
@@ -2799,28 +3014,28 @@ body:not([data-page='admin']) .preview-card code {
 }
 
 body:not([data-page='admin']) .preview-card-video {
-  min-height: 100%;
   background:
-    linear-gradient(155deg, rgba(243, 195, 150, 0.76), rgba(255, 255, 255, 0.84)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.7));
+    linear-gradient(155deg, rgba(243, 195, 150, 0.82), rgba(255, 250, 245, 0.92)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.62));
   animation-delay: 0s;
-}
-
-body:not([data-page='admin']) .preview-card-static,
-body:not([data-page='admin']) .preview-card-motion {
-  min-height: 0;
 }
 
 body:not([data-page='admin']) .preview-card-static {
   background:
-    linear-gradient(145deg, rgba(255, 230, 207, 0.88), rgba(255, 255, 255, 0.9));
+    linear-gradient(145deg, rgba(255, 230, 207, 0.9), rgba(255, 252, 247, 0.94));
   animation-delay: 1.4s;
 }
 
 body:not([data-page='admin']) .preview-card-motion {
   background:
-    linear-gradient(145deg, rgba(242, 214, 188, 0.86), rgba(255, 250, 244, 0.92));
+    linear-gradient(145deg, rgba(242, 214, 188, 0.9), rgba(255, 250, 244, 0.96));
   animation-delay: 2.8s;
+}
+
+body:not([data-page='admin']) .preview-card-growth {
+  background:
+    linear-gradient(145deg, rgba(249, 221, 191, 0.9), rgba(255, 251, 244, 0.96));
+  animation-delay: 4.2s;
 }
 
 body:not([data-page='admin']) .hero-proof-badges {
@@ -2979,14 +3194,14 @@ body:not([data-page='admin']) .service-pillar {
 
 body:not([data-page='admin']) .portfolio-card:hover,
 body:not([data-page='admin']) .portfolio-card:focus-within {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   border-color: rgba(214, 181, 147, 0.94);
   box-shadow: 0 28px 56px rgba(196, 174, 150, 0.22);
 }
 
 body:not([data-page='admin']) .portfolio-media {
   display: grid;
-  align-content: end;
+  align-content: space-between;
   gap: 14px;
   min-height: 270px;
   padding: 22px;
@@ -2994,91 +3209,95 @@ body:not([data-page='admin']) .portfolio-media {
   border: 1px solid rgba(223, 208, 191, 0.82);
   position: relative;
   overflow: hidden;
-  transform-style: preserve-3d;
   isolation: isolate;
-  transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
-  animation: portfolio-panel-idle 11s ease-in-out infinite;
+  transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease, background-position 320ms ease;
+  animation: none;
 }
 
 body:not([data-page='admin']) .portfolio-media strong {
   font-size: 1.35rem;
-  line-height: 1.08;
+  line-height: 1.12;
   position: relative;
   z-index: 2;
-  transform: translateZ(38px);
-  transition: transform 320ms ease, letter-spacing 320ms ease;
+  margin-top: auto;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(18, 28, 41, 0.12), rgba(18, 28, 41, 0.72));
+  color: #fff4ea;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 320ms ease, letter-spacing 320ms ease, background 320ms ease;
 }
 
 body:not([data-page='admin']) .portfolio-media::before {
   content: '';
   position: absolute;
-  inset: auto -16% -20% auto;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.72), transparent 64%);
-  transform: translateZ(18px);
-  animation: portfolio-glow-drift 9s ease-in-out infinite;
+  inset: -28% auto -20% -18%;
+  width: 72%;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 58%);
+  transform: rotate(18deg);
+  opacity: 0.8;
+  animation: portfolio-shimmer 7s ease-in-out infinite;
 }
 
 body:not([data-page='admin']) .portfolio-media::after {
   content: '';
   position: absolute;
-  inset: 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  opacity: 0.7;
+  inset: auto 0 0 0;
+  height: 58%;
+  background: linear-gradient(180deg, rgba(34, 44, 59, 0), rgba(21, 31, 44, 0.88));
   z-index: 0;
 }
 
 body:not([data-page='admin']) .portfolio-glow {
   position: absolute;
-  inset: auto auto 16% -10%;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 68%);
-  mix-blend-mode: screen;
-  z-index: 0;
-  animation: portfolio-glow-drift 8s ease-in-out infinite reverse;
+  inset: auto 18px 18px auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  z-index: 1;
+  animation: portfolio-block-float 5.6s ease-in-out infinite;
 }
 
 body:not([data-page='admin']) .portfolio-orbit {
   position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  z-index: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 1;
 }
 
 body:not([data-page='admin']) .portfolio-orbit-one {
-  top: 18px;
-  right: 20px;
-  width: 104px;
-  height: 104px;
-  animation: orbit-spin 10s linear infinite;
+  top: 22px;
+  right: 22px;
+  width: 88px;
+  height: 12px;
+  animation: portfolio-line-pulse 3.8s ease-in-out infinite;
 }
 
 body:not([data-page='admin']) .portfolio-orbit-two {
-  top: 38px;
-  right: 40px;
-  width: 62px;
-  height: 62px;
-  animation: orbit-spin 7s linear infinite reverse;
+  top: 42px;
+  right: 22px;
+  width: 58px;
+  height: 12px;
+  animation: portfolio-line-pulse 3.8s ease-in-out infinite 0.9s;
 }
 
 body:not([data-page='admin']) .portfolio-scanline {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  top: 18px;
+  left: 22px;
+  right: 22px;
+  top: 22px;
   display: flex;
   justify-content: space-between;
   font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(51, 65, 84, 0.36);
-  z-index: 1;
+  color: rgba(255, 247, 238, 0.74);
+  z-index: 2;
 }
 
 body:not([data-page='admin']) .portfolio-scanline span {
@@ -3088,41 +3307,52 @@ body:not([data-page='admin']) .portfolio-scanline span {
 
 body:not([data-page='admin']) .portfolio-card:hover .portfolio-media,
 body:not([data-page='admin']) .portfolio-card:focus-within .portfolio-media {
-  transform: perspective(1200px) rotateX(12deg) rotateY(-10deg) translateY(-8px) scale(1.01);
+  transform: translateY(-6px) scale(1.015);
   box-shadow: 0 30px 60px rgba(201, 183, 160, 0.24);
   border-color: rgba(214, 181, 147, 0.94);
 }
 
 body:not([data-page='admin']) .portfolio-card:hover .portfolio-media strong,
 body:not([data-page='admin']) .portfolio-card:focus-within .portfolio-media strong {
-  transform: translateZ(52px) translateY(-2px);
-  letter-spacing: -0.03em;
+  transform: translateY(-3px);
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, rgba(18, 28, 41, 0.18), rgba(18, 28, 41, 0.8));
 }
 
 body:not([data-page='admin']) .portfolio-card:hover .portfolio-scanline span,
 body:not([data-page='admin']) .portfolio-card:focus-within .portfolio-scanline span {
   transform: translateY(-3px);
-  color: rgba(51, 65, 84, 0.62);
+  color: rgba(255, 250, 244, 0.96);
 }
 
 body:not([data-page='admin']) .portfolio-marketplace {
-  background: linear-gradient(155deg, #fff4e7, #f6dcc4);
+  background:
+    radial-gradient(circle at top right, rgba(255, 236, 212, 0.18), transparent 24%),
+    linear-gradient(160deg, #714326 0%, #a56439 52%, #d98c4e 100%);
 }
 
 body:not([data-page='admin']) .portfolio-performance {
-  background: linear-gradient(155deg, #fff8ef, #f0d5be);
+  background:
+    radial-gradient(circle at top right, rgba(255, 249, 239, 0.14), transparent 24%),
+    linear-gradient(160deg, #6f3d2e 0%, #8e5238 48%, #cb8456 100%);
 }
 
 body:not([data-page='admin']) .portfolio-commerce {
-  background: linear-gradient(155deg, #fff7f0, #efd0b1);
+  background:
+    radial-gradient(circle at top right, rgba(255, 241, 226, 0.14), transparent 24%),
+    linear-gradient(160deg, #64412b 0%, #8d6031 50%, #d59a52 100%);
 }
 
 body:not([data-page='admin']) .portfolio-photo {
-  background: linear-gradient(155deg, #fffdf6, #f5decb);
+  background:
+    radial-gradient(circle at top right, rgba(255, 248, 236, 0.14), transparent 24%),
+    linear-gradient(160deg, #57463d 0%, #8a604a 52%, #d8a173 100%);
 }
 
 body:not([data-page='admin']) .portfolio-ai {
-  background: linear-gradient(155deg, #fff7ee, #f1d9c2);
+  background:
+    radial-gradient(circle at top right, rgba(255, 244, 230, 0.16), transparent 24%),
+    linear-gradient(160deg, #5d3d33 0%, #8d5842 50%, #c9885c 100%);
 }
 
 body:not([data-page='admin']) .portfolio-marketplace,
@@ -3131,6 +3361,7 @@ body:not([data-page='admin']) .portfolio-commerce,
 body:not([data-page='admin']) .portfolio-photo,
 body:not([data-page='admin']) .portfolio-ai {
   background-size: 140% 140%;
+  background-position: 50% 50%;
 }
 
 body:not([data-page='admin']) .service-pillars {
@@ -3606,6 +3837,85 @@ body:not([data-page='admin']) .footer-note {
   }
 }
 
+@keyframes site-light-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.44;
+  }
+  50% {
+    transform: translate3d(30px, -24px, 0) scale(1.08);
+    opacity: 0.72;
+  }
+}
+
+@keyframes site-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes site-ring-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.62;
+  }
+}
+
+@keyframes grid-float {
+  0%,
+  100% {
+    transform: perspective(1200px) rotateX(74deg) translateY(26%);
+  }
+  50% {
+    transform: perspective(1200px) rotateX(78deg) translateY(22%);
+  }
+}
+
+@keyframes streak-slide {
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: translateX(0) rotate(-14deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(70px) rotate(-11deg);
+  }
+}
+
+@keyframes site-particle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(18px, -26px, 0) scale(1.28);
+    opacity: 0.96;
+  }
+}
+
+@keyframes section-aura {
+  0%,
+  100% {
+    opacity: 0.26;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.56;
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
 @keyframes creative-card-float {
   0%,
   100% {
@@ -3664,6 +3974,40 @@ body:not([data-page='admin']) .footer-note {
   }
   50% {
     transform: translate3d(12px, -14px, 0) scale(1.08);
+  }
+}
+
+@keyframes portfolio-shimmer {
+  0%,
+  100% {
+    transform: translateX(-8%) rotate(18deg);
+    opacity: 0.58;
+  }
+  50% {
+    transform: translateX(18%) rotate(18deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes portfolio-block-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes portfolio-line-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scaleX(1.08);
   }
 }
 
@@ -3946,6 +4290,10 @@ body:not([data-page='admin']) .footer-note {
   body:not([data-page='admin']) .creative-float-side {
     transform: none;
   }
+
+  .site-visual-grid {
+    inset: 10% 2%;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3985,6 +4333,23 @@ body:not([data-page='admin']) .footer-note {
 
   .service-mega-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-light-one,
+  .site-light-two,
+  .site-light-three {
+    opacity: 0.26;
+  }
+
+  .site-streak {
+    width: 70vw;
+  }
+
+  .site-ring-two,
+  .site-ring-three,
+  .site-particle-three,
+  .site-particle-four {
+    display: none;
   }
 
   body:not([data-page='admin']) .video-rail-track {

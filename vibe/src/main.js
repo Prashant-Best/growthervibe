@@ -530,6 +530,12 @@ function sitePages(siteData) {
               <strong>Fast cuts, urgency, and motion</strong>
               <p>Sample visual placeholder for future motion concepts</p>
             </article>
+            <article class="preview-card preview-card-growth">
+              <img class="preview-art" src="${sampleMarketplaceAd}" alt="Sample performance creative storyboard artwork" />
+              <span>Campaign systems</span>
+              <strong>Testing-ready variations for scale</strong>
+              <p>Sample storyboard card for adding one more real work preview on the homepage.</p>
+            </article>
           </div>
           <div class="hero-proof-badges">
             <span>Hooks</span>
@@ -1171,6 +1177,21 @@ function appMarkup(siteData) {
       <div class="ambient ambient-two"></div>
       <div class="ambient ambient-three"></div>
       <div class="ambient ambient-four"></div>
+      <div class="site-visuals" aria-hidden="true">
+        <div class="site-visual-grid"></div>
+        <div class="site-ring site-ring-one"></div>
+        <div class="site-ring site-ring-two"></div>
+        <div class="site-ring site-ring-three"></div>
+        <div class="site-light site-light-one"></div>
+        <div class="site-light site-light-two"></div>
+        <div class="site-light site-light-three"></div>
+        <div class="site-streak site-streak-one"></div>
+        <div class="site-streak site-streak-two"></div>
+        <div class="site-particle site-particle-one"></div>
+        <div class="site-particle site-particle-two"></div>
+        <div class="site-particle site-particle-three"></div>
+        <div class="site-particle site-particle-four"></div>
+      </div>
       <div class="brand-atmosphere" aria-hidden="true">
         <div class="brand-orbit brand-orbit-one"></div>
         <div class="brand-orbit brand-orbit-two"></div>
