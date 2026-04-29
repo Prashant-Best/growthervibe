@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
 
 :root {
-  --bg: #12031f;
-  --bg-soft: #1b0931;
-  --panel: rgba(28, 14, 49, 0.58);
-  --line: rgba(255, 255, 255, 0.12);
-  --text: #f8ebff;
-  --muted: #d7c3ea;
-  --accent-a: #8b3dff;
-  --accent-b: #ff4fbf;
-  --accent-c: #ff8be8;
-  --shadow: 0 24px 80px rgba(7, 1, 17, 0.45);
+  --bg: #ffffff;
+  --bg-soft: #ffffff;
+  --panel: #ffffff;
+  --line: rgba(0, 0, 0, 0.12);
+  --text: #000000;
+  --muted: #000000;
+  --accent-a: #e63a6e;
+  --accent-b: #e63a6e;
+  --accent-c: #e63a6e;
+  --theme-pink: #e63a6e;
+  --theme-pink-deep: #e63a6e;
+  --theme-pink-soft: #e63a6e;
+  --theme-ink: #000000;
+  --theme-muted: #000000;
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
   --radius: 28px;
   --ribbon-height: 88px;
   --max-width: 1180px;
   font-family: 'Manrope', sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(194, 84, 255, 0.35), transparent 32%),
-    radial-gradient(circle at top right, rgba(255, 79, 191, 0.24), transparent 24%),
-    linear-gradient(140deg, #10021c 0%, #1c0732 45%, #32094c 100%);
+  background: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -40,16 +42,13 @@ body {
 }
 
 body:not([data-page='admin']) {
-  background:
-    radial-gradient(circle at top left, rgba(247, 196, 148, 0.38), transparent 26%),
-    radial-gradient(circle at 85% 12%, rgba(238, 173, 118, 0.24), transparent 22%),
-    linear-gradient(145deg, #fffaf4 0%, #f9efe2 42%, #f6e7d6 100%);
+  color: var(--theme-ink);
+  background: #ffffff;
 }
 
 body[data-page='admin'] {
   color: #132033;
-  background:
-    linear-gradient(180deg, #f9fbff 0%, #eef3fb 100%);
+  background: #ffffff;
 }
 
 body::before {
@@ -66,10 +65,7 @@ body::before {
 }
 
 body[data-page='admin']::before {
-  background:
-    linear-gradient(rgba(19, 32, 51, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(19, 32, 51, 0.04) 1px, transparent 1px);
-  opacity: 0.6;
+  content: none;
 }
 
 body::after {
@@ -80,8 +76,8 @@ body::after {
   z-index: 0;
   background:
     radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.5), transparent 18%),
-    radial-gradient(circle at 82% 32%, rgba(233, 173, 116, 0.18), transparent 18%),
-    conic-gradient(from 180deg at 50% 50%, rgba(233, 173, 116, 0.1), transparent 26%, rgba(255, 255, 255, 0.22) 42%, transparent 58%, rgba(233, 173, 116, 0.08) 76%, transparent);
+    radial-gradient(circle at 82% 32%, rgba(178, 31, 82, 0.12), transparent 18%),
+    conic-gradient(from 180deg at 50% 50%, rgba(212, 55, 113, 0.08), transparent 26%, rgba(255, 255, 255, 0.22) 42%, transparent 58%, rgba(143, 31, 73, 0.07) 76%, transparent);
   opacity: 0.75;
   animation: atmosphere-swirl 28s linear infinite;
 }
@@ -135,10 +131,10 @@ select {
 .site-visual-grid {
   inset: 6% 4%;
   border-radius: 42px;
-  border: 1px solid rgba(227, 205, 182, 0.14);
+  border: 1px solid rgba(91, 63, 209, 0.14);
   background:
-    linear-gradient(rgba(204, 171, 135, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(204, 171, 135, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(91, 63, 209, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 98, 214, 0.07) 1px, transparent 1px);
   background-size: 88px 88px;
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.72), transparent 88%);
   opacity: 0.58;
@@ -149,7 +145,7 @@ select {
 
 .site-ring {
   border-radius: 50%;
-  border: 1px solid rgba(224, 182, 141, 0.22);
+  border: 1px solid rgba(91, 63, 209, 0.22);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   opacity: 0.5;
 }
@@ -166,7 +162,7 @@ select {
   left: 10%;
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(255, 237, 214, 0.32), rgba(255, 237, 214, 0) 72%);
+  background: radial-gradient(circle, rgba(66, 98, 214, 0.24), rgba(66, 98, 214, 0) 72%);
   animation: site-light-drift 18s ease-in-out infinite;
 }
 
@@ -175,7 +171,7 @@ select {
   right: 8%;
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, rgba(239, 194, 149, 0.2), rgba(239, 194, 149, 0) 72%);
+  background: radial-gradient(circle, rgba(230, 58, 110, 0.2), rgba(230, 58, 110, 0) 72%);
   animation: site-light-drift 22s ease-in-out infinite reverse;
 }
 
@@ -184,7 +180,7 @@ select {
   left: 28%;
   width: 460px;
   height: 460px;
-  background: radial-gradient(circle, rgba(255, 248, 238, 0.26), rgba(255, 248, 238, 0) 74%);
+  background: radial-gradient(circle, rgba(91, 63, 209, 0.18), rgba(91, 63, 209, 0) 74%);
   animation: site-light-drift 26s ease-in-out infinite;
 }
 
@@ -216,7 +212,7 @@ select {
   width: 42vw;
   max-width: 620px;
   height: 2px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 176, 120, 0.42), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 58, 110, 0.42), rgba(66, 98, 214, 0.32), rgba(255, 255, 255, 0));
   opacity: 0.4;
 }
 
@@ -238,8 +234,8 @@ select {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.92), rgba(231, 174, 116, 0.16) 64%, rgba(231, 174, 116, 0));
-  box-shadow: 0 0 20px rgba(231, 174, 116, 0.22);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.92), rgba(230, 58, 110, 0.16) 64%, rgba(66, 98, 214, 0));
+  box-shadow: 0 0 20px rgba(91, 63, 209, 0.22);
 }
 
 .site-particle-one {
@@ -447,13 +443,18 @@ select {
   place-items: center;
   width: 50px;
   height: 50px;
+  padding: 8px;
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.98), rgba(255, 247, 239, 0.92) 54%, rgba(243, 219, 193, 0.9) 100%);
   color: white;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
-  box-shadow: 0 16px 34px rgba(167, 54, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 14px 30px rgba(156, 120, 82, 0.24);
 }
 
 .brand-text {
@@ -677,7 +678,7 @@ body:not([data-page='admin']) .section::before {
   border-radius: 34px;
   background:
     linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(232, 179, 125, 0.1), transparent 28%);
+    radial-gradient(circle at bottom right, rgba(91, 63, 209, 0.1), transparent 28%);
   opacity: 0.34;
   z-index: -1;
   animation: section-aura 12s ease-in-out infinite;
@@ -2168,35 +2169,86 @@ body:not([data-page='admin']) .insight-card strong {
 }
 
 .admin-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: 0 18px;
+  padding: 0 20px;
   border: 1px solid rgba(19, 32, 51, 0.12);
   border-radius: 999px;
-  background: #f4f7fb;
+  background: linear-gradient(135deg, #ffffff, #edf4ff);
   color: #132033;
   cursor: pointer;
   font-weight: 700;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  box-shadow: 0 10px 24px rgba(41, 65, 98, 0.08);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
+}
+
+.admin-button::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.55));
+  transition: opacity 220ms ease, transform 320ms ease;
+}
+
+.admin-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-24deg);
+  transition: left 420ms ease;
 }
 
 .admin-button:hover,
 .admin-button:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(41, 65, 98, 0.12);
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(57, 103, 160, 0.3);
+  box-shadow: 0 18px 34px rgba(41, 65, 98, 0.16);
   outline: none;
+}
+
+.admin-button:hover::before,
+.admin-button:focus-visible::before {
+  transform: scale(1.02);
+}
+
+.admin-button:hover::after,
+.admin-button:focus-visible::after {
+  left: 140%;
+}
+
+.admin-button:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 20px rgba(41, 65, 98, 0.14);
 }
 
 .admin-button-dark {
   border-color: transparent;
-  background: linear-gradient(135deg, #102038, #3967a0);
+  background: linear-gradient(135deg, #163055, #3d73ba 55%, #78a6e0);
   color: #fff;
+  box-shadow: 0 16px 32px rgba(31, 69, 117, 0.24);
+}
+
+.admin-button-dark::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
 }
 
 .admin-button-danger {
-  background: #fff1f1;
+  background: linear-gradient(135deg, #fff4f4, #ffe7e8);
   color: #9f2f34;
 }
 
@@ -2343,8 +2395,12 @@ body:not([data-page='admin']) .insight-card strong {
   margin-bottom: 18px;
   padding: 10px;
   border-radius: 22px;
-  background: #fff;
-  box-shadow: 0 16px 36px rgba(175, 186, 204, 0.28);
+  border: 1px solid rgba(228, 212, 193, 0.92);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 1), rgba(255, 248, 240, 0.94) 58%, rgba(242, 218, 191, 0.92) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 18px 38px rgba(175, 156, 133, 0.24);
 }
 
 .footer-details {
@@ -2385,17 +2441,17 @@ body:not([data-page='admin']) .insight-card strong {
 }
 
 body:not([data-page='admin']) {
-  color: #203047;
+  color: var(--theme-ink);
   background:
-    radial-gradient(circle at top left, rgba(255, 206, 158, 0.28), transparent 28%),
-    radial-gradient(circle at top right, rgba(255, 230, 207, 0.72), transparent 26%),
-    linear-gradient(180deg, #fffdf8 0%, #f8f3eb 52%, #f6efe6 100%);
+    radial-gradient(circle at top left, rgba(91, 63, 209, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(230, 58, 110, 0.14), transparent 26%),
+    linear-gradient(180deg, #f8faff 0%, #f3f4ff 52%, #f8eef9 100%);
 }
 
 body:not([data-page='admin'])::before {
   background:
-    linear-gradient(rgba(114, 128, 150, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(114, 128, 150, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(178, 31, 82, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178, 31, 82, 0.06) 1px, transparent 1px);
   opacity: 0.34;
 }
 
@@ -2404,35 +2460,35 @@ body:not([data-page='admin']) .ambient {
 }
 
 body:not([data-page='admin']) .site-visual-grid {
-  border-color: rgba(220, 188, 154, 0.18);
+  border-color: rgba(178, 31, 82, 0.12);
 }
 
 body:not([data-page='admin']) .site-light-one {
-  background: radial-gradient(circle, rgba(255, 242, 225, 0.34), rgba(255, 242, 225, 0) 72%);
+  background: radial-gradient(circle, rgba(212, 55, 113, 0.12), rgba(212, 55, 113, 0) 72%);
 }
 
 body:not([data-page='admin']) .site-light-two {
-  background: radial-gradient(circle, rgba(240, 192, 144, 0.22), rgba(240, 192, 144, 0) 72%);
+  background: radial-gradient(circle, rgba(178, 31, 82, 0.14), rgba(178, 31, 82, 0) 72%);
 }
 
 body:not([data-page='admin']) .site-light-three {
-  background: radial-gradient(circle, rgba(255, 251, 246, 0.3), rgba(255, 251, 246, 0) 74%);
+  background: radial-gradient(circle, rgba(143, 31, 73, 0.12), rgba(143, 31, 73, 0) 74%);
 }
 
 body:not([data-page='admin']) .ambient-one {
-  background: rgba(255, 207, 149, 0.6);
+  background: rgba(212, 55, 113, 0.16);
 }
 
 body:not([data-page='admin']) .ambient-two {
-  background: rgba(255, 224, 205, 0.78);
+  background: rgba(178, 31, 82, 0.14);
 }
 
 body:not([data-page='admin']) .ambient-three {
-  background: rgba(244, 201, 170, 0.46);
+  background: rgba(143, 31, 73, 0.12);
 }
 
 body:not([data-page='admin']) .ambient-four {
-  background: rgba(255, 240, 226, 0.72);
+  background: rgba(212, 55, 113, 0.1);
 }
 
 body:not([data-page='admin']) .top-ribbon {
@@ -2442,9 +2498,12 @@ body:not([data-page='admin']) .top-ribbon {
 }
 
 body:not([data-page='admin']) .brand-mark {
-  padding: 8px;
-  background: #fff;
-  box-shadow: 0 14px 32px rgba(193, 170, 145, 0.18);
+  border-color: rgba(232, 205, 216, 0.94);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 1), rgba(255, 247, 249, 0.96) 58%, rgba(246, 226, 234, 0.94) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 16px 34px rgba(178, 31, 82, 0.14);
 }
 
 body:not([data-page='admin']) .brand-text strong,
@@ -2468,7 +2527,7 @@ body:not([data-page='admin']) .service-detail-panel h3,
 body:not([data-page='admin']) .preview-card strong,
 body:not([data-page='admin']) .portfolio-media strong,
 body:not([data-page='admin']) .service-pillar h3 {
-  color: #1d2736;
+  color: var(--theme-ink);
 }
 
 body:not([data-page='admin']) .brand-text small,
@@ -2491,7 +2550,7 @@ body:not([data-page='admin']) .preview-card p,
 body:not([data-page='admin']) .portfolio-card p,
 body:not([data-page='admin']) .service-detail-list li,
 body:not([data-page='admin']) .case-thumb-copy p {
-  color: #627084;
+  color: var(--theme-muted);
 }
 
 body:not([data-page='admin']) .service-overview-index,
@@ -2504,7 +2563,7 @@ body:not([data-page='admin']) .service-pillar span {
 
 body:not([data-page='admin']) .ribbon-nav a,
 body:not([data-page='admin']) .nav-dropdown-trigger {
-  color: #4b5a6e;
+  color: #333333;
 }
 
 body:not([data-page='admin']) .ribbon-nav a:hover,
@@ -2515,8 +2574,8 @@ body:not([data-page='admin']) .nav-dropdown-trigger:focus-visible,
 body:not([data-page='admin']) .nav-dropdown-trigger.is-active,
 body:not([data-page='admin']) .nav-dropdown.is-open .nav-dropdown-trigger {
   background: #fff;
-  color: #1d2736;
-  box-shadow: inset 0 0 0 1px rgba(222, 210, 195, 0.82);
+  color: var(--theme-ink);
+  box-shadow: inset 0 0 0 1px rgba(228, 205, 216, 0.82);
 }
 
 body:not([data-page='admin']) .service-mega-menu,
@@ -2544,15 +2603,15 @@ body:not([data-page='admin']) .appointment-calendar-card,
 body:not([data-page='admin']) .appointment-slot-card,
 body:not([data-page='admin']) .appointment-faq,
 body:not([data-page='admin']) .site-footer {
-  border-color: rgba(221, 208, 191, 0.82);
-  background: rgba(255, 251, 246, 0.88);
-  box-shadow: 0 22px 48px rgba(201, 183, 160, 0.16);
+  border-color: rgba(233, 220, 226, 0.88);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 22px 48px rgba(178, 31, 82, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 body:not([data-page='admin']) .service-detail-list li::before {
-  background: linear-gradient(135deg, #d48642, #efb06f);
+  background: linear-gradient(135deg, var(--theme-pink-deep), var(--theme-pink));
 }
 
 body:not([data-page='admin']) .page-banner,
@@ -2669,7 +2728,7 @@ body:not([data-page='admin']) .signal-card strong,
 body:not([data-page='admin']) .appointment-calendar-header strong,
 body:not([data-page='admin']) .appointment-slot-head strong,
 body:not([data-page='admin']) .appointment-clock strong {
-  color: #1d2736;
+  color: var(--theme-ink);
 }
 
 body:not([data-page='admin']) .service-mega-kicker,
@@ -2682,15 +2741,15 @@ body:not([data-page='admin']) .service-overview-index,
 body:not([data-page='admin']) .service-detail-label,
 body:not([data-page='admin']) .appointment-clock-label,
 body:not([data-page='admin']) .appointment-mini-label {
-  color: #b76c35;
+  color: var(--theme-pink);
 }
 
 body:not([data-page='admin']) .eyebrow {
-  color: #b76c35;
+  color: var(--theme-pink);
 }
 
 body:not([data-page='admin']) .eyebrow::before {
-  background: linear-gradient(90deg, #d89458, transparent);
+  background: linear-gradient(90deg, var(--theme-pink), transparent);
 }
 
 body:not([data-page='admin']) .button-primary,
@@ -2698,8 +2757,8 @@ body:not([data-page='admin']) .process-step span,
 body:not([data-page='admin']) .appointment-timezone-option.is-selected,
 body:not([data-page='admin']) .calendar-day.is-selected,
 body:not([data-page='admin']) .appointment-slot-grid button.is-selected {
-  background: linear-gradient(135deg, #d48642, #efb06f);
-  box-shadow: 0 18px 36px rgba(212, 134, 66, 0.22);
+  background: linear-gradient(135deg, var(--theme-pink-deep), var(--theme-pink));
+  box-shadow: 0 18px 36px rgba(178, 31, 82, 0.18);
 }
 
 body:not([data-page='admin']) .button-secondary,
@@ -2713,9 +2772,9 @@ body:not([data-page='admin']) .calendar-day,
 body:not([data-page='admin']) .appointment-slot-grid button,
 body:not([data-page='admin']) .footer-details > div,
 body:not([data-page='admin']) .marquee-track span {
-  border-color: rgba(226, 212, 196, 0.88);
+  border-color: rgba(233, 220, 226, 0.88);
   background: rgba(255, 255, 255, 0.78);
-  color: #334154;
+  color: var(--theme-ink);
 }
 
 body:not([data-page='admin']) .service-mega-item:hover,
@@ -2725,14 +2784,14 @@ body:not([data-page='admin']) .appointment-timezone-option:focus-visible,
 body:not([data-page='admin']) .calendar-day:hover,
 body:not([data-page='admin']) .calendar-day:focus-visible {
   background: #fff;
-  border-color: rgba(212, 194, 174, 0.96);
-  box-shadow: 0 12px 26px rgba(201, 183, 160, 0.18);
+  border-color: rgba(214, 173, 189, 0.96);
+  box-shadow: 0 12px 26px rgba(178, 31, 82, 0.1);
 }
 
 body:not([data-page='admin']) .page-banner {
   background:
-    radial-gradient(circle at 85% 18%, rgba(244, 208, 175, 0.9), transparent 26%),
-    linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(247, 237, 225, 0.96));
+    radial-gradient(circle at 85% 18%, rgba(212, 55, 113, 0.12), transparent 26%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 250, 0.96));
   animation: panel-glow 9s ease-in-out infinite;
 }
 
@@ -2748,28 +2807,28 @@ body:not([data-page='admin']) .service-detail-panel,
 body:not([data-page='admin']) .insight-card,
 body:not([data-page='admin']) .process-step {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 241, 232, 0.9));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 250, 0.9));
 }
 
 body:not([data-page='admin']) .contact-panel,
 body:not([data-page='admin']) .hero-form-card {
   background:
-    radial-gradient(circle at top right, rgba(247, 214, 180, 0.64), transparent 28%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(247, 238, 227, 0.94));
+    radial-gradient(circle at top right, rgba(212, 55, 113, 0.12), transparent 28%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 250, 0.94));
   animation: panel-glow 10s ease-in-out infinite;
 }
 
 body:not([data-page='admin']) .case-deep-dive,
 body:not([data-page='admin']) .case-deep-dive.alt {
   background:
-    radial-gradient(circle at top right, rgba(242, 203, 167, 0.54), transparent 30%),
-    linear-gradient(155deg, rgba(255, 252, 247, 0.98), rgba(244, 232, 218, 0.95));
+    radial-gradient(circle at top right, rgba(212, 55, 113, 0.1), transparent 30%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 250, 0.95));
 }
 
 body:not([data-page='admin']) .service-detail-panel {
   background:
-    radial-gradient(circle at top right, rgba(246, 213, 183, 0.64), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 236, 225, 0.92));
+    radial-gradient(circle at top right, rgba(178, 31, 82, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 250, 0.92));
 }
 
 body:not([data-page='admin']) .hero-section {
@@ -2794,9 +2853,9 @@ body:not([data-page='admin']) .hero-client-strip span,
 body:not([data-page='admin']) .hero-proof-badges span {
   padding: 12px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(226, 212, 196, 0.9);
+  border: 1px solid rgba(233, 220, 226, 0.9);
   background: rgba(255, 255, 255, 0.78);
-  color: #47576b;
+  color: #3f3f3f;
   font-size: 0.92rem;
   font-weight: 700;
 }
@@ -2804,11 +2863,11 @@ body:not([data-page='admin']) .hero-proof-badges span {
 body:not([data-page='admin']) .hero-visual {
   min-height: 620px;
   padding: 26px;
-  border: 1px solid rgba(221, 208, 191, 0.82);
+  border: 1px solid rgba(233, 220, 226, 0.82);
   background:
-    radial-gradient(circle at top right, rgba(246, 217, 188, 0.84), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 243, 235, 0.92));
-  box-shadow: 0 26px 60px rgba(201, 183, 160, 0.2);
+    radial-gradient(circle at top right, rgba(212, 55, 113, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 248, 251, 0.94));
+  box-shadow: 0 26px 60px rgba(178, 31, 82, 0.08);
   perspective: 1600px;
   transform-style: preserve-3d;
 }
@@ -2835,7 +2894,7 @@ body:not([data-page='admin']) .motion-ribbon {
   border-radius: 999px;
   opacity: 0.58;
   filter: blur(18px);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(243, 194, 145, 0.54), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(212, 55, 113, 0.28), rgba(178, 31, 82, 0.22), rgba(255, 255, 255, 0));
 }
 
 body:not([data-page='admin']) .motion-ribbon-one {
@@ -2858,7 +2917,7 @@ body:not([data-page='admin']) .motion-ribbon-three {
 
 body:not([data-page='admin']) .motion-pulse {
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.76), rgba(239, 193, 147, 0.22), transparent 72%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.76), rgba(212, 55, 113, 0.12), rgba(178, 31, 82, 0.08), transparent 72%);
   opacity: 0.68;
 }
 
@@ -2880,8 +2939,8 @@ body:not([data-page='admin']) .motion-pulse-two {
 
 body:not([data-page='admin']) .motion-particle {
   border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.96), rgba(236, 179, 116, 0.56) 54%, rgba(236, 179, 116, 0.08) 74%);
-  box-shadow: inset -8px -10px 16px rgba(196, 136, 78, 0.18);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.96), rgba(212, 55, 113, 0.34) 54%, rgba(178, 31, 82, 0.08) 74%);
+  box-shadow: inset -8px -10px 16px rgba(178, 31, 82, 0.12);
 }
 
 body:not([data-page='admin']) .motion-particle-one {
@@ -2966,7 +3025,7 @@ body:not([data-page='admin']) .service-pillar span {
   padding: 8px 12px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.8);
-  color: #b76c35;
+  color: var(--theme-pink);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -2982,12 +3041,14 @@ body:not([data-page='admin']) .preview-art {
   border: 1px solid rgba(255, 255, 255, 0.66);
   box-shadow: 0 18px 34px rgba(190, 165, 139, 0.18);
   transform: translateZ(54px) rotateX(-4deg);
+  display: block;
+  background: #000000;
 }
 
 body:not([data-page='admin']) .preview-card strong {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.4rem, 2.4vw, 2rem);
-  color: #1d2736;
+  color: var(--theme-ink);
   line-height: 1.04;
   transform: translateZ(44px);
   position: relative;
@@ -2999,7 +3060,7 @@ body:not([data-page='admin']) .preview-card p,
 body:not([data-page='admin']) .portfolio-card p,
 body:not([data-page='admin']) .service-pillar p {
   margin: 0;
-  color: #627084;
+  color: var(--theme-muted);
   line-height: 1.65;
   transform: translateZ(28px);
   position: relative;
@@ -3015,26 +3076,26 @@ body:not([data-page='admin']) .preview-card code {
 
 body:not([data-page='admin']) .preview-card-video {
   background:
-    linear-gradient(155deg, rgba(243, 195, 150, 0.82), rgba(255, 250, 245, 0.92)),
+    linear-gradient(155deg, rgba(212, 55, 113, 0.18), rgba(255, 250, 252, 0.92)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.62));
   animation-delay: 0s;
 }
 
 body:not([data-page='admin']) .preview-card-static {
   background:
-    linear-gradient(145deg, rgba(255, 230, 207, 0.9), rgba(255, 252, 247, 0.94));
+    linear-gradient(145deg, rgba(255, 238, 244, 0.9), rgba(255, 251, 252, 0.94));
   animation-delay: 1.4s;
 }
 
 body:not([data-page='admin']) .preview-card-motion {
   background:
-    linear-gradient(145deg, rgba(242, 214, 188, 0.9), rgba(255, 250, 244, 0.96));
+    linear-gradient(145deg, rgba(255, 232, 240, 0.9), rgba(255, 248, 250, 0.96));
   animation-delay: 2.8s;
 }
 
 body:not([data-page='admin']) .preview-card-growth {
   background:
-    linear-gradient(145deg, rgba(249, 221, 191, 0.9), rgba(255, 251, 244, 0.96));
+    linear-gradient(145deg, rgba(255, 236, 243, 0.92), rgba(255, 248, 251, 0.96));
   animation-delay: 4.2s;
 }
 
@@ -3062,8 +3123,8 @@ body:not([data-page='admin']) .creative-grid-plane {
   bottom: -18%;
   height: 52%;
   background:
-    linear-gradient(rgba(209, 166, 122, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(209, 166, 122, 0.16) 1px, transparent 1px);
+    linear-gradient(rgba(178, 31, 82, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 55, 113, 0.12) 1px, transparent 1px);
   background-size: 54px 54px;
   transform: rotateX(76deg) translateZ(-60px);
   transform-origin: center top;
@@ -3075,7 +3136,7 @@ body:not([data-page='admin']) .creative-beam {
   width: 180px;
   height: 520px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(247, 201, 161, 0.58), rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg, rgba(212, 55, 113, 0.32), rgba(178, 31, 82, 0.14), rgba(255, 255, 255, 0));
   filter: blur(8px);
   opacity: 0.72;
 }
@@ -3110,7 +3171,7 @@ body:not([data-page='admin']) .creative-float {
 }
 
 body:not([data-page='admin']) .creative-float span {
-  color: #b76c35;
+  color: var(--theme-pink);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -3118,7 +3179,7 @@ body:not([data-page='admin']) .creative-float span {
 }
 
 body:not([data-page='admin']) .creative-float strong {
-  color: #1d2736;
+  color: var(--theme-ink);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.05rem;
   line-height: 1.15;
@@ -3141,8 +3202,8 @@ body:not([data-page='admin']) .creative-float-side {
 body:not([data-page='admin']) .creative-orb {
   position: absolute;
   border-radius: 999px;
-  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.94), rgba(238, 191, 148, 0.5) 42%, rgba(238, 191, 148, 0.04) 72%);
-  box-shadow: inset -18px -22px 34px rgba(208, 152, 94, 0.2);
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.94), rgba(212, 55, 113, 0.26) 42%, rgba(178, 31, 82, 0.04) 72%);
+  box-shadow: inset -18px -22px 34px rgba(178, 31, 82, 0.12);
 }
 
 body:not([data-page='admin']) .creative-orb-one {
@@ -3164,7 +3225,7 @@ body:not([data-page='admin']) .creative-orb-two {
 }
 
 body:not([data-page='admin']) .trust-strip p {
-  color: #526173;
+  color: var(--theme-muted);
 }
 
 body:not([data-page='admin']) .portfolio-grid,
@@ -3184,10 +3245,10 @@ body:not([data-page='admin']) .service-pillar {
   gap: 16px;
   padding: 18px;
   border-radius: 30px;
-  border: 1px solid rgba(221, 208, 191, 0.82);
+  border: 1px solid rgba(233, 220, 226, 0.82);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(252, 244, 235, 0.94));
-  box-shadow: 0 18px 40px rgba(201, 183, 160, 0.15);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 248, 250, 0.94));
+  box-shadow: 0 18px 40px rgba(178, 31, 82, 0.08);
   transform-style: preserve-3d;
   transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
 }
@@ -3195,8 +3256,8 @@ body:not([data-page='admin']) .service-pillar {
 body:not([data-page='admin']) .portfolio-card:hover,
 body:not([data-page='admin']) .portfolio-card:focus-within {
   transform: translateY(-8px);
-  border-color: rgba(214, 181, 147, 0.94);
-  box-shadow: 0 28px 56px rgba(196, 174, 150, 0.22);
+  border-color: rgba(214, 173, 189, 0.94);
+  box-shadow: 0 28px 56px rgba(178, 31, 82, 0.12);
 }
 
 body:not([data-page='admin']) .portfolio-media {
@@ -3206,7 +3267,7 @@ body:not([data-page='admin']) .portfolio-media {
   min-height: 270px;
   padding: 22px;
   border-radius: 24px;
-  border: 1px solid rgba(223, 208, 191, 0.82);
+  border: 1px solid rgba(233, 220, 226, 0.82);
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -3308,8 +3369,8 @@ body:not([data-page='admin']) .portfolio-scanline span {
 body:not([data-page='admin']) .portfolio-card:hover .portfolio-media,
 body:not([data-page='admin']) .portfolio-card:focus-within .portfolio-media {
   transform: translateY(-6px) scale(1.015);
-  box-shadow: 0 30px 60px rgba(201, 183, 160, 0.24);
-  border-color: rgba(214, 181, 147, 0.94);
+  box-shadow: 0 30px 60px rgba(178, 31, 82, 0.14);
+  border-color: rgba(214, 173, 189, 0.94);
 }
 
 body:not([data-page='admin']) .portfolio-card:hover .portfolio-media strong,
@@ -3327,32 +3388,32 @@ body:not([data-page='admin']) .portfolio-card:focus-within .portfolio-scanline s
 
 body:not([data-page='admin']) .portfolio-marketplace {
   background:
-    radial-gradient(circle at top right, rgba(255, 236, 212, 0.18), transparent 24%),
-    linear-gradient(160deg, #714326 0%, #a56439 52%, #d98c4e 100%);
+    radial-gradient(circle at top right, rgba(212, 55, 113, 0.16), transparent 24%),
+    linear-gradient(160deg, #7c183d 0%, #b21f52 52%, #d43771 100%);
 }
 
 body:not([data-page='admin']) .portfolio-performance {
   background:
-    radial-gradient(circle at top right, rgba(255, 249, 239, 0.14), transparent 24%),
-    linear-gradient(160deg, #6f3d2e 0%, #8e5238 48%, #cb8456 100%);
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 24%),
+    linear-gradient(160deg, #6f1738 0%, #8f1f49 48%, #b21f52 100%);
 }
 
 body:not([data-page='admin']) .portfolio-commerce {
   background:
-    radial-gradient(circle at top right, rgba(255, 241, 226, 0.14), transparent 24%),
-    linear-gradient(160deg, #64412b 0%, #8d6031 50%, #d59a52 100%);
+    radial-gradient(circle at top right, rgba(255, 239, 246, 0.16), transparent 24%),
+    linear-gradient(160deg, #77173c 0%, #b21f52 50%, #d43771 100%);
 }
 
 body:not([data-page='admin']) .portfolio-photo {
   background:
-    radial-gradient(circle at top right, rgba(255, 248, 236, 0.14), transparent 24%),
-    linear-gradient(160deg, #57463d 0%, #8a604a 52%, #d8a173 100%);
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 24%),
+    linear-gradient(160deg, #61152f 0%, #8f1f49 52%, #c02f60 100%);
 }
 
 body:not([data-page='admin']) .portfolio-ai {
   background:
-    radial-gradient(circle at top right, rgba(255, 244, 230, 0.16), transparent 24%),
-    linear-gradient(160deg, #5d3d33 0%, #8d5842 50%, #c9885c 100%);
+    radial-gradient(circle at top right, rgba(212, 55, 113, 0.18), transparent 24%),
+    linear-gradient(160deg, #681633 0%, #a31f4d 50%, #d43771 100%);
 }
 
 body:not([data-page='admin']) .portfolio-marketplace,
@@ -3389,7 +3450,7 @@ body:not([data-page='admin']) .video-rail-section .section-heading {
 
 body:not([data-page='admin']) .video-rail-section .section-heading p {
   margin: 0;
-  color: #667487;
+  color: var(--theme-muted);
 }
 
 body:not([data-page='admin']) .video-rail-wrap {
@@ -3412,12 +3473,12 @@ body:not([data-page='admin']) .video-rail-wrap::after {
 
 body:not([data-page='admin']) .video-rail-wrap::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(250, 240, 228, 0.98), rgba(250, 240, 228, 0));
+  background: linear-gradient(90deg, rgba(243, 244, 255, 0.98), rgba(243, 244, 255, 0));
 }
 
 body:not([data-page='admin']) .video-rail-wrap::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(250, 240, 228, 0.98), rgba(250, 240, 228, 0));
+  background: linear-gradient(270deg, rgba(243, 244, 255, 0.98), rgba(243, 244, 255, 0));
 }
 
 body:not([data-page='admin']) .video-rail-track {
@@ -3439,10 +3500,10 @@ body:not([data-page='admin']) .video-rail-card {
   gap: 14px;
   padding: 16px;
   border-radius: 30px;
-  border: 1px solid rgba(224, 210, 193, 0.88);
+  border: 1px solid rgba(199, 204, 238, 0.88);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(252, 244, 235, 0.94));
-  box-shadow: 0 22px 52px rgba(194, 172, 147, 0.18);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 244, 255, 0.94));
+  box-shadow: 0 22px 52px rgba(91, 63, 209, 0.14);
   transform-style: preserve-3d;
   transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
 }
@@ -3450,8 +3511,8 @@ body:not([data-page='admin']) .video-rail-card {
 body:not([data-page='admin']) .video-rail-card:hover,
 body:not([data-page='admin']) .video-rail-card:focus-within {
   transform: translateY(-8px) rotateX(4deg);
-  border-color: rgba(212, 178, 143, 0.96);
-  box-shadow: 0 30px 64px rgba(194, 172, 147, 0.24);
+  border-color: rgba(164, 174, 235, 0.96);
+  box-shadow: 0 30px 64px rgba(91, 63, 209, 0.18);
 }
 
 body:not([data-page='admin']) .video-rail-shell {
@@ -3460,11 +3521,11 @@ body:not([data-page='admin']) .video-rail-shell {
   padding: 14px;
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(247, 234, 220, 0.78));
-  border: 1px solid rgba(228, 214, 198, 0.88);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(239, 243, 255, 0.78));
+  border: 1px solid rgba(205, 208, 242, 0.88);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.88),
-    0 16px 34px rgba(200, 178, 153, 0.16);
+    0 16px 34px rgba(91, 63, 209, 0.12);
 }
 
 body:not([data-page='admin']) .video-rail-chrome {
@@ -3476,7 +3537,7 @@ body:not([data-page='admin']) .video-rail-chrome span {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(193, 149, 110, 0.45);
+  background: rgba(91, 63, 209, 0.35);
 }
 
 body:not([data-page='admin']) .video-rail-screen {
@@ -3490,11 +3551,13 @@ body:not([data-page='admin']) .video-rail-screen {
   transform: translateZ(12px);
 }
 
-body:not([data-page='admin']) .video-rail-screen img {
+body:not([data-page='admin']) .video-rail-screen img,
+body:not([data-page='admin']) .video-rail-screen video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  background: #000000;
   filter: saturate(1.08) contrast(1.02);
   transform: scale(1.02);
   animation: video-frame-breathe 8s ease-in-out infinite;
@@ -3587,7 +3650,7 @@ body:not([data-page='admin']) .video-rail-progress span {
   width: 42%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #fff5ea, #efb06f);
+  background: linear-gradient(90deg, #4262d6, #e63a6e);
   animation: video-progress-move 4.6s linear infinite;
 }
 
@@ -3602,7 +3665,7 @@ body:not([data-page='admin']) .video-rail-copy span {
   padding: 7px 11px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.82);
-  color: #b76c35;
+  color: var(--theme-pink);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -3613,25 +3676,25 @@ body:not([data-page='admin']) .video-rail-copy strong {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.18rem;
   line-height: 1.08;
-  color: #1d2736;
+  color: var(--theme-ink);
 }
 
 body:not([data-page='admin']) .video-rail-copy p {
   margin: 0;
-  color: #667487;
+  color: var(--theme-muted);
   line-height: 1.65;
 }
 
 body:not([data-page='admin']) .video-theme-1 {
-  background: linear-gradient(160deg, #f3c396, #8d532f);
+  background: linear-gradient(160deg, #4262d6, #5b3fd1);
 }
 
 body:not([data-page='admin']) .video-theme-2 {
-  background: linear-gradient(160deg, #f5dcc6, #7f5134);
+  background: linear-gradient(160deg, #5b3fd1, #e63a6e);
 }
 
 body:not([data-page='admin']) .video-theme-3 {
-  background: linear-gradient(160deg, #f0cba7, #6e4a34);
+  background: linear-gradient(160deg, #314cb9, #4262d6);
 }
 
 body:not([data-page='admin']) .lead-form {
@@ -3642,10 +3705,10 @@ body:not([data-page='admin']) .lead-form {
 body:not([data-page='admin']) .lead-form label {
   padding: 14px;
   border-radius: 24px;
-  border: 1px solid rgba(228, 214, 198, 0.92);
+  border: 1px solid rgba(205, 208, 242, 0.92);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 240, 230, 0.78));
-  box-shadow: 0 16px 32px rgba(201, 183, 160, 0.12);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(241, 244, 255, 0.78));
+  box-shadow: 0 16px 32px rgba(91, 63, 209, 0.1);
   transform-style: preserve-3d;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
   animation: panel-breathe 8s ease-in-out infinite;
@@ -3654,38 +3717,38 @@ body:not([data-page='admin']) .lead-form label {
 body:not([data-page='admin']) .lead-form label:hover,
 body:not([data-page='admin']) .lead-form label:focus-within {
   transform: translateY(-3px) rotateX(3deg);
-  border-color: rgba(213, 189, 166, 0.96);
-  box-shadow: 0 22px 40px rgba(201, 183, 160, 0.18);
+  border-color: rgba(164, 174, 235, 0.96);
+  box-shadow: 0 22px 40px rgba(91, 63, 209, 0.14);
 }
 
 body:not([data-page='admin']) .lead-form input,
 body:not([data-page='admin']) .lead-form select,
 body:not([data-page='admin']) .lead-form textarea {
-  border: 1px solid rgba(219, 204, 185, 0.96);
+  border: 1px solid rgba(205, 208, 242, 0.96);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 242, 234, 0.92));
-  color: #233246;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(243, 245, 255, 0.92));
+  color: var(--theme-ink);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.86),
-    0 10px 24px rgba(208, 188, 164, 0.08);
+    0 10px 24px rgba(91, 63, 209, 0.08);
 }
 
 body:not([data-page='admin']) .lead-form select {
-  color: #233246;
+  color: var(--theme-ink);
   background-color: rgba(255, 255, 255, 0.96);
   background-image:
-    linear-gradient(135deg, transparent 50%, rgba(183, 108, 53, 0.95) 50%),
-    linear-gradient(45deg, rgba(183, 108, 53, 0.95) 50%, transparent 50%);
+    linear-gradient(135deg, transparent 50%, rgba(91, 63, 209, 0.95) 50%),
+    linear-gradient(45deg, rgba(230, 58, 110, 0.95) 50%, transparent 50%);
 }
 
 body:not([data-page='admin']) .lead-form select option {
-  color: #233246;
-  background: #fffaf4;
+  color: var(--theme-ink);
+  background: #f8f9ff;
 }
 
 body:not([data-page='admin']) .lead-form select option:checked {
-  background: #efb06f;
-  color: #1d2736;
+  background: #dbe3ff;
+  color: var(--theme-ink);
 }
 
 body:not([data-page='admin']) .lead-form input::placeholder,
@@ -3696,24 +3759,24 @@ body:not([data-page='admin']) .lead-form textarea::placeholder {
 body:not([data-page='admin']) .lead-form input:focus,
 body:not([data-page='admin']) .lead-form select:focus,
 body:not([data-page='admin']) .lead-form textarea:focus {
-  border-color: rgba(221, 146, 87, 0.9);
+  border-color: rgba(91, 63, 209, 0.9);
   box-shadow:
-    0 0 0 4px rgba(233, 176, 111, 0.2),
-    0 18px 34px rgba(208, 188, 164, 0.14);
+    0 0 0 4px rgba(66, 98, 214, 0.16),
+    0 18px 34px rgba(91, 63, 209, 0.12);
   transform: translateY(-1px) translateZ(12px);
 }
 
 body:not([data-page='admin']) .select-field::before {
-  background: linear-gradient(135deg, rgba(232, 179, 125, 0.34), rgba(247, 214, 180, 0.2));
+  background: linear-gradient(135deg, rgba(66, 98, 214, 0.24), rgba(91, 63, 209, 0.16));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 body:not([data-page='admin']) .select-field::after {
-  background: radial-gradient(circle, rgba(236, 175, 111, 0.44), rgba(255, 238, 219, 0.08));
+  background: radial-gradient(circle, rgba(230, 58, 110, 0.24), rgba(66, 98, 214, 0.08));
 }
 
 body:not([data-page='admin']) .select-field .select-glow {
-  background: linear-gradient(90deg, rgba(232, 179, 125, 0.2), rgba(247, 214, 180, 0.14), transparent 72%);
+  background: linear-gradient(90deg, rgba(66, 98, 214, 0.18), rgba(230, 58, 110, 0.14), transparent 72%);
 }
 
 body:not([data-page='admin']) .appointment-panel {
@@ -3773,6 +3836,1534 @@ body:not([data-page='admin']) .site-footer {
 body:not([data-page='admin']) .footer-details a,
 body:not([data-page='admin']) .footer-note {
   color: #5c6a7c;
+}
+
+body:not([data-page='admin']) {
+  background: #ffffff;
+}
+
+body:not([data-page='admin'])::before,
+body:not([data-page='admin'])::after,
+body:not([data-page='admin']) .ambient,
+body:not([data-page='admin']) .site-visuals,
+body:not([data-page='admin']) .hero-background-motion,
+body:not([data-page='admin']) .section::before,
+body:not([data-page='admin']) .section::after {
+  content: none;
+  display: none;
+}
+
+body:not([data-page='admin']) .site-shell,
+body:not([data-page='admin']) main,
+body:not([data-page='admin']) .section,
+body:not([data-page='admin']) .hero-section {
+  background: #ffffff;
+}
+
+body:not([data-page='admin']) .top-ribbon,
+body:not([data-page='admin']) .service-mega-menu,
+body:not([data-page='admin']) .page-hero,
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .case-deep-dive,
+body:not([data-page='admin']) .cta-banner,
+body:not([data-page='admin']) .hero-form-card,
+body:not([data-page='admin']) .hero-metrics article,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .service-overview-card,
+body:not([data-page='admin']) .service-detail-card,
+body:not([data-page='admin']) .service-detail-panel,
+body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .insight-card,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq,
+body:not([data-page='admin']) .site-footer,
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .service-pillar,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .case-thumb-media,
+body:not([data-page='admin']) .portfolio-media,
+body:not([data-page='admin']) .video-rail-card,
+body:not([data-page='admin']) .video-rail-shell,
+body:not([data-page='admin']) .lead-form label,
+body:not([data-page='admin']) .footer-details > div,
+body:not([data-page='admin']) .trust-items span,
+body:not([data-page='admin']) .marquee-track span,
+body:not([data-page='admin']) .service-mega-item,
+body:not([data-page='admin']) .service-mega-link,
+body:not([data-page='admin']) .appointment-timezone-option,
+body:not([data-page='admin']) .appointment-nav,
+body:not([data-page='admin']) .calendar-day,
+body:not([data-page='admin']) .appointment-slot-grid button {
+  background: #ffffff;
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+}
+
+body:not([data-page='admin']) .top-ribbon,
+body:not([data-page='admin']) .service-mega-menu,
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .case-deep-dive,
+body:not([data-page='admin']) .cta-banner,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .service-overview-card,
+body:not([data-page='admin']) .service-detail-card,
+body:not([data-page='admin']) .service-detail-panel,
+body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .insight-card,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq,
+body:not([data-page='admin']) .site-footer,
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .service-pillar,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .case-thumb-media,
+body:not([data-page='admin']) .video-rail-card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+body:not([data-page='admin']) .top-ribbon::before,
+body:not([data-page='admin']) .top-ribbon::after,
+body:not([data-page='admin']) .service-mega-menu::before,
+body:not([data-page='admin']) .service-mega-menu::after,
+body:not([data-page='admin']) .page-banner::before,
+body:not([data-page='admin']) .page-banner::after,
+body:not([data-page='admin']) .story-panel::before,
+body:not([data-page='admin']) .story-panel::after,
+body:not([data-page='admin']) .timeline-item::before,
+body:not([data-page='admin']) .timeline-item::after,
+body:not([data-page='admin']) .package-card::before,
+body:not([data-page='admin']) .package-card::after,
+body:not([data-page='admin']) .faq-panel::before,
+body:not([data-page='admin']) .faq-panel::after,
+body:not([data-page='admin']) .case-deep-dive::before,
+body:not([data-page='admin']) .case-deep-dive::after,
+body:not([data-page='admin']) .glass-card::before,
+body:not([data-page='admin']) .glass-card::after,
+body:not([data-page='admin']) .service-card::before,
+body:not([data-page='admin']) .service-card::after,
+body:not([data-page='admin']) .contact-panel::before,
+body:not([data-page='admin']) .contact-panel::after,
+body:not([data-page='admin']) .service-overview-card::before,
+body:not([data-page='admin']) .service-overview-card::after,
+body:not([data-page='admin']) .service-detail-card::before,
+body:not([data-page='admin']) .service-detail-card::after,
+body:not([data-page='admin']) .service-detail-panel::before,
+body:not([data-page='admin']) .service-detail-panel::after,
+body:not([data-page='admin']) .service-detail-hero::before,
+body:not([data-page='admin']) .service-detail-hero::after,
+body:not([data-page='admin']) .insight-card::before,
+body:not([data-page='admin']) .insight-card::after,
+body:not([data-page='admin']) .process-step::before,
+body:not([data-page='admin']) .process-step::after,
+body:not([data-page='admin']) .portfolio-card::before,
+body:not([data-page='admin']) .portfolio-card::after,
+body:not([data-page='admin']) .preview-card::before,
+body:not([data-page='admin']) .preview-card::after {
+  content: none;
+}
+
+body:not([data-page='admin']) h1,
+body:not([data-page='admin']) h2,
+body:not([data-page='admin']) h3,
+body:not([data-page='admin']) h4,
+body:not([data-page='admin']) h5,
+body:not([data-page='admin']) h6,
+body:not([data-page='admin']) .brand-text strong,
+body:not([data-page='admin']) .section-heading h2,
+body:not([data-page='admin']) .portfolio-media strong,
+body:not([data-page='admin']) .service-overview-card strong,
+body:not([data-page='admin']) .preview-card strong {
+  color: #e63a6e;
+}
+
+body:not([data-page='admin']) p,
+body:not([data-page='admin']) li,
+body:not([data-page='admin']) label,
+body:not([data-page='admin']) span,
+body:not([data-page='admin']) small,
+body:not([data-page='admin']) a,
+body:not([data-page='admin']) input,
+body:not([data-page='admin']) textarea,
+body:not([data-page='admin']) select,
+body:not([data-page='admin']) .footer-details a,
+body:not([data-page='admin']) .footer-note {
+  color: #000000;
+}
+
+body:not([data-page='admin']) .eyebrow,
+body:not([data-page='admin']) .service-detail-label,
+body:not([data-page='admin']) .service-overview-index,
+body:not([data-page='admin']) .portfolio-badge,
+body:not([data-page='admin']) .service-pillar span,
+body:not([data-page='admin']) .timeline-item span,
+body:not([data-page='admin']) .service-icon,
+body:not([data-page='admin']) .process-step span {
+  color: #e63a6e;
+}
+
+body:not([data-page='admin']) .button,
+body:not([data-page='admin']) .button-primary,
+body:not([data-page='admin']) .button-secondary,
+body:not([data-page='admin']) .appointment-timezone-option.is-selected,
+body:not([data-page='admin']) .calendar-day.is-selected,
+body:not([data-page='admin']) .appointment-slot-grid button.is-selected,
+body:not([data-page='admin']) .appointment-availability-button {
+  background: #e63a6e;
+  color: #ffffff;
+  border-color: #e63a6e;
+  box-shadow: none;
+}
+
+body:not([data-page='admin']) .button::before,
+body:not([data-page='admin']) .button::after,
+body:not([data-page='admin']) .button-inquiry::before,
+body:not([data-page='admin']) .button-inquiry::after {
+  content: none;
+}
+
+body:not([data-page='admin']) .button:hover,
+body:not([data-page='admin']) .button:focus-visible,
+body:not([data-page='admin']) .appointment-timezone-option:hover,
+body:not([data-page='admin']) .appointment-timezone-option:focus-visible,
+body:not([data-page='admin']) .appointment-nav:hover,
+body:not([data-page='admin']) .appointment-nav:focus-visible,
+body:not([data-page='admin']) .calendar-day:hover,
+body:not([data-page='admin']) .calendar-day:focus-visible,
+body:not([data-page='admin']) .appointment-slot-grid button:hover,
+body:not([data-page='admin']) .appointment-slot-grid button:focus-visible {
+  transform: translateY(-2px);
+  border-color: #e63a6e;
+}
+
+body:not([data-page='admin']) .button-secondary:hover,
+body:not([data-page='admin']) .button-secondary:focus-visible,
+body:not([data-page='admin']) .service-mega-item:hover,
+body:not([data-page='admin']) .service-mega-item:focus-visible,
+body:not([data-page='admin']) .service-mega-link:hover,
+body:not([data-page='admin']) .service-mega-link:focus-visible,
+body:not([data-page='admin']) .appointment-timezone-option:hover,
+body:not([data-page='admin']) .appointment-timezone-option:focus-visible,
+body:not([data-page='admin']) .appointment-nav:hover,
+body:not([data-page='admin']) .appointment-nav:focus-visible,
+body:not([data-page='admin']) .calendar-day:hover,
+body:not([data-page='admin']) .calendar-day:focus-visible,
+body:not([data-page='admin']) .appointment-slot-grid button:hover,
+body:not([data-page='admin']) .appointment-slot-grid button:focus-visible {
+  background: #ffffff;
+  color: #e63a6e;
+}
+
+body:not([data-page='admin']) .brand-mark {
+  background: #ffffff;
+  border-color: #e63a6e;
+  box-shadow: none;
+}
+
+body:not([data-page='admin']) .eyebrow::before,
+body:not([data-page='admin']) .service-detail-list li::before,
+body:not([data-page='admin']) .video-rail-progress span {
+  background: #e63a6e;
+}
+
+body[data-page='admin'] {
+  color: #000000;
+}
+
+body[data-page='admin'] .admin-auth-card,
+body[data-page='admin'] .admin-card,
+body[data-page='admin'] .admin-panel {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+body[data-page='admin'] .admin-kicker,
+body[data-page='admin'] .admin-message,
+body[data-page='admin'] .admin-case-item span {
+  color: #e63a6e;
+}
+
+body[data-page='admin'] .admin-auth-card h1,
+body[data-page='admin'] .admin-topbar h2,
+body[data-page='admin'] .admin-card h3,
+body[data-page='admin'] .admin-case-item h4,
+body[data-page='admin'] .admin-auth-card p,
+body[data-page='admin'] .admin-case-item p,
+body[data-page='admin'] .admin-card label span {
+  color: #000000;
+}
+
+body[data-page='admin'] .admin-card input,
+body[data-page='admin'] .admin-card textarea,
+body[data-page='admin'] .admin-auth-form input {
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #000000;
+}
+
+body[data-page='admin'] .admin-button {
+  border-color: #e63a6e;
+  background: #ffffff;
+  color: #e63a6e;
+  box-shadow: 0 10px 24px rgba(230, 58, 110, 0.12);
+}
+
+body[data-page='admin'] .admin-button:hover,
+body[data-page='admin'] .admin-button:focus-visible {
+  box-shadow: 0 16px 30px rgba(230, 58, 110, 0.18);
+}
+
+body[data-page='admin'] .admin-button-dark,
+body[data-page='admin'] .admin-button-danger {
+  background: #e63a6e;
+  color: #ffffff;
+  border-color: #e63a6e;
+}
+
+body:not([data-page='admin']) .hero-copy,
+body:not([data-page='admin']) .section-heading,
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .service-pillar,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .case-deep-dive,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq,
+body:not([data-page='admin']) .video-rail-card {
+  position: relative;
+  overflow: hidden;
+}
+
+body:not([data-page='admin']) .hero-copy h1,
+body:not([data-page='admin']) .page-banner h1,
+body:not([data-page='admin']) .section-heading h2,
+body:not([data-page='admin']) .service-detail-copy h1,
+body:not([data-page='admin']) .case-deep-dive h2,
+body:not([data-page='admin']) .story-panel h2,
+body:not([data-page='admin']) .faq-panel h2 {
+  animation: headline-soft-rise 0.9s ease both;
+}
+
+body:not([data-page='admin']) .hero-copy h1::after,
+body:not([data-page='admin']) .page-banner h1::after,
+body:not([data-page='admin']) .section-heading h2::after,
+body:not([data-page='admin']) .service-detail-copy h1::after,
+body:not([data-page='admin']) .case-deep-dive h2::after,
+body:not([data-page='admin']) .story-panel h2::after,
+body:not([data-page='admin']) .faq-panel h2::after {
+  content: '';
+  display: block;
+  width: 88px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: #e63a6e;
+  transform-origin: left center;
+  animation: underline-sweep 1s ease 120ms both;
+}
+
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .case-deep-dive {
+  animation: page-card-drift 8s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .service-pillar {
+  animation: card-float-soft 7s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq {
+  animation: card-tilt-soft 8.5s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .video-rail-card {
+  animation: card-breathe-soft 6.8s ease-in-out infinite;
+}
+
+body:not([data-page='admin']) .story-panel:nth-of-type(2n),
+body:not([data-page='admin']) .service-card:nth-of-type(2n),
+body:not([data-page='admin']) .package-card:nth-of-type(2n),
+body:not([data-page='admin']) .timeline-item:nth-of-type(2n),
+body:not([data-page='admin']) .portfolio-card:nth-of-type(2n),
+body:not([data-page='admin']) .preview-card:nth-of-type(2n),
+body:not([data-page='admin']) .service-pillar:nth-of-type(2n),
+body:not([data-page='admin']) .process-step:nth-of-type(2n) {
+  animation-delay: -2.2s;
+}
+
+body:not([data-page='admin']) .story-panel:nth-of-type(3n),
+body:not([data-page='admin']) .service-card:nth-of-type(3n),
+body:not([data-page='admin']) .package-card:nth-of-type(3n),
+body:not([data-page='admin']) .timeline-item:nth-of-type(3n),
+body:not([data-page='admin']) .portfolio-card:nth-of-type(3n),
+body:not([data-page='admin']) .preview-card:nth-of-type(3n),
+body:not([data-page='admin']) .service-pillar:nth-of-type(3n),
+body:not([data-page='admin']) .process-step:nth-of-type(3n) {
+  animation-delay: -4.1s;
+}
+
+body:not([data-page='admin']) .page-banner::before,
+body:not([data-page='admin']) .story-panel::before,
+body:not([data-page='admin']) .service-card::before,
+body:not([data-page='admin']) .glass-card::before,
+body:not([data-page='admin']) .timeline-item::before,
+body:not([data-page='admin']) .package-card::before,
+body:not([data-page='admin']) .faq-panel::before,
+body:not([data-page='admin']) .process-step::before,
+body:not([data-page='admin']) .portfolio-card::before,
+body:not([data-page='admin']) .preview-card::before,
+body:not([data-page='admin']) .service-pillar::before,
+body:not([data-page='admin']) .contact-panel::before,
+body:not([data-page='admin']) .case-deep-dive::before,
+body:not([data-page='admin']) .appointment-topbar::before,
+body:not([data-page='admin']) .appointment-calendar-card::before,
+body:not([data-page='admin']) .appointment-slot-card::before,
+body:not([data-page='admin']) .appointment-faq::before,
+body:not([data-page='admin']) .video-rail-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(230, 58, 110, 0.08) 45%, transparent 100%);
+  transform: translateX(-130%);
+  animation: card-shine-pass 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body:not([data-page='admin']) .page-banner:hover,
+body:not([data-page='admin']) .story-panel:hover,
+body:not([data-page='admin']) .service-card:hover,
+body:not([data-page='admin']) .glass-card:hover,
+body:not([data-page='admin']) .timeline-item:hover,
+body:not([data-page='admin']) .package-card:hover,
+body:not([data-page='admin']) .faq-panel:hover,
+body:not([data-page='admin']) .process-step:hover,
+body:not([data-page='admin']) .portfolio-card:hover,
+body:not([data-page='admin']) .preview-card:hover,
+body:not([data-page='admin']) .service-pillar:hover,
+body:not([data-page='admin']) .contact-panel:hover,
+body:not([data-page='admin']) .case-deep-dive:hover,
+body:not([data-page='admin']) .appointment-topbar:hover,
+body:not([data-page='admin']) .appointment-calendar-card:hover,
+body:not([data-page='admin']) .appointment-slot-card:hover,
+body:not([data-page='admin']) .appointment-faq:hover,
+body:not([data-page='admin']) .video-rail-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #e63a6e;
+  box-shadow: 0 18px 38px rgba(230, 58, 110, 0.12);
+}
+
+body:not([data-page='admin']) .portfolio-media,
+body:not([data-page='admin']) .video-rail-shell,
+body:not([data-page='admin']) .video-rail-screen,
+body:not([data-page='admin']) .video-rail-copy span,
+body:not([data-page='admin']) .video-rail-timecode,
+body:not([data-page='admin']) .lead-form label,
+body:not([data-page='admin']) .lead-form input,
+body:not([data-page='admin']) .lead-form select,
+body:not([data-page='admin']) .lead-form textarea,
+body:not([data-page='admin']) .appointment-clock,
+body:not([data-page='admin']) .appointment-nav,
+body:not([data-page='admin']) .calendar-day,
+body:not([data-page='admin']) .appointment-slot-grid button,
+body:not([data-page='admin']) .appointment-timezone-option,
+body:not([data-page='admin']) .portfolio-marketplace,
+body:not([data-page='admin']) .portfolio-performance,
+body:not([data-page='admin']) .portfolio-commerce,
+body:not([data-page='admin']) .portfolio-photo,
+body:not([data-page='admin']) .portfolio-ai,
+body:not([data-page='admin']) .video-theme-1,
+body:not([data-page='admin']) .video-theme-2,
+body:not([data-page='admin']) .video-theme-3 {
+  background: #ffffff;
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+}
+
+body:not([data-page='admin']) .portfolio-media::before,
+body:not([data-page='admin']) .portfolio-media::after,
+body:not([data-page='admin']) .video-rail-screen::before,
+body:not([data-page='admin']) .video-rail-screen::after,
+body:not([data-page='admin']) .video-rail-glow,
+body:not([data-page='admin']) .video-rail-wrap::before,
+body:not([data-page='admin']) .video-rail-wrap::after,
+body:not([data-page='admin']) .select-field::before,
+body:not([data-page='admin']) .select-field::after,
+body:not([data-page='admin']) .select-field .select-glow {
+  content: none;
+  display: none;
+}
+
+body:not([data-page='admin']) .portfolio-media strong,
+body:not([data-page='admin']) .video-rail-copy strong,
+body:not([data-page='admin']) .appointment-clock strong,
+body:not([data-page='admin']) .video-rail-timecode,
+body:not([data-page='admin']) .lead-form select option:checked {
+  color: #e63a6e;
+}
+
+body:not([data-page='admin']) .video-rail-copy p,
+body:not([data-page='admin']) .appointment-clock small,
+body:not([data-page='admin']) .appointment-status,
+body:not([data-page='admin']) .appointment-weekdays span,
+body:not([data-page='admin']) .lead-form input::placeholder,
+body:not([data-page='admin']) .lead-form textarea::placeholder {
+  color: #000000;
+  opacity: 0.72;
+}
+
+body:not([data-page='admin']) .video-rail-progress,
+body:not([data-page='admin']) .marquee-track span,
+body:not([data-page='admin']) .trust-items span,
+body:not([data-page='admin']) .footer-details > div {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  color: #000000;
+}
+
+body:not([data-page='admin']) .video-rail-progress span,
+body:not([data-page='admin']) .service-icon,
+body:not([data-page='admin']) .timeline-item span,
+body:not([data-page='admin']) .process-step span {
+  background: #e63a6e;
+  color: #ffffff;
+}
+
+body:not([data-page='admin']) .button,
+body:not([data-page='admin']) .appointment-timezone-option.is-selected,
+body:not([data-page='admin']) .calendar-day.is-selected,
+body:not([data-page='admin']) .appointment-slot-grid button.is-selected,
+body:not([data-page='admin']) .appointment-availability-button {
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    background-color 240ms ease,
+    color 240ms ease,
+    border-color 240ms ease;
+}
+
+body:not([data-page='admin']) .button:hover,
+body:not([data-page='admin']) .button:focus-visible,
+body:not([data-page='admin']) .appointment-timezone-option.is-selected:hover,
+body:not([data-page='admin']) .calendar-day.is-selected:hover,
+body:not([data-page='admin']) .appointment-slot-grid button.is-selected:hover,
+body:not([data-page='admin']) .appointment-availability-button:hover {
+  box-shadow: 0 16px 34px rgba(230, 58, 110, 0.2);
+}
+
+@keyframes headline-soft-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    letter-spacing: 0.04em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0;
+  }
+}
+
+@keyframes underline-sweep {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes page-card-drift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.004);
+  }
+}
+
+@keyframes card-float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes card-tilt-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-5px) rotate(-0.4deg);
+  }
+  70% {
+    transform: translateY(-2px) rotate(0.4deg);
+  }
+}
+
+@keyframes card-breathe-soft {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(230, 58, 110, 0);
+  }
+  50% {
+    transform: scale(1.012);
+    box-shadow: 0 14px 30px rgba(230, 58, 110, 0.1);
+  }
+}
+
+@keyframes card-shine-pass {
+  0%,
+  12% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+  24% {
+    opacity: 1;
+  }
+  46% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not([data-page='admin']) .hero-copy h1,
+  body:not([data-page='admin']) .page-banner h1,
+  body:not([data-page='admin']) .section-heading h2,
+  body:not([data-page='admin']) .service-detail-copy h1,
+  body:not([data-page='admin']) .case-deep-dive h2,
+  body:not([data-page='admin']) .story-panel h2,
+  body:not([data-page='admin']) .faq-panel h2,
+  body:not([data-page='admin']) .page-banner,
+  body:not([data-page='admin']) .story-panel,
+  body:not([data-page='admin']) .contact-panel,
+  body:not([data-page='admin']) .case-deep-dive,
+  body:not([data-page='admin']) .service-card,
+  body:not([data-page='admin']) .glass-card,
+  body:not([data-page='admin']) .package-card,
+  body:not([data-page='admin']) .faq-panel,
+  body:not([data-page='admin']) .service-pillar,
+  body:not([data-page='admin']) .timeline-item,
+  body:not([data-page='admin']) .process-step,
+  body:not([data-page='admin']) .appointment-topbar,
+  body:not([data-page='admin']) .appointment-calendar-card,
+  body:not([data-page='admin']) .appointment-slot-card,
+  body:not([data-page='admin']) .appointment-faq,
+  body:not([data-page='admin']) .portfolio-card,
+  body:not([data-page='admin']) .preview-card,
+  body:not([data-page='admin']) .video-rail-card,
+  body:not([data-page='admin']) .page-banner::before,
+  body:not([data-page='admin']) .story-panel::before,
+  body:not([data-page='admin']) .service-card::before,
+  body:not([data-page='admin']) .glass-card::before,
+  body:not([data-page='admin']) .timeline-item::before,
+  body:not([data-page='admin']) .package-card::before,
+  body:not([data-page='admin']) .faq-panel::before,
+  body:not([data-page='admin']) .process-step::before,
+  body:not([data-page='admin']) .portfolio-card::before,
+  body:not([data-page='admin']) .preview-card::before,
+  body:not([data-page='admin']) .service-pillar::before,
+  body:not([data-page='admin']) .contact-panel::before,
+  body:not([data-page='admin']) .case-deep-dive::before,
+  body:not([data-page='admin']) .appointment-topbar::before,
+  body:not([data-page='admin']) .appointment-calendar-card::before,
+  body:not([data-page='admin']) .appointment-slot-card::before,
+  body:not([data-page='admin']) .appointment-faq::before,
+  body:not([data-page='admin']) .video-rail-card::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body:not([data-page='admin']) {
+  background: #dbe8ff;
+}
+
+body:not([data-page='admin']) .site-shell,
+body:not([data-page='admin']) main,
+body:not([data-page='admin']) .section,
+body:not([data-page='admin']) .hero-section {
+  background: #dbe8ff;
+}
+
+body:not([data-page='admin']) .top-ribbon,
+body:not([data-page='admin']) .service-mega-menu,
+body:not([data-page='admin']) .page-hero,
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .case-deep-dive,
+body:not([data-page='admin']) .cta-banner,
+body:not([data-page='admin']) .hero-form-card,
+body:not([data-page='admin']) .hero-metrics article,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .service-overview-card,
+body:not([data-page='admin']) .service-detail-card,
+body:not([data-page='admin']) .service-detail-panel,
+body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .insight-card,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq,
+body:not([data-page='admin']) .site-footer,
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .service-pillar,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .case-thumb-media,
+body:not([data-page='admin']) .portfolio-media,
+body:not([data-page='admin']) .video-rail-card,
+body:not([data-page='admin']) .video-rail-shell {
+  background: #eef4ff;
+}
+
+body[data-page='home'] .hero-copy h1 {
+  font-size: clamp(2.3rem, 4.6vw, 4.4rem);
+  max-width: 11ch;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-grid {
+  perspective: 1800px;
+  align-items: stretch;
+}
+
+body[data-page='home'] .portfolio-book-stage {
+  display: flex;
+  justify-content: center;
+}
+
+body[data-page='home'] .portfolio-book {
+  width: min(100%, 760px);
+  display: grid;
+  gap: 24px;
+}
+
+body[data-page='home'] .portfolio-book-shell {
+  position: relative;
+  min-height: 500px;
+  perspective: 2200px;
+}
+
+body[data-page='home'] .portfolio-book-spine {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 22px;
+  border-radius: 22px 0 0 22px;
+  background: linear-gradient(180deg, #e63a6e, #9d183f);
+  box-shadow:
+    inset -3px 0 0 rgba(255, 255, 255, 0.24),
+    8px 0 18px rgba(0, 0, 0, 0.22);
+}
+
+body[data-page='home'] .portfolio-book-pages {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 18px;
+  border-radius: 18px 24px 24px 18px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.97) 0 17px,
+      rgba(0, 0, 0, 0.08) 17px 18px
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    inset -20px 0 26px rgba(0, 0, 0, 0.1),
+    0 24px 44px rgba(0, 0, 0, 0.22);
+}
+
+body[data-page='home'] .portfolio-book-sheet {
+  position: absolute;
+  inset: 28px 24px 28px 36px;
+  border-radius: 16px 22px 22px 16px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+body[data-page='home'] .portfolio-book-sheet-back {
+  transform: translateX(8px);
+  opacity: 0.44;
+}
+
+body[data-page='home'] .portfolio-book-sheet-front {
+  transform: translateX(2px);
+  opacity: 0.8;
+}
+
+body[data-page='home'] .portfolio-book-page {
+  position: absolute;
+  inset: 36px 34px 36px 54px;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 20px;
+  padding: 38px 40px;
+  border-radius: 18px 24px 24px 18px;
+  background: #ffffff;
+  color: #111111 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04),
+    inset -18px 0 24px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 2200ms cubic-bezier(0.2, 0.78, 0.18, 1),
+    opacity 1400ms ease;
+}
+
+body[data-page='home'] .portfolio-book-page-label {
+  color: #e63a6e !important;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+body[data-page='home'] .portfolio-book-page strong,
+body[data-page='home'] .portfolio-book-page p {
+  color: #111111 !important;
+}
+
+body[data-page='home'] .portfolio-book-page h3 {
+  margin: 0;
+  color: #e63a6e !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body[data-page='home'] .portfolio-book-page strong {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.12;
+}
+
+body[data-page='home'] .portfolio-book-page p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+body[data-page='home'] .portfolio-book-cover {
+  position: absolute;
+  inset: 0 18px 0 16px;
+  z-index: 2;
+  display: grid;
+  align-content: end;
+  gap: 16px;
+  padding: 40px 36px 38px 54px;
+  border-radius: 28px 24px 24px 28px;
+  background: linear-gradient(160deg, #0b0b0b 0%, #171717 100%);
+  border: 1px solid rgba(230, 58, 110, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    22px 0 36px rgba(0, 0, 0, 0.28);
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition:
+    transform 2400ms cubic-bezier(0.2, 0.78, 0.18, 1),
+    box-shadow 2400ms ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+body[data-page='home'] .portfolio-book-cover::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(230, 58, 110, 0.14);
+}
+
+body[data-page='home'] .portfolio-book-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0) 0%, rgba(230, 58, 110, 0.14) 48%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-120%) skewX(-12deg);
+  animation: portfolio-cover-sheen 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body[data-page='home'] .portfolio-book-cover strong,
+body[data-page='home'] .portfolio-book-cover small {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page='home'] .portfolio-book-cover strong {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.12;
+}
+
+body[data-page='home'] .portfolio-book-cover small {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body[data-page='home'] .portfolio-book-controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+body[data-page='home'] .portfolio-book-status {
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+body[data-page='home'] .portfolio-book-controls button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+body[data-page='home'] .portfolio-book.is-forward.is-flipping .portfolio-book-cover {
+  transform: rotateY(-158deg);
+  box-shadow:
+    28px 0 42px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body[data-page='home'] .portfolio-book.is-reverse.is-flipping .portfolio-book-cover {
+  transform: rotateY(158deg);
+  box-shadow:
+    -28px 0 42px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body[data-page='home'] .portfolio-book.is-resting .portfolio-book-page {
+  transform: translateX(6px);
+}
+
+body[data-page='home'] .portfolio-book.is-flipping .portfolio-book-page {
+  transform: translateX(12px);
+  opacity: 0.97;
+}
+
+body[data-page='home'] .portfolio-book.is-flipping .portfolio-book-sheet-front {
+  transform: translateX(10px);
+  opacity: 0.72;
+  transition: transform 2200ms ease, opacity 2200ms ease;
+}
+
+body[data-page='home'] .portfolio-book.is-flipping .portfolio-book-sheet-back {
+  transform: translateX(16px);
+  opacity: 0.4;
+  transition: transform 2200ms ease, opacity 2200ms ease;
+}
+
+body[data-page='home'] .portfolio-book .portfolio-badge {
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+@keyframes portfolio-cover-sheen {
+  0%,
+  54% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(120%) skewX(-12deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card {
+  position: relative;
+  display: block;
+  min-height: 388px;
+  padding: 0;
+  overflow: visible;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  border-color: rgba(230, 58, 110, 0.18);
+  border-radius: 30px 24px 24px 30px;
+  box-shadow:
+    0 22px 46px rgba(40, 84, 160, 0.12),
+    0 10px 22px rgba(0, 0, 0, 0.06);
+  animation: portfolio-book-sway 11s ease-in-out infinite;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 10px;
+  border-radius: 18px 0 0 18px;
+  background: linear-gradient(180deg, #e63a6e, #b81f52);
+  box-shadow:
+    inset -2px 0 0 rgba(255, 255, 255, 0.35),
+    4px 0 12px rgba(230, 58, 110, 0.12);
+  transform: translateZ(8px);
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card::after {
+  content: '';
+  position: absolute;
+  inset: 20px 18px 20px 22px;
+  border-radius: 22px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.95) 0 18px,
+      rgba(0, 0, 0, 0.05) 18px 19px
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset -14px 0 18px rgba(0, 0, 0, 0.08);
+  transform: translateZ(-2px);
+  animation: portfolio-page-sheen 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card:hover,
+body[data-page='home'] .portfolio-section .portfolio-card:focus-within {
+  transform: translateY(-10px) translateX(2px);
+  box-shadow:
+    0 28px 60px rgba(40, 84, 160, 0.16),
+    0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
+body[data-page='home'] .portfolio-section .portfolio-media {
+  position: absolute;
+  inset: 0;
+  min-height: 320px;
+  padding: 26px 22px 24px 34px;
+  border-radius: 26px 20px 20px 26px;
+  transform-style: preserve-3d;
+  align-content: end;
+  background: linear-gradient(160deg, #eef4ff 0%, #d9e6ff 100%);
+  backface-visibility: hidden;
+  transform-origin: left center;
+  transform: perspective(1800px) rotateY(0deg);
+  transition:
+    transform 1200ms cubic-bezier(0.22, 0.8, 0.2, 1),
+    box-shadow 1200ms ease,
+    border-color 1200ms ease;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    12px 0 26px rgba(0, 0, 0, 0.18);
+}
+
+body[data-page='home'] .portfolio-section .portfolio-glow,
+body[data-page='home'] .portfolio-section .portfolio-orbit,
+body[data-page='home'] .portfolio-section .portfolio-scanline {
+  display: none;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-media strong {
+  margin: 0;
+  padding: 18px 18px 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(230, 58, 110, 0.08), rgba(0, 0, 0, 0.9));
+  transform: translateZ(24px);
+  font-size: 1.3rem;
+  line-height: 1.18;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-badge {
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(230, 58, 110, 0.16);
+  background: rgba(255, 255, 255, 0.86);
+  transform: translateZ(28px);
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card > p {
+  position: absolute;
+  inset: 22px 18px 22px 26px;
+  z-index: 0;
+  margin: 0;
+  padding: 28px 24px 28px 28px;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #111111 !important;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  transition: transform 1200ms cubic-bezier(0.22, 0.8, 0.2, 1);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05),
+    inset -18px 0 24px rgba(0, 0, 0, 0.06);
+  opacity: 0.96;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card > p::before {
+  content: 'Inside';
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  color: #e63a6e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card:hover .portfolio-media,
+body[data-page='home'] .portfolio-section .portfolio-card:focus-within .portfolio-media {
+  transform: perspective(1800px) rotateY(-148deg);
+  box-shadow:
+    24px 0 36px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card:hover .portfolio-media strong,
+body[data-page='home'] .portfolio-section .portfolio-card:focus-within .portfolio-media strong,
+body[data-page='home'] .portfolio-section .portfolio-card:hover .portfolio-badge,
+body[data-page='home'] .portfolio-section .portfolio-card:focus-within .portfolio-badge {
+  opacity: 0.08;
+}
+
+body[data-page='home'] .portfolio-section .portfolio-card:hover > p,
+body[data-page='home'] .portfolio-section .portfolio-card:focus-within > p {
+  transform: translateX(6px);
+}
+
+@keyframes portfolio-book-sway {
+  0%,
+  100% {
+    transform: rotateY(0deg) rotateZ(0deg) translateY(0);
+  }
+  33% {
+    transform: rotateY(-2deg) rotateZ(-0.2deg) translateY(-2px);
+  }
+  66% {
+    transform: rotateY(1deg) rotateZ(0.15deg) translateY(-4px);
+  }
+}
+
+@keyframes portfolio-page-sheen {
+  0%,
+  28% {
+    opacity: 0.86;
+  }
+  42% {
+    opacity: 0.96;
+  }
+  68% {
+    opacity: 0.88;
+  }
+  100% {
+    opacity: 0.92;
+  }
+}
+
+body[data-page='home'] .hero-section.page-hero-home {
+  overflow: visible;
+}
+
+body[data-page='home'] .hero-visual {
+  border-color: rgba(230, 58, 110, 0.28);
+  box-shadow:
+    0 30px 70px rgba(230, 58, 110, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+body[data-page='home'] .hero-background-motion {
+  display: block !important;
+  opacity: 1;
+}
+
+body[data-page='home'] .hero-background-motion::before,
+body[data-page='home'] .hero-background-motion::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+body[data-page='home'] .hero-background-motion::before {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(230, 58, 110, 0.18), transparent 24%),
+    radial-gradient(circle at 80% 22%, rgba(230, 58, 110, 0.14), transparent 20%),
+    radial-gradient(circle at 66% 82%, rgba(230, 58, 110, 0.12), transparent 22%);
+  animation: hero-glow-drift 12s ease-in-out infinite;
+}
+
+body[data-page='home'] .hero-background-motion::after {
+  inset: 22px;
+  border-radius: 30px;
+  border: 1px solid rgba(230, 58, 110, 0.14);
+  background:
+    linear-gradient(rgba(230, 58, 110, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 58, 110, 0.05) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 88%);
+  animation: hero-grid-shift 14s linear infinite;
+}
+
+body[data-page='home'] .motion-ribbon {
+  width: 150%;
+  height: 168px;
+  left: -20%;
+  opacity: 0.82;
+  filter: blur(12px);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 58, 110, 0.06), rgba(230, 58, 110, 0.3), rgba(255, 255, 255, 0));
+}
+
+body[data-page='home'] .motion-ribbon-one {
+  top: 4%;
+  animation: ribbon-drift-home-one 12s linear infinite;
+}
+
+body[data-page='home'] .motion-ribbon-two {
+  top: 36%;
+  animation: ribbon-drift-home-two 15s linear infinite;
+}
+
+body[data-page='home'] .motion-ribbon-three {
+  bottom: 8%;
+  animation: ribbon-drift-home-three 13s linear infinite;
+}
+
+body[data-page='home'] .motion-pulse {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.92), rgba(230, 58, 110, 0.2) 44%, rgba(230, 58, 110, 0.04) 68%, transparent 78%);
+  opacity: 0.92;
+  filter: blur(2px);
+}
+
+body[data-page='home'] .motion-pulse-one {
+  width: 360px;
+  height: 360px;
+  top: -10%;
+  right: -8%;
+  animation: pulse-cloud-home 8.8s ease-in-out infinite;
+}
+
+body[data-page='home'] .motion-pulse-two {
+  width: 280px;
+  height: 280px;
+  bottom: -4%;
+  left: -5%;
+  animation: pulse-cloud-home 10.2s ease-in-out infinite reverse;
+}
+
+body[data-page='home'] .motion-particle {
+  background: radial-gradient(circle at 30% 30%, #ffffff, rgba(230, 58, 110, 0.72) 54%, rgba(230, 58, 110, 0.14) 76%);
+  box-shadow:
+    inset -8px -10px 16px rgba(230, 58, 110, 0.18),
+    0 12px 24px rgba(230, 58, 110, 0.12);
+}
+
+body[data-page='home'] .motion-particle-one {
+  animation: particle-orbit-home 6.6s ease-in-out infinite;
+}
+
+body[data-page='home'] .motion-particle-two {
+  animation: particle-orbit-home 8.2s ease-in-out infinite reverse;
+}
+
+body[data-page='home'] .motion-particle-three {
+  animation: particle-orbit-home 5.8s ease-in-out infinite;
+}
+
+body[data-page='home'] .creative-stage {
+  animation: stage-sway-home 10s ease-in-out infinite;
+}
+
+body[data-page='home'] .creative-float-main,
+body[data-page='home'] .creative-float-side {
+  border-color: rgba(230, 58, 110, 0.24);
+  box-shadow: 0 18px 32px rgba(230, 58, 110, 0.12);
+  animation: float-badge-home 6.4s ease-in-out infinite;
+}
+
+body[data-page='home'] .creative-float-side {
+  animation-delay: -2.8s;
+}
+
+body[data-page='home'] .creative-orb-one,
+body[data-page='home'] .creative-orb-two {
+  animation-duration: 7.8s;
+}
+
+body[data-page='home'] .hero-preview-wall {
+  transform: rotateX(12deg) rotateY(-10deg);
+  animation: hero-wall-sway 9s ease-in-out infinite;
+}
+
+body[data-page='home'] .preview-card {
+  border-color: rgba(230, 58, 110, 0.18);
+  box-shadow:
+    0 24px 44px rgba(230, 58, 110, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+body[data-page='home'] .preview-card:hover {
+  transform: translateY(-12px) translateZ(20px) scale(1.03);
+  box-shadow:
+    0 34px 60px rgba(230, 58, 110, 0.18),
+    0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
+body[data-page='home'] .preview-card-video {
+  animation: preview-card-home-one 7s ease-in-out infinite;
+}
+
+body[data-page='home'] .preview-card-static {
+  animation: preview-card-home-two 7.8s ease-in-out infinite;
+}
+
+body[data-page='home'] .preview-card-motion {
+  animation: preview-card-home-three 6.8s ease-in-out infinite;
+}
+
+body[data-page='home'] .preview-card-growth {
+  animation: preview-card-home-four 8.4s ease-in-out infinite;
+}
+
+body[data-page='home'] .hero-proof-badges span,
+body[data-page='home'] .hero-client-strip span {
+  border-color: rgba(230, 58, 110, 0.2);
+  box-shadow: 0 12px 24px rgba(230, 58, 110, 0.08);
+  animation: badge-pop-home 5.8s ease-in-out infinite;
+}
+
+body[data-page='home'] .hero-proof-badges span:nth-child(2),
+body[data-page='home'] .hero-client-strip span:nth-child(2) {
+  animation-delay: -1.2s;
+}
+
+body[data-page='home'] .hero-proof-badges span:nth-child(3),
+body[data-page='home'] .hero-client-strip span:nth-child(3) {
+  animation-delay: -2.4s;
+}
+
+body[data-page='home'] .hero-proof-badges span:nth-child(4),
+body[data-page='home'] .hero-client-strip span:nth-child(4) {
+  animation-delay: -3.6s;
+}
+
+@keyframes hero-glow-drift {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate3d(-10px, 12px, 0);
+  }
+}
+
+@keyframes hero-grid-shift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(38px, 38px, 0);
+  }
+}
+
+@keyframes ribbon-drift-home-one {
+  0% {
+    transform: translate3d(-6%, 0, 0) rotate(-12deg);
+  }
+  100% {
+    transform: translate3d(10%, 0, 0) rotate(-12deg);
+  }
+}
+
+@keyframes ribbon-drift-home-two {
+  0% {
+    transform: translate3d(8%, 0, 0) rotate(9deg);
+  }
+  100% {
+    transform: translate3d(-10%, 0, 0) rotate(9deg);
+  }
+}
+
+@keyframes ribbon-drift-home-three {
+  0% {
+    transform: translate3d(-4%, 0, 0) rotate(-8deg);
+  }
+  100% {
+    transform: translate3d(12%, 0, 0) rotate(-8deg);
+  }
+}
+
+@keyframes pulse-cloud-home {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.16) translate3d(0, -10px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes particle-orbit-home {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(12px, -16px, 0) scale(1.08);
+  }
+  50% {
+    transform: translate3d(-6px, -24px, 0) scale(0.96);
+  }
+  75% {
+    transform: translate3d(-16px, 10px, 0) scale(1.04);
+  }
+}
+
+@keyframes stage-sway-home {
+  0%,
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(3deg) rotateY(-4deg);
+  }
+}
+
+@keyframes float-badge-home {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(90px);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(110px);
+  }
+}
+
+@keyframes hero-wall-sway {
+  0%,
+  100% {
+    transform: rotateX(12deg) rotateY(-10deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(8deg) rotateY(-4deg) translateY(-8px);
+  }
+}
+
+@keyframes preview-card-home-one {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.2deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(1.2deg);
+  }
+}
+
+@keyframes preview-card-home-two {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(-1.1deg);
+  }
+}
+
+@keyframes preview-card-home-three {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-0.8deg);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(1.6deg);
+  }
+}
+
+@keyframes preview-card-home-four {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1.2deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(-1.4deg);
+  }
+}
+
+@keyframes badge-pop-home {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.04);
+  }
 }
 
 @keyframes float {
@@ -4518,5 +6109,628 @@ body:not([data-page='admin']) .footer-note {
   body:not([data-page='admin']) .service-pillar,
   body:not([data-page='admin']) .preview-card {
     padding: 16px;
+  }
+}
+
+body,
+body:not([data-page='admin']),
+body[data-page='admin'],
+:root {
+  background: #1c1c1c;
+  color: #ffffff;
+}
+
+body::before,
+body::after,
+body:not([data-page='admin'])::before,
+body:not([data-page='admin'])::after,
+body:not([data-page='admin']) .ambient,
+body:not([data-page='admin']) .site-visuals {
+  display: none;
+}
+
+body:not([data-page='admin']) .site-shell,
+body:not([data-page='admin']) main,
+body:not([data-page='admin']) .section,
+body:not([data-page='admin']) .hero-section,
+body[data-page='admin'] .admin-site-shell,
+body[data-page='admin'] .admin-main {
+  background: #1c1c1c;
+}
+
+body:not([data-page='admin']) .top-ribbon,
+body:not([data-page='admin']) .service-mega-menu,
+body:not([data-page='admin']) .page-hero,
+body:not([data-page='admin']) .page-banner,
+body:not([data-page='admin']) .story-panel,
+body:not([data-page='admin']) .timeline-item,
+body:not([data-page='admin']) .package-card,
+body:not([data-page='admin']) .faq-panel,
+body:not([data-page='admin']) .case-deep-dive,
+body:not([data-page='admin']) .cta-banner,
+body:not([data-page='admin']) .hero-form-card,
+body:not([data-page='admin']) .hero-metrics article,
+body:not([data-page='admin']) .glass-card,
+body:not([data-page='admin']) .service-card,
+body:not([data-page='admin']) .contact-panel,
+body:not([data-page='admin']) .service-overview-card,
+body:not([data-page='admin']) .service-detail-card,
+body:not([data-page='admin']) .service-detail-panel,
+body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .insight-card,
+body:not([data-page='admin']) .process-step,
+body:not([data-page='admin']) .appointment-topbar,
+body:not([data-page='admin']) .appointment-calendar-card,
+body:not([data-page='admin']) .appointment-slot-card,
+body:not([data-page='admin']) .appointment-faq,
+body:not([data-page='admin']) .site-footer,
+body:not([data-page='admin']) .portfolio-card,
+body:not([data-page='admin']) .service-pillar,
+body:not([data-page='admin']) .preview-card,
+body:not([data-page='admin']) .case-thumb-media,
+body:not([data-page='admin']) .portfolio-media,
+body:not([data-page='admin']) .video-rail-card,
+body:not([data-page='admin']) .video-rail-shell,
+body:not([data-page='admin']) .video-rail-screen,
+body:not([data-page='admin']) .lead-form label,
+body:not([data-page='admin']) .lead-form input,
+body:not([data-page='admin']) .lead-form select,
+body:not([data-page='admin']) .lead-form textarea,
+body:not([data-page='admin']) .appointment-clock,
+body:not([data-page='admin']) .appointment-nav,
+body:not([data-page='admin']) .calendar-day,
+body:not([data-page='admin']) .appointment-slot-grid button,
+body:not([data-page='admin']) .appointment-timezone-option,
+body:not([data-page='admin']) .footer-details > div,
+body:not([data-page='admin']) .trust-items span,
+body:not([data-page='admin']) .marquee-track span,
+body[data-page='admin'] .admin-auth-card,
+body[data-page='admin'] .admin-card,
+body[data-page='admin'] .admin-panel,
+body[data-page='admin'] .admin-card input,
+body[data-page='admin'] .admin-card textarea,
+body[data-page='admin'] .admin-auth-form input {
+  background: #1c1c1c !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: none !important;
+}
+
+body:not([data-page='admin']) h1,
+body:not([data-page='admin']) h2,
+body:not([data-page='admin']) h3,
+body:not([data-page='admin']) h4,
+body:not([data-page='admin']) h5,
+body:not([data-page='admin']) h6,
+body:not([data-page='admin']) p,
+body:not([data-page='admin']) li,
+body:not([data-page='admin']) a,
+body:not([data-page='admin']) span,
+body:not([data-page='admin']) strong,
+body:not([data-page='admin']) small,
+body:not([data-page='admin']) label,
+body[data-page='admin'] h1,
+body[data-page='admin'] h2,
+body[data-page='admin'] h3,
+body[data-page='admin'] h4,
+body[data-page='admin'] p,
+body[data-page='admin'] span,
+body[data-page='admin'] label {
+  color: #ffffff !important;
+}
+
+body:not([data-page='admin']) .button,
+body:not([data-page='admin']) .button-primary,
+body:not([data-page='admin']) .button-secondary,
+body:not([data-page='admin']) .appointment-timezone-option.is-selected,
+body:not([data-page='admin']) .calendar-day.is-selected,
+body:not([data-page='admin']) .appointment-slot-grid button.is-selected,
+body:not([data-page='admin']) .appointment-availability-button,
+body[data-page='admin'] .admin-button,
+body[data-page='admin'] .admin-button-dark,
+body[data-page='admin'] .admin-button-danger {
+  background: #e63a6e !important;
+  color: #ffffff !important;
+  border-color: #e63a6e !important;
+  box-shadow: none !important;
+}
+
+body:not([data-page='admin']) .button:hover,
+body:not([data-page='admin']) .button:focus-visible,
+body[data-page='admin'] .admin-button:hover,
+body[data-page='admin'] .admin-button:focus-visible {
+  box-shadow: 0 0 0 1px #e63a6e, 0 14px 30px rgba(230, 58, 110, 0.22) !important;
+}
+
+body:not([data-page='admin']) .portfolio-section .portfolio-card::before,
+body:not([data-page='admin']) .portfolio-section .portfolio-card::after,
+body:not([data-page='admin']) .button::before,
+body:not([data-page='admin']) .button::after,
+body[data-page='admin'] .admin-button::before,
+body[data-page='admin'] .admin-button::after {
+  background-color: #e63a6e;
+}
+
+body[data-page='home'] .hero-copy h1 {
+  max-width: 8.8ch;
+  font-size: clamp(2.4rem, 4.6vw, 4.6rem);
+  line-height: 1.02;
+  text-wrap: balance;
+  position: relative;
+  perspective: 900px;
+  text-shadow:
+    0 1px 0 rgba(230, 58, 110, 0.9),
+    0 2px 0 rgba(230, 58, 110, 0.7),
+    0 3px 0 rgba(230, 58, 110, 0.5),
+    0 18px 34px rgba(230, 58, 110, 0.18);
+  animation: hero-title-levitate 5.8s ease-in-out infinite;
+}
+
+.hero-title-line {
+  display: block;
+  transform-origin: center bottom;
+  animation: hero-title-line-rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-title-line:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.hero-title-line:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+body:not([data-page='admin']) .top-ribbon {
+  background: #242424 !important;
+  border-color: rgba(230, 58, 110, 0.22) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24) !important;
+}
+
+body:not([data-page='admin']) .brand-mark {
+  background: #1c1c1c !important;
+  border-color: rgba(230, 58, 110, 0.3) !important;
+  box-shadow: 0 10px 24px rgba(230, 58, 110, 0.12) !important;
+}
+
+body:not([data-page='admin']) .brand-text small {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body:not([data-page='admin']) .ribbon-nav a,
+body:not([data-page='admin']) .nav-dropdown-trigger {
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 1px solid transparent;
+}
+
+body:not([data-page='admin']) .ribbon-nav a:hover,
+body:not([data-page='admin']) .ribbon-nav a:focus-visible,
+body:not([data-page='admin']) .ribbon-nav a.is-active,
+body:not([data-page='admin']) .nav-dropdown-trigger:hover,
+body:not([data-page='admin']) .nav-dropdown-trigger:focus-visible,
+body:not([data-page='admin']) .nav-dropdown-trigger.is-active,
+body:not([data-page='admin']) .nav-dropdown.is-open .nav-dropdown-trigger {
+  color: #ffffff !important;
+  background: #e63a6e !important;
+  border-color: #e63a6e !important;
+  box-shadow: none !important;
+}
+
+body:not([data-page='admin']) .hero-client-strip span,
+body:not([data-page='admin']) .hero-proof-badges span,
+body:not([data-page='admin']) .trust-items span,
+body:not([data-page='admin']) .marquee-track span,
+body:not([data-page='admin']) .footer-details > div {
+  background: #242424 !important;
+  color: #ffffff !important;
+  border-color: rgba(230, 58, 110, 0.18) !important;
+}
+
+body[data-page='home'] .portfolio-book.is-open .portfolio-book-cover {
+  transform: rotateY(-160deg);
+  box-shadow:
+    28px 0 42px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body[data-page='home'] .portfolio-book.is-open .portfolio-book-page {
+  transform: translateX(6px);
+}
+
+body[data-page='home'] .portfolio-book.is-closed .portfolio-book-page {
+  transform: translateX(0);
+}
+
+body[data-page='home'] .portfolio-book.is-closed .portfolio-book-sheet-front {
+  opacity: 0.8;
+  transform: translateX(2px);
+}
+
+body[data-page='home'] .portfolio-book.is-closed .portfolio-book-sheet-back {
+  opacity: 0.44;
+  transform: translateX(8px);
+}
+
+body[data-page='home'] .portfolio-book-page strong {
+  display: block;
+}
+
+.plane-body::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 20px;
+  width: 96px;
+  height: 6px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, #1c1c1c 38%, transparent 40%) 0 0 / 18px 6px repeat-x;
+  opacity: 0.5;
+}
+
+.plane-body::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 24px;
+  width: 24px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+@keyframes hero-title-line-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) rotateX(80deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes hero-title-levitate {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotateX(4deg);
+  }
+}
+
+.plane-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #1c1c1c;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.plane-intro.is-complete {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.plane-intro-sky,
+.plane-intro-runway,
+.plane-intro-title,
+.plane-intro-plane {
+  position: absolute;
+}
+
+.plane-intro-sky {
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(230, 58, 110, 0.16), transparent 18%),
+    radial-gradient(circle at 76% 24%, rgba(230, 58, 110, 0.1), transparent 16%),
+    linear-gradient(180deg, #1c1c1c 0%, #141414 100%);
+}
+
+.plane-intro-runway {
+  left: 50%;
+  bottom: 12%;
+  width: min(72vw, 760px);
+  height: 12px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 58, 110, 0.78), rgba(255, 255, 255, 0));
+  box-shadow: 0 0 30px rgba(230, 58, 110, 0.32);
+  opacity: 0;
+  animation: plane-runway-glow 3.2s ease forwards;
+}
+
+.plane-intro-title {
+  left: 50%;
+  bottom: 16%;
+  transform: translateX(-50%) translateY(40px) rotateX(70deg);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 8vw, 6.8rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow:
+    0 1px 0 #e63a6e,
+    0 2px 0 #e63a6e,
+    0 3px 0 #e63a6e,
+    0 16px 30px rgba(230, 58, 110, 0.3);
+  opacity: 0;
+  animation: plane-title-rise 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.plane-intro-plane {
+  left: -18%;
+  top: 26%;
+  width: 320px;
+  height: 156px;
+  transform-origin: center center;
+  animation: plane-fly-landing 3s cubic-bezier(0.18, 0.82, 0.2, 1) forwards;
+}
+
+.plane-trail {
+  position: absolute;
+  top: 74px;
+  left: -180px;
+  width: 220px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(230, 58, 110, 0.14), rgba(255, 255, 255, 0.7));
+  filter: blur(1px);
+  opacity: 0.8;
+}
+
+.plane-tail-fin {
+  position: absolute;
+  top: 30px;
+  left: 36px;
+  width: 44px;
+  height: 48px;
+  border-radius: 14px 8px 8px 4px;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e63a6e 100%);
+  transform: skewY(-16deg);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+}
+
+.plane-body {
+  position: absolute;
+  top: 58px;
+  left: 42px;
+  width: 194px;
+  height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffffff 0%, #f5f5f5 42%, #e8e8e8 72%, #e63a6e 100%);
+  box-shadow:
+    inset 0 -3px 0 rgba(0, 0, 0, 0.12),
+    inset 0 3px 0 rgba(255, 255, 255, 0.52),
+    0 14px 30px rgba(0, 0, 0, 0.26);
+}
+
+.plane-cockpit {
+  position: absolute;
+  top: 54px;
+  right: 70px;
+  width: 58px;
+  height: 24px;
+  border-radius: 18px 18px 12px 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(230, 58, 110, 0.34));
+  transform: skewX(18deg);
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.plane-wing {
+  position: absolute;
+  background: linear-gradient(180deg, #ffffff, #dcdcdc);
+  border-radius: 999px 40px 40px 999px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.plane-wing-main {
+  top: 34px;
+  left: 104px;
+  width: 118px;
+  height: 24px;
+  transform: rotate(-18deg);
+}
+
+.plane-wing-tail {
+  top: 92px;
+  left: 72px;
+  width: 90px;
+  height: 18px;
+  transform: rotate(16deg);
+}
+
+.plane-engine {
+  position: absolute;
+  width: 28px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f4f4f4, #b8b8b8);
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.14),
+    0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.plane-engine-one {
+  top: 64px;
+  left: 126px;
+}
+
+.plane-engine-two {
+  top: 64px;
+  left: 164px;
+}
+
+.plane-stabilizer {
+  position: absolute;
+  top: 102px;
+  left: 52px;
+  width: 64px;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #d8d8d8);
+  transform: rotate(8deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.plane-nose {
+  position: absolute;
+  top: 54px;
+  right: 40px;
+  width: 0;
+  height: 0;
+  border-left: 42px solid #e63a6e;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+}
+
+@keyframes plane-fly-landing {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8) rotate(-8deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate3d(62vw, -14vh, 0) scale(1.02) rotate(6deg);
+    opacity: 1;
+  }
+  82% {
+    transform: translate3d(84vw, 26vh, 0) scale(0.92) rotate(10deg);
+    opacity: 1;
+  }
+  92% {
+    transform: translate3d(84vw, 24vh, 0) scale(0.88) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(84vw, 25vh, 0) scale(0.9) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes plane-title-rise {
+  0%,
+  58% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px) rotateX(70deg);
+  }
+  78% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) rotateX(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes plane-runway-glow {
+  0%,
+  60% {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.6);
+  }
+  82% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .plane-intro-plane {
+    width: 220px;
+    height: 108px;
+  }
+
+  .plane-trail {
+    top: 50px;
+    left: -120px;
+    width: 150px;
+  }
+
+  .plane-tail-fin {
+    top: 20px;
+    left: 24px;
+    width: 32px;
+    height: 36px;
+  }
+
+  .plane-body {
+    top: 40px;
+    left: 28px;
+    width: 134px;
+    height: 24px;
+  }
+
+  .plane-cockpit {
+    top: 36px;
+    right: 48px;
+    width: 40px;
+    height: 18px;
+  }
+
+  .plane-wing-main {
+    top: 24px;
+    left: 68px;
+    width: 84px;
+    height: 18px;
+  }
+
+  .plane-wing-tail {
+    top: 66px;
+    left: 48px;
+    width: 62px;
+    height: 14px;
+  }
+
+  .plane-engine {
+    width: 20px;
+    height: 12px;
+  }
+
+  .plane-engine-one {
+    top: 48px;
+    left: 84px;
+  }
+
+  .plane-engine-two {
+    top: 48px;
+    left: 112px;
+  }
+
+  .plane-stabilizer {
+    top: 74px;
+    left: 36px;
+    width: 42px;
+    height: 10px;
+  }
+
+  .plane-nose {
+    top: 38px;
+    right: 28px;
+    border-left-width: 28px;
+    border-top-width: 12px;
+    border-bottom-width: 12px;
+  }
+
+  .plane-intro-title {
+    bottom: 19%;
+    letter-spacing: 0.04em;
   }
 }
