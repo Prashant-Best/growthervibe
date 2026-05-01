@@ -19,7 +19,6 @@ export default defineConfig({
         geo: resolve(__dirname, 'geo.html'),
         caseStudies: resolve(__dirname, 'case-studies.html'),
         contact: resolve(__dirname, 'contact.html'),
-        admin: resolve(__dirname, 'admin.html'),
       },
     },
   },

@@ -4,13 +4,25 @@ import sampleMarketplaceAd from './assets/homepage/images/sample-marketplace-ad.
 import sampleUgcAd from './assets/homepage/images/sample-ugc-ad.svg'
 import sampleQuickCommerceAd from './assets/homepage/images/sample-quick-commerce-ad.svg'
 import showcaseVideo from './assets/homepage/videos/Outie Tool Fuse Aligner (1).mp4'
+import video1 from './assets/homepage/videos/big news file (1).mp4'
+import video2 from './assets/homepage/videos/FlowVeda_video.mp4'
+import video3 from './assets/homepage/videos/Mandi Joinbrands Girls Witch 9.16 (1).mp4'
+import video4 from './assets/homepage/videos/Morph Reel With Caption File.mp4'
+import video5 from './assets/homepage/videos/no mercy website (1).mp4'
+import video6 from './assets/homepage/videos/preworkout (1).mp4'
+import video7 from './assets/homepage/videos/whey protein motion graphic (1).mp4'
+import image1 from './assets/homepage/images/Ads ag ai 2 (3).png'
+import image2 from './assets/homepage/images/Frame 54 (3).png'
+import image3 from './assets/homepage/images/hydro gain launching post copy.jpg.jpeg'
+import image4 from './assets/homepage/images/image_2024_10_17T07_15_09_614Z.png'
+import image5 from './assets/homepage/images/muscle whey 1kg aad copy.jpg.jpeg'
+import image6 from './assets/homepage/images/prex island crush ad copy.jpg.jpeg'
 
 const page = document.body.dataset.page || 'home'
 const STORAGE_KEY = 'growth-vibe-site-data'
-const ADMIN_SESSION_KEY = 'growth-vibe-admin-auth'
 const PLANE_INTRO_SEEN_KEY = 'growth-revive-plane-intro-seen'
 const PORTFOLIO_BOOK_STATE_KEY = 'growth-revive-portfolio-book-state'
-const ADMIN_PASSWORD = 'growthvibeadmin'
+const CONTACT_ENDPOINT = './contact-handler.php'
 let navDropdownController
 
 const sampleVideoReel = [
@@ -74,6 +86,17 @@ const navItems = [
   { key: 'case-studies', label: 'Case Studies', href: './case-studies.html' },
   { key: 'contact', label: 'Contact Us', href: './contact.html' },
 ]
+
+const serviceIcons = {
+  'demand-generation': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`,
+  'content-marketing': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`,
+  'marketing-automation': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 6v6l4 2"/><path d="M2 12a10 10 0 0 0 10 10"/></svg>`,
+  'seo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  'saas-ppc-agency': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>`,
+  'account-based-marketing': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  'ai-seo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  'geo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>`,
+}
 
 const serviceCatalog = [
   {
@@ -217,8 +240,9 @@ const defaultSiteData = {
     ctaTitle: 'Bring creative production, performance thinking, and conversion-focused execution into one team.',
   },
   contact: {
-    email: 'hello@grothervibe.com',
-    phone: '+91 00000 00000',
+    email: 'business@grothervibe.com',
+    secondaryEmail: 'info@growthrevibe.com',
+    phone: '+91 9056721993',
   },
   footer: {
     note: 'Creative-first campaigns for brands that want stronger hooks, better click-through rates, and cleaner scaling.',
@@ -230,7 +254,7 @@ const defaultSiteData = {
       label: 'Search-led repositioning',
       title: 'From unclear messaging to a search system that produced more qualified demos.',
       description:
-        'Growth Vibe reworked the homepage story, clarified service language, and aligned content with high-intent search demand.',
+        'Growth Revibe reworked the homepage story, clarified service language, and aligned content with high-intent search demand.',
       metrics: ['+184% organic impressions', '+71% demo requests', '38% lower bounce'],
     },
     {
@@ -283,10 +307,7 @@ function mergeSiteData(storedData = {}) {
       ...defaultSiteData.home,
       ...(storedData.home || {}),
     },
-    contact: {
-      ...defaultSiteData.contact,
-      ...(storedData.contact || {}),
-    },
+    contact: { ...defaultSiteData.contact },
     footer: {
       ...defaultSiteData.footer,
       ...(storedData.footer || {}),
@@ -363,7 +384,7 @@ function servicePageMarkup(service, index) {
         <h1>${escapeHtml(service.headline)}</h1>
         <p>${escapeHtml(service.intro)}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="./contact.html">Talk to Growth Vibe</a>
+          <a class="button button-primary" href="./contact.html">Talk to Growth Revibe</a>
           <a class="button button-secondary" href="./services.html">View all services</a>
         </div>
       </div>
@@ -390,7 +411,7 @@ function servicePageMarkup(service, index) {
 
       <article class="service-detail-card reveal-up" style="transition-delay: 120ms;">
         <span class="service-detail-label">Why teams choose it</span>
-        <p>Growth Vibe combines strategy, messaging, and execution so this service strengthens both visibility and conversion instead of optimizing one at the expense of the other.</p>
+        <p>Growth Revibe combines strategy, messaging, and execution so this service strengthens both visibility and conversion instead of optimizing one at the expense of the other.</p>
         <p>Every engagement is designed to create a clearer path from attention to inquiry, with reporting that keeps priorities visible.</p>
       </article>
     </section>
@@ -417,10 +438,10 @@ function navMarkup() {
             <div class="service-mega-menu" id="services-menu" role="menu" aria-label="Services menu" hidden>
               <div class="service-mega-head">
                 <div>
-                  <span class="service-mega-kicker">Service menu</span>
-                  <strong>Choose a service page</strong>
+                  <span class="service-mega-kicker">Our Services</span>
+                  <strong>What we do for you</strong>
                 </div>
-                <a href="${item.href}" class="service-mega-link">All services</a>
+                <a href="${item.href}" class="service-mega-link">All services &rarr;</a>
               </div>
               <div class="service-mega-grid">
                 ${serviceCatalog
@@ -431,7 +452,11 @@ function navMarkup() {
                         class="service-mega-item"
                         role="menuitem"
                       >
-                        <strong>${escapeHtml(service.title)}</strong>
+                        <span class="service-mega-icon" aria-hidden="true">${serviceIcons[service.key] || ''}</span>
+                        <span class="service-mega-text">
+                          <strong>${escapeHtml(service.title)}</strong>
+                          <span class="service-mega-desc">${escapeHtml(service.description)}</span>
+                        </span>
                       </a>
                     `,
                   )
@@ -442,7 +467,7 @@ function navMarkup() {
         `
       }
 
-      return `<a href="${item.href}" class="${item.key === page ? 'is-active' : ''}">${item.label}</a>`
+      return `<a href="${item.href}" class="${item.key === page ? 'is-active' : ''}">${ item.label}</a>`
     })
     .join('')
 }
@@ -509,6 +534,106 @@ function homeVideoRailMarkup() {
     .join('')
 }
 
+function horizontalVideoCarouselMarkup() {
+  const videos = [
+    { src: video1, title: 'Big News' },
+    { src: video2, title: 'FlowVeda' },
+    { src: video3, title: 'Mandi Joinbrands' },
+    { src: video4, title: 'Morph Reel' },
+    { src: video5, title: 'No Mercy' },
+    { src: video6, title: 'Preworkout' },
+    { src: video7, title: 'Whey Protein' },
+    { src: showcaseVideo, title: 'Outie Tool' },
+  ]
+
+  return `
+    <div class="carousel-section reveal-up">
+      <div class="carousel-row carousel-row-ltr">
+        <div class="carousel-track carousel-track-ltr">
+          ${videos.map((video, i) => `
+            <div class="carousel-item">
+              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
+              <span class="carousel-label">${escapeHtml(video.title)}</span>
+            </div>
+          `).join('')}
+          ${videos.map((video, i) => `
+            <div class="carousel-item">
+              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
+              <span class="carousel-label">${escapeHtml(video.title)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="carousel-row carousel-row-rtl">
+        <div class="carousel-track carousel-track-rtl">
+          ${videos.map((video, i) => `
+            <div class="carousel-item">
+              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
+              <span class="carousel-label">${escapeHtml(video.title)}</span>
+            </div>
+          `).join('')}
+          ${videos.map((video, i) => `
+            <div class="carousel-item">
+              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
+              <span class="carousel-label">${escapeHtml(video.title)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `
+}
+
+function imageGalleryMarkup() {
+  const images = [
+    { src: image1, title: 'Ad Showcase' },
+    { src: image2, title: 'Frame Design' },
+    { src: image3, title: 'Hydro Gain' },
+    { src: image4, title: 'Product Image' },
+    { src: image5, title: 'Muscle Whey' },
+    { src: image6, title: 'Prex Island' },
+  ]
+
+  return `
+    <div class="gallery-section reveal-up">
+      <div class="gallery-row gallery-row-ltr">
+        <div class="gallery-track gallery-track-ltr">
+          ${images.map((img, i) => `
+            <div class="gallery-item">
+              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
+              <span class="gallery-label">${escapeHtml(img.title)}</span>
+            </div>
+          `).join('')}
+          ${images.map((img, i) => `
+            <div class="gallery-item">
+              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
+              <span class="gallery-label">${escapeHtml(img.title)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="gallery-row gallery-row-rtl">
+        <div class="gallery-track gallery-track-rtl">
+          ${images.map((img, i) => `
+            <div class="gallery-item">
+              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
+              <span class="gallery-label">${escapeHtml(img.title)}</span>
+            </div>
+          `).join('')}
+          ${images.map((img, i) => `
+            <div class="gallery-item">
+              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
+              <span class="gallery-label">${escapeHtml(img.title)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `
+}
+
 function homePortfolioBookMarkup() {
   const firstEntry = homePortfolioEntries[0]
 
@@ -516,7 +641,9 @@ function homePortfolioBookMarkup() {
     <div class="portfolio-book-stage reveal-up">
       <article class="portfolio-book" data-portfolio-book data-page-index="0" aria-label="Interactive portfolio book">
         <div class="portfolio-book-shell">
+          <div class="portfolio-book-shadow" aria-hidden="true"></div>
           <div class="portfolio-book-spine" aria-hidden="true"></div>
+          <div class="portfolio-book-page-stack" aria-hidden="true"></div>
           <div class="portfolio-book-pages" aria-hidden="true"></div>
           <div class="portfolio-book-sheet portfolio-book-sheet-back" aria-hidden="true"></div>
           <div class="portfolio-book-sheet portfolio-book-sheet-front" aria-hidden="true"></div>
@@ -543,6 +670,62 @@ function homePortfolioBookMarkup() {
   `
 }
 
+function homeAnswersSectionMarkup() {
+  const answers = [
+    {
+      question: 'Do you create only videos, or complete ad systems too?',
+      answer:
+        'We build the full creative layer around performance: hooks, video edits, statics, product frames, and the testing direction behind them.',
+    },
+    {
+      question: 'Can you work with our existing brand and product assets?',
+      answer:
+        'Yes. We can build from raw footage, existing brand kits, marketplace assets, or even half-finished campaign material and turn it into stronger output.',
+    },
+    {
+      question: 'What kinds of brands are the best fit for Growth Revibe?',
+      answer:
+        'D2C, marketplace-first, and fast-moving consumer brands get the most value when they need sharper creative direction and faster campaign iteration.',
+    },
+    {
+      question: 'How fast can we start seeing usable creative work?',
+      answer:
+        'Most projects begin with a clear direction and first deliverables quickly, so you can start reviewing concepts and launch-ready assets without a long ramp-up.',
+    },
+    {
+      question: 'Can you support scaling after the first batch of creatives?',
+      answer:
+        'Yes. We do not stop at one-off assets. We keep extending winners into new hooks, formats, audiences, and platform placements.',
+    },
+  ]
+
+  return `
+    <section class="answers-section section">
+      <div class="answers-intro reveal-up">
+        <span class="eyebrow">What clients ask</span>
+        <h2>We already know the questions serious brands ask before they move.</h2>
+      </div>
+      <div class="answers-list reveal-up">
+        ${answers
+          .map(
+            (item, index) => `
+              <details class="answer-item" ${index === 0 ? 'open' : ''}>
+                <summary>
+                  <span>${escapeHtml(item.question)}</span>
+                  <span class="answer-caret" aria-hidden="true"></span>
+                </summary>
+                <div class="answer-body">
+                  <p>${escapeHtml(item.answer)}</p>
+                </div>
+              </details>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
 function planeIntroMarkup() {
   return `
     <div class="plane-intro" data-plane-intro aria-hidden="true">
@@ -553,12 +736,17 @@ function planeIntroMarkup() {
         <div class="plane-trail"></div>
         <div class="plane-tail-fin"></div>
         <div class="plane-body"></div>
+        <div class="plane-window-strip"></div>
+        <div class="plane-door"></div>
         <div class="plane-cockpit"></div>
+        <div class="plane-wing-root"></div>
         <div class="plane-wing plane-wing-main"></div>
         <div class="plane-engine plane-engine-one"></div>
         <div class="plane-engine plane-engine-two"></div>
         <div class="plane-wing plane-wing-tail"></div>
         <div class="plane-stabilizer"></div>
+        <div class="plane-landing-gear plane-landing-gear-front"></div>
+        <div class="plane-landing-gear plane-landing-gear-back"></div>
         <div class="plane-nose"></div>
       </div>
     </div>
@@ -602,52 +790,23 @@ function sitePages(siteData) {
             <div class="motion-particle motion-particle-two"></div>
             <div class="motion-particle motion-particle-three"></div>
           </div>
-          <div class="creative-stage">
-            <div class="creative-grid-plane"></div>
-            <div class="creative-beam creative-beam-one"></div>
-            <div class="creative-beam creative-beam-two"></div>
-            <div class="creative-float creative-float-main">
-              <span>Creative stack</span>
-              <strong>Hook. Product. Motion.</strong>
+          <div class="hero-reel-stage">
+            <div class="reel-phone-frame">
+              <div class="reel-phone-notch"></div>
+              <div class="reel-phone-screen">
+                <video class="reel-video" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Instagram reel style showcase video"></video>
+                <div class="reel-overlay-gradient"></div>
+                <div class="reel-controls">
+                  <div class="reel-heart"></div>
+                  <div class="reel-comment"></div>
+                  <div class="reel-share"></div>
+                </div>
+                <div class="reel-progress"><span></span></div>
+              </div>
+              <div class="reel-phone-home"></div>
             </div>
-            <div class="creative-float creative-float-side">
-              <span>Testing loop</span>
-              <strong>Angles that keep evolving</strong>
-            </div>
-            <div class="creative-orb creative-orb-one"></div>
-            <div class="creative-orb creative-orb-two"></div>
-          </div>
-          <div class="hero-preview-wall">
-            <article class="preview-card preview-card-video">
-              <video class="preview-art" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Sample UGC ad concept video"></video>
-              <span>Looping ad videos</span>
-              <strong>Fast hooks and hard stops</strong>
-              <p>Using your video asset from <code>src/assets/homepage/videos</code> as the live homepage showcase.</p>
-            </article>
-            <article class="preview-card preview-card-static">
-              <video class="preview-art" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Sample marketplace ad concept video"></video>
-              <span>Marketplace visuals</span>
-              <strong>Product-led frames built for CTR</strong>
-              <p>The same video is now reused here so the images section also feels motion-led.</p>
-            </article>
-            <article class="preview-card preview-card-motion">
-              <video class="preview-art" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Sample quick commerce ad concept video"></video>
-              <span>Animations</span>
-              <strong>Fast cuts, urgency, and motion</strong>
-              <p>Your video asset now powers the motion preview instead of a static placeholder.</p>
-            </article>
-            <article class="preview-card preview-card-growth">
-              <video class="preview-art" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Sample performance creative storyboard video"></video>
-              <span>Campaign systems</span>
-              <strong>Testing-ready variations for scale</strong>
-              <p>The same source video is also used here so every showcase card is video-first.</p>
-            </article>
-          </div>
-          <div class="hero-proof-badges">
-            <span>Hooks</span>
-            <span>UGC</span>
-            <span>Product shots</span>
-            <span>Performance edits</span>
+            <div class="reel-glow" aria-hidden="true"></div>
+            <div class="reel-shine" aria-hidden="true"></div>
           </div>
         </div>
       </section>
@@ -672,17 +831,20 @@ function sitePages(siteData) {
         ${homePortfolioBookMarkup()}
       </section>
 
-      <section class="video-rail-section section reveal-up" aria-label="Work video showcase">
-        <div class="section-heading">
-          <span class="eyebrow">Video Showcase</span>
-          <h2>A moving wall for your work videos.</h2>
-          <p>Right now this uses sample creative frames. Later we can replace each one with your real ad videos from <code>src/assets/homepage/videos</code>.</p>
+      <section class="horizontal-carousel-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">Video Gallery</span>
+          <h2>Infinite scrolling creatives</h2>
         </div>
-        <div class="video-rail-wrap">
-          <div class="video-rail-track">
-            ${homeVideoRailMarkup()}
-          </div>
+        ${horizontalVideoCarouselMarkup()}
+      </section>
+
+      <section class="horizontal-carousel-section section">
+        <div class="section-heading reveal-up">
+          <span class="eyebrow">Image Gallery</span>
+          <h2>Creative assets flowing both ways</h2>
         </div>
+        ${imageGalleryMarkup()}
       </section>
 
       <section class="feature-band section">
@@ -739,6 +901,8 @@ function sitePages(siteData) {
         </div>
       </section>
 
+      ${homeAnswersSectionMarkup()}
+
       <section class="marquee-section section reveal-up" aria-label="Marketing services ticker">
         <div class="marquee-track">
           <span>Marketplace creatives</span>
@@ -767,7 +931,7 @@ function sitePages(siteData) {
             <h2>Tell us what you want to scale.</h2>
             <p>Share the platform, product, and creative challenge. We’ll map the right production and performance mix.</p>
           </div>
-          <form class="lead-form home-lead-form" action="mailto:${escapeHtml(siteData.contact.email)}" method="post" enctype="text/plain">
+          <form class="lead-form home-lead-form" data-contact-form data-form-type="homepage-inquiry">
             <label>
               <span>Name</span>
               <input type="text" name="name" placeholder="Your full name" required />
@@ -792,6 +956,7 @@ function sitePages(siteData) {
               <textarea name="message" rows="4" placeholder="Tell us about your business, audience, and what you want to improve."></textarea>
             </label>
             <button class="button button-primary button-compact button-inquiry" type="submit">Send inquiry</button>
+            <p class="form-status field-wide" data-form-status aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -799,7 +964,7 @@ function sitePages(siteData) {
     about: `
       <section class="page-banner section reveal-up">
         <span class="eyebrow">About us</span>
-        <h1>Growth Vibe is a creative growth partner for brands that want better visibility and sharper presentation.</h1>
+        <h1>Growth Revibe helps brands grow with sharper creative and clearer positioning.</h1>
         <p>
           We connect search strategy, brand language, campaign design, and conversion thinking so your marketing feels cohesive instead of scattered.
         </p>
@@ -872,14 +1037,38 @@ function sitePages(siteData) {
     services: `
       <section class="page-banner section reveal-up">
         <span class="eyebrow">Services</span>
-        <h1>Explore focused service pages for each growth offering.</h1>
+        <h1>Explore the services behind our creative growth work.</h1>
         <p>
-          Pick the area you want help with and jump into a dedicated page built around that service, its outcomes, and how Growth Vibe approaches the work.
+          Pick the area you want help with and jump into a dedicated page built around that service, its outcomes, and how Growth Revibe approaches the work.
         </p>
       </section>
 
-      <section class="service-overview-grid section">
-        ${serviceOverviewCardsMarkup()}
+      <section class="service-accordion-section section reveal-up">
+        <div class="service-accordion-header">
+          <span class="eyebrow">What we offer</span>
+          <h2>Every service is designed to create a clearer path from attention to revenue.</h2>
+        </div>
+        <div class="service-accordion-list" data-service-accordion>
+          ${serviceCatalog.map((service, index) => `
+            <div class="service-accordion-item reveal-up" style="transition-delay: ${index * 60}ms;" data-accordion-item>
+              <button class="service-accordion-trigger" type="button" data-accordion-trigger aria-expanded="false">
+                <span class="service-accordion-icon-wrap" aria-hidden="true">${serviceIcons[service.key] || ''}</span>
+                <span class="service-accordion-title-group">
+                  <strong>${escapeHtml(service.title)}</strong>
+                  <span class="service-accordion-subtitle">${escapeHtml(service.description)}</span>
+                </span>
+                <span class="service-accordion-caret" aria-hidden="true"></span>
+              </button>
+              <div class="service-accordion-body" data-accordion-body hidden>
+                <p>${escapeHtml(service.intro)}</p>
+                <div class="service-accordion-outcomes">
+                  ${service.outcomes.map(o => `<span>${escapeHtml(o)}</span>`).join('')}
+                </div>
+                <a href="${service.href}" class="service-accordion-cta">Learn more &rarr;</a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
       </section>
 
       <section class="pricing-showcase section">
@@ -931,11 +1120,10 @@ function sitePages(siteData) {
             <span class="eyebrow">Project form</span>
             <h2>Send your project details directly to our team.</h2>
             <p>Use this form to share your goals, timeline, and the kind of marketing support you are looking for.</p>
+            <p>Reach us directly at <a href="mailto:${escapeHtml(siteData.contact.email)}">${escapeHtml(siteData.contact.email)}</a>, <a href="mailto:${escapeHtml(siteData.contact.secondaryEmail)}">${escapeHtml(siteData.contact.secondaryEmail)}</a>, or <a href="tel:${escapeHtml(siteData.contact.phone.replaceAll(' ', ''))}">${escapeHtml(siteData.contact.phone)}</a>.</p>
           </div>
-          <form class="lead-form contact-form" action="mailto:${escapeHtml(siteData.contact.email)}" method="post" enctype="text/plain">
-            <input type="hidden" name="appointment_date" data-appointment-date-input />
-            <input type="hidden" name="appointment_time" data-appointment-time-input />
-            <input type="hidden" name="appointment_timezone" data-appointment-timezone-input />
+
+          <form class="lead-form contact-form" data-contact-form data-form-type="contact-inquiry">
             <label>
               <span>Name</span>
               <input type="text" name="name" placeholder="Your full name" required />
@@ -974,14 +1162,15 @@ function sitePages(siteData) {
               <textarea name="message" rows="5" placeholder="What are you trying to grow, and what would success look like for your business?"></textarea>
             </label>
             <button class="button button-primary field-wide" type="submit">Submit project inquiry</button>
+            <p class="form-status field-wide" data-form-status aria-live="polite"></p>
           </form>
         </div>
 
         <div class="appointment-panel reveal-up" style="transition-delay: 140ms;" data-appointment-panel>
           <div class="appointment-intro">
-            <span class="eyebrow">Appointment</span>
-            <h2>Book a meeting with a cleaner scheduling flow.</h2>
-            <p>Choose your timezone, pick a date, select a time slot, and check mutual availability before you send the inquiry.</p>
+            <span class="eyebrow">Meeting request</span>
+            <h2>Add a meeting preference to your inquiry.</h2>
+            <p>Pick your timezone, choose a date, and send a polished meeting request from this card. It keeps the right side useful without making the whole page feel crowded.</p>
           </div>
 
           <div class="appointment-topbar">
@@ -1038,10 +1227,44 @@ function sitePages(siteData) {
               <button type="button" data-slot-time="17:00">17:00</button>
             </div>
 
-            <button class="button button-primary appointment-availability-button" type="button" data-check-availability>
-              Check mutual availability
-            </button>
-            <p class="appointment-status" data-availability-status>Select a date and time to see the meeting summary.</p>
+            <p class="appointment-status" data-availability-status>Select a date and time if you want to include a meeting request with your main inquiry.</p>
+          </div>
+
+          <div class="appointment-request-card">
+            <div class="appointment-request-intro">
+              <span class="eyebrow">Your details</span>
+              <h2>Add your contact details and send.</h2>
+              <p>Share your name and email here so our team can review the selected slot and follow up quickly.</p>
+            </div>
+
+            <form class="lead-form availability-form appointment-form" data-contact-form data-form-type="availability-request">
+              <input type="hidden" name="appointment_date" data-availability-date-input />
+              <input type="hidden" name="appointment_time" data-availability-time-input />
+              <input type="hidden" name="appointment_timezone" data-availability-timezone-input />
+              <input type="hidden" name="selected_date_label" data-availability-date-label-input />
+              <input type="hidden" name="selected_time_label" data-availability-time-label-input />
+              <input type="hidden" name="selected_timezone_label" data-availability-timezone-label-input />
+              <div class="panel-form-grid">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your full name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                <span>Phone</span>
+                <input type="tel" name="phone" placeholder="+91 98765 43210" />
+              </label>
+              <label>
+                <span>Business name</span>
+                <input type="text" name="business" placeholder="Your business name" />
+              </label>
+              <button class="button button-primary field-wide" type="submit">Submit meeting request</button>
+              <p class="form-status field-wide" data-form-status aria-live="polite"></p>
+              </div>
+            </form>
           </div>
 
           <div class="faq-panel appointment-faq">
@@ -1062,149 +1285,12 @@ function sitePages(siteData) {
         </div>
       </section>
     `,
-    admin: `
-      <section class="admin-shell">
-        <section class="admin-auth-card" data-admin-auth-card>
-          <span class="admin-kicker">Private admin</span>
-          <h1>Admin controls for updating website content.</h1>
-          <p>Enter the password to unlock content editing. This page stays off the public navigation and is only available at the admin URL.</p>
-          <form class="admin-auth-form" data-admin-auth-form>
-            <label>
-              <span>Password</span>
-              <input type="password" name="password" placeholder="Enter password" required />
-            </label>
-            <button class="admin-button admin-button-dark" type="submit">Unlock admin</button>
-          </form>
-          <p class="admin-message" data-admin-message></p>
-        </section>
-
-        <section class="admin-panel" data-admin-panel hidden>
-          <div class="admin-topbar">
-            <div>
-              <span class="admin-kicker">Content manager</span>
-              <h2>Update core website text and case studies.</h2>
-            </div>
-            <button class="admin-button" type="button" data-admin-logout>Log out</button>
-          </div>
-
-          <div class="admin-grid">
-            <form class="admin-card admin-site-form" data-admin-site-form>
-              <h3>Site information</h3>
-              <label>
-                <span>Home eyebrow</span>
-                <input type="text" name="homeEyebrow" value="${escapeHtml(siteData.home.eyebrow)}" />
-              </label>
-              <label>
-                <span>Home title</span>
-                <textarea name="homeTitle" rows="3">${escapeHtml(siteData.home.title)}</textarea>
-              </label>
-              <label>
-                <span>Home description</span>
-                <textarea name="homeText" rows="4">${escapeHtml(siteData.home.text)}</textarea>
-              </label>
-              <label>
-                <span>CTA heading</span>
-                <textarea name="ctaTitle" rows="3">${escapeHtml(siteData.home.ctaTitle)}</textarea>
-              </label>
-              <label>
-                <span>Contact email</span>
-                <input type="email" name="contactEmail" value="${escapeHtml(siteData.contact.email)}" />
-              </label>
-              <label>
-                <span>Contact phone</span>
-                <input type="text" name="contactPhone" value="${escapeHtml(siteData.contact.phone)}" />
-              </label>
-              <label>
-                <span>Footer note</span>
-                <textarea name="footerNote" rows="3">${escapeHtml(siteData.footer.note)}</textarea>
-              </label>
-              <button class="admin-button admin-button-dark" type="submit">Save site info</button>
-            </form>
-
-            <div class="admin-card">
-              <form class="admin-case-form" data-admin-case-form>
-                <input type="hidden" name="caseId" value="" />
-                <h3>Add or edit case study</h3>
-                <label>
-                  <span>Category</span>
-                  <input type="text" name="category" placeholder="B2B SaaS" required />
-                </label>
-                <label>
-                  <span>Small label</span>
-                  <input type="text" name="label" placeholder="Search-led repositioning" required />
-                </label>
-                <label>
-                  <span>Thumbnail headline</span>
-                  <textarea name="title" rows="3" placeholder="Big headline shown on the case study card" required></textarea>
-                </label>
-                <label>
-                  <span>Description</span>
-                  <textarea name="description" rows="4" placeholder="Short summary below the thumbnail" required></textarea>
-                </label>
-                <label>
-                  <span>Metric 1</span>
-                  <input type="text" name="metricOne" placeholder="+184% organic impressions" />
-                </label>
-                <label>
-                  <span>Metric 2</span>
-                  <input type="text" name="metricTwo" placeholder="+71% demo requests" />
-                </label>
-                <label>
-                  <span>Metric 3</span>
-                  <input type="text" name="metricThree" placeholder="38% lower bounce" />
-                </label>
-                <div class="admin-actions">
-                  <button class="admin-button admin-button-dark" type="submit">Save case study</button>
-                  <button class="admin-button" type="button" data-admin-clear-form>Clear form</button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <section class="admin-card admin-case-list">
-            <div class="admin-list-head">
-              <h3>Current case studies</h3>
-              <button class="admin-button" type="button" data-admin-reset>Reset to defaults</button>
-            </div>
-            <div class="admin-case-items" data-admin-case-items>
-              ${siteData.caseStudies
-                .map(
-                  (study) => `
-                    <article class="admin-case-item">
-                      <div>
-                        <span>${escapeHtml(study.category)}</span>
-                        <h4>${escapeHtml(study.title)}</h4>
-                        <p>${escapeHtml(study.description)}</p>
-                      </div>
-                      <div class="admin-actions">
-                        <button class="admin-button" type="button" data-edit-case="${escapeHtml(study.id)}">Edit</button>
-                        <button class="admin-button admin-button-danger" type="button" data-delete-case="${escapeHtml(study.id)}">Delete</button>
-                      </div>
-                    </article>
-                  `,
-                )
-                .join('')}
-            </div>
-          </section>
-        </section>
-      </section>
-    `,
     ...serviceDetailPages,
   }
 }
 
 function appMarkup(siteData) {
   const pages = sitePages(siteData)
-
-  if (page === 'admin') {
-    return `
-      <div class="admin-site-shell">
-        <main class="admin-main">
-          ${pages.admin}
-        </main>
-      </div>
-    `
-  }
 
   return `
     <div class="site-shell">
@@ -1235,16 +1321,15 @@ function appMarkup(siteData) {
         <div class="brand-wave brand-wave-one"></div>
         <div class="brand-wave brand-wave-two"></div>
         <div class="brand-sigil brand-sigil-one">GR</div>
-        <div class="brand-sigil brand-sigil-two">Growth Vibe</div>
+        <div class="brand-sigil brand-sigil-two">Growth Revibe</div>
       </div>
-
       <header class="top-ribbon">
-        <a class="brand" href="./index.html" aria-label="Growth Vibe home">
+        <a class="brand" href="./index.html" aria-label="Growth Revibe home">
           <span class="brand-mark">
-            <img src="${brandLogo}" alt="Growth Vibe logo" />
+            <img src="${brandLogo}" alt="Growth Revibe logo" />
           </span>
           <span class="brand-text">
-            <strong>Growth Vibe</strong>
+            <strong>Growth Revibe</strong>
             <small>Creative-first performance marketing</small>
           </span>
         </a>
@@ -1269,10 +1354,10 @@ function appMarkup(siteData) {
       <footer class="site-footer">
         <div class="footer-brand">
           <span class="footer-logo">
-            <img src="${brandLogo}" alt="Growth Vibe logo" />
+            <img src="${brandLogo}" alt="Growth Revibe logo" />
           </span>
-          <strong>Growth Vibe</strong>
-          <p>Growth Vibe is a creative marketing studio focused on ad creatives, performance campaigns, marketplace assets, and conversion-led brand growth.</p>
+          <strong>Growth Revibe</strong>
+          <p>Growth Revibe is a creative marketing studio focused on ad creatives, performance campaigns, marketplace assets, and conversion-led brand growth.</p>
         </div>
         <div class="footer-details">
           <div>
@@ -1281,7 +1366,7 @@ function appMarkup(siteData) {
           </div>
           <div>
             <span>Contact</span>
-            <p><a href="mailto:${escapeHtml(siteData.contact.email)}">${escapeHtml(siteData.contact.email)}</a><br /><a href="tel:${escapeHtml(siteData.contact.phone.replaceAll(' ', ''))}">${escapeHtml(siteData.contact.phone)}</a></p>
+            <p><a href="mailto:${escapeHtml(siteData.contact.email)}">${escapeHtml(siteData.contact.email)}</a><br /><a href="mailto:${escapeHtml(siteData.contact.secondaryEmail)}">${escapeHtml(siteData.contact.secondaryEmail)}</a><br /><a href="tel:${escapeHtml(siteData.contact.phone.replaceAll(' ', ''))}">${escapeHtml(siteData.contact.phone)}</a></p>
           </div>
           <div>
             <span>What clients get</span>
@@ -1294,6 +1379,38 @@ function appMarkup(siteData) {
   `
 }
 
+function initServiceAccordion() {
+  const list = document.querySelector('[data-service-accordion]')
+  if (!list) return
+
+  list.querySelectorAll('[data-accordion-item]').forEach((item) => {
+    const trigger = item.querySelector('[data-accordion-trigger]')
+    const body = item.querySelector('[data-accordion-body]')
+    if (!trigger || !body) return
+
+    trigger.addEventListener('click', () => {
+      const isOpen = !body.hidden
+
+      // Close all others
+      list.querySelectorAll('[data-accordion-item]').forEach((otherItem) => {
+        const otherBody = otherItem.querySelector('[data-accordion-body]')
+        const otherTrigger = otherItem.querySelector('[data-accordion-trigger]')
+        if (otherBody && otherTrigger) {
+          otherBody.hidden = true
+          otherTrigger.setAttribute('aria-expanded', 'false')
+          otherItem.classList.remove('is-open')
+        }
+      })
+
+      if (!isOpen) {
+        body.hidden = false
+        trigger.setAttribute('aria-expanded', 'true')
+        item.classList.add('is-open')
+      }
+    })
+  })
+}
+
 function renderApp() {
   const siteData = getSiteData()
   document.querySelector('#app').innerHTML = appMarkup(siteData)
@@ -1302,10 +1419,8 @@ function renderApp() {
   initNavDropdown()
   initPortfolioBook()
   initContactScheduler()
-
-  if (page === 'admin') {
-    initAdminPage()
-  }
+  initContactForms()
+  initServiceAccordion()
 }
 
 function initPlaneIntro() {
@@ -1588,10 +1703,12 @@ function initContactScheduler() {
   const selectedDateLabel = panel.querySelector('[data-selected-date]')
   const selectedTimeLabel = panel.querySelector('[data-selected-time]')
   const availabilityStatus = panel.querySelector('[data-availability-status]')
-  const availabilityButton = panel.querySelector('[data-check-availability]')
-  const dateInput = document.querySelector('[data-appointment-date-input]')
-  const timeInput = document.querySelector('[data-appointment-time-input]')
-  const timezoneInput = document.querySelector('[data-appointment-timezone-input]')
+  const availabilityDateInput = panel.querySelector('[data-availability-date-input]')
+  const availabilityTimeInput = panel.querySelector('[data-availability-time-input]')
+  const availabilityTimezoneInput = panel.querySelector('[data-availability-timezone-input]')
+  const availabilityDateLabelInput = panel.querySelector('[data-availability-date-label-input]')
+  const availabilityTimeLabelInput = panel.querySelector('[data-availability-time-label-input]')
+  const availabilityTimezoneLabelInput = panel.querySelector('[data-availability-timezone-label-input]')
 
   let currentMonth = new Date()
   currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
@@ -1628,15 +1745,25 @@ function initContactScheduler() {
     const now = new Date()
     clockTime.textContent = timeFormatter(timezone).format(now)
     clockZone.textContent = timezone
-    timezoneInput.value = timezone
+    if (availabilityTimezoneInput) availabilityTimezoneInput.value = timezone
+    if (availabilityTimezoneLabelInput) availabilityTimezoneLabelInput.value = timezone
   }
 
   const updateSelectionLabels = () => {
     const timezone = selectedTimezone
+    const formattedDate = selectedDate ? dateFormatter(timezone).format(selectedDate) : ''
     selectedDateLabel.textContent = selectedDate ? dateFormatter(timezone).format(selectedDate) : 'Choose a date'
     selectedTimeLabel.textContent = selectedTime || 'No time selected'
-    dateInput.value = selectedDate ? selectedDate.toISOString().slice(0, 10) : ''
-    timeInput.value = selectedTime
+    if (availabilityDateInput) availabilityDateInput.value = selectedDate ? selectedDate.toISOString().slice(0, 10) : ''
+    if (availabilityTimeInput) availabilityTimeInput.value = selectedTime
+    if (availabilityDateLabelInput) availabilityDateLabelInput.value = formattedDate
+    if (availabilityTimeLabelInput) availabilityTimeLabelInput.value = selectedTime
+    if (availabilityStatus) {
+      availabilityStatus.textContent =
+        selectedDate && selectedTime
+          ? `Meeting request ready for ${formattedDate} at ${selectedTime} (${timezone}). Send the request below and our team will review it.`
+          : 'Select a date and time, then send your meeting request below.'
+    }
   }
 
   const renderCalendar = () => {
@@ -1725,13 +1852,14 @@ function initContactScheduler() {
     })
   })
 
-  availabilityButton.addEventListener('click', () => {
-    if (!selectedDate || !selectedTime) {
-      availabilityStatus.textContent = 'Choose a date and time first to check mutual availability.'
-      return
-    }
-
-    availabilityStatus.textContent = `Mutual availability request ready for ${dateFormatter(selectedTimezone).format(selectedDate)} at ${selectedTime} (${selectedTimezone}).`
+  document.addEventListener('contact-scheduler:reset', () => {
+    selectedDate = null
+    selectedTime = ''
+    panel.querySelectorAll('[data-slot-time]').forEach((button) => {
+      button.classList.remove('is-selected')
+    })
+    renderCalendar()
+    updateSelectionLabels()
   })
 
   updateClock()
@@ -1740,137 +1868,66 @@ function initContactScheduler() {
   window.setInterval(updateClock, 1000)
 }
 
-function initAdminPage() {
-  const authCard = document.querySelector('[data-admin-auth-card]')
-  const authForm = document.querySelector('[data-admin-auth-form]')
-  const adminPanel = document.querySelector('[data-admin-panel]')
-  const message = document.querySelector('[data-admin-message]')
-  const siteForm = document.querySelector('[data-admin-site-form]')
-  const caseForm = document.querySelector('[data-admin-case-form]')
-  const logoutButton = document.querySelector('[data-admin-logout]')
-  const resetButton = document.querySelector('[data-admin-reset]')
-  const clearFormButton = document.querySelector('[data-admin-clear-form]')
+function initContactForms() {
+  const forms = [...document.querySelectorAll('[data-contact-form]')]
 
-  const toggleAdminState = () => {
-    const unlocked = sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true'
-    authCard.hidden = unlocked
-    adminPanel.hidden = !unlocked
-  }
+  forms.forEach((form) => {
+    const status = form.querySelector('[data-form-status]')
 
-  toggleAdminState()
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
 
-  authForm?.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const password = new FormData(authForm).get('password')
+      const submitButton = form.querySelector('button[type="submit"]')
+      const formData = new FormData(form)
+      formData.set('submission_type', form.getAttribute('data-form-type') || 'general-inquiry')
 
-    if (password === ADMIN_PASSWORD) {
-      sessionStorage.setItem(ADMIN_SESSION_KEY, 'true')
-      toggleAdminState()
-      authForm.reset()
-      if (message) {
-        message.textContent = ''
-      }
-      return
-    }
+      if (form.getAttribute('data-form-type') === 'availability-request') {
+        const appointmentDate = String(formData.get('appointment_date') || '').trim()
+        const appointmentTime = String(formData.get('appointment_time') || '').trim()
 
-    if (message) {
-      message.textContent = 'Incorrect password. Please try again.'
-    }
-  })
-
-  logoutButton?.addEventListener('click', () => {
-    sessionStorage.removeItem(ADMIN_SESSION_KEY)
-    renderApp()
-  })
-
-  siteForm?.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const formData = new FormData(siteForm)
-    const siteData = getSiteData()
-
-    siteData.home.eyebrow = String(formData.get('homeEyebrow') || '').trim()
-    siteData.home.title = String(formData.get('homeTitle') || '').trim()
-    siteData.home.text = String(formData.get('homeText') || '').trim()
-    siteData.home.ctaTitle = String(formData.get('ctaTitle') || '').trim()
-    siteData.contact.email = String(formData.get('contactEmail') || '').trim()
-    siteData.contact.phone = String(formData.get('contactPhone') || '').trim()
-    siteData.footer.note = String(formData.get('footerNote') || '').trim()
-
-    saveSiteData(siteData)
-    renderApp()
-  })
-
-  caseForm?.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const formData = new FormData(caseForm)
-    const siteData = getSiteData()
-    const caseId = String(formData.get('caseId') || '').trim()
-    const nextStudy = {
-      id: caseId || `case-${Date.now()}`,
-      category: String(formData.get('category') || '').trim(),
-      label: String(formData.get('label') || '').trim(),
-      title: String(formData.get('title') || '').trim(),
-      description: String(formData.get('description') || '').trim(),
-      metrics: [
-        String(formData.get('metricOne') || '').trim(),
-        String(formData.get('metricTwo') || '').trim(),
-        String(formData.get('metricThree') || '').trim(),
-      ].filter(Boolean),
-    }
-
-    const existingIndex = siteData.caseStudies.findIndex((study) => study.id === nextStudy.id)
-
-    if (existingIndex >= 0) {
-      siteData.caseStudies[existingIndex] = nextStudy
-    } else {
-      siteData.caseStudies.unshift(nextStudy)
-    }
-
-    saveSiteData(siteData)
-    renderApp()
-  })
-
-  clearFormButton?.addEventListener('click', () => {
-    caseForm?.reset()
-    const hiddenField = caseForm?.querySelector('[name="caseId"]')
-    if (hiddenField) {
-      hiddenField.value = ''
-    }
-  })
-
-  resetButton?.addEventListener('click', () => {
-    localStorage.removeItem(STORAGE_KEY)
-    renderApp()
-  })
-
-  document.querySelectorAll('[data-edit-case]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const caseId = button.getAttribute('data-edit-case')
-      const study = getSiteData().caseStudies.find((entry) => entry.id === caseId)
-
-      if (!study || !caseForm) {
-        return
+        if (!appointmentDate || !appointmentTime) {
+          if (status) {
+            status.textContent = 'Please choose a date and time first, then send the meeting request.'
+          }
+          return
+        }
       }
 
-      caseForm.querySelector('[name="caseId"]').value = study.id
-      caseForm.querySelector('[name="category"]').value = study.category
-      caseForm.querySelector('[name="label"]').value = study.label
-      caseForm.querySelector('[name="title"]').value = study.title
-      caseForm.querySelector('[name="description"]').value = study.description
-      caseForm.querySelector('[name="metricOne"]').value = study.metrics?.[0] || ''
-      caseForm.querySelector('[name="metricTwo"]').value = study.metrics?.[1] || ''
-      caseForm.querySelector('[name="metricThree"]').value = study.metrics?.[2] || ''
-      caseForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    })
-  })
+      if (status) {
+        status.textContent = 'Sending your inquiry to the team...'
+      }
 
-  document.querySelectorAll('[data-delete-case]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const caseId = button.getAttribute('data-delete-case')
-      const siteData = getSiteData()
-      siteData.caseStudies = siteData.caseStudies.filter((study) => study.id !== caseId)
-      saveSiteData(siteData)
-      renderApp()
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true
+      }
+
+      try {
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+        })
+
+        const result = await response.json()
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.message || 'Unable to send your inquiry right now.')
+        }
+
+        form.reset()
+        document.dispatchEvent(new CustomEvent('contact-scheduler:reset'))
+
+        if (status) {
+          status.textContent = 'Your inquiry has been sent successfully. Our team will get back to you soon.'
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = error instanceof Error ? error.message : 'Unable to send your inquiry right now.'
+        }
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false
+        }
+      }
     })
   })
 }
