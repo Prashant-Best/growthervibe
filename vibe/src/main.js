@@ -470,7 +470,6 @@ function navMarkup() {
                         <span class="service-mega-icon" aria-hidden="true">${serviceIcons[service.key] || ''}</span>
                         <span class="service-mega-text">
                           <strong>${escapeHtml(service.title)}</strong>
-                          <span class="service-mega-desc">${escapeHtml(service.description)}</span>
                         </span>
                       </a>
                     `,
@@ -1054,7 +1053,21 @@ function sitePages(siteData) {
             <div class="motion-particle motion-particle-three"></div>
           </div>
           <div class="hero-reel-stage">
-            <div class="reel-phone-frame">
+            <div class="reel-phone-frame reel-phone-frame-back">
+              <div class="reel-phone-notch"></div>
+              <div class="reel-phone-screen">
+                <video class="reel-video" src="${video4}" autoplay muted loop playsinline preload="metadata" aria-label="Secondary Instagram reel showcase video"></video>
+                <div class="reel-overlay-gradient"></div>
+                <div class="reel-controls">
+                  <div class="reel-heart"></div>
+                  <div class="reel-comment"></div>
+                  <div class="reel-share"></div>
+                </div>
+                <div class="reel-progress"><span></span></div>
+              </div>
+              <div class="reel-phone-home"></div>
+            </div>
+            <div class="reel-phone-frame reel-phone-frame-front">
               <div class="reel-phone-notch"></div>
               <div class="reel-phone-screen">
                 <video class="reel-video" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Instagram reel style showcase video"></video>

@@ -623,8 +623,8 @@ select {
   align-items: center;
   gap: 12px;
   text-align: left;
-  min-height: 74px;
-  padding: 14px;
+  min-height: 66px;
+  padding: 14px 18px;
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
@@ -647,7 +647,7 @@ select {
   display: block;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.92rem;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #fff;
 }
 
@@ -661,13 +661,13 @@ select {
 }
 
 .service-mega-text {
-  display: grid;
-  gap: 4px;
+  display: flex;
+  align-items: center;
+  min-height: 100%;
 }
 
 .service-mega-desc {
-  font-size: 0.76rem;
-  line-height: 1.35;
+  display: none;
 }
 
 .service-mega-item::after {
@@ -7446,6 +7446,23 @@ body[data-page='home'] .hero-copy h1 {
   animation: reel-float 6s ease-in-out infinite;
 }
 
+.reel-phone-frame-front {
+  z-index: 2;
+}
+
+.reel-phone-frame-back {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  opacity: 0.92;
+  transform: translate(-50%, -50%) translateX(-122px) translateY(18px) scale(0.94);
+  animation:
+    reel-float-back 6.8s ease-in-out infinite,
+    reel-back-entrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  filter: saturate(0.94);
+}
+
 .reel-phone-notch {
   position: absolute;
   top: 6px;
@@ -8467,12 +8484,12 @@ body:not([data-page='admin']) .service-mega-link {
 }
 
 body:not([data-page='admin']) .service-mega-item {
-  min-height: 120px;
-  padding: 20px 18px;
+  min-height: 84px;
+  padding: 18px 18px;
   background:
     linear-gradient(180deg, rgba(230, 58, 110, 0.08), rgba(255, 255, 255, 0.02)) !important;
   border-color: rgba(230, 58, 110, 0.16) !important;
-  align-items: start;
+  align-items: center;
 }
 
 body:not([data-page='admin']) .service-mega-item:hover,
@@ -8483,13 +8500,7 @@ body:not([data-page='admin']) .service-mega-item:focus-visible {
 }
 
 body:not([data-page='admin']) .service-mega-item strong {
-  margin-bottom: 8px;
-}
-
-body:not([data-page='admin']) .service-mega-desc {
-  color: rgba(255, 255, 255, 0.74) !important;
-  font-size: 0.88rem;
-  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 body:not([data-page='admin']) .service-mega-icon {
@@ -8804,6 +8815,11 @@ body[data-page='home'] .hero-reel-stage {
   max-width: none;
   min-height: 100%;
   flex: none;
+  padding-inline: 34px;
+}
+
+body[data-page='home'] .hero-reel-stage {
+  isolation: isolate;
 }
 
 body[data-page='home'] .reel-phone-frame {
@@ -8816,10 +8832,82 @@ body[data-page='home'] .reel-phone-frame {
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
+body[data-page='home'] .reel-phone-frame-front {
+  transform: translateX(118px);
+}
+
+body[data-page='home'] .reel-phone-frame-back {
+  transform: translate(-50%, -50%) translateX(-144px) translateY(18px) scale(0.92);
+  box-shadow:
+    0 0 0 10px #141414,
+    0 18px 42px rgba(0, 0, 0, 0.34),
+    0 6px 24px rgba(230, 58, 110, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 body[data-page='home'] .reel-phone-screen {
   background:
     radial-gradient(circle at bottom, rgba(230, 58, 110, 0.1), transparent 28%),
     #050505;
+}
+
+@keyframes reel-float-back {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateX(-144px) translateY(18px) scale(0.92);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateX(-152px) translateY(8px) scale(0.94);
+  }
+}
+
+@keyframes reel-back-entrance {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.92;
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page='home'] .hero-reel-stage {
+    min-height: 460px;
+  }
+
+  body[data-page='home'] .reel-phone-frame {
+    width: 176px;
+    height: 352px;
+  }
+
+  body[data-page='home'] .reel-phone-frame-front {
+    transform: translateX(72px);
+  }
+
+  body[data-page='home'] .reel-phone-frame-back {
+    transform: translate(-50%, -50%) translateX(-92px) translateY(16px) scale(0.9);
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-page='home'] .hero-reel-stage {
+    min-height: 380px;
+  }
+
+  body[data-page='home'] .reel-phone-frame {
+    width: 148px;
+    height: 300px;
+  }
+
+  body[data-page='home'] .reel-phone-frame-front {
+    transform: translateX(44px);
+  }
+
+  body[data-page='home'] .reel-phone-frame-back {
+    transform: translate(-50%, -50%) translateX(-58px) translateY(16px) scale(0.88);
+  }
 }
 
 body[data-page='home'] .portfolio-book-shell::before {
