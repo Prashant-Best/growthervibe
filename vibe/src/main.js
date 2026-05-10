@@ -52,30 +52,45 @@ const homePortfolioEntries = [
     title: 'Before / after creatives, A+ content, and product frames built for shelf clicks.',
     description: 'Scroll-stopping creatives designed for high CTR on marketplaces.',
     detail: 'Page 1 explores cover-ready product storytelling for catalog and shelf performance.',
+    note: 'Catalog storytelling arranged with the feel of a premium product book.',
+    bullets: ['Shelf-first hooks', 'A+ detail framing', 'Better click intent'],
+    footer: 'Every page is designed to move a viewer from product glance to stronger purchase intent.',
   },
   {
     badge: 'Performance Ads',
     title: 'UGC ads, static variations, hooks, and testing-ready ad sets.',
     description: 'Creative testing engine behind profitable scaling.',
     detail: 'Page 2 focuses on ad systems that help ambitious brands learn faster and scale cleaner.',
+    note: 'Testing pages that feel strategic, sharp, and ready for iteration.',
+    bullets: ['Hook expansion', 'Offer testing', 'Scale-ready ad sets'],
+    footer: 'The spread reflects a testing system where each creative angle has a job inside the funnel.',
   },
   {
     badge: 'Quick Commerce Ads',
     title: 'Urgency-led motion, offer-first cuts, and fast conversion creatives.',
     description: 'Built for instant clicks and impulse buys.',
     detail: 'Page 3 captures fast-turn offers, hard-stop edits, and conversion pressure built for speed.',
+    note: 'Fast-moving layouts made to carry urgency across every spread.',
+    bullets: ['Offer pressure', 'Speed-led edits', 'Impulse conversion'],
+    footer: 'Quick commerce pages are shaped around urgency, clarity, and immediate click behavior.',
   },
   {
     badge: 'Video + Photography',
     title: 'Studio shots, lifestyle frames, and product storytelling in one system.',
     description: 'Product shoots with a studio + UGC mix.',
     detail: 'Page 4 blends image direction and motion planning so every visual page feels cohesive.',
+    note: 'A richer editorial spread for products that need both polish and motion.',
+    bullets: ['Studio visuals', 'Lifestyle moments', 'Motion continuity'],
+    footer: 'Photography and motion are treated like one system so the brand story stays consistent.',
   },
   {
     badge: 'AI UGC Ads',
     title: 'AI avatars, voiceover creatives, and scalable ad iterations.',
     description: 'Scale content without scaling production cost.',
     detail: 'Page 5 shows modern creative workflows that keep production nimble without losing polish.',
+    note: 'Forward-looking pages that still read like crafted creative direction.',
+    bullets: ['AI avatars', 'Voice-led scripts', 'Efficient iteration'],
+    footer: 'The result is a modern production workflow that still feels human, sharp, and conversion aware.',
   },
 ]
 
@@ -639,10 +654,22 @@ function homePortfolioBookMarkup() {
           <div class="portfolio-book-sheet portfolio-book-sheet-back" aria-hidden="true"></div>
           <div class="portfolio-book-sheet portfolio-book-sheet-front" aria-hidden="true"></div>
           <div class="portfolio-book-page" data-portfolio-page>
-            <span class="portfolio-book-page-label">Inside page</span>
-            <h3 data-portfolio-page-heading>${escapeHtml(firstEntry.badge)}</h3>
-            <strong data-portfolio-detail>${escapeHtml(firstEntry.detail)}</strong>
-            <p data-portfolio-description>${escapeHtml(firstEntry.description)}</p>
+            <div class="portfolio-book-page-spread">
+              <div class="portfolio-book-page-left">
+                <span class="portfolio-book-page-label">Inside page</span>
+                <h3 data-portfolio-page-heading>${escapeHtml(firstEntry.badge)}</h3>
+                <p class="portfolio-book-page-note" data-portfolio-page-note>${escapeHtml(firstEntry.note)}</p>
+                <div class="portfolio-book-page-accent" aria-hidden="true"></div>
+              </div>
+              <div class="portfolio-book-page-right">
+                <strong data-portfolio-detail>${escapeHtml(firstEntry.detail)}</strong>
+                <p data-portfolio-description>${escapeHtml(firstEntry.description)}</p>
+                <div class="portfolio-book-page-bullets" data-portfolio-page-bullets>
+                  ${firstEntry.bullets.map((bullet) => `<span>${escapeHtml(bullet)}</span>`).join('')}
+                </div>
+                <p class="portfolio-book-page-footer" data-portfolio-page-footer>${escapeHtml(firstEntry.footer)}</p>
+              </div>
+            </div>
           </div>
           <div class="portfolio-book-cover" data-portfolio-cover tabindex="0" role="button" aria-label="Open the next portfolio page">
             <span class="portfolio-badge" data-portfolio-badge>${escapeHtml(firstEntry.badge)}</span>
@@ -1474,8 +1501,12 @@ function initPortfolioBook() {
   const badge = book.querySelector('[data-portfolio-badge]')
   const title = book.querySelector('[data-portfolio-title]')
   const pageHeading = book.querySelector('[data-portfolio-page-heading]')
+  const pageNote = book.querySelector('[data-portfolio-page-note]')
   const detail = book.querySelector('[data-portfolio-detail]')
   const description = book.querySelector('[data-portfolio-description]')
+  const bullets = book.querySelector('[data-portfolio-page-bullets]')
+  const pageFooter = book.querySelector('[data-portfolio-page-footer]')
+  const pageSpread = book.querySelector('[data-portfolio-page-spread]')
   const counter = book.querySelector('[data-portfolio-counter]')
   const cover = book.querySelector('[data-portfolio-cover]')
   const status = book.querySelector('[data-portfolio-book-status]')
@@ -1520,6 +1551,7 @@ function initPortfolioBook() {
   const syncBookState = () => {
     book.classList.toggle('is-open', isOpen)
     book.classList.toggle('is-closed', !isOpen)
+    book.classList.remove('is-forward', 'is-reverse', 'is-resting')
   }
 
   const renderEntry = (index) => {
@@ -1529,14 +1561,28 @@ function initPortfolioBook() {
     if (pageHeading) {
       pageHeading.textContent = entry.badge
     }
+    if (pageNote) {
+      pageNote.textContent = entry.note || ''
+    }
     detail.textContent = entry.detail
     description.textContent = entry.description
+    if (bullets) {
+      bullets.innerHTML = (entry.bullets || []).map((bullet) => `<span>${escapeHtml(bullet)}</span>`).join('')
+    }
+    if (pageFooter) {
+      pageFooter.textContent = entry.footer || ''
+    }
     counter.textContent = `Page ${index + 1} / ${homePortfolioEntries.length}`
     cover?.setAttribute('aria-label', `Open the next portfolio page. Currently showing ${entry.badge}, page ${index + 1} of ${homePortfolioEntries.length}.`)
     if (status) {
       status.textContent = `Page ${index + 1} of ${homePortfolioEntries.length}. ${entry.badge}. ${entry.description}`
     }
     book.setAttribute('data-page-index', String(index))
+    if (pageSpread) {
+      pageSpread.classList.remove('is-animating')
+      void pageSpread.offsetWidth
+      pageSpread.classList.add('is-animating')
+    }
     persistState()
   }
 
@@ -1546,6 +1592,10 @@ function initPortfolioBook() {
     }
 
     if (direction === 'close') {
+      isFlipping = false
+      setControlsDisabled(false)
+      book.removeAttribute('aria-busy')
+      book.classList.remove('is-flipping', 'is-forward', 'is-reverse', 'is-resting')
       isOpen = false
       syncBookState()
       if (status) {
