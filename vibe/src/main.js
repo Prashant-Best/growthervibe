@@ -587,48 +587,39 @@ function horizontalVideoCarouselMarkup() {
 
 function imageGalleryMarkup() {
   const images = [
-    { src: image1, title: 'Ad Showcase' },
-    { src: image2, title: 'Frame Design' },
-    { src: image3, title: 'Hydro Gain' },
-    { src: image4, title: 'Product Image' },
-    { src: image5, title: 'Muscle Whey' },
-    { src: image6, title: 'Prex Island' },
+    { src: image1, title: 'Ad Showcase', tag: 'Video creatives' },
+    { src: image2, title: 'Frame Design', tag: 'Static creatives' },
+    { src: image3, title: 'Hydro Gain', tag: 'Launch campaign' },
+    { src: image4, title: 'Product Image', tag: 'Marketplace design' },
+    { src: image5, title: 'Muscle Whey', tag: 'Performance ad' },
+    { src: image6, title: 'Prex Island', tag: 'Commerce creative' },
   ]
 
   return `
-    <div class="gallery-section reveal-up">
-      <div class="gallery-row gallery-row-ltr">
-        <div class="gallery-track gallery-track-ltr">
-          ${images.map((img, i) => `
-            <div class="gallery-item">
-              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
-              <span class="gallery-label">${escapeHtml(img.title)}</span>
-            </div>
-          `).join('')}
-          ${images.map((img, i) => `
-            <div class="gallery-item">
-              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
-              <span class="gallery-label">${escapeHtml(img.title)}</span>
-            </div>
-          `).join('')}
+    <div class="creative-wall reveal-up">
+      <div class="creative-wall-toolbar">
+        <strong>Winning ads that print cash.</strong>
+        <div class="creative-wall-tags" aria-label="Creative categories">
+          <span>Video creatives</span>
+          <span>Static creatives</span>
         </div>
       </div>
-
-      <div class="gallery-row gallery-row-rtl">
-        <div class="gallery-track gallery-track-rtl">
-          ${images.map((img, i) => `
-            <div class="gallery-item">
-              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
-              <span class="gallery-label">${escapeHtml(img.title)}</span>
+      <div class="creative-wall-grid">
+        ${images.map((img, index) => `
+          <article class="creative-wall-card creative-wall-card-${(index % 3) + 1}">
+            <div class="creative-wall-media">
+              <img class="creative-wall-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
             </div>
-          `).join('')}
-          ${images.map((img, i) => `
-            <div class="gallery-item">
-              <img class="gallery-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
-              <span class="gallery-label">${escapeHtml(img.title)}</span>
+            <div class="creative-wall-copy">
+              <span>${escapeHtml(img.tag)}</span>
+              <strong>${escapeHtml(img.title)}</strong>
             </div>
-          `).join('')}
-        </div>
+          </article>
+        `).join('')}
+      </div>
+      <div class="creative-wall-footer">
+        <a class="button button-secondary button-compact" href="./contact.html">Schedule a call</a>
+        <p>We place the artwork inside cleaner frames so text, offers, and product details stay visible.</p>
       </div>
     </div>
   `
@@ -702,8 +693,10 @@ function homeAnswersSectionMarkup() {
   return `
     <section class="answers-section section">
       <div class="answers-intro reveal-up">
-        <span class="eyebrow">What clients ask</span>
-        <h2>We already know the questions serious brands ask before they move.</h2>
+        <div class="answers-intro-card">
+          <span class="eyebrow">What clients ask</span>
+          <h2>We already know the questions serious brands ask before they move.</h2>
+        </div>
       </div>
       <div class="answers-list reveal-up">
         ${answers
@@ -751,6 +744,20 @@ function planeIntroMarkup() {
       </div>
     </div>
   `
+}
+
+function footerSocialLinksMarkup() {
+  const socials = [
+    { label: 'Instagram', href: 'https://www.instagram.com/growthrevibe' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/growthrevibe' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@growthrevibe' },
+  ]
+
+  return socials
+    .map(
+      (item) => `<a class="footer-social-link" href="${item.href}" target="_blank" rel="noreferrer">${escapeHtml(item.label)}</a>`,
+    )
+    .join('')
 }
 
 function sitePages(siteData) {
@@ -921,9 +928,15 @@ function sitePages(siteData) {
       </section>
 
       <section class="home-form-section section">
-        <div class="section-heading reveal-up">
+        <div class="home-form-copy reveal-up">
           <span class="eyebrow">Start here</span>
           <h2>Need creatives that perform, not just fill the feed?</h2>
+          <p>Share the platform, product angle, and the kind of creative support you need. We’ll map the right production and performance mix without overcomplicating it.</p>
+          <div class="home-form-points">
+            <span>Meta and marketplace friendly</span>
+            <span>UGC, statics, hooks, and product angles</span>
+            <span>Fast review with a practical next step</span>
+          </div>
         </div>
         <div class="hero-form-card reveal-up">
           <div class="form-intro">
@@ -1358,6 +1371,9 @@ function appMarkup(siteData) {
           </span>
           <strong>Growth Revibe</strong>
           <p>Growth Revibe is a creative marketing studio focused on ad creatives, performance campaigns, marketplace assets, and conversion-led brand growth.</p>
+          <div class="footer-socials" aria-label="Social media links">
+            ${footerSocialLinksMarkup()}
+          </div>
         </div>
         <div class="footer-details">
           <div>

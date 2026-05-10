@@ -1,0 +1,500 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [ 3 0 R 5 0 R 7 0 R 9 0 R 11 0 R ] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 10 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1606 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 48 760 Tm
+14 TL
+() Tj
+T*
+(Growth Revibe Hostinger Deployment Guide) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(What this website needs on Hostinger) Tj
+T*
+() Tj
+T*
+(This website is a static Vite site with one PHP form handler:) Tj
+T*
+() Tj
+T*
+(                  - `public/contact-handler.php`) Tj
+T*
+() Tj
+T*
+(That means your Hostinger plan must support:) Tj
+T*
+() Tj
+T*
+(                  - normal website hosting) Tj
+T*
+(                  - PHP enabled for the domain) Tj
+T*
+(                  - a connected domain) Tj
+T*
+(                  - working email accounts for the domain) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Emails used by the website) Tj
+T*
+() Tj
+T*
+(The current mail handler sends form submissions to:) Tj
+T*
+() Tj
+T*
+(                  - `business@grothervibe.com`) Tj
+T*
+(                  - `info@growthrevibe.com`) Tj
+T*
+() Tj
+T*
+(The sender address is currently:) Tj
+T*
+() Tj
+T*
+(                  - `business@grothervibe.com`) Tj
+T*
+() Tj
+T*
+(If you want to change those addresses later, edit these constants in:) Tj
+T*
+() Tj
+T*
+(                  - `public/contact-handler.php`) Tj
+T*
+() Tj
+T*
+(const RECIPIENTS = 'business@grothervibe.com, info@growthrevibe.com';) Tj
+T*
+(const SENDER_EMAIL = 'business@grothervibe.com';) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Before deployment) Tj
+T*
+() Tj
+T*
+(            1. Build the website locally:) Tj
+T*
+(   - `npm run build`) Tj
+T*
+(            2. Confirm the final output folder is:) Tj
+T*
+(   - `dist/`) Tj
+T*
+(            3. Make sure `contact-handler.php` is uploaded to the live website root:) Tj
+T*
+(   - `public_html/contact-handler.php`) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 10 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 1466 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 48 760 Tm
+14 TL
+() Tj
+T*
+(Hostinger deployment steps) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(1. Add or connect the domain) Tj
+T*
+() Tj
+T*
+(In Hostinger hPanel:) Tj
+T*
+() Tj
+T*
+(            1. Go to `Websites`) Tj
+T*
+(            2. Open the website dashboard) Tj
+T*
+(            3. Connect the domain if it is not connected yet) Tj
+T*
+(            4. If the domain is outside Hostinger, point DNS to Hostinger first) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(2. Create the email accounts) Tj
+T*
+() Tj
+T*
+(In Hostinger hPanel:) Tj
+T*
+() Tj
+T*
+(            1. Go to `Emails`) Tj
+T*
+(            2. Open the email plan for your domain) Tj
+T*
+(            3. Create these mailboxes if they do not already exist:) Tj
+T*
+(   - `business@grothervibe.com`) Tj
+T*
+(   - `info@growthrevibe.com`) Tj
+T*
+(            4. Save the passwords safely) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(3. Confirm PHP is enabled) Tj
+T*
+() Tj
+T*
+(In Hostinger hPanel:) Tj
+T*
+() Tj
+T*
+(            1. Go to `Websites`) Tj
+T*
+(            2. Open `Dashboard`) Tj
+T*
+(            3. Open `PHP Configuration`) Tj
+T*
+(            4. Use a supported PHP version) Tj
+T*
+(            5. Recommended:) Tj
+T*
+(   - PHP `8.2` or newer) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(4. Upload the website files) Tj
+T*
+() Tj
+T*
+(If using File Manager:) Tj
+T*
+() Tj
+T*
+(            1. Go to `Websites`) Tj
+T*
+(            2. Open `Dashboard`) Tj
+T*
+(            3. Open `File Manager`) Tj
+T*
+(            4. Open the domain `public_html` folder) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 10 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 1632 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 48 760 Tm
+14 TL
+(            5. Delete the default files if needed) Tj
+T*
+(            6. Upload the contents of `dist/` into `public_html`) Tj
+T*
+(            7. Upload `contact-handler.php` into `public_html`) Tj
+T*
+() Tj
+T*
+(Important:) Tj
+T*
+() Tj
+T*
+(                  - upload the contents of `dist`) Tj
+T*
+(                  - do not upload the `dist` folder itself as a nested folder unless you want the) Tj
+T*
+(                  site to open from `/dist`) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(5. Check the form endpoint path) Tj
+T*
+() Tj
+T*
+(The front end currently sends forms to:) Tj
+T*
+() Tj
+T*
+(                  - `./contact-handler.php`) Tj
+T*
+() Tj
+T*
+(That means:) Tj
+T*
+() Tj
+T*
+(                  - `index.html` and `contact-handler.php` must sit in the same live root level) Tj
+T*
+(                  - on Hostinger this should normally be `public_html/`) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(6. Test both form flows) Tj
+T*
+() Tj
+T*
+(After upload, test:) Tj
+T*
+() Tj
+T*
+(            1. Homepage inquiry form) Tj
+T*
+(            2. Contact page inquiry form) Tj
+T*
+(            3. Meeting request / availability form) Tj
+T*
+() Tj
+T*
+(Each should:) Tj
+T*
+() Tj
+T*
+(                  - show a success message) Tj
+T*
+(                  - send an email to the company inbox) Tj
+T*
+(                  - include the user details in formatted layout) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(What the email contains) Tj
+T*
+() Tj
+T*
+(Each email now includes:) Tj
+T*
+() Tj
+T*
+(                  - submission type) Tj
+T*
+(                  - submitted date and time) Tj
+T*
+(                  - name) Tj
+T*
+(                  - email) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 10 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 1666 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 48 760 Tm
+14 TL
+(                  - phone) Tj
+T*
+(                  - company or business) Tj
+T*
+(                  - selected service) Tj
+T*
+(                  - budget) Tj
+T*
+(                  - source page URL) Tj
+T*
+(                  - project message) Tj
+T*
+() Tj
+T*
+(Availability request emails also include:) Tj
+T*
+() Tj
+T*
+(                  - selected appointment date) Tj
+T*
+(                  - selected appointment time) Tj
+T*
+(                  - appointment timezone) Tj
+T*
+(                  - readable date label) Tj
+T*
+(                  - readable time label) Tj
+T*
+(                  - readable timezone label) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Important Hostinger note about PHP mail) Tj
+T*
+() Tj
+T*
+(The current website uses PHP `mail\(\)`.) Tj
+T*
+() Tj
+T*
+(This is the fastest way to deploy, but Hostinger recommends SMTP for better) Tj
+T*
+(deliverability.) Tj
+T*
+() Tj
+T*
+(If emails go to spam or do not arrive reliably, the next upgrade should be:) Tj
+T*
+() Tj
+T*
+(                  - replace PHP `mail\(\)` with authenticated SMTP using a library such as) Tj
+T*
+(                  PHPMailer) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Recommended SMTP values for Hostinger Email) Tj
+T*
+() Tj
+T*
+(If you later switch to SMTP, Hostinger???s documented outgoing settings are:) Tj
+T*
+() Tj
+T*
+(                  - host: `smtp.hostinger.com`) Tj
+T*
+(                  - SSL port: `465`) Tj
+T*
+(                  - TLS/STARTTLS port: `587`) Tj
+T*
+() Tj
+T*
+(You will also need:) Tj
+T*
+() Tj
+T*
+(                  - full mailbox email) Tj
+T*
+(                  - mailbox password) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Final deployment checklist) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 10 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 908 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 48 760 Tm
+14 TL
+(                  - Domain connected to Hostinger) Tj
+T*
+(                  - Website files uploaded to `public_html`) Tj
+T*
+(                  - `contact-handler.php` uploaded to `public_html`) Tj
+T*
+(                  - PHP enabled) Tj
+T*
+(                  - Email accounts created) Tj
+T*
+(                  - Forms tested live) Tj
+T*
+(                  - Both company inboxes receiving messages) Tj
+T*
+(                  - Spam folder checked after first tests) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(If you want the strongest setup) Tj
+T*
+() Tj
+T*
+(Best long-term version:) Tj
+T*
+() Tj
+T*
+(            1. Keep the current front-end forms) Tj
+T*
+(            2. Replace the PHP `mail\(\)` handler with SMTP authentication) Tj
+T*
+(            3. Store SMTP credentials outside the public site when possible) Tj
+T*
+(            4. Test from the live Hostinger domain only) Tj
+T*
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000142 00000 n 
+0000000269 00000 n 
+0000001926 00000 n 
+0000002053 00000 n 
+0000003570 00000 n 
+0000003697 00000 n 
+0000005380 00000 n 
+0000005508 00000 n 
+0000007226 00000 n 
+0000007355 00000 n 
+0000008314 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+8385
+%%EOF
