@@ -624,7 +624,7 @@ function imageGalleryMarkup() {
 
   return `
     <section class="video-rail-section image-rail-section">
-      <div class="section-heading reveal-up">
+      <div class="section-heading section-heading-centered reveal-up">
         <span class="eyebrow">Image gallery</span>
         <h2>Static creatives presented with the same showroom energy as the reel section.</h2>
         <p>Frames, marketplace images, and performance statics arranged in a cleaner horizontal rail.</p>
@@ -702,12 +702,24 @@ function imageLightboxMarkup() {
 
 function homePortfolioBookMarkup() {
   const firstEntry = homePortfolioEntries[0]
+  const navArrowLeft = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14.5 5.5 8 12l6.5 6.5"></path>
+      <path d="M9 12h7"></path>
+    </svg>
+  `
+  const navArrowRight = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M9.5 5.5 16 12l-6.5 6.5"></path>
+      <path d="M15 12H8"></path>
+    </svg>
+  `
 
   return `
     <div class="portfolio-stack-stage reveal-up">
       <article class="portfolio-stack" data-portfolio-book data-page-index="0" aria-label="Interactive portfolio cards">
         <button class="portfolio-stack-nav portfolio-stack-nav-prev" type="button" data-portfolio-book-nav="prev" aria-label="Show previous card">
-          <span aria-hidden="true">&larr;</span>
+          <span aria-hidden="true">${navArrowLeft}</span>
         </button>
         <div class="portfolio-stack-scene">
           <div class="portfolio-stack-orbit" aria-hidden="true"></div>
@@ -731,7 +743,7 @@ function homePortfolioBookMarkup() {
           </div>
         </div>
         <button class="portfolio-stack-nav portfolio-stack-nav-next" type="button" data-portfolio-book-nav="next" aria-label="Show next card">
-          <span aria-hidden="true">&rarr;</span>
+          <span aria-hidden="true">${navArrowRight}</span>
         </button>
         <div class="portfolio-stack-footer">
           <p class="portfolio-stack-note" data-portfolio-page-note>${escapeHtml(firstEntry.note)}</p>
@@ -801,31 +813,63 @@ function homeAnswersSectionMarkup() {
 }
 
 function planeIntroMarkup() {
+  const introActions = [
+    {
+      label: 'Grow',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"></path><path d="M7 15v-4"></path><path d="M12 15V7"></path><path d="M17 15v-6"></path><path d="m8 8 4-4 4 4"></path></svg>`,
+    },
+    {
+      label: 'Optimize',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.5"></circle><path d="M12 2.5v3"></path><path d="M12 18.5v3"></path><path d="M2.5 12h3"></path><path d="M18.5 12h3"></path></svg>`,
+    },
+    {
+      label: 'Launch',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4.5c2.2 0 4 1.8 4 4v2.2L13 16.2 7.8 11 13.3 5.5h1.2Z"></path><path d="m7.8 11-2.3.8 1.5 1.5-.8 2.3 2.3-.8 1.5 1.5.8-2.3"></path><path d="M14.3 9.7 18 6"></path></svg>`,
+    },
+    {
+      label: 'Scale',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"></path><path d="M6.5 15.5 11 11l3 3 4.5-5"></path><path d="M18.5 9V6h-3"></path></svg>`,
+    },
+  ]
+
   return `
     <div class="plane-intro" data-plane-intro aria-hidden="true">
       <div class="plane-intro-sky"></div>
-      <div class="plane-intro-runway"></div>
-      <div class="plane-intro-title">
-        <span class="plane-intro-logo">
-          <img src="${brandLogo}" alt="Growth Revibe logo" />
-        </span>
-        <span class="plane-intro-wordmark">Growth Revibe</span>
+      <div class="plane-intro-grid"></div>
+      <div class="plane-intro-glow plane-intro-glow-top"></div>
+      <div class="plane-intro-glow plane-intro-glow-bottom"></div>
+      <div class="plane-intro-card">
+        <div class="plane-intro-brand">
+          <span class="plane-intro-logo">
+            <img src="${brandLogo}" alt="Growth Revibe logo" />
+          </span>
+          <div class="plane-intro-copy">
+            <strong class="plane-intro-wordmark">Growth Revibe</strong>
+            <span class="plane-intro-kicker">Grow • Optimize • Scale</span>
+          </div>
+        </div>
+        <div class="plane-intro-actions">
+          ${introActions
+            .map(
+              (item) => `
+                <span class="plane-intro-action">
+                  <span class="plane-intro-action-icon">${item.icon}</span>
+                  <span class="plane-intro-action-label">${escapeHtml(item.label)}</span>
+                </span>
+              `,
+            )
+            .join('')}
+        </div>
       </div>
       <div class="plane-intro-plane">
         <div class="plane-trail"></div>
-        <div class="plane-tail-fin"></div>
-        <div class="plane-body"></div>
-        <div class="plane-window-strip"></div>
-        <div class="plane-door"></div>
-        <div class="plane-cockpit"></div>
-        <div class="plane-wing-root"></div>
-        <div class="plane-wing plane-wing-main"></div>
-        <div class="plane-engine plane-engine-one"></div>
-        <div class="plane-engine plane-engine-two"></div>
-        <div class="plane-wing plane-wing-tail"></div>
-        <div class="plane-stabilizer"></div>
-        <div class="plane-landing-gear plane-landing-gear-front"></div>
-        <div class="plane-landing-gear plane-landing-gear-back"></div>
+        <div class="plane-rocket-flame"></div>
+        <div class="plane-rocket-body"></div>
+        <div class="plane-rocket-window"></div>
+        <div class="plane-rocket-fin plane-rocket-fin-top"></div>
+        <div class="plane-rocket-fin plane-rocket-fin-bottom"></div>
+        <div class="plane-rocket-fin plane-rocket-fin-tail"></div>
+        <div class="plane-rocket-wing plane-rocket-wing-main"></div>
         <div class="plane-nose"></div>
       </div>
     </div>
@@ -834,14 +878,27 @@ function planeIntroMarkup() {
 
 function footerSocialLinksMarkup() {
   const socials = [
-    { label: 'Instagram', href: 'https://www.instagram.com/growthrevibe' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/growthrevibe' },
-    { label: 'YouTube', href: 'https://www.youtube.com/@growthrevibe' },
+    {
+      label: 'Instagram',
+      href: 'https://www.instagram.com/growthrevibe',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.4" cy="6.6" r="1"></circle></svg>`,
+    },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/growthrevibe',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="6.5" r="1.2"></circle><path d="M6.5 10v7.5"></path><path d="M11.5 17.5V13c0-1.7 1-2.8 2.6-2.8 1.5 0 2.4 1 2.4 2.8v4.5"></path><path d="M11.5 10v1.2"></path></svg>`,
+    },
+    {
+      label: 'YouTube',
+      href: 'https://www.youtube.com/@growthrevibe',
+      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8.2c-.2-1.2-1.1-2.2-2.3-2.4C16.8 5.5 12 5.5 12 5.5s-4.8 0-6.7.3C4.1 6 3.2 7 3 8.2c-.3 1.7-.3 3.8-.3 3.8s0 2.1.3 3.8c.2 1.2 1.1 2.2 2.3 2.4 1.9.3 6.7.3 6.7.3s4.8 0 6.7-.3c1.2-.2 2.1-1.2 2.3-2.4.3-1.7.3-3.8.3-3.8s0-2.1-.3-3.8Z"></path><path d="m10 15.2 5-3.2-5-3.2z"></path></svg>`,
+    },
   ]
 
   return socials
     .map(
-      (item) => `<a class="footer-social-link" href="${item.href}" target="_blank" rel="noreferrer">${escapeHtml(item.label)}</a>`,
+      (item) =>
+        `<a class="footer-social-link" href="${item.href}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(item.label)}">${item.icon}<span class="sr-only">${escapeHtml(item.label)}</span></a>`,
     )
     .join('')
 }
@@ -915,10 +972,10 @@ function homePartnerSectionMarkup() {
 
 function homeClientsSectionMarkup() {
   const clients = [
-    { name: 'Healthffarm Nutrition' },
-    { name: 'Torque Pharma' },
-    { name: 'Morph Costumes', highlight: true },
-    { name: 'Outie Too', highlight: true },
+    { name: 'Healthffarm Nutrition', badge: 'HN' },
+    { name: 'Torque Pharma', badge: 'TP' },
+    { name: 'Morph Costumes', badge: 'MC', highlight: true },
+    { name: 'Outie Too', badge: 'OT', highlight: true },
   ]
 
   return `
@@ -927,13 +984,24 @@ function homeClientsSectionMarkup() {
         <span class="eyebrow">Client network</span>
         <h2>Trusted by Global Brands Ecommerce and Lead Generation</h2>
       </div>
-      <div class="client-trust-grid reveal-up" aria-label="Client brands">
-        ${clients
+      <div class="client-trust-marquee reveal-up" aria-label="Client brands">
+        ${['ltr', 'rtl']
           .map(
-            (client) => `
-              <article class="client-trust-card${client.highlight ? ' is-highlighted' : ''}">
-                <strong>${escapeHtml(client.name)}</strong>
-              </article>
+            (direction) => `
+              <div class="client-trust-row client-trust-row-${direction}">
+                <div class="client-trust-track client-trust-track-${direction}">
+                  ${[...clients, ...clients]
+                    .map(
+                      (client) => `
+                        <article class="client-trust-card${client.highlight ? ' is-highlighted' : ''}">
+                          <span class="client-trust-mark" aria-hidden="true">${escapeHtml(client.badge)}</span>
+                          <strong>${escapeHtml(client.name)}</strong>
+                        </article>
+                      `,
+                    )
+                    .join('')}
+                </div>
+              </div>
             `,
           )
           .join('')}
@@ -1039,10 +1107,6 @@ function sitePages(siteData) {
       </section>
 
       <section class="horizontal-carousel-section section">
-        <div class="section-heading reveal-up">
-          <span class="eyebrow">Image Gallery</span>
-          <h2>Creative assets flowing both ways</h2>
-        </div>
         ${imageGalleryMarkup()}
       </section>
 
@@ -1240,7 +1304,7 @@ function sitePages(siteData) {
       </section>
     `,
     services: `
-      <section class="page-banner section reveal-up">
+      <section class="page-banner section reveal-up services-page-hero">
         <span class="eyebrow">Services</span>
         <h1>Explore the services behind our creative growth work.</h1>
         <p>
@@ -1248,7 +1312,7 @@ function sitePages(siteData) {
         </p>
       </section>
 
-      <section class="service-accordion-section section reveal-up">
+      <section class="service-accordion-section section reveal-up services-page-panel">
         <div class="service-accordion-header">
           <span class="eyebrow">What we offer</span>
           <h2>Every service is designed to create a clearer path from attention to revenue.</h2>
@@ -1276,7 +1340,7 @@ function sitePages(siteData) {
         </div>
       </section>
 
-      <section class="pricing-showcase section">
+      <section class="pricing-showcase section services-page-panel">
         <div class="section-heading reveal-up">
           <span class="eyebrow">How we engage</span>
           <h2>Choose one service or combine multiple areas into a single growth system.</h2>
