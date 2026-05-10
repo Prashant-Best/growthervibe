@@ -524,20 +524,32 @@ function homeVideoRailMarkup() {
     .map(
       (item, index) => `
         <article class="video-rail-card" aria-label="${escapeHtml(item.title)} sample video card">
-          <div class="video-rail-shell">
-            <div class="video-rail-chrome">
-              <span></span>
-              <span></span>
-              <span></span>
+          <button
+            type="button"
+            class="video-rail-open"
+            data-media-lightbox-trigger
+            data-media-type="video"
+            data-media-src="${item.video}"
+            data-media-title="${escapeHtml(item.title)}"
+            data-media-tag="${escapeHtml(item.tag)}"
+            data-media-caption="${escapeHtml(item.caption)}"
+            aria-label="Open ${escapeHtml(item.title)} video in popup view"
+          >
+            <div class="video-rail-shell">
+              <div class="video-rail-chrome">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="video-rail-screen video-theme-${(index % sampleVideoReel.length) + 1}">
+                <video class="video-rail-media" src="${item.video}" autoplay muted loop playsinline preload="metadata" aria-label="${escapeHtml(item.title)} sample creative video"></video>
+                <div class="video-rail-glow" aria-hidden="true"></div>
+                <div class="video-rail-play" aria-hidden="true"></div>
+                <div class="video-rail-timecode" aria-hidden="true">00:${18 + (index % 3) * 7}</div>
+                <div class="video-rail-progress" aria-hidden="true"><span></span></div>
+              </div>
             </div>
-            <div class="video-rail-screen video-theme-${(index % sampleVideoReel.length) + 1}">
-              <video class="video-rail-media" src="${item.video}" autoplay muted loop playsinline preload="metadata" aria-label="${escapeHtml(item.title)} sample creative video"></video>
-              <div class="video-rail-glow" aria-hidden="true"></div>
-              <div class="video-rail-play" aria-hidden="true"></div>
-              <div class="video-rail-timecode" aria-hidden="true">00:${18 + (index % 3) * 7}</div>
-              <div class="video-rail-progress" aria-hidden="true"><span></span></div>
-            </div>
-          </div>
+          </button>
           <div class="video-rail-copy">
             <span>${escapeHtml(item.tag)}</span>
             <strong>${escapeHtml(item.title)}</strong>
@@ -602,39 +614,87 @@ function horizontalVideoCarouselMarkup() {
 
 function imageGalleryMarkup() {
   const images = [
-    { src: image1, title: 'Ad Showcase', tag: 'Video creatives' },
-    { src: image2, title: 'Frame Design', tag: 'Static creatives' },
-    { src: image3, title: 'Hydro Gain', tag: 'Launch campaign' },
-    { src: image4, title: 'Product Image', tag: 'Marketplace design' },
-    { src: image5, title: 'Muscle Whey', tag: 'Performance ad' },
-    { src: image6, title: 'Prex Island', tag: 'Commerce creative' },
+    { src: image1, title: 'Ad Showcase', tag: 'Static creatives', caption: 'Designed frames that keep the product and offer readable at a glance.' },
+    { src: image2, title: 'Frame Design', tag: 'Creative systems', caption: 'Sharper visual systems for campaigns that need fast iteration.' },
+    { src: image3, title: 'Hydro Gain', tag: 'Launch campaign', caption: 'Launch-ready art direction built to carry hooks, proof, and CTA.' },
+    { src: image4, title: 'Product Image', tag: 'Marketplace design', caption: 'Marketplace-first image treatment with cleaner product hierarchy.' },
+    { src: image5, title: 'Muscle Whey', tag: 'Performance ad', caption: 'High-contrast static design for better thumb-stop and recall.' },
+    { src: image6, title: 'Prex Island', tag: 'Commerce creative', caption: 'Product-led compositions shaped for conversion-focused placements.' },
   ]
 
   return `
-    <div class="creative-wall reveal-up">
-      <div class="creative-wall-toolbar">
-        <strong>Winning ads that print cash.</strong>
-        <div class="creative-wall-tags" aria-label="Creative categories">
-          <span>Video creatives</span>
-          <span>Static creatives</span>
-        </div>
+    <section class="video-rail-section image-rail-section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">Image gallery</span>
+        <h2>Static creatives presented with the same showroom energy as the reel section.</h2>
+        <p>Frames, marketplace images, and performance statics arranged in a cleaner horizontal rail.</p>
       </div>
-      <div class="creative-wall-grid">
-        ${images.map((img, index) => `
-          <article class="creative-wall-card creative-wall-card-${(index % 3) + 1}">
-            <div class="creative-wall-media">
-              <img class="creative-wall-image" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
-            </div>
-            <div class="creative-wall-copy">
+      <div class="video-rail-wrap reveal-up">
+        <div class="video-rail-track image-rail-track">
+          ${[...images, ...images]
+            .map(
+              (img, index) => `
+          <article class="video-rail-card image-rail-card" aria-label="${escapeHtml(img.title)} sample image card">
+            <button
+              type="button"
+              class="image-rail-open"
+              data-image-lightbox-trigger
+              data-image-src="${img.src}"
+              data-image-title="${escapeHtml(img.title)}"
+              data-image-tag="${escapeHtml(img.tag)}"
+              data-image-caption="${escapeHtml(img.caption)}"
+              aria-label="Open ${escapeHtml(img.title)} in popup view"
+            >
+              <div class="video-rail-shell image-rail-shell">
+                <div class="video-rail-chrome">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="video-rail-screen image-rail-screen video-theme-${(index % 3) + 1}">
+                  <img class="video-rail-media image-rail-media" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
+                  <div class="video-rail-glow" aria-hidden="true"></div>
+                  <div class="image-rail-badge" aria-hidden="true">GR</div>
+                  <div class="video-rail-timecode" aria-hidden="true">IMG-${String((index % images.length) + 1).padStart(2, '0')}</div>
+                  <div class="video-rail-progress" aria-hidden="true"><span></span></div>
+                </div>
+              </div>
+            </button>
+            <div class="video-rail-copy image-rail-copy">
               <span>${escapeHtml(img.tag)}</span>
               <strong>${escapeHtml(img.title)}</strong>
+              <p>${escapeHtml(img.caption)}</p>
             </div>
           </article>
-        `).join('')}
+        `,
+            )
+            .join('')}
+        </div>
       </div>
-      <div class="creative-wall-footer">
-        <a class="button button-secondary button-compact" href="./contact.html">Schedule a call</a>
-        <p>We place the artwork inside cleaner frames so text, offers, and product details stay visible.</p>
+    </section>
+  `
+}
+
+function imageLightboxMarkup() {
+  return `
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <div class="image-lightbox-backdrop" data-image-lightbox-close></div>
+      <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="image-lightbox-title">
+        <button type="button" class="image-lightbox-close" data-image-lightbox-close aria-label="Close image popup">&times;</button>
+        <div class="image-lightbox-media-wrap">
+          <div class="image-lightbox-media-shell">
+            <img class="image-lightbox-media" data-image-lightbox-media src="" alt="" />
+            <video class="image-lightbox-video" data-image-lightbox-video src="" controls playsinline hidden></video>
+            <div class="image-lightbox-video-badge" aria-hidden="true">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="image-lightbox-copy">
+          <span class="image-lightbox-tag" data-image-lightbox-tag></span>
+          <h3 id="image-lightbox-title" data-image-lightbox-title></h3>
+          <p data-image-lightbox-caption></p>
+        </div>
       </div>
     </div>
   `
@@ -644,45 +704,39 @@ function homePortfolioBookMarkup() {
   const firstEntry = homePortfolioEntries[0]
 
   return `
-    <div class="portfolio-book-stage reveal-up">
-      <article class="portfolio-book" data-portfolio-book data-page-index="0" aria-label="Interactive portfolio book">
-        <div class="portfolio-book-shell">
-          <div class="portfolio-book-shadow" aria-hidden="true"></div>
-          <div class="portfolio-book-spine" aria-hidden="true"></div>
-          <div class="portfolio-book-page-stack" aria-hidden="true"></div>
-          <div class="portfolio-book-pages" aria-hidden="true"></div>
-          <div class="portfolio-book-sheet portfolio-book-sheet-back" aria-hidden="true"></div>
-          <div class="portfolio-book-sheet portfolio-book-sheet-front" aria-hidden="true"></div>
-          <div class="portfolio-book-page" data-portfolio-page>
-            <div class="portfolio-book-page-spread">
-              <div class="portfolio-book-page-left">
-                <span class="portfolio-book-page-label">Inside page</span>
-                <h3 data-portfolio-page-heading>${escapeHtml(firstEntry.badge)}</h3>
-                <p class="portfolio-book-page-note" data-portfolio-page-note>${escapeHtml(firstEntry.note)}</p>
-                <div class="portfolio-book-page-accent" aria-hidden="true"></div>
-              </div>
-              <div class="portfolio-book-page-right">
-                <strong data-portfolio-detail>${escapeHtml(firstEntry.detail)}</strong>
-                <p data-portfolio-description>${escapeHtml(firstEntry.description)}</p>
-                <div class="portfolio-book-page-bullets" data-portfolio-page-bullets>
-                  ${firstEntry.bullets.map((bullet) => `<span>${escapeHtml(bullet)}</span>`).join('')}
-                </div>
-                <p class="portfolio-book-page-footer" data-portfolio-page-footer>${escapeHtml(firstEntry.footer)}</p>
+    <div class="portfolio-stack-stage reveal-up">
+      <article class="portfolio-stack" data-portfolio-book data-page-index="0" aria-label="Interactive portfolio cards">
+        <button class="portfolio-stack-nav portfolio-stack-nav-prev" type="button" data-portfolio-book-nav="prev" aria-label="Show previous card">
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <div class="portfolio-stack-scene">
+          <div class="portfolio-stack-orbit" aria-hidden="true"></div>
+          <div class="portfolio-stack-card portfolio-stack-card-back portfolio-stack-card-back-one" data-portfolio-layer="one"></div>
+          <div class="portfolio-stack-card portfolio-stack-card-back portfolio-stack-card-back-two" data-portfolio-layer="two"></div>
+          <div class="portfolio-stack-card portfolio-stack-card-front">
+            <div class="portfolio-stack-card-top">
+              <span class="portfolio-stack-badge" data-portfolio-badge>${escapeHtml(firstEntry.badge)}</span>
+              <small class="portfolio-stack-counter" data-portfolio-counter>0${1} / 0${homePortfolioEntries.length}</small>
+            </div>
+            <div class="portfolio-stack-card-copy">
+              <h3 data-portfolio-detail>${escapeHtml(firstEntry.detail)}</h3>
+              <p data-portfolio-description>${escapeHtml(firstEntry.description)}</p>
+            </div>
+            <div class="portfolio-stack-card-meta">
+              <strong data-portfolio-title>${escapeHtml(firstEntry.title)}</strong>
+              <div class="portfolio-stack-bullets" data-portfolio-page-bullets>
+                ${firstEntry.bullets.map((bullet) => `<span>${escapeHtml(bullet)}</span>`).join('')}
               </div>
             </div>
           </div>
-          <div class="portfolio-book-cover" data-portfolio-cover tabindex="0" role="button" aria-label="Open the next portfolio page">
-            <span class="portfolio-badge" data-portfolio-badge>${escapeHtml(firstEntry.badge)}</span>
-            <strong data-portfolio-title>${escapeHtml(firstEntry.title)}</strong>
-            <small data-portfolio-counter>Page 1 / ${homePortfolioEntries.length}</small>
-          </div>
         </div>
-        <div class="portfolio-book-controls">
-          <button class="button button-secondary button-compact" type="button" data-portfolio-book-nav="prev">Previous page</button>
-          <button class="button button-primary button-compact" type="button" data-portfolio-book-nav="next">Flip page</button>
-          <button class="button button-secondary button-compact" type="button" data-portfolio-book-nav="close">Close book</button>
+        <button class="portfolio-stack-nav portfolio-stack-nav-next" type="button" data-portfolio-book-nav="next" aria-label="Show next card">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+        <div class="portfolio-stack-footer">
+          <p class="portfolio-stack-note" data-portfolio-page-note>${escapeHtml(firstEntry.note)}</p>
+          <p class="portfolio-stack-status" data-portfolio-book-status aria-live="polite">${escapeHtml(firstEntry.footer)}</p>
         </div>
-        <p class="portfolio-book-status" data-portfolio-book-status aria-live="polite">Page 1 of ${homePortfolioEntries.length}. Use the buttons or click the cover to turn the page.</p>
       </article>
     </div>
   `
@@ -751,7 +805,12 @@ function planeIntroMarkup() {
     <div class="plane-intro" data-plane-intro aria-hidden="true">
       <div class="plane-intro-sky"></div>
       <div class="plane-intro-runway"></div>
-      <div class="plane-intro-title">Growth Revive</div>
+      <div class="plane-intro-title">
+        <span class="plane-intro-logo">
+          <img src="${brandLogo}" alt="Growth Revibe logo" />
+        </span>
+        <span class="plane-intro-wordmark">Growth Revibe</span>
+      </div>
       <div class="plane-intro-plane">
         <div class="plane-trail"></div>
         <div class="plane-tail-fin"></div>
@@ -787,6 +846,102 @@ function footerSocialLinksMarkup() {
     .join('')
 }
 
+function footerNavLinksMarkup() {
+  const footerNavItems = navItems.filter((item) => item.key !== 'services')
+
+  return footerNavItems
+    .map((item) => `<a href="${item.href}">${escapeHtml(item.label)}</a>`)
+    .join('')
+}
+
+function footerServiceLinksMarkup() {
+  return serviceCatalog
+    .slice(0, 6)
+    .map((service) => `<a href="${service.href}">${escapeHtml(service.title)}</a>`)
+    .join('')
+}
+
+function homePartnerSectionMarkup() {
+  const partners = [
+    {
+      badge: 'Meta',
+      title: 'Meta Business Partner',
+      detail: 'Paid social systems',
+      theme: 'meta',
+    },
+    {
+      badge: 'Shopify',
+      title: 'Shopify Partner',
+      detail: 'Commerce growth',
+      theme: 'shopify',
+    },
+    {
+      badge: 'Google',
+      title: 'Google Partner',
+      detail: 'Search and demand',
+      theme: 'google',
+    },
+    {
+      badge: 'GA',
+      title: 'Google Analytics',
+      detail: 'Tracking clarity',
+      theme: 'analytics',
+    },
+  ]
+
+  return `
+    <section class="partner-section section">
+      <div class="partner-section-heading reveal-up">
+        <span class="partner-title-chip">Certified Partner With</span>
+      </div>
+      <div class="partner-grid reveal-up" aria-label="Partner platforms">
+        ${partners
+          .map(
+            (partner) => `
+              <article class="partner-card partner-card-${partner.theme}">
+                <div class="partner-mark" aria-hidden="true">${escapeHtml(partner.badge)}</div>
+                <div class="partner-copy">
+                  <strong>${escapeHtml(partner.title)}</strong>
+                  <p>${escapeHtml(partner.detail)}</p>
+                </div>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
+function homeClientsSectionMarkup() {
+  const clients = [
+    { name: 'Healthffarm Nutrition' },
+    { name: 'Torque Pharma' },
+    { name: 'Morph Costumes', highlight: true },
+    { name: 'Outie Too', highlight: true },
+  ]
+
+  return `
+    <section class="client-trust-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">Client network</span>
+        <h2>Trusted by Global Brands Ecommerce and Lead Generation</h2>
+      </div>
+      <div class="client-trust-grid reveal-up" aria-label="Client brands">
+        ${clients
+          .map(
+            (client) => `
+              <article class="client-trust-card${client.highlight ? ' is-highlighted' : ''}">
+                <strong>${escapeHtml(client.name)}</strong>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
 function sitePages(siteData) {
   const serviceDetailPages = Object.fromEntries(
     serviceCatalog.map((service, index) => [service.key, servicePageMarkup(service, index)]),
@@ -796,6 +951,12 @@ function sitePages(siteData) {
     home: `
       <section class="hero-section section page-hero page-hero-home">
         <div class="hero-copy reveal-up">
+          <div class="hero-logo-lockup">
+            <span class="hero-logo-badge">
+              <img src="${brandLogo}" alt="Growth Revibe logo" />
+            </span>
+            <span class="hero-logo-wordmark">Growth Revibe</span>
+          </div>
           <span class="eyebrow">${escapeHtml(siteData.home.eyebrow)}</span>
           <h1>${formatHeroTitle(siteData.home.title)}</h1>
           <p class="hero-text">${escapeHtml(siteData.home.text)}</p>
@@ -856,6 +1017,10 @@ function sitePages(siteData) {
           <span>Quick commerce</span>
         </div>
       </section>
+
+      ${homeClientsSectionMarkup()}
+
+      ${homePartnerSectionMarkup()}
 
       <section class="portfolio-section section">
         <div class="section-heading reveal-up">
@@ -1404,20 +1569,25 @@ function appMarkup(siteData) {
         </div>
         <div class="footer-details">
           <div>
-            <span>Focus</span>
-            <p>UGC ads, Meta and Google creatives, marketplace design systems, product shoots, and quick commerce formats.</p>
+            <span>Navigation</span>
+            <div class="footer-link-list">
+              ${footerNavLinksMarkup()}
+            </div>
           </div>
           <div>
             <span>Contact</span>
             <p><a href="mailto:${escapeHtml(siteData.contact.email)}">${escapeHtml(siteData.contact.email)}</a><br /><a href="mailto:${escapeHtml(siteData.contact.secondaryEmail)}">${escapeHtml(siteData.contact.secondaryEmail)}</a><br /><a href="tel:${escapeHtml(siteData.contact.phone.replaceAll(' ', ''))}">${escapeHtml(siteData.contact.phone)}</a></p>
           </div>
           <div>
-            <span>What clients get</span>
-            <p>Stronger hooks, better-performing creatives, cleaner testing systems, and ad formats designed to scale.</p>
+            <span>Services</span>
+            <div class="footer-link-list">
+              ${footerServiceLinksMarkup()}
+            </div>
           </div>
         </div>
         <p class="footer-note">${escapeHtml(siteData.footer.note)}</p>
       </footer>
+      ${imageLightboxMarkup()}
     </div>
   `
 }
@@ -1464,6 +1634,7 @@ function renderApp() {
   initContactScheduler()
   initContactForms()
   initServiceAccordion()
+  initMediaLightbox()
 }
 
 function initPlaneIntro() {
@@ -1500,16 +1671,14 @@ function initPortfolioBook() {
 
   const badge = book.querySelector('[data-portfolio-badge]')
   const title = book.querySelector('[data-portfolio-title]')
-  const pageHeading = book.querySelector('[data-portfolio-page-heading]')
   const pageNote = book.querySelector('[data-portfolio-page-note]')
   const detail = book.querySelector('[data-portfolio-detail]')
   const description = book.querySelector('[data-portfolio-description]')
   const bullets = book.querySelector('[data-portfolio-page-bullets]')
-  const pageFooter = book.querySelector('[data-portfolio-page-footer]')
-  const pageSpread = book.querySelector('[data-portfolio-page-spread]')
-  const counter = book.querySelector('[data-portfolio-counter]')
-  const cover = book.querySelector('[data-portfolio-cover]')
   const status = book.querySelector('[data-portfolio-book-status]')
+  const counter = book.querySelector('[data-portfolio-counter]')
+  const layerOne = book.querySelector('[data-portfolio-layer="one"]')
+  const layerTwo = book.querySelector('[data-portfolio-layer="two"]')
   const buttons = [...book.querySelectorAll('[data-portfolio-book-nav]')]
   const savedState = (() => {
     try {
@@ -1521,17 +1690,15 @@ function initPortfolioBook() {
   let currentIndex = Number.isInteger(savedState.pageIndex)
     ? savedState.pageIndex % homePortfolioEntries.length
     : Number(book.getAttribute('data-page-index') || 0)
-  let isOpen = savedState.isOpen === true
-  let isFlipping = false
-  const FLIP_DURATION = 2600
-  const FLIP_MIDPOINT = 1320
+  let isAnimating = false
+  const STACK_TRANSITION_DURATION = 820
+  const STACK_CONTENT_SWAP_DELAY = 360
 
   const persistState = () => {
     localStorage.setItem(
       PORTFOLIO_BOOK_STATE_KEY,
       JSON.stringify({
         pageIndex: currentIndex,
-        isOpen,
       }),
     )
   }
@@ -1541,77 +1708,54 @@ function initPortfolioBook() {
       button.disabled = disabled
       button.setAttribute('aria-disabled', String(disabled))
     })
-
-    if (cover) {
-      cover.setAttribute('aria-disabled', String(disabled))
-      cover.tabIndex = disabled ? -1 : 0
-    }
   }
 
-  const syncBookState = () => {
-    book.classList.toggle('is-open', isOpen)
-    book.classList.toggle('is-closed', !isOpen)
-    book.classList.remove('is-forward', 'is-reverse', 'is-resting')
-  }
+  const getEntry = (index) => homePortfolioEntries[(index + homePortfolioEntries.length) % homePortfolioEntries.length]
 
   const renderEntry = (index) => {
-    const entry = homePortfolioEntries[index]
-    badge.textContent = entry.badge
-    title.textContent = entry.title
-    if (pageHeading) {
-      pageHeading.textContent = entry.badge
-    }
-    if (pageNote) {
-      pageNote.textContent = entry.note || ''
-    }
-    detail.textContent = entry.detail
-    description.textContent = entry.description
+    const entry = getEntry(index)
+    const nextEntry = getEntry(index + 1)
+    const afterNextEntry = getEntry(index + 2)
+
+    if (badge) badge.textContent = entry.badge
+    if (title) title.textContent = entry.title
+    if (pageNote) pageNote.textContent = entry.note || ''
+    if (detail) detail.textContent = entry.detail
+    if (description) description.textContent = entry.description
     if (bullets) {
       bullets.innerHTML = (entry.bullets || []).map((bullet) => `<span>${escapeHtml(bullet)}</span>`).join('')
     }
-    if (pageFooter) {
-      pageFooter.textContent = entry.footer || ''
-    }
-    counter.textContent = `Page ${index + 1} / ${homePortfolioEntries.length}`
-    cover?.setAttribute('aria-label', `Open the next portfolio page. Currently showing ${entry.badge}, page ${index + 1} of ${homePortfolioEntries.length}.`)
     if (status) {
-      status.textContent = `Page ${index + 1} of ${homePortfolioEntries.length}. ${entry.badge}. ${entry.description}`
+      status.textContent = entry.footer || ''
+    }
+    if (counter) {
+      counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(homePortfolioEntries.length).padStart(2, '0')}`
+    }
+    if (layerOne) {
+      layerOne.innerHTML = `
+        <span>${escapeHtml(nextEntry.badge)}</span>
+        <strong>${escapeHtml(nextEntry.title)}</strong>
+      `
+    }
+    if (layerTwo) {
+      layerTwo.innerHTML = `
+        <span>${escapeHtml(afterNextEntry.badge)}</span>
+        <strong>${escapeHtml(afterNextEntry.title)}</strong>
+      `
     }
     book.setAttribute('data-page-index', String(index))
-    if (pageSpread) {
-      pageSpread.classList.remove('is-animating')
-      void pageSpread.offsetWidth
-      pageSpread.classList.add('is-animating')
-    }
     persistState()
   }
 
-  const flipTo = (direction) => {
-    if (isFlipping) {
+  const stepTo = (direction) => {
+    if (isAnimating) {
       return
     }
 
-    if (direction === 'close') {
-      isFlipping = false
-      setControlsDisabled(false)
-      book.removeAttribute('aria-busy')
-      book.classList.remove('is-flipping', 'is-forward', 'is-reverse', 'is-resting')
-      isOpen = false
-      syncBookState()
-      if (status) {
-        status.textContent = `Book closed on page ${currentIndex + 1} of ${homePortfolioEntries.length}. Click the cover or Flip page to open it again.`
-      }
-      persistState()
-      return
-    }
-
-    isFlipping = true
-    isOpen = true
-    syncBookState()
+    isAnimating = true
     setControlsDisabled(true)
-    book.setAttribute('aria-busy', 'true')
-    book.classList.remove('is-forward', 'is-reverse', 'is-resting')
-    book.classList.add('is-flipping', direction === 'prev' ? 'is-reverse' : 'is-forward')
+    book.classList.remove('is-prev', 'is-next')
+    book.classList.add(direction === 'prev' ? 'is-prev' : 'is-next', 'is-transitioning')
 
     const nextIndex =
       direction === 'next'
@@ -1621,69 +1765,35 @@ function initPortfolioBook() {
     window.setTimeout(() => {
       currentIndex = nextIndex
       renderEntry(currentIndex)
-      book.classList.add('is-resting')
-    }, FLIP_MIDPOINT)
+    }, STACK_CONTENT_SWAP_DELAY)
 
     window.setTimeout(() => {
-      book.classList.remove('is-flipping', 'is-forward', 'is-reverse', 'is-resting')
-      book.removeAttribute('aria-busy')
+      book.classList.remove('is-transitioning', 'is-prev', 'is-next')
       setControlsDisabled(false)
-      isFlipping = false
-      syncBookState()
-    }, FLIP_DURATION)
+      isAnimating = false
+    }, STACK_TRANSITION_DURATION)
   }
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const navValue = button.getAttribute('data-portfolio-book-nav')
-      const direction = navValue === 'prev' ? 'prev' : navValue === 'close' ? 'close' : 'next'
-      flipTo(direction)
+      stepTo(navValue === 'prev' ? 'prev' : 'next')
     })
   })
 
-  cover?.addEventListener('click', () => {
-    flipTo('next')
-  })
-
-  let touchStartX = 0
-  let touchEndX = 0
-
-  cover?.addEventListener('touchstart', (event) => {
-    touchStartX = event.changedTouches[0]?.clientX || 0
-  }, { passive: true })
-
-  cover?.addEventListener('touchend', (event) => {
-    touchEndX = event.changedTouches[0]?.clientX || 0
-    const deltaX = touchEndX - touchStartX
-
-    if (Math.abs(deltaX) < 40) {
-      return
-    }
-
-    flipTo(deltaX < 0 ? 'next' : 'prev')
-  }, { passive: true })
-
-  cover?.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      flipTo('next')
-      return
-    }
-
+  book.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight') {
       event.preventDefault()
-      flipTo('next')
-      return
+      stepTo('next')
     }
 
     if (event.key === 'ArrowLeft') {
       event.preventDefault()
-      flipTo('prev')
+      stepTo('prev')
     }
   })
 
   renderEntry(currentIndex)
-  syncBookState()
 }
 
 function initRevealObserver() {
@@ -1932,6 +2042,102 @@ function initContactScheduler() {
   updateSelectionLabels()
   renderCalendar()
   window.setInterval(updateClock, 1000)
+}
+
+function initMediaLightbox() {
+  const lightbox = document.querySelector('[data-image-lightbox]')
+  const media = lightbox?.querySelector('[data-image-lightbox-media]')
+  const video = lightbox?.querySelector('[data-image-lightbox-video]')
+  const title = lightbox?.querySelector('[data-image-lightbox-title]')
+  const tag = lightbox?.querySelector('[data-image-lightbox-tag]')
+  const caption = lightbox?.querySelector('[data-image-lightbox-caption]')
+  const triggers = document.querySelectorAll('[data-image-lightbox-trigger], [data-media-lightbox-trigger]')
+  const closeButtons = lightbox?.querySelectorAll('[data-image-lightbox-close]')
+  const closeButton = lightbox?.querySelector('.image-lightbox-close')
+
+  if (!lightbox || !media || !video || !title || !tag || !caption || !triggers.length) {
+    return
+  }
+
+  let lastTrigger = null
+  let closeTimer = 0
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-visible')
+    lightbox.classList.remove('is-video')
+    document.body.classList.remove('image-lightbox-open')
+    window.clearTimeout(closeTimer)
+    closeTimer = window.setTimeout(() => {
+      lightbox.hidden = true
+      media.setAttribute('src', '')
+      media.hidden = false
+      video.pause()
+      video.setAttribute('src', '')
+      video.hidden = true
+    }, 320)
+    if (lastTrigger instanceof HTMLElement) {
+      lastTrigger.focus()
+    }
+  }
+
+  const openLightbox = (trigger) => {
+    lastTrigger = trigger
+    const mediaType = trigger.getAttribute('data-media-type') || 'image'
+    const src = trigger.getAttribute('data-image-src') || trigger.getAttribute('data-media-src') || ''
+    const mediaTitle = trigger.getAttribute('data-image-title') || trigger.getAttribute('data-media-title') || ''
+    const mediaTag = trigger.getAttribute('data-image-tag') || trigger.getAttribute('data-media-tag') || ''
+    const mediaCaption = trigger.getAttribute('data-image-caption') || trigger.getAttribute('data-media-caption') || ''
+
+    if (mediaType === 'video') {
+      lightbox.classList.add('is-video')
+      media.hidden = true
+      video.hidden = false
+      video.setAttribute('src', src)
+      video.currentTime = 0
+      void video.play().catch(() => {})
+    } else {
+      lightbox.classList.remove('is-video')
+      video.pause()
+      video.setAttribute('src', '')
+      video.hidden = true
+      media.hidden = false
+      media.setAttribute('src', src)
+      media.setAttribute('alt', mediaTitle || 'Creative image')
+    }
+
+    title.textContent = mediaTitle
+    tag.textContent = mediaTag
+    caption.textContent = mediaCaption
+    window.clearTimeout(closeTimer)
+    lightbox.hidden = false
+    document.body.classList.add('image-lightbox-open')
+    window.requestAnimationFrame(() => {
+      lightbox.classList.add('is-visible')
+      closeButton?.focus()
+    })
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      openLightbox(trigger)
+    })
+  })
+
+  closeButtons?.forEach((button) => {
+    button.addEventListener('click', closeLightbox)
+  })
+
+  lightbox.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeLightbox()
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('is-visible')) {
+      closeLightbox()
+    }
+  })
 }
 
 function initContactForms() {
