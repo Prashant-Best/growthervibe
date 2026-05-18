@@ -393,14 +393,20 @@ select {
   left: 10%;
   width: 110px;
   height: 110px;
-  border: 1px solid rgba(220, 160, 104, 0.34);
-  background: rgba(255, 250, 244, 0.56);
+  padding: 20px;
+  border: 1px solid rgba(255, 95, 162, 0.28);
+  background: #0f0f0f;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.54),
-    0 18px 44px rgba(212, 161, 111, 0.12);
-  color: rgba(167, 94, 38, 0.42);
-  font-size: 2rem;
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 44px rgba(0, 0, 0, 0.22);
   animation: sigil-drift 16s ease-in-out infinite;
+}
+
+.brand-sigil-one img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(255, 95, 162, 0.34));
 }
 
 .brand-sigil-two {
@@ -1668,34 +1674,109 @@ body:not([data-page='admin']) .section:nth-of-type(3n)::before {
   color: rgba(252, 238, 255, 0.92);
 }
 
-.service-detail-accent {
-  min-height: 170px;
+.service-detail-signal {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  min-height: 190px;
+  padding: 18px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at 16% 20%, rgba(255, 95, 162, 0.16), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    #171717;
+  overflow: hidden;
 }
 
-.service-accent-1 {
+.service-detail-signal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(135deg, rgba(139, 61, 255, 0.7), rgba(255, 79, 191, 0.28)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 92%);
+  pointer-events: none;
 }
 
-.service-accent-2 {
-  background:
-    linear-gradient(135deg, rgba(120, 199, 255, 0.56), rgba(139, 61, 255, 0.28)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+.service-signal-topline,
+.service-signal-chart,
+.service-signal-flow {
+  position: relative;
+  z-index: 1;
 }
 
-.service-accent-3 {
-  background:
-    linear-gradient(135deg, rgba(255, 185, 90, 0.5), rgba(255, 79, 191, 0.22)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+.service-signal-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
 }
 
-.service-accent-4 {
+.service-signal-topline span {
+  color: #ff8fbd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.service-signal-topline strong {
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+}
+
+.service-signal-chart {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+  min-height: 92px;
+}
+
+.service-signal-chart span {
+  display: block;
+  min-height: 28px;
+  height: var(--signal-height);
+  border-radius: 999px 999px 10px 10px;
   background:
-    linear-gradient(135deg, rgba(124, 255, 214, 0.38), rgba(139, 61, 255, 0.28)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 95, 162, 0.72)),
+    #ff5fa2;
+  box-shadow: 0 12px 26px rgba(255, 95, 162, 0.18);
+  animation: signal-bar-pulse 3.8s ease-in-out infinite;
+}
+
+.service-signal-chart span:nth-child(2n) {
+  animation-delay: -1.2s;
+}
+
+.service-signal-chart span:nth-child(3n) {
+  animation-delay: -2.1s;
+}
+
+.service-signal-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.service-signal-flow span {
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff5fa2, rgba(255, 255, 255, 0.82));
+  opacity: 0.86;
+}
+
+.service-signal-flow span:nth-child(2) {
+  opacity: 0.58;
+}
+
+.service-signal-flow span:nth-child(3) {
+  opacity: 0.34;
 }
 
 .service-detail-list {
@@ -1722,6 +1803,71 @@ body:not([data-page='admin']) .section:nth-of-type(3n)::before {
   height: 8px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent-b), var(--accent-c));
+}
+
+.service-metric-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.service-metric-card,
+.service-process-step {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.service-metric-card {
+  display: grid;
+  gap: 12px;
+  min-height: 150px;
+  padding: 24px;
+  border-radius: 26px;
+}
+
+.service-metric-card span,
+.service-process-step span {
+  color: #ffcaec;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.service-metric-card strong {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+  line-height: 1.12;
+}
+
+.service-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.service-process-list,
+.service-faq-list {
+  display: grid;
+  gap: 14px;
+}
+
+.service-process-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 22px 24px;
+  border-radius: 24px;
+}
+
+.service-process-step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .service-card::after,
@@ -2355,23 +2501,27 @@ body:not([data-page='admin']) .section:nth-of-type(3n)::before {
 
 .case-thumb-sigil {
   position: absolute;
-  top: 22px;
-  right: 24px;
+  top: 20px;
+  right: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.82);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.98rem;
-  letter-spacing: 0.18em;
+  border: 1px solid rgba(255, 95, 162, 0.28);
+  background: #0f0f0f;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   animation: orbit-spin 12s linear infinite;
+}
+
+.case-thumb-sigil img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 95, 162, 0.34));
 }
 
 .case-thumb-overlay {
@@ -2386,8 +2536,8 @@ body:not([data-page='admin']) .section:nth-of-type(3n)::before {
 
 .case-thumb-overlay h2 {
   margin: 0;
-  max-width: 13ch;
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  max-width: 16ch;
+  font-size: clamp(1.65rem, 2.45vw, 2.35rem);
   line-height: 0.96;
   letter-spacing: -0.05em;
   color: #fff;
@@ -2397,7 +2547,7 @@ body:not([data-page='admin']) .section:nth-of-type(3n)::before {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  max-width: calc(100% - 70px);
+  max-width: 100%;
 }
 
 .case-thumb-metrics span {
@@ -3010,6 +3160,9 @@ body:not([data-page='admin']) .service-overview-card,
 body:not([data-page='admin']) .service-detail-card,
 body:not([data-page='admin']) .service-detail-panel,
 body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .service-metric-card,
+body:not([data-page='admin']) .service-process-step,
+body:not([data-page='admin']) .service-faq-list .faq-item,
 body:not([data-page='admin']) .insight-card,
 body:not([data-page='admin']) .process-step,
 body:not([data-page='admin']) .appointment-topbar,
@@ -3041,6 +3194,9 @@ body:not([data-page='admin']) .service-overview-card,
 body:not([data-page='admin']) .service-detail-card,
 body:not([data-page='admin']) .service-detail-panel,
 body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .service-metric-card,
+body:not([data-page='admin']) .service-process-step,
+body:not([data-page='admin']) .service-faq-list .faq-item,
 body:not([data-page='admin']) .insight-card,
 body:not([data-page='admin']) .process-step,
 body:not([data-page='admin']) .appointment-topbar,
@@ -4166,24 +4322,7 @@ body:not([data-page='admin']) .image-rail-screen::before {
 }
 
 body:not([data-page='admin']) .image-rail-badge {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  background: rgba(16, 22, 33, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  color: rgba(255, 247, 250, 0.96);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  display: none;
 }
 
 body:not([data-page='admin']) .image-rail-copy p {
@@ -4694,6 +4833,9 @@ body:not([data-page='admin']) .service-overview-card,
 body:not([data-page='admin']) .service-detail-card,
 body:not([data-page='admin']) .service-detail-panel,
 body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .service-metric-card,
+body:not([data-page='admin']) .service-process-step,
+body:not([data-page='admin']) .service-faq-list .faq-item,
 body:not([data-page='admin']) .insight-card,
 body:not([data-page='admin']) .process-step,
 body:not([data-page='admin']) .appointment-topbar,
@@ -4740,6 +4882,9 @@ body:not([data-page='admin']) .service-overview-card,
 body:not([data-page='admin']) .service-detail-card,
 body:not([data-page='admin']) .service-detail-panel,
 body:not([data-page='admin']) .service-detail-hero,
+body:not([data-page='admin']) .service-metric-card,
+body:not([data-page='admin']) .service-process-step,
+body:not([data-page='admin']) .service-faq-list .faq-item,
 body:not([data-page='admin']) .insight-card,
 body:not([data-page='admin']) .process-step,
 body:not([data-page='admin']) .appointment-topbar,
@@ -4785,6 +4930,12 @@ body:not([data-page='admin']) .service-detail-panel::before,
 body:not([data-page='admin']) .service-detail-panel::after,
 body:not([data-page='admin']) .service-detail-hero::before,
 body:not([data-page='admin']) .service-detail-hero::after,
+body:not([data-page='admin']) .service-metric-card::before,
+body:not([data-page='admin']) .service-metric-card::after,
+body:not([data-page='admin']) .service-process-step::before,
+body:not([data-page='admin']) .service-process-step::after,
+body:not([data-page='admin']) .service-faq-list .faq-item::before,
+body:not([data-page='admin']) .service-faq-list .faq-item::after,
 body:not([data-page='admin']) .insight-card::before,
 body:not([data-page='admin']) .insight-card::after,
 body:not([data-page='admin']) .process-step::before,
@@ -6923,6 +7074,8 @@ body[data-page='home'] .hero-client-strip span:nth-child(4) {
   .process-steps,
   .service-detail-hero,
   .service-detail-layout,
+  .service-feature-grid,
+  .service-metric-strip,
   .site-footer,
   .footer-details,
   .timeline,
@@ -8176,18 +8329,31 @@ body[data-page='home'] .portfolio-book-page strong {
   flex: 0 0 220px;
   display: flex;
   flex-direction: column;
+  padding: 0;
+  border: 0;
   border-radius: 16px;
   overflow: hidden;
   background: #000;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
   cursor: pointer;
   position: relative;
 }
 
-.carousel-item:hover {
+.carousel-item:hover,
+.carousel-item:focus-visible {
   transform: scale(1.05) translateY(-8px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  outline: 2px solid #e63a6e;
+  outline-offset: 3px;
+}
+
+.carousel-track:focus-within,
+.carousel-row:hover .carousel-track {
+  animation-play-state: paused;
 }
 
 .carousel-video {
@@ -8764,7 +8930,7 @@ body[data-page='services'] .faq-panel h3 {
 
 body:not([data-page='home']):not([data-page='admin']) .page-banner h1,
 body:not([data-page='home']):not([data-page='admin']) .service-detail-copy h1 {
-  font-size: clamp(2.2rem, 4.8vw, 3.5rem);
+  font-size: clamp(1.6rem, 3.2vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
   max-width: 18ch;
@@ -8777,7 +8943,7 @@ body:not([data-page='home']):not([data-page='admin']) .form-intro h2,
 body:not([data-page='home']):not([data-page='admin']) .faq-panel h2,
 body:not([data-page='home']):not([data-page='admin']) .appointment-intro h2,
 body:not([data-page='home']):not([data-page='admin']) .cta-copy h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+  font-size: clamp(1.6rem, 3.2vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
@@ -8786,7 +8952,7 @@ body:not([data-page='home']):not([data-page='admin']) .cta-copy h2 {
   body:not([data-page='home']):not([data-page='admin']) .page-banner h1,
   body:not([data-page='home']):not([data-page='admin']) .service-detail-copy h1 {
     max-width: none;
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(1.6rem, 8vw, 3rem);
   }
 
   body:not([data-page='home']):not([data-page='admin']) .section-heading h2,
@@ -8796,7 +8962,7 @@ body:not([data-page='home']):not([data-page='admin']) .cta-copy h2 {
   body:not([data-page='home']):not([data-page='admin']) .faq-panel h2,
   body:not([data-page='home']):not([data-page='admin']) .appointment-intro h2,
   body:not([data-page='home']):not([data-page='admin']) .cta-copy h2 {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-size: clamp(1.6rem, 8vw, 3rem);
   }
 }
 
@@ -10376,6 +10542,43 @@ body[data-page='home'] .portfolio-stack.is-transitioning.is-prev .portfolio-stac
   }
 }
 
+body:not([data-page='home']):not([data-page='admin']) .service-metric-card,
+body:not([data-page='home']):not([data-page='admin']) .service-feature-grid .service-detail-card,
+body:not([data-page='home']):not([data-page='admin']) .service-process-step,
+body:not([data-page='home']):not([data-page='admin']) .service-faq-list .faq-item {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+    #1c1c1c !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: none !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-metric-card::before,
+body:not([data-page='home']):not([data-page='admin']) .service-metric-card::after,
+body:not([data-page='home']):not([data-page='admin']) .service-feature-grid .service-detail-card::before,
+body:not([data-page='home']):not([data-page='admin']) .service-feature-grid .service-detail-card::after,
+body:not([data-page='home']):not([data-page='admin']) .service-process-step::before,
+body:not([data-page='home']):not([data-page='admin']) .service-process-step::after,
+body:not([data-page='home']):not([data-page='admin']) .service-faq-list .faq-item::before,
+body:not([data-page='home']):not([data-page='admin']) .service-faq-list .faq-item::after {
+  content: none !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-metric-card *,
+body:not([data-page='home']):not([data-page='admin']) .service-feature-grid .service-detail-card *,
+body:not([data-page='home']):not([data-page='admin']) .service-process-step *,
+body:not([data-page='home']):not([data-page='admin']) .service-faq-list .faq-item * {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-metric-card span,
+body:not([data-page='home']):not([data-page='admin']) .service-feature-grid .service-detail-label,
+body:not([data-page='home']):not([data-page='admin']) .service-process-step span {
+  color: #ff5fa2 !important;
+}
+
 @keyframes plane-mobile-actions-rise {
   0%,
   42% {
@@ -10387,6 +10590,19 @@ body[data-page='home'] .portfolio-stack.is-transitioning.is-prev .portfolio-stac
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes signal-bar-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.94);
+    filter: saturate(0.95);
+  }
+
+  50% {
+    transform: scaleY(1.06);
+    filter: saturate(1.16);
   }
 }
 
@@ -10480,4 +10696,60 @@ body[data-page='home'] .portfolio-stack.is-transitioning.is-prev .portfolio-stac
   body[data-page='home'] .portfolio-book-page-right {
     padding: 18px 16px 12px;
   }
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-detail-signal {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 95, 162, 0.16), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    #171717 !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-detail-signal::before {
+  content: '' !important;
+  display: block !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-detail-signal::after {
+  content: none !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-signal-chart span {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 95, 162, 0.72)),
+    #ff5fa2 !important;
+  box-shadow: 0 12px 26px rgba(255, 95, 162, 0.18) !important;
+}
+
+body:not([data-page='home']):not([data-page='admin']) .service-signal-flow span {
+  background: linear-gradient(90deg, #ff5fa2, rgba(255, 255, 255, 0.82)) !important;
+}
+
+body:not([data-page='admin']) .brand-mark,
+body:not([data-page='admin']) .hero-logo-badge,
+body:not([data-page='admin']) .plane-intro-logo,
+body:not([data-page='admin']) .footer-logo {
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255, 95, 162, 0.18), transparent 34%),
+    #0f0f0f !important;
+  border-color: rgba(255, 95, 162, 0.3) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 36px rgba(0, 0, 0, 0.28) !important;
+}
+
+body:not([data-page='admin']) .brand-mark img,
+body:not([data-page='admin']) .hero-logo-badge img,
+body:not([data-page='admin']) .plane-intro-logo img,
+body:not([data-page='admin']) .footer-logo img {
+  filter: drop-shadow(0 0 12px rgba(255, 95, 162, 0.34));
+}
+
+body:not([data-page='admin']) .hero-logo-lockup {
+  background:
+    linear-gradient(135deg, rgba(255, 95, 162, 0.12), rgba(255, 255, 255, 0.045)),
+    #242424 !important;
+  border-color: rgba(255, 95, 162, 0.22) !important;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.24) !important;
 }

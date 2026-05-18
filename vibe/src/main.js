@@ -46,6 +46,17 @@ const sampleVideoReel = [
   },
 ]
 
+const homeReelPlaylist = [
+  { src: showcaseVideo, title: 'Outie Tool' },
+  { src: video1, title: 'Big News' },
+  { src: video2, title: 'FlowVeda' },
+  { src: video3, title: 'Mandi Joinbrands' },
+  { src: video4, title: 'Morph Reel' },
+  { src: video5, title: 'No Mercy' },
+  { src: video6, title: 'Preworkout' },
+  { src: video7, title: 'Whey Protein' },
+]
+
 const homePortfolioEntries = [
   {
     badge: 'Marketplace Ads',
@@ -103,143 +114,247 @@ const navItems = [
 ]
 
 const serviceIcons = {
-  'demand-generation': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`,
-  'content-marketing': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`,
-  'marketing-automation': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 6v6l4 2"/><path d="M2 12a10 10 0 0 0 10 10"/></svg>`,
-  'seo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-  'saas-ppc-agency': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>`,
-  'account-based-marketing': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-  'ai-seo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
-  'geo': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  'performance-marketing': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+  'ai-creative-studio': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 4 5 5-9 9H6v-5z"/><path d="M13 6l5 5"/><path d="M4 20h16"/></svg>`,
+  'ai-ugc-videos': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>`,
+  'cro-landing-pages': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h5"/><path d="M8 16h8"/></svg>`,
+  'ai-marketing-strategy': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93 7.76 7.76"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>`,
+  'ecommerce-growth-retainer': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h8.95a2 2 0 0 0 1.95-1.57L21 7H5.12"/></svg>`,
+  'social-media-optimization': `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 1 0-2.83-4"/><path d="M6 16a3 3 0 1 0 2.83 4"/><path d="M12 7v10"/><path d="M8.8 9.2 15.2 14.8"/><path d="m15.2 9.2-6.4 5.6"/></svg>`,
 }
 
 const serviceCatalog = [
   {
-    key: 'demand-generation',
-    title: 'Demand generation',
-    description: 'Qualified pipeline, every week',
-    href: './demand-generation.html',
-    eyebrow: 'Demand generation',
-    headline: 'Build a consistent pipeline with campaigns engineered for qualified demand.',
+    key: 'performance-marketing',
+    title: 'Performance Marketing',
+    description: 'Paid campaigns built to scale revenue',
+    href: './performance-marketing.html',
+    eyebrow: 'Performance marketing',
+    headline: 'Performance marketing that pays for itself.',
     intro:
-      'We connect positioning, media, landing flow, and reporting so demand generation turns into a weekly operating system instead of random launch activity.',
-    outcomes: ['Predictable lead flow', 'Higher intent pipeline', 'Clear weekly reporting'],
+      'We turn ad spend into measurable revenue for eCommerce and growth-focused brands with full-funnel paid campaigns, faster creative testing, and clear reporting.',
+    outcomes: ['Profitable ad scaling', 'Lower wasted spend', 'Clear ROAS visibility'],
     deliverables: [
-      'Offer and campaign angle planning',
-      'Channel mix across search, social, and outbound support',
-      'Landing page and funnel alignment',
+      'Google, Meta, TikTok, Shopping, and retargeting campaign management',
+      'Audience segmentation, budget allocation, and bid strategy',
+      'Weekly reporting around ROAS, CAC, MER, CTR, and revenue',
+    ],
+    metrics: ['4.8x average ROAS delivered', '120+ eCommerce brands scaled', 'Weekly performance dashboard'],
+    features: [
+      { title: 'Paid media management', text: 'Full campaign buildout across Google, Meta, TikTok, and YouTube with a unified performance lens.' },
+      { title: 'Creative testing engine', text: 'Fresh hooks, angles, statics, and videos tested quickly so winning creative does not go stale.' },
+      { title: 'Conversion alignment', text: 'Ad promises, landing pages, product pages, and checkout flow stay connected.' },
+      { title: 'Revenue reporting', text: 'Plain-English dashboards focused on business outcomes instead of vanity metrics.' },
+    ],
+    process: [
+      'Audit ad accounts, creatives, funnel gaps, tracking, and current revenue economics.',
+      'Build a 90-day channel, audience, offer, and creative testing roadmap.',
+      'Launch structured campaigns and validate winning creative-audience combinations.',
+      'Scale winners, cut waste fast, and refresh creative every month.',
+    ],
+    faqs: [
+      { question: 'What makes Growth Revibe different from a standard performance agency?', answer: 'We manage media and build the creative system around it, so campaigns keep getting fresh hooks, statics, AI UGC, and landing page improvements.' },
+      { question: 'What ad spend do you recommend?', answer: 'We usually recommend enough monthly spend to produce meaningful learning across Meta and Google, then scale once the data is stable.' },
+      { question: 'How quickly can we see early signals?', answer: 'Most accounts show useful learning inside the first two weeks, with stronger performance patterns usually visible by week six to eight.' },
     ],
   },
   {
-    key: 'content-marketing',
-    title: 'Content Marketing',
-    description: 'Content that drives pipeline',
-    href: './content-marketing.html',
-    eyebrow: 'Content marketing',
-    headline: 'Create content that compounds visibility and supports revenue conversations.',
+    key: 'ai-creative-studio',
+    title: 'AI Creative Studio',
+    description: 'High-volume ad creatives, fast',
+    href: './ai-creative-studio.html',
+    eyebrow: 'AI creative studio',
+    headline: 'AI creatives that capture attention and drive results.',
     intro:
-      'We plan content around buying journeys, category education, and search intent so every asset helps your team build trust before the sales call.',
-    outcomes: ['Stronger topical authority', 'Higher inbound quality', 'More reusable campaign assets'],
+      'We create scroll-stopping visuals, performance ad designs, product promos, motion graphics, and short-form assets built for faster launch cycles.',
+    outcomes: ['Faster creative production', 'Lower production cost', 'More angles to test'],
     deliverables: [
-      'Editorial strategy and topic clusters',
-      'Bottom-funnel pages and comparison content',
-      'Repurposing systems for social, email, and sales',
+      'AI ad creatives, social statics, carousels, and product promo designs',
+      'Short-form reels, AI voiceovers, and motion graphics',
+      'Creative strategy built around platform behavior and conversion intent',
+    ],
+    metrics: ['Static creatives', 'Short-form reels', 'Product promo videos'],
+    features: [
+      { title: 'AI ad creatives', text: 'Conversion-focused graphics built around offers, proof, objections, and thumb-stop hooks.' },
+      { title: 'Social media creatives', text: 'Platform-ready visuals for Instagram, Facebook, LinkedIn, YouTube, and commerce placements.' },
+      { title: 'Motion and voiceover', text: 'AI voiceover, lightweight motion graphics, and short video concepts for campaign testing.' },
+      { title: 'Creative testing plan', text: 'Every asset is grouped by hook, audience, offer, and funnel stage so media teams know what to test.' },
+    ],
+    process: [
+      'Clarify audience, offer, platform, and the performance goal for each asset batch.',
+      'Build creative angles using competitor research, customer pain points, and proof.',
+      'Produce static, motion, and short-form variants for rapid campaign testing.',
+      'Review performance data and turn winners into the next creative sprint.',
+    ],
+    faqs: [
+      { question: 'Can you create creatives without a full production shoot?', answer: 'Yes. The studio is designed for fast AI-assisted production, product-led layouts, motion, and voiceover when traditional shoots are too slow.' },
+      { question: 'Will creatives match our brand?', answer: 'Yes. We build around your colors, tone, product hierarchy, and campaign goals so assets feel consistent, not generic.' },
     ],
   },
   {
-    key: 'marketing-automation',
-    title: 'Marketing Automation',
-    description: 'Route, nurture, & convert faster',
-    href: './marketing-automation.html',
-    eyebrow: 'Marketing automation',
-    headline: 'Automate handoffs, nurture flows, and lead routing without losing the human feel.',
+    key: 'ai-ugc-videos',
+    title: 'AI UGC Videos',
+    description: 'Creator-style videos without slow shoots',
+    href: './ai-ugc-videos.html',
+    eyebrow: 'AI UGC videos',
+    headline: 'Realistic AI UGC videos built for performance campaigns.',
     intro:
-      'We design automation that helps leads move faster through your funnel while keeping message timing, segmentation, and follow-up logic clean.',
-    outcomes: ['Faster lead response', 'Better nurture sequencing', 'Less leakage between stages'],
+      'We produce realistic spokesperson videos, voice-led product explainers, hooks, and short-form ad scripts so your campaigns never run dry on fresh angles.',
+    outcomes: ['Faster video output', 'More hooks to test', 'Lower creator dependency'],
     deliverables: [
-      'CRM and lifecycle mapping',
-      'Nurture workflow and trigger design',
-      'Lead scoring and routing logic',
+      'AI spokesperson or avatar videos for product-led ads',
+      'Hook-first scripts for TikTok, Reels, YouTube Shorts, and Meta',
+      'Voiceover, captions, product overlays, and CTA variations',
+    ],
+    metrics: ['AI spokesperson ads', 'Hook-first scripts', 'Fast iteration cycles'],
+    features: [
+      { title: 'AI spokesperson videos', text: 'Real-person style product videos made without influencer hiring, shoot logistics, or long approval cycles.' },
+      { title: 'Script and hook system', text: 'We write variants around pain points, outcomes, objections, offers, and proof.' },
+      { title: 'Platform formatting', text: 'Videos are sized and paced for Reels, Shorts, TikTok, and paid social placements.' },
+      { title: 'Testing batches', text: 'Multiple hooks and CTAs make it easier to find the angle that actually converts.' },
+    ],
+    process: [
+      'Map the product promise, objections, customer language, and offer.',
+      'Write scripts with multiple hooks, proof points, and CTA options.',
+      'Produce AI UGC variants with captions, product frames, and voiceover.',
+      'Use performance data to refresh hooks and build the next batch.',
+    ],
+    faqs: [
+      { question: 'Does AI UGC work for paid ads?', answer: 'It can, especially when the script and offer are strong. We treat it as a testing format and measure the result against standard statics and videos.' },
+      { question: 'Can you make videos for multiple products?', answer: 'Yes. We can structure batches by product, angle, audience segment, or funnel stage.' },
     ],
   },
   {
-    key: 'seo',
-    title: 'SEO',
-    description: 'Search that goes beyond rankings',
-    href: './seo.html',
-    eyebrow: 'SEO strategy',
-    headline: 'Grow organic visibility with structure, content, and technical fixes that support real revenue.',
+    key: 'cro-landing-pages',
+    title: 'CRO & Landing Pages',
+    description: 'Fix the funnel after the click',
+    href: './cro-landing-pages.html',
+    eyebrow: 'CRO and landing pages',
+    headline: 'Landing pages and funnels built to convert more of the traffic you already have.',
     intro:
-      'Our SEO work blends technical cleanup, topic strategy, and conversion thinking so search traffic translates into stronger business outcomes.',
-    outcomes: ['More qualified organic traffic', 'Sharper site architecture', 'Pages built for ranking and conversion'],
+      'Traffic means very little if the page after the click leaks intent. We audit, write, design, and improve landing pages so campaigns convert cleaner.',
+    outcomes: ['Higher conversion rate', 'Lower CAC', 'Better ad-to-page match'],
     deliverables: [
-      'Technical audits and implementation priorities',
-      'Keyword mapping and information architecture',
-      'On-page optimization and content planning',
+      'Landing page audit, copy structure, wireframe, and redesign direction',
+      'Offer hierarchy, proof blocks, objections, FAQs, and CTA flow',
+      'A/B testing ideas, heatmap review, checkout and product page recommendations',
+    ],
+    metrics: ['Landing page audit', 'Copy and layout', 'Testing roadmap'],
+    features: [
+      { title: 'Conversion audit', text: 'We identify where visitors lose trust, get confused, or fail to move to the next step.' },
+      { title: 'Message match', text: 'Ads, offers, pages, proof, and CTA language stay aligned from first click to form or checkout.' },
+      { title: 'Page copy and structure', text: 'Sharper headlines, stronger proof, better section flow, and cleaner decision paths.' },
+      { title: 'Testing priorities', text: 'We turn findings into practical test ideas instead of vague recommendations.' },
+    ],
+    process: [
+      'Review campaign promises, analytics, page behavior, and conversion barriers.',
+      'Restructure the landing page around clarity, proof, offer, and action.',
+      'Create copy and design direction that matches traffic intent.',
+      'Track outcomes and iterate the highest-impact sections first.',
+    ],
+    faqs: [
+      { question: 'Do you build the page or only audit it?', answer: 'We can do either. The service can include audit-only recommendations or full page copy and design direction depending on what you need.' },
+      { question: 'Is this only for eCommerce?', answer: 'No. It works for product pages, lead generation pages, SaaS landing pages, and campaign-specific funnels.' },
     ],
   },
   {
-    key: 'saas-ppc-agency',
-    title: 'SaaS PPC Agency',
-    description: 'Scale smarter across Google, LinkedIn & Meta',
-    href: './saas-ppc-agency.html',
-    eyebrow: 'SaaS PPC',
-    headline: 'Run paid acquisition for SaaS with tighter creative loops and stronger conversion economics.',
+    key: 'ai-marketing-strategy',
+    title: 'AI Marketing Strategy',
+    description: 'Smarter research, sharper campaigns',
+    href: './ai-marketing-strategy.html',
+    eyebrow: 'AI marketing strategy',
+    headline: 'AI-powered strategy for brands ready to move faster with more clarity.',
     intro:
-      'We manage paid search and paid social for SaaS teams that need faster learning cycles, sharper segmentation, and clearer CAC efficiency.',
-    outcomes: ['Lower wasted spend', 'Faster creative learning', 'More sales-ready trial and demo volume'],
+      'We combine AI-assisted research, competitor analysis, audience mapping, and creative planning so campaigns start with stronger intelligence and cleaner direction.',
+    outcomes: ['Sharper audience insight', 'Faster planning cycles', 'Better campaign angles'],
     deliverables: [
-      'Campaign structure across Google, LinkedIn, and Meta',
-      'Audience and message testing plans',
-      'Landing page and conversion path alignment',
+      'Audience, competitor, offer, and category research',
+      'Creative angle maps, campaign themes, and messaging frameworks',
+      'Channel roadmap for content, paid ads, social, and conversion priorities',
+    ],
+    metrics: ['Audience research', 'Competitor mapping', 'Campaign roadmap'],
+    features: [
+      { title: 'AI-assisted research', text: 'We use AI workflows to analyze audience language, competitor patterns, and category opportunities faster.' },
+      { title: 'Messaging architecture', text: 'Core promises, objections, proof points, and CTA language get organized before execution starts.' },
+      { title: 'Campaign planning', text: 'We translate research into concrete creative angles, channel priorities, and testing sequences.' },
+      { title: 'Growth system view', text: 'SEO, SMO, paid ads, content, and CRO are planned together instead of in disconnected lanes.' },
+    ],
+    process: [
+      'Gather business goals, audience context, funnel assets, and competitor references.',
+      'Run research sprints to identify opportunities, gaps, and message patterns.',
+      'Build a prioritized strategy across content, social, paid, creative, and conversion.',
+      'Convert strategy into a practical execution roadmap with clear next moves.',
+    ],
+    faqs: [
+      { question: 'Is this a one-time strategy or ongoing support?', answer: 'It can be either. Many brands start with a focused strategy sprint, then keep us involved for implementation and optimization.' },
+      { question: 'Do you use AI to replace strategy?', answer: 'No. AI speeds research and pattern detection, while the final strategy is shaped by human judgment, brand context, and performance logic.' },
     ],
   },
   {
-    key: 'account-based-marketing',
-    title: 'Account based Marketing',
-    description: 'Campaigns that win key deals',
-    href: './account-based-marketing.html',
-    eyebrow: 'Account based marketing',
-    headline: 'Focus campaign spend and messaging around the accounts most likely to become your best customers.',
+    key: 'ecommerce-growth-retainer',
+    title: 'eCommerce Growth Retainer',
+    description: 'Ads, creatives, CRO, and reporting together',
+    href: './ecommerce-growth-retainer.html',
+    eyebrow: 'eCommerce growth retainer',
+    headline: 'An all-in-one growth partnership for eCommerce brands that want cleaner scale.',
     intro:
-      'We help teams coordinate targeting, personalization, and sales enablement so ABM campaigns feel relevant, premium, and commercially focused.',
-    outcomes: ['Better target account engagement', 'Stronger deal support', 'More aligned marketing and sales activity'],
+      'We combine paid media, creative production, AI UGC, CRO, and growth reporting into one monthly operating system for brands that need one accountable team.',
+    outcomes: ['One growth team', 'Faster campaign cycles', 'Cleaner revenue visibility'],
     deliverables: [
-      'Target account segmentation',
-      'Message frameworks by buying committee',
-      'Campaign and sales touchpoint planning',
+      'Paid ads management across key acquisition channels',
+      'Monthly creative batches including statics, motion, and AI UGC',
+      'CRO recommendations, growth calls, and performance dashboards',
+    ],
+    metrics: ['Ads + creatives', 'Monthly optimization', 'Growth dashboard'],
+    features: [
+      { title: 'Integrated acquisition', text: 'Media buying, creatives, landing pages, and reporting are planned together every month.' },
+      { title: 'Creative refreshes', text: 'New angles, statics, videos, and AI UGC keep campaigns moving instead of depending on old winners.' },
+      { title: 'Conversion support', text: 'Product page, landing page, offer, and checkout insights help reduce wasted spend.' },
+      { title: 'Clear operating rhythm', text: 'Weekly performance checks and monthly strategy reviews keep priorities visible.' },
+    ],
+    process: [
+      'Audit your store, traffic sources, ad accounts, creatives, and conversion data.',
+      'Set monthly acquisition, creative, CRO, and reporting priorities.',
+      'Launch campaigns and creative batches in focused growth sprints.',
+      'Review what worked, scale winners, and refresh the next month roadmap.',
+    ],
+    faqs: [
+      { question: 'Who is this retainer best for?', answer: 'It is best for eCommerce brands that already have a product-market signal and want a single partner across ads, creative, CRO, and reporting.' },
+      { question: 'Can we start with one service first?', answer: 'Yes. Many brands begin with performance marketing or creative production, then move into the full retainer once the operating rhythm is clear.' },
     ],
   },
   {
-    key: 'ai-seo',
-    title: 'AI SEO',
-    description: 'Enhance visibility and capture AI-driven traffic',
-    href: './ai-seo.html',
-    eyebrow: 'AI SEO',
-    headline: 'Prepare your site to win visibility in AI-assisted discovery, summaries, and answer engines.',
+    key: 'social-media-optimization',
+    title: 'Social Media Optimization',
+    description: 'Organic social that builds real momentum',
+    href: './social-media-optimization.html',
+    eyebrow: 'SMO services',
+    headline: 'Social media that actually grows your brand.',
     intro:
-      'We shape content and site signals so your brand is easier for AI systems to understand, cite, and surface across emerging search behavior.',
-    outcomes: ['Better AI answer visibility', 'Stronger entity clarity', 'Content built for new search journeys'],
+      'We do not just post and hope. We build platform-specific SMO systems that improve visibility, engagement, community, traffic, and long-term brand trust.',
+    outcomes: ['Stronger organic reach', 'More engaged audience', 'Better social-to-site traffic'],
     deliverables: [
-      'Entity and semantic content improvements',
-      'FAQ, schema, and answer-oriented formatting',
-      'AI search opportunity mapping',
+      'Social media audit, profile optimization, and platform roadmap',
+      'Content themes, posting cadence, hashtag research, and creative planning',
+      'Community engagement, publishing support, analytics, and reporting',
     ],
-  },
-  {
-    key: 'geo',
-    title: 'GEO',
-    description: 'Increase conversions by appearing in Gen AI answers',
-    href: './geo.html',
-    eyebrow: 'Generative engine optimization',
-    headline: 'Show up in generative answers with content designed for authority, clarity, and conversion.',
-    intro:
-      'GEO work helps your brand earn mention-worthy coverage in AI responses by strengthening how your offer, evidence, and expertise are presented online.',
-    outcomes: ['More branded discovery', 'Better answer-engine presence', 'Higher trust from first touch'],
-    deliverables: [
-      'Source-worthy page restructuring',
-      'Authority and proof asset development',
-      'Generative answer visibility reviews',
+    metrics: ['Instagram, Facebook, LinkedIn, YouTube', '60-90 day organic growth windows', 'Monthly SMO reporting'],
+    features: [
+      { title: 'Profile optimization', text: 'Bios, visuals, links, keywords, and trust signals are sharpened across every active platform.' },
+      { title: 'Content planning', text: 'We build themes, cadence, formats, captions, hashtags, and creative direction around your audience.' },
+      { title: 'Community management', text: 'Thoughtful engagement helps followers feel connected instead of ignored after the post goes live.' },
+      { title: 'Analytics and reporting', text: 'You see what is growing, what needs adjustment, and where social is creating business value.' },
+    ],
+    process: [
+      'Research your brand, competitors, audience behavior, and current social presence.',
+      'Build a scalable roadmap across the platforms that matter most.',
+      'Create and optimize content, profiles, captions, hashtags, and publishing flow.',
+      'Track reach, engagement, community growth, traffic, and conversion signals.',
+    ],
+    faqs: [
+      { question: 'What exactly is Social Media Optimization?', answer: 'SMO is the process of improving your social profiles, content, hashtags, engagement, and publishing system so your organic presence grows more consistently.' },
+      { question: 'How is SMO different from paid social media marketing?', answer: 'Paid social uses ad spend to reach people. SMO strengthens your organic presence so your brand looks credible, active, and discoverable even without paid media.' },
+      { question: 'Which platforms do you work on?', answer: 'We work across Instagram, Facebook, LinkedIn, YouTube, and other platforms when they match your audience and brand goals.' },
     ],
   },
 ]
@@ -391,6 +506,109 @@ function timezoneOptionsMarkup() {
     .join('')
 }
 
+function serviceMetricMarkup(service) {
+  if (!Array.isArray(service.metrics) || !service.metrics.length) {
+    return ''
+  }
+
+  return `
+    <section class="service-metric-strip section">
+      ${service.metrics
+        .map(
+          (metric, index) => `
+            <article class="service-metric-card reveal-up" style="transition-delay: ${index * 80}ms;">
+              <span>${String(index + 1).padStart(2, '0')}</span>
+              <strong>${escapeHtml(metric)}</strong>
+            </article>
+          `,
+        )
+        .join('')}
+    </section>
+  `
+}
+
+function serviceFeatureMarkup(service) {
+  if (!Array.isArray(service.features) || !service.features.length) {
+    return ''
+  }
+
+  return `
+    <section class="service-feature-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">What's included</span>
+        <h2>Every lever we pull for this service.</h2>
+      </div>
+      <div class="service-feature-grid">
+        ${service.features
+          .map(
+            (feature, index) => `
+              <article class="service-detail-card reveal-up" style="transition-delay: ${index * 70}ms;">
+                <span class="service-detail-label">${String(index + 1).padStart(2, '0')}</span>
+                <h3>${escapeHtml(feature.title)}</h3>
+                <p>${escapeHtml(feature.text)}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
+function serviceProcessMarkup(service) {
+  if (!Array.isArray(service.process) || !service.process.length) {
+    return ''
+  }
+
+  return `
+    <section class="service-process-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">Our process</span>
+        <h2>How we take the work from clarity to scale.</h2>
+      </div>
+      <div class="service-process-list">
+        ${service.process
+          .map(
+            (step, index) => `
+              <article class="service-process-step reveal-up" style="transition-delay: ${index * 80}ms;">
+                <span>${String(index + 1).padStart(2, '0')}</span>
+                <p>${escapeHtml(step)}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
+function serviceFaqMarkup(service) {
+  if (!Array.isArray(service.faqs) || !service.faqs.length) {
+    return ''
+  }
+
+  return `
+    <section class="service-faq-section section">
+      <div class="section-heading reveal-up">
+        <span class="eyebrow">FAQs</span>
+        <h2>Questions people ask before they start.</h2>
+      </div>
+      <div class="service-faq-list">
+        ${service.faqs
+          .map(
+            (faq, index) => `
+              <article class="faq-item reveal-up" style="transition-delay: ${index * 70}ms;">
+                <h3>${escapeHtml(faq.question)}</h3>
+                <p>${escapeHtml(faq.answer)}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </section>
+  `
+}
+
 function servicePageMarkup(service, index) {
   return `
     <section class="service-detail-hero section reveal-up">
@@ -410,7 +628,25 @@ function servicePageMarkup(service, index) {
             .map((outcome) => `<span>${escapeHtml(outcome)}</span>`)
             .join('')}
         </div>
-        <div class="service-detail-accent service-accent-${(index % 4) + 1}"></div>
+        <div class="service-detail-signal service-signal-${(index % 4) + 1}" aria-hidden="true">
+          <div class="service-signal-topline">
+            <span>Growth signal</span>
+            <strong>Live system</strong>
+          </div>
+          <div class="service-signal-chart">
+            <span style="--signal-height: 42%;"></span>
+            <span style="--signal-height: 68%;"></span>
+            <span style="--signal-height: 54%;"></span>
+            <span style="--signal-height: 82%;"></span>
+            <span style="--signal-height: 72%;"></span>
+            <span style="--signal-height: 94%;"></span>
+          </div>
+          <div class="service-signal-flow">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -429,6 +665,20 @@ function servicePageMarkup(service, index) {
         <p>Growth Revibe combines strategy, messaging, and execution so this service strengthens both visibility and conversion instead of optimizing one at the expense of the other.</p>
         <p>Every engagement is designed to create a clearer path from attention to inquiry, with reporting that keeps priorities visible.</p>
       </article>
+    </section>
+
+    ${serviceMetricMarkup(service)}
+    ${serviceFeatureMarkup(service)}
+    ${serviceProcessMarkup(service)}
+    ${serviceFaqMarkup(service)}
+
+    <section class="cta-banner section reveal-up">
+      <div class="cta-copy">
+        <span class="eyebrow">Ready to grow</span>
+        <h2>Get a focused audit for ${escapeHtml(service.title)}.</h2>
+        <p>We will review where you are today, show the clearest opportunities, and map the next moves for cleaner growth.</p>
+      </div>
+      <a class="button button-primary" href="./contact.html">Book a free audit</a>
     </section>
   `
 }
@@ -493,7 +743,9 @@ function caseStudyCardsMarkup(caseStudies) {
         <article class="case-thumb-card reveal-up" style="transition-delay: ${index * 90}ms;">
           <div class="case-thumb-media case-theme-${(index % 4) + 1}">
             <div class="case-thumb-gridline" aria-hidden="true"></div>
-            <div class="case-thumb-sigil" aria-hidden="true">GR</div>
+            <div class="case-thumb-sigil" aria-hidden="true">
+              <img src="${brandLogo}" alt="" />
+            </div>
             <div class="case-thumb-overlay">
               <div class="case-meta">
                 <span class="case-tag">${escapeHtml(study.category)}</span>
@@ -571,40 +823,36 @@ function horizontalVideoCarouselMarkup() {
     { src: video7, title: 'Whey Protein' },
     { src: showcaseVideo, title: 'Outie Tool' },
   ]
+  const carouselItemsMarkup = videos.map((video) => `
+    <button
+      type="button"
+      class="carousel-item"
+      data-media-lightbox-trigger
+      data-media-type="video"
+      data-media-src="${video.src}"
+      data-media-title="${escapeHtml(video.title)}"
+      data-media-tag="Video gallery"
+      data-media-caption="Selected creative from the Growth Revibe video gallery."
+      aria-label="Open ${escapeHtml(video.title)} video"
+    >
+      <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="carousel-label">${escapeHtml(video.title)}</span>
+    </button>
+  `).join('')
 
   return `
     <div class="carousel-section reveal-up">
       <div class="carousel-row carousel-row-ltr">
         <div class="carousel-track carousel-track-ltr">
-          ${videos.map((video, i) => `
-            <div class="carousel-item">
-              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
-              <span class="carousel-label">${escapeHtml(video.title)}</span>
-            </div>
-          `).join('')}
-          ${videos.map((video, i) => `
-            <div class="carousel-item">
-              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
-              <span class="carousel-label">${escapeHtml(video.title)}</span>
-            </div>
-          `).join('')}
+          ${carouselItemsMarkup}
+          ${carouselItemsMarkup}
         </div>
       </div>
 
       <div class="carousel-row carousel-row-rtl">
         <div class="carousel-track carousel-track-rtl">
-          ${videos.map((video, i) => `
-            <div class="carousel-item">
-              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
-              <span class="carousel-label">${escapeHtml(video.title)}</span>
-            </div>
-          `).join('')}
-          ${videos.map((video, i) => `
-            <div class="carousel-item">
-              <video class="carousel-video" src="${video.src}" autoplay muted loop playsinline preload="metadata"></video>
-              <span class="carousel-label">${escapeHtml(video.title)}</span>
-            </div>
-          `).join('')}
+          ${carouselItemsMarkup}
+          ${carouselItemsMarkup}
         </div>
       </div>
     </div>
@@ -653,8 +901,6 @@ function imageGalleryMarkup() {
                 <div class="video-rail-screen image-rail-screen video-theme-${(index % 3) + 1}">
                   <img class="video-rail-media image-rail-media" src="${img.src}" alt="${escapeHtml(img.title)}" loading="lazy" />
                   <div class="video-rail-glow" aria-hidden="true"></div>
-                  <div class="image-rail-badge" aria-hidden="true">GR</div>
-                  <div class="video-rail-timecode" aria-hidden="true">IMG-${String((index % images.length) + 1).padStart(2, '0')}</div>
                   <div class="video-rail-progress" aria-hidden="true"><span></span></div>
                 </div>
               </div>
@@ -1056,7 +1302,7 @@ function sitePages(siteData) {
             <div class="reel-phone-frame reel-phone-frame-back">
               <div class="reel-phone-notch"></div>
               <div class="reel-phone-screen">
-                <video class="reel-video" src="${video4}" autoplay muted loop playsinline preload="metadata" aria-label="Secondary Instagram reel showcase video"></video>
+                <video class="reel-video" src="${homeReelPlaylist[4].src}" autoplay muted playsinline preload="metadata" data-home-reel-video data-reel-index="4" aria-label="Secondary Instagram reel showcase video"></video>
                 <div class="reel-overlay-gradient"></div>
                 <div class="reel-controls">
                   <div class="reel-heart"></div>
@@ -1070,7 +1316,7 @@ function sitePages(siteData) {
             <div class="reel-phone-frame reel-phone-frame-front">
               <div class="reel-phone-notch"></div>
               <div class="reel-phone-screen">
-                <video class="reel-video" src="${showcaseVideo}" autoplay muted loop playsinline preload="metadata" aria-label="Instagram reel style showcase video"></video>
+                <video class="reel-video" src="${homeReelPlaylist[0].src}" autoplay muted playsinline preload="metadata" data-home-reel-video data-reel-index="0" aria-label="Instagram reel style showcase video"></video>
                 <div class="reel-overlay-gradient"></div>
                 <div class="reel-controls">
                   <div class="reel-heart"></div>
@@ -1602,7 +1848,9 @@ function appMarkup(siteData) {
         <div class="brand-orbit brand-orbit-three"></div>
         <div class="brand-wave brand-wave-one"></div>
         <div class="brand-wave brand-wave-two"></div>
-        <div class="brand-sigil brand-sigil-one">GR</div>
+        <div class="brand-sigil brand-sigil-one">
+          <img src="${brandLogo}" alt="" />
+        </div>
         <div class="brand-sigil brand-sigil-two">Growth Revibe</div>
       </div>
       <header class="top-ribbon">
@@ -1707,6 +1955,7 @@ function renderApp() {
   initPlaneIntro()
   initRevealObserver()
   initNavDropdown()
+  initHomeReelFeed()
   initPortfolioBook()
   initContactScheduler()
   initContactForms()
@@ -1939,6 +2188,48 @@ function initNavDropdown() {
       trigger.focus()
     }
   }, { signal })
+}
+
+function initHomeReelFeed() {
+  const reelVideos = [...document.querySelectorAll('[data-home-reel-video]')]
+
+  if (!reelVideos.length) {
+    return
+  }
+
+  const resetProgress = (video) => {
+    const progress = video.parentElement?.querySelector('.reel-progress span')
+    if (progress instanceof HTMLElement) {
+      progress.style.animation = 'none'
+      progress.offsetHeight
+      progress.style.animation = ''
+    }
+  }
+
+  const setNextVideo = (video) => {
+    const currentIndex = Number(video.getAttribute('data-reel-index') || 0)
+    const nextIndex = (currentIndex + 1) % homeReelPlaylist.length
+    const nextReel = homeReelPlaylist[nextIndex]
+
+    video.setAttribute('data-reel-index', String(nextIndex))
+    video.setAttribute('src', nextReel.src)
+    video.setAttribute('aria-label', `${nextReel.title} Instagram reel showcase video`)
+    video.currentTime = 0
+    resetProgress(video)
+    void video.play().catch(() => {})
+  }
+
+  reelVideos.forEach((video) => {
+    video.loop = false
+    video.addEventListener('ended', () => setNextVideo(video))
+    video.addEventListener('loadedmetadata', () => {
+      const progress = video.parentElement?.querySelector('.reel-progress span')
+      if (progress instanceof HTMLElement && Number.isFinite(video.duration) && video.duration > 0) {
+        progress.style.animationDuration = `${video.duration}s`
+      }
+    })
+    void video.play().catch(() => {})
+  })
 }
 
 function initContactScheduler() {
