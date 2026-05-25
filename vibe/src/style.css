@@ -12078,3 +12078,209 @@ body:not([data-page='admin']) .reference-bar-chart.muted span {
     border-radius: 28px;
   }
 }
+
+body[data-page='services']:not([data-page='admin']) {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 95, 162, 0.2), transparent 34%),
+    radial-gradient(circle at 90% 18%, rgba(91, 63, 209, 0.16), transparent 26%),
+    linear-gradient(180deg, #111111 0%, #181818 48%, #0f0f0f 100%);
+  color: #ffffff;
+}
+
+body[data-page='services']:not([data-page='admin']) .site-visuals,
+body[data-page='services']:not([data-page='admin']) .brand-atmosphere {
+  opacity: 0.3;
+  mix-blend-mode: normal;
+}
+
+body[data-page='services']:not([data-page='admin']) .services-page-hero,
+body[data-page='services']:not([data-page='admin']) .services-page-panel,
+body[data-page='services']:not([data-page='admin']) .service-accordion-item,
+body[data-page='services']:not([data-page='admin']) .pricing-table,
+body[data-page='services']:not([data-page='admin']) .pricing-card,
+body[data-page='services']:not([data-page='admin']) .pricing-showcase .faq-panel {
+  border-color: rgba(255, 95, 162, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(255, 95, 162, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
+    rgba(25, 25, 25, 0.94);
+  box-shadow:
+    0 24px 54px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body[data-page='services']:not([data-page='admin']) .services-page-hero::before,
+body[data-page='services']:not([data-page='admin']) .services-page-panel::before {
+  background: radial-gradient(circle, rgba(255, 95, 162, 0.16), rgba(255, 95, 162, 0));
+}
+
+body[data-page='services']:not([data-page='admin']) .page-banner .eyebrow,
+body[data-page='services']:not([data-page='admin']) .service-accordion-header .eyebrow,
+body[data-page='services']:not([data-page='admin']) .section-heading .eyebrow {
+  color: #ff8bb2;
+}
+
+body[data-page='services']:not([data-page='admin']) .page-banner h1,
+body[data-page='services']:not([data-page='admin']) .service-accordion-header h2,
+body[data-page='services']:not([data-page='admin']) .pricing-showcase h2,
+body[data-page='services']:not([data-page='admin']) .service-accordion-title-group strong,
+body[data-page='services']:not([data-page='admin']) .pricing-table strong,
+body[data-page='services']:not([data-page='admin']) .pricing-card h3,
+body[data-page='services']:not([data-page='admin']) .faq-panel h2,
+body[data-page='services']:not([data-page='admin']) .faq-panel h3 {
+  color: #ffffff;
+}
+
+body[data-page='services']:not([data-page='admin']) .page-banner p,
+body[data-page='services']:not([data-page='admin']) .service-accordion-header p,
+body[data-page='services']:not([data-page='admin']) .service-accordion-subtitle,
+body[data-page='services']:not([data-page='admin']) .pricing-showcase p,
+body[data-page='services']:not([data-page='admin']) .service-accordion-body p,
+body[data-page='services']:not([data-page='admin']) .service-accordion-outcomes li,
+body[data-page='services']:not([data-page='admin']) .pricing-card p,
+body[data-page='services']:not([data-page='admin']) .faq-panel p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body[data-page='services']:not([data-page='admin']) .service-accordion-icon-wrap {
+  border-color: rgba(255, 95, 162, 0.28);
+  background:
+    radial-gradient(circle at top, rgba(255, 95, 162, 0.18), transparent 72%),
+    rgba(255, 255, 255, 0.06);
+  color: #ff8bb2;
+}
+
+body[data-page='services']:not([data-page='admin']) .service-accordion-caret {
+  border-color: rgba(255, 255, 255, 0.46);
+}
+
+body[data-page='services']:not([data-page='admin']) .service-accordion-outcomes span,
+body[data-page='services']:not([data-page='admin']) .service-accordion-cta {
+  border-color: rgba(255, 95, 162, 0.24);
+  background: rgba(255, 95, 162, 0.12);
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  body[data-page='home'] .portfolio-section {
+    overflow: hidden;
+  }
+
+  body[data-page='home'] .portfolio-stack {
+    display: block;
+    padding: 0 0 18px;
+  }
+
+  body[data-page='home'] .portfolio-stack-scene {
+    min-height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  body[data-page='home'] .portfolio-stack-orbit,
+  body[data-page='home'] .portfolio-stack-card-back {
+    display: none;
+  }
+
+  body[data-page='home'] .portfolio-stack-card {
+    position: relative;
+    width: 100%;
+    border-radius: 28px;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-front {
+    min-height: 0;
+    padding: 22px 18px 24px;
+    gap: 18px;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-top,
+  body[data-page='home'] .portfolio-stack-card-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  body[data-page='home'] .portfolio-stack-badge,
+  body[data-page='home'] .portfolio-stack-counter {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-copy {
+    max-width: none;
+    gap: 12px;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-copy h3 {
+    font-size: clamp(1.62rem, 8.6vw, 2.15rem);
+    line-height: 1.06;
+    letter-spacing: 0;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-copy p,
+  body[data-page='home'] .portfolio-stack-note,
+  body[data-page='home'] .portfolio-stack-status {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  body[data-page='home'] .portfolio-stack-card-meta strong {
+    max-width: none;
+    font-size: 0.98rem;
+  }
+
+  body[data-page='home'] .portfolio-stack-bullets {
+    justify-content: flex-start;
+    max-width: none;
+    gap: 8px;
+  }
+
+  body[data-page='home'] .portfolio-stack-bullets span {
+    padding: 8px 11px;
+    font-size: 0.76rem;
+  }
+
+  body[data-page='home'] .portfolio-stack-nav {
+    position: absolute;
+    top: auto;
+    bottom: 18px;
+    width: 46px;
+    height: 46px;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.14), transparent 68%),
+      linear-gradient(135deg, #e63a6e, #b81f52);
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+  }
+
+  body[data-page='home'] .portfolio-stack-nav svg {
+    width: 19px;
+    height: 19px;
+    stroke: #ffffff;
+  }
+
+  body[data-page='home'] .portfolio-stack-nav-prev {
+    left: 18px;
+  }
+
+  body[data-page='home'] .portfolio-stack-nav-next {
+    right: 18px;
+  }
+
+  body[data-page='home'] .portfolio-stack-footer {
+    position: static;
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 0 68px;
+  }
+
+  body[data-page='home'] .portfolio-stack-note,
+  body[data-page='home'] .portfolio-stack-status {
+    max-width: none;
+    text-align: center;
+  }
+}
