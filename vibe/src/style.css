@@ -11568,6 +11568,161 @@ body:not([data-page='admin']) .hero-logo-lockup {
   }
 }
 
+body:not([data-page='admin']) .reference-service {
+  --reference-line: rgba(255, 95, 162, 0.18);
+  color: #ffffff;
+}
+
+body:not([data-page='admin']) .reference-service .section::before {
+  opacity: 0.18;
+}
+
+body:not([data-page='admin']) .reference-hero-copy p,
+body:not([data-page='admin']) .reference-section > p,
+body:not([data-page='admin']) .reference-faq-cta p,
+body:not([data-page='admin']) .reference-compare-grid p,
+body:not([data-page='admin']) .reference-card-grid p,
+body:not([data-page='admin']) .reference-mini-grid p,
+body:not([data-page='admin']) .reference-platform-grid span,
+body:not([data-page='admin']) .reference-creative-gallery p,
+body:not([data-page='admin']) .reference-timeline p,
+body:not([data-page='admin']) .reference-post p,
+body:not([data-page='admin']) .reference-card-grid li,
+body:not([data-page='admin']) .reference-mini-grid small,
+body:not([data-page='admin']) .reference-note,
+body:not([data-page='admin']) .reference-creative-gallery small,
+body:not([data-page='admin']) .reference-post-head small,
+body:not([data-page='admin']) .reference-post-stats span,
+body:not([data-page='admin']) .reference-stat-band span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body:not([data-page='admin']) .reference-pills span,
+body:not([data-page='admin']) .reference-service-stack a,
+body:not([data-page='admin']) .reference-platform-grid article,
+body:not([data-page='admin']) .reference-floating-card,
+body:not([data-page='admin']) .reference-stat-band article,
+body:not([data-page='admin']) .reference-compare-grid article,
+body:not([data-page='admin']) .reference-card-grid article,
+body:not([data-page='admin']) .reference-mini-grid article,
+body:not([data-page='admin']) .reference-faq-cta article,
+body:not([data-page='admin']) .reference-post,
+body:not([data-page='admin']) .reference-post-stats article,
+body:not([data-page='admin']) .reference-cta-card,
+body:not([data-page='admin']) .reference-bar-compare article,
+body:not([data-page='admin']) .reference-creative-gallery article {
+  border-color: rgba(255, 95, 162, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(255, 95, 162, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
+    rgba(25, 25, 25, 0.94);
+  box-shadow:
+    0 24px 54px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body:not([data-page='admin']) .reference-pills span {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+body:not([data-page='admin']) .reference-compare-grid .is-featured,
+body:not([data-page='admin']) .reference-card-grid article:hover,
+body:not([data-page='admin']) .reference-service-stack a:hover,
+body:not([data-page='admin']) .reference-service-stack a:focus-visible {
+  border-color: rgba(255, 95, 162, 0.56);
+  box-shadow:
+    0 26px 64px rgba(230, 58, 110, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body:not([data-page='admin']) .reference-compare-grid h3,
+body:not([data-page='admin']) .reference-card-grid h3,
+body:not([data-page='admin']) .reference-mini-grid h3,
+body:not([data-page='admin']) .reference-platform-grid strong,
+body:not([data-page='admin']) .reference-creative-gallery h3,
+body:not([data-page='admin']) .reference-timeline h3,
+body:not([data-page='admin']) .reference-faq-cta h3,
+body:not([data-page='admin']) .reference-post-head strong {
+  color: #ffffff;
+}
+
+body:not([data-page='admin']) .reference-badge,
+body:not([data-page='admin']) .reference-kicker {
+  border-color: rgba(255, 95, 162, 0.34);
+  background: rgba(255, 95, 162, 0.1);
+  color: #ff8bb2;
+}
+
+body:not([data-page='admin']) .reference-stat-band {
+  border-color: rgba(255, 95, 162, 0.18);
+  background: rgba(255, 95, 162, 0.14);
+}
+
+body:not([data-page='admin']) .reference-table-wrap {
+  border-color: rgba(255, 95, 162, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+    rgba(21, 21, 21, 0.96);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.28);
+}
+
+body:not([data-page='admin']) .reference-table th {
+  background: linear-gradient(135deg, #e63a6e, #b81f52);
+  color: #ffffff;
+}
+
+body:not([data-page='admin']) .reference-table td {
+  border-bottom-color: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.74);
+}
+
+body:not([data-page='admin']) .reference-table td:first-child,
+body:not([data-page='admin']) .reference-table td:last-child {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+body:not([data-page='admin']) .reference-ticker {
+  border-block-color: rgba(255, 95, 162, 0.18);
+  background:
+    linear-gradient(90deg, rgba(230, 58, 110, 0.12), rgba(255, 255, 255, 0.04), rgba(230, 58, 110, 0.12)),
+    rgba(18, 18, 18, 0.94);
+}
+
+body:not([data-page='admin']) .reference-ticker span {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+body:not([data-page='admin']) .reference-phone,
+body:not([data-page='admin']) .social-bubble,
+body:not([data-page='admin']) .mock,
+body:not([data-page='admin']) .reference-post-image {
+  background:
+    radial-gradient(circle at top right, rgba(255, 95, 162, 0.22), transparent 36%),
+    linear-gradient(145deg, rgba(42, 42, 42, 0.98), rgba(18, 18, 18, 0.98));
+  color: #ffffff;
+  border-color: rgba(255, 95, 162, 0.22);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.26);
+}
+
+body:not([data-page='admin']) .reference-phone-lines span,
+body:not([data-page='admin']) .mock span {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+body:not([data-page='admin']) .reference-phone-top {
+  background: #050505;
+}
+
+body:not([data-page='admin']) .reference-phone-post {
+  background: linear-gradient(145deg, #e63a6e, #5b3fd1);
+}
+
+body:not([data-page='admin']) .reference-bar-chart.muted span {
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .mobile-app-nav {
   display: none;
 }
