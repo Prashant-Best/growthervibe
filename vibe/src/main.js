@@ -609,7 +609,351 @@ function serviceFaqMarkup(service) {
   `
 }
 
+function performanceMarketingReferenceMarkup() {
+  return `
+    <div class="reference-service reference-performance">
+      <section class="reference-hero section reveal-up">
+        <div class="reference-hero-copy">
+          <span class="reference-kicker">Service page</span>
+          <h1>A Performance Marketing Partner Built for Scale, Not Experiments</h1>
+          <p>We turn your ad spend into measurable revenue. For eCommerce brands ready to scale, we run full-funnel paid campaigns backed by AI-powered creatives that actually convert.</p>
+          <div class="reference-pills">
+            <span>Google Ads</span>
+            <span>Meta Ads</span>
+            <span>TikTok Ads</span>
+            <span>CRO</span>
+            <span>AI Creatives</span>
+            <span>UGC Videos</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./contact.html">Book a free audit</a>
+            <a class="button button-secondary" href="./ai-ugc-videos.html">Explore AI UGC videos</a>
+          </div>
+        </div>
+        <div class="reference-dashboard" aria-label="Performance marketing dashboard visual">
+          <div class="reference-dashboard-screen">
+            <div class="reference-dashboard-stats">
+              <span><strong>23,500</strong> Sessions</span>
+              <span class="is-hot"><strong>$302,704.82</strong> Total Sales</span>
+              <span><strong>1,173</strong> Orders</span>
+            </div>
+            <div class="reference-chart" aria-hidden="true">
+              <span style="--h: 28%;"></span>
+              <span style="--h: 34%;"></span>
+              <span style="--h: 68%;"></span>
+              <span style="--h: 42%;"></span>
+              <span style="--h: 55%;"></span>
+              <span style="--h: 76%;"></span>
+            </div>
+          </div>
+          <div class="reference-floating-card reference-float-a"><strong>Meta Ads</strong><span>Campaigns that drive measurable results.</span></div>
+          <div class="reference-floating-card reference-float-b"><strong>Google Ads</strong><span>Data-driven strategies that scale profitably.</span></div>
+          <div class="reference-floating-card reference-float-c"><strong>CRO</strong><span>Conversion rate optimization that turns traffic into revenue.</span></div>
+          <div class="reference-floating-card reference-float-d"><strong>SMO</strong><span>Build your brand, engage your audience, and grow across all social platforms.</span></div>
+        </div>
+      </section>
+
+      <section class="reference-stat-band section reveal-up">
+        <article><strong>$250M+</strong><span>Client revenue generated</span></article>
+        <article><strong>500+</strong><span>Successful campaigns</span></article>
+        <article><strong>100+</strong><span>Happy clients</span></article>
+        <article><strong>4.8x</strong><span>Average ROAS delivered</span></article>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">The problem we solve</span>
+        <h2>Why most eCommerce brands bleed money on ads</h2>
+        <div class="reference-compare-grid">
+          <article>
+            <h3>Without us</h3>
+            <p><strong>Creative testing:</strong> Manual, slow</p>
+            <p><strong>Ad to landing page match:</strong> Often broken</p>
+            <p><strong>Scaling strategy:</strong> Guess-based</p>
+            <p><strong>CAC trend:</strong> Rising</p>
+            <p><strong>UGC creatives:</strong> Expensive and slow</p>
+          </article>
+          <article class="is-featured">
+            <span class="reference-badge">GrowthRevibe</span>
+            <h3>With us</h3>
+            <p><strong>Creative testing:</strong> AI-powered, fast</p>
+            <p><strong>Ad to landing page match:</strong> Fully aligned</p>
+            <p><strong>Scaling strategy:</strong> Data-validated</p>
+            <p><strong>CAC trend:</strong> Declining</p>
+            <p><strong>UGC creatives:</strong> AI UGC, fast</p>
+          </article>
+          <article>
+            <h3>Typical agency</h3>
+            <p><strong>Creative testing:</strong> Basic A/B</p>
+            <p><strong>Ad to landing page match:</strong> Sometimes</p>
+            <p><strong>Scaling strategy:</strong> Template-driven</p>
+            <p><strong>CAC trend:</strong> Flat</p>
+            <p><strong>UGC creatives:</strong> Outsourced</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">What's included</span>
+        <h2>Every lever we pull for your growth</h2>
+        <div class="reference-card-grid">
+          <article><span class="reference-icon">01</span><h3>Paid media management</h3><p>Full campaign management across Google, Meta, and TikTok, from audience build to budget allocation and bid strategy.</p><ul><li>Search, Shopping and Performance Max</li><li>Meta Advantage+ and retargeting</li><li>TikTok Spark and conversion campaigns</li></ul></article>
+          <article><span class="reference-icon">02</span><h3>AI creative production</h3><p>High-volume, conversion-tested ad creatives using AI tools, static, video, and AI UGC, so you never run dry on fresh angles.</p><ul><li>AI UGC video ads</li><li>Static and carousel ad creatives</li><li>Hook testing and iteration</li></ul></article>
+          <article><span class="reference-icon">03</span><h3>Conversion rate optimisation</h3><p>We audit your funnel, fix leaks, and test landing pages to lift revenue from existing spend.</p><ul><li>Landing page audit and redesign</li><li>A/B testing with heatmaps</li><li>Checkout flow optimisation</li></ul></article>
+          <article><span class="reference-icon">04</span><h3>Data and reporting</h3><p>No vanity metrics. You get weekly reports focused on CAC, ROAS, MER, and attributed revenue in plain language.</p><ul><li>Live performance dashboard</li><li>Weekly growth calls</li><li>Attribution and pixel setup</li></ul></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Creative edge</span>
+        <h2>Our AI creative system, built for eCommerce</h2>
+        <p>This is what separates us from every other performance agency. We do not just run ads, we build the creative engine that makes ads work.</p>
+        <div class="reference-mini-grid">
+          <article><span>AI UGC video</span><h3>Realistic spokesperson ads</h3><p>AI-generated human presenters reviewing your product, no hiring, no shoots, no delays.</p><div class="reference-progress"><i style="width:88%"></i></div><small>Conversion rate lift +88%</small></article>
+          <article><span>Static creatives</span><h3>Scroll-stopping ad graphics</h3><p>Bold, direct-response static ads built around proven hooks, offers, and social proof.</p><div class="reference-progress"><i style="width:72%"></i></div><small>CTR improvement +72%</small></article>
+          <article><span>Video ads</span><h3>Hook-first video scripts</h3><p>Short-form video ads with data-backed hooks, made for TikTok, Reels, and YouTube Shorts.</p><div class="reference-progress"><i style="width:65%"></i></div><small>Watch-through rate 65%</small></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Our process</span>
+        <h2>How we take you from zero to scale</h2>
+        <div class="reference-timeline">
+          <article><span>1</span><h3>Growth audit and strategy</h3><p>We dissect your current funnel, ad accounts, creatives, and data. You get a clear gap analysis and a 90-day growth roadmap before we spend a single rupee.</p></article>
+          <article><span>2</span><h3>Creative brief and production</h3><p>Our creative team develops winning angles, writes hooks, and produces a batch of AI UGC plus static ads ready to test in week one.</p></article>
+          <article><span>3</span><h3>Campaign launch and testing</h3><p>We launch structured tests across Google and Meta, validating audiences, creatives, and offers simultaneously using our sprint framework.</p></article>
+          <article><span>4</span><h3>Scale the winners</h3><p>We kill what does not work fast and double down on what does, scaling budgets on validated creative-audience combos to grow your revenue predictably.</p></article>
+          <article><span>5</span><h3>Optimise, repeat and grow LTV</h3><p>Monthly creative refreshes, landing page improvements, and retention campaigns keep CAC low and customer lifetime value growing.</p></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Results table</span>
+        <h2>What clients typically see after 90 days</h2>
+        <div class="reference-table-wrap">
+          <table class="reference-table">
+            <thead><tr><th>Metric</th><th>Before GrowthRevibe</th><th>After 90 days</th><th>Change</th></tr></thead>
+            <tbody>
+              <tr><td>ROAS</td><td>1.8x</td><td>4.2x - 6x</td><td>+2-4x</td></tr>
+              <tr><td>Customer acquisition cost (CAC)</td><td>Rs. 1,400</td><td>Rs. 620 - Rs. 800</td><td>-40 to -55%</td></tr>
+              <tr><td>Click-through rate (CTR)</td><td>0.9%</td><td>2.4% - 3.8%</td><td>+166%</td></tr>
+              <tr><td>Creative refresh cycle</td><td>Monthly</td><td>Weekly</td><td>4x faster</td></tr>
+              <tr><td>Landing page conversion rate</td><td>1.1%</td><td>2.8% - 4.1%</td><td>+2.5x</td></tr>
+              <tr><td>Ad spend wastage</td><td>~38%</td><td>&lt;12%</td><td>-68%</td></tr>
+              <tr><td>Monthly revenue attributed to ads</td><td>Base</td><td>2x - 4x growth</td><td>Significant</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="reference-note">Results vary by brand, vertical, and starting point. Figures represent median outcomes across active client accounts.</p>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Suggested services</span>
+        <h2>Complete your growth stack</h2>
+        <p>Based on your vision, here is how we recommend structuring the full GrowthRevibe service menu.</p>
+        <div class="reference-service-stack">
+          <a href="./performance-marketing.html">Performance marketing <span>Core</span></a>
+          <a href="./ai-creative-studio.html">AI creative studio <span>Core</span></a>
+          <a href="./ai-ugc-videos.html">AI UGC videos <span>Differentiator</span></a>
+          <a href="./cro-landing-pages.html">CRO and landing pages <span>Add-on</span></a>
+          <a href="./ai-marketing-strategy.html">AI marketing strategy <span>Growth</span></a>
+          <a href="./ecommerce-growth-retainer.html">eCommerce growth retainer <span>Vertical</span></a>
+        </div>
+      </section>
+
+      <section class="reference-faq-cta section reveal-up">
+        <div>
+          <span class="reference-kicker">Common questions</span>
+          <h2>FAQs</h2>
+          <article><h3>What makes GrowthRevibe different from a standard performance agency?</h3><p>Most agencies run ads. We build a creative system around your ads. Our AI UGC and creative production capability means your campaigns always have fresh angles to test, which is the real reason ROAS stays high long-term.</p></article>
+          <article><h3>What is AI UGC and does it actually convert?</h3><p>AI UGC uses AI-generated human avatars or voice-overs to create realistic real-person style video ads without hiring influencers or shooting content. Our clients often see stronger conversion rates on AI UGC versus standard video ads.</p></article>
+          <article><h3>How long before we see results?</h3><p>You will see data and initial insights within the first 2 weeks. Most clients hit a positive ROAS inflection point by week 6-8.</p></article>
+        </div>
+        <div class="reference-cta-card">
+          <span class="reference-kicker">Ready to scale?</span>
+          <h2>Get your free performance audit</h2>
+          <p>We will review your current ad accounts, creatives, and funnel, then show where revenue is leaking and how to fix it.</p>
+          <a class="button button-primary" href="./contact.html">Book a free audit</a>
+        </div>
+      </section>
+    </div>
+  `
+}
+
+function socialMediaOptimizationReferenceMarkup() {
+  return `
+    <div class="reference-service reference-smo">
+      <div class="reference-ticker" aria-label="Social media optimization services ticker">
+        <div>
+          <span>Instagram Optimization</span><span>Facebook Growth</span><span>Engagement Boost</span><span>LinkedIn Authority</span><span>Analytics and Reporting</span><span>Influencer Collabs</span><span>Hashtag Strategy</span><span>YouTube SEO</span>
+          <span>Instagram Optimization</span><span>Facebook Growth</span><span>Engagement Boost</span><span>LinkedIn Authority</span><span>Analytics and Reporting</span><span>Influencer Collabs</span><span>Hashtag Strategy</span><span>YouTube SEO</span>
+        </div>
+      </div>
+
+      <section class="reference-hero reference-smo-hero section reveal-up">
+        <div class="reference-hero-copy">
+          <span class="reference-kicker">SMO Services</span>
+          <h1>Social media that actually grows your brand</h1>
+          <p>We do not just post and pray. At Growth Vibe, we craft platform-specific strategies that turn your social presence into a real, measurable growth engine.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./contact.html">Get a free SMO audit</a>
+            <a class="button button-secondary" href="./case-studies.html">See our work</a>
+          </div>
+        </div>
+        <div class="reference-social-visual" aria-label="Social media optimization phone visual">
+          <div class="reference-phone">
+            <div class="reference-phone-top"></div>
+            <div class="reference-phone-post"></div>
+            <div class="reference-phone-lines"><span></span><span></span><span></span></div>
+          </div>
+          <span class="social-bubble instagram">Instagram</span>
+          <span class="social-bubble facebook">Facebook</span>
+          <span class="social-bubble linkedin">LinkedIn</span>
+          <span class="social-bubble youtube">YouTube</span>
+          <span class="social-growth-arrow"></span>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Why SMO matters</span>
+        <h2>Your social presence is your first impression</h2>
+        <p>Social Media Optimization bridges the gap between great content and real growth, turning passive followers into active brand advocates.</p>
+        <div class="reference-card-grid">
+          <article><span class="reference-icon">01</span><h3>Visibility that sticks</h3><p>We optimize profiles, content, and keywords so the right people find you consistently, organically, without paid boosts.</p></article>
+          <article><span class="reference-icon">02</span><h3>Audience that engages</h3><p>Not just followers, real humans who care about your brand, comment, share, and convert into paying customers.</p></article>
+          <article><span class="reference-icon">03</span><h3>Traffic you can measure</h3><p>Every optimized post and bio link pushes warm traffic to your site. We track exactly what is driving clicks.</p></article>
+          <article><span class="reference-icon">04</span><h3>Reputation you control</h3><p>We monitor, respond, and shape your narrative so your brand always looks sharp, even when it is tricky.</p></article>
+        </div>
+      </section>
+
+      <section class="reference-section reference-smo-bars section reveal-up">
+        <span class="reference-kicker">Before vs after SMO</span>
+        <h2>What optimized social media looks like</h2>
+        <p>Brands we work with see consistent upward trends across all key engagement metrics.</p>
+        <div class="reference-bar-compare">
+          <article>
+            <h3>Before Growth Vibe</h3>
+            <div class="reference-bar-chart muted"><span style="height:22%"></span><span style="height:18%"></span><span style="height:30%"></span><span style="height:20%"></span><span style="height:25%"></span><span style="height:15%"></span><span style="height:28%"></span></div>
+          </article>
+          <article>
+            <h3>After Growth Vibe</h3>
+            <div class="reference-bar-chart"><span style="height:55%"></span><span style="height:68%"></span><span style="height:72%"></span><span style="height:80%"></span><span style="height:75%"></span><span style="height:90%"></span><span style="height:95%"></span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="reference-stat-band section reveal-up">
+        <article><strong>500+</strong><span>Profiles optimized</span></article>
+        <article><strong>60-90</strong><span>Day growth windows</span></article>
+        <article><strong>4.8%</strong><span>Sample engagement rate</span></article>
+        <article><strong>12k</strong><span>Sample impressions</span></article>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Platforms</span>
+        <h2>Where we make your brand shine</h2>
+        <p>We meet your audience where they spend their time and make sure your brand stands out there.</p>
+        <div class="reference-platform-grid">
+          <article><strong>Facebook</strong><span>Communities, targeted content and campaigns that convert.</span></article>
+          <article><strong>Instagram</strong><span>Visual storytelling, Reels strategy and influencer tie-ups.</span></article>
+          <article><strong>X (Twitter)</strong><span>Real-time conversations and brand voice that cuts through.</span></article>
+          <article><strong>LinkedIn</strong><span>Thought leadership and B2B credibility that opens doors.</span></article>
+          <article><strong>YouTube</strong><span>SEO-optimized videos and subscriber growth strategies.</span></article>
+          <article><strong>Pinterest</strong><span>Discovery-driven boards that fuel purchase intent.</span></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Creative portfolio</span>
+        <h2>Our social media creatives</h2>
+        <p>Scroll-stopping visuals, on-brand content, and posts that actually get engagement.</p>
+        <div class="reference-creative-gallery">
+          <article><div class="mock mock-instagram"><strong>Grow with us</strong><span>@growthvibe</span></div><h3>Instagram</h3><p>Brand awareness post</p><small>1.2k likes, 84 comments, 210 shares</small></article>
+          <article><div class="mock mock-linkedin"><strong>Read more</strong><span>Thought leadership</span></div><h3>LinkedIn</h3><p>Thought leadership carousel</p><small>892 likes, 134 comments, 67 reposts</small></article>
+          <article><div class="mock mock-facebook"><strong>Boost your reach</strong><span>Get started free</span></div><h3>Facebook</h3><p>Promotional ad creative</p><small>3.4k likes, 220 comments, 415 shares</small></article>
+          <article><div class="mock mock-story"><strong>5x more</strong><span>Story engagement</span></div><h3>Instagram story</h3><p>Poll and story engagement</p><small>8.1k views, 1.6k likes, 340 actions</small></article>
+          <article><div class="mock mock-thread"><strong>5 tips to 10x your engagement</strong><span>Thread content</span></div><h3>X (Twitter)</h3><p>Thread and hook content</p><small>2.8k reposts, 5.1k likes, 920 bookmarks</small></article>
+          <article><div class="mock mock-youtube"><strong>SMO Guide 2025</strong><span>Play</span></div><h3>YouTube</h3><p>Video thumbnail design</p><small>24k views, 1.9k likes, 310 comments</small></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">In the wild</span>
+        <h2>What it looks like in your feed</h2>
+        <p>Here is a dummy preview of how a Growth Vibe post would look live on Instagram.</p>
+        <div class="reference-feed-grid">
+          <article class="reference-post">
+            <div class="reference-post-head"><span>GV</span><div><strong>growthvibe</strong><small>Sponsored</small></div></div>
+            <div class="reference-post-image"><strong>Grow with Growth Vibe</strong></div>
+            <p><strong>growthvibe</strong> Social media that actually grows your brand. Swipe to see what we did for our clients this month. #SMO #SocialMediaMarketing #GrowthVibe</p>
+          </article>
+          <div class="reference-post-stats">
+            <article><strong>4.8%</strong><span>Engagement rate</span></article>
+            <article><strong>12k</strong><span>Impressions</span></article>
+            <article><strong>580</strong><span>Saves</span></article>
+            <article><strong>134</strong><span>Profile visits</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">Our approach</span>
+        <h2>How we do it, step by step</h2>
+        <p>No guesswork. No cookie-cutter playbooks. Just a clear process built around your brand.</p>
+        <div class="reference-timeline">
+          <article><span>1</span><h3>Deep competitor and audience research</h3><p>We dig into what your competitors are doing right and wrong, then map where your audience hangs out and what stops their scroll.</p></article>
+          <article><span>2</span><h3>Clear goals, defined audience</h3><p>We lock in your objectives, brand awareness, leads, community, and build precise audience personas for each platform.</p></article>
+          <article><span>3</span><h3>Custom SMO strategy</h3><p>A tailored roadmap covering content themes, posting cadence, hashtag strategy, and platform-specific tactics that feel like your brand.</p></article>
+          <article><span>4</span><h3>Profile and page optimization</h3><p>Bios, keywords, links, and visual identity are tuned so every profile works hard for your brand around the clock.</p></article>
+          <article><span>5</span><h3>Content creation and scheduling</h3><p>Scroll-stopping visuals, captions that spark conversation, and perfect timing, crafted to land, not just fill a calendar.</p></article>
+          <article><span>6</span><h3>Community engagement</h3><p>We actively respond, engage, and nurture your followers with real interactions that build loyalty.</p></article>
+          <article><span>7</span><h3>Performance monitoring and reporting</h3><p>Clear, plain-English reports every month: what is working, what we are tweaking, and what is next.</p></article>
+        </div>
+      </section>
+
+      <section class="reference-section section reveal-up">
+        <span class="reference-kicker">What we offer</span>
+        <h2>Our SMO services, broken down</h2>
+        <div class="reference-card-grid three">
+          <article><h3>Social media audit</h3><p>A thorough review of your current presence, gaps, and opportunities across all platforms.</p></article>
+          <article><h3>SMO strategy</h3><p>A custom plan built around your goals, audience, and the platforms where they actually live.</p></article>
+          <article><h3>Profile optimization</h3><p>Profiles that build trust and turn visitors into followers consistently across every channel.</p></article>
+          <article><h3>Content creation</h3><p>Visuals, captions, and stories crafted to match your brand and resonate with your audience.</p></article>
+          <article><h3>Hashtag research</h3><p>We find hashtags that expand real reach, no spam, no irrelevance, just strategic discovery.</p></article>
+          <article><h3>Community management</h3><p>Active engagement that turns your followers into genuine brand advocates over time.</p></article>
+          <article><h3>Social marketing</h3><p>Targeted campaigns that drive awareness, traffic, and conversions alongside organic efforts.</p></article>
+          <article><h3>Influencer collabs</h3><p>We find the right creators and manage campaigns from brief to final results, end to end.</p></article>
+          <article><h3>Analytics and reporting</h3><p>Monthly reports with clear metrics so you always know your ROI down to the detail.</p></article>
+        </div>
+      </section>
+
+      <section class="reference-faq-cta section reveal-up">
+        <div>
+          <span class="reference-kicker">FAQs</span>
+          <h2>Questions we get a lot</h2>
+          <article><h3>What exactly is Social Media Optimization (SMO)?</h3><p>SMO is the process of fine-tuning your social media presence to grow reach, engagement, and influence organically. Think of it as SEO, but for your social profiles.</p></article>
+          <article><h3>How is SMO different from paid Social Media Marketing?</h3><p>Paid social uses ads. SMO optimizes your organic presence, profiles, content quality, hashtags, and community, so your brand grows naturally and sustainably.</p></article>
+          <article><h3>Can SMO help drive website traffic?</h3><p>Absolutely. Optimized profiles with clear CTAs, link-in-bio strategies, and curiosity-driving content become one of your strongest organic traffic channels.</p></article>
+        </div>
+        <div class="reference-cta-card">
+          <span class="reference-kicker">Let's grow together</span>
+          <h2>Ready to turn social media into a real growth channel?</h2>
+          <p>Start with a free audit. We will look at where you are, share honest insights, and show you exactly what is possible.</p>
+          <a class="button button-primary" href="./contact.html">Get my free SMO audit</a>
+        </div>
+      </section>
+    </div>
+  `
+}
+
 function servicePageMarkup(service, index) {
+  if (service.key === 'performance-marketing') {
+    return performanceMarketingReferenceMarkup()
+  }
+
+  if (service.key === 'social-media-optimization') {
+    return socialMediaOptimizationReferenceMarkup()
+  }
+
   return `
     <section class="service-detail-hero section reveal-up">
       <div class="service-detail-copy">
@@ -1153,6 +1497,52 @@ function footerNavLinksMarkup() {
 
   return footerNavItems
     .map((item) => `<a href="${item.href}">${escapeHtml(item.label)}</a>`)
+    .join('')
+}
+
+function mobileAppNavMarkup() {
+  const mobileNavItems = [
+    {
+      key: 'home',
+      label: 'Home',
+      href: './index.html',
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.4 12 4l8 7.4V20a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></svg>',
+    },
+    {
+      key: 'services',
+      label: 'Services',
+      href: './services.html',
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v7H4zM13 5h7v7h-7zM4 14h7v5H4zM13 14h7v5h-7z"/></svg>',
+    },
+    {
+      key: 'case-studies',
+      label: 'Work',
+      href: './case-studies.html',
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5z"/><path d="M8 9h8M8 13h5"/></svg>',
+    },
+    {
+      key: 'about',
+      label: 'About',
+      href: './about.html',
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M5 21a7 7 0 0 1 14 0"/></svg>',
+    },
+    {
+      key: 'contact',
+      label: 'Contact',
+      href: './contact.html',
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>',
+    },
+  ]
+
+  return mobileNavItems
+    .map(
+      (item) => `
+        <a class="mobile-app-tab ${page === item.key ? 'is-active' : ''}" href="${item.href}">
+          ${item.icon}
+          <span>${item.label}</span>
+        </a>
+      `,
+    )
     .join('')
 }
 
@@ -1868,6 +2258,9 @@ function appMarkup(siteData) {
           ${navMarkup()}
         </nav>
       </header>
+      <nav class="mobile-app-nav" aria-label="Mobile primary">
+        ${mobileAppNavMarkup()}
+      </nav>
 
       <main>
         ${pages[page] ?? pages.home}
