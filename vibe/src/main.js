@@ -25,6 +25,28 @@ const PORTFOLIO_BOOK_STATE_KEY = 'growth-revive-portfolio-book-state'
 const CONTACT_ENDPOINT = './contact-handler.php'
 let navDropdownController
 
+function forceMobileViewport() {
+  const isTouchDevice = navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches
+  const isLikelyMobile = isTouchDevice && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+
+  if (!isLikelyMobile) {
+    return
+  }
+
+  let viewport = document.querySelector('meta[name="viewport"]')
+
+  if (!viewport) {
+    viewport = document.createElement('meta')
+    viewport.setAttribute('name', 'viewport')
+    document.head.append(viewport)
+  }
+
+  viewport.setAttribute('content', 'width=390, initial-scale=1')
+  document.documentElement.classList.add('is-forced-mobile')
+}
+
+forceMobileViewport()
+
 const sampleVideoReel = [
   {
     tag: 'Meta UGC',
@@ -1507,10 +1529,6 @@ function homePortfolioBookMarkup() {
         <button class="portfolio-stack-nav portfolio-stack-nav-next" type="button" data-portfolio-book-nav="next" aria-label="Show next card">
           <span aria-hidden="true">${navArrowRight}</span>
         </button>
-        <div class="portfolio-stack-footer">
-          <p class="portfolio-stack-note" data-portfolio-page-note>${escapeHtml(firstEntry.note)}</p>
-          <p class="portfolio-stack-status" data-portfolio-book-status aria-live="polite">${escapeHtml(firstEntry.footer)}</p>
-        </div>
       </article>
     </div>
   `
@@ -1575,24 +1593,7 @@ function homeAnswersSectionMarkup() {
 }
 
 function planeIntroMarkup() {
-  const introActions = [
-    {
-      label: 'Grow',
-      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"></path><path d="M7 15v-4"></path><path d="M12 15V7"></path><path d="M17 15v-6"></path><path d="m8 8 4-4 4 4"></path></svg>`,
-    },
-    {
-      label: 'Optimize',
-      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.5"></circle><path d="M12 2.5v3"></path><path d="M12 18.5v3"></path><path d="M2.5 12h3"></path><path d="M18.5 12h3"></path></svg>`,
-    },
-    {
-      label: 'Launch',
-      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4.5c2.2 0 4 1.8 4 4v2.2L13 16.2 7.8 11 13.3 5.5h1.2Z"></path><path d="m7.8 11-2.3.8 1.5 1.5-.8 2.3 2.3-.8 1.5 1.5.8-2.3"></path><path d="M14.3 9.7 18 6"></path></svg>`,
-    },
-    {
-      label: 'Scale',
-      icon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"></path><path d="M6.5 15.5 11 11l3 3 4.5-5"></path><path d="M18.5 9V6h-3"></path></svg>`,
-    },
-  ]
+  const introActions = []
 
   return `
     <div class="plane-intro" data-plane-intro aria-hidden="true">
@@ -1727,29 +1728,48 @@ function footerServiceLinksMarkup() {
 }
 
 function homePartnerSectionMarkup() {
+  const partnerLogos = {
+    meta: `
+      <svg class="partner-logo partner-logo-meta" viewBox="0 0 120 72" role="img" aria-label="Meta logo">
+        <path d="M22 50c8.5-23 18.8-35 30.2-35 8 0 13.4 5.2 18.5 13.1C76.4 19.4 82.4 15 90 15c14.1 0 24 14.3 24 32.1 0 11.7-5.4 19.9-14.3 19.9-8.6 0-14.7-5.5-24.2-20.4l-5-7.9-4.9 8.2C56.3 62.3 49.5 67 41.1 67c-9.2 0-15.8-7-15.8-17.4 0-10.1 5.4-17.1 13.8-17.1 6.7 0 11.8 4.3 18.1 13.3l5.5 7.8 4.7-7.7C58.9 33 54.8 28.9 51.6 28.9c-6 0-12.9 8.9-20.4 27.1L22 50Zm66.5 5.7c4 0 6.5-3.5 6.5-9.1 0-8.6-4.2-15.5-9.8-15.5-4 0-7.3 3.2-11.2 9.2l5.2 8c3.9 5.8 6.5 7.4 9.3 7.4Z" fill="#ffffff"/>
+      </svg>
+    `,
+    shopify: `
+      <svg class="partner-logo partner-logo-shopify" viewBox="0 0 96 96" role="img" aria-label="Shopify logo">
+        <path d="M69.5 21.8 62 19.6c-.2-.7-.5-1.5-.8-2.3C58.8 11.5 54.5 8.4 49.3 9c-.4-.5-.9-.9-1.5-1.2-2.2-1.3-5-.8-7.8 1.4-4 3.1-7.1 8.6-8.4 14.7l-8.7 2.7c-2.6.8-2.7.9-3 3.4L13.8 78l49.8 9.3L82.2 82 72.1 24.7c-.2-1.5-.9-2.4-2.6-2.9ZM48.8 15.6c2.4-.3 4.1 1.4 5.3 4.5l-10.2 3.1c1.3-4.1 3.1-7.1 4.9-7.6Zm-6.7-1.3c.9-.7 1.7-1.1 2.4-1.2-2.5 2.9-4.6 7.1-5.8 11.7l-7.1 2.2c1.5-5.2 4.5-10 10.5-12.7Zm10 31.5c-4.4-2.4-6.6-4.5-6.6-7.1 0-2.4 2.2-4 5.4-4 3.8 0 7.3 1.7 7.3 1.7l2.7-8.2s-2.5-1.9-7.7-2.2l-1.1 6.1c-7.5.9-13.1 5.4-13.1 12.1 0 4.8 3.4 8.4 8 11 5 2.8 6.7 4.8 6.7 7.7 0 3.1-2.5 5.1-6.1 5.1-4.9 0-9.5-2.5-9.5-2.5l-2.9 8.2s4.3 2.9 11.5 2.9c8.5 0 14.6-4.2 14.6-12.9 0-5.2-3.9-8.8-9.2-11.9Z" fill="#95bf47"/>
+      </svg>
+    `,
+    google: `
+      <svg class="partner-logo partner-logo-google" viewBox="0 0 96 96" role="img" aria-label="Google logo">
+        <path fill="#4285f4" d="M86.1 49.1c0-3.2-.3-6.2-.8-9.1H49v17.2h20.8c-.9 4.8-3.6 8.9-7.7 11.6v11.1h12.5c7.3-6.7 11.5-16.6 11.5-30.8Z"/>
+        <path fill="#34a853" d="M49 87c10.4 0 19.2-3.4 25.6-9.2L62.1 66.7c-3.5 2.3-7.9 3.7-13.1 3.7-10.1 0-18.6-6.8-21.7-15.9H14.4v11.5C20.8 78.5 33.9 87 49 87Z"/>
+        <path fill="#fbbc05" d="M27.3 54.5c-.8-2.3-1.2-4.8-1.2-7.5s.4-5.2 1.2-7.5V28H14.4C11.7 33.4 10.2 40 10.2 47s1.5 13.6 4.2 19l12.9-11.5Z"/>
+        <path fill="#ea4335" d="M49 23.6c5.7 0 10.8 2 14.8 5.8L75 18.1C68.2 11.8 59.4 8 49 8 33.9 8 20.8 16.5 14.4 28l12.9 11.5c3.1-9.1 11.6-15.9 21.7-15.9Z"/>
+      </svg>
+    `,
+    analytics: `
+      <svg class="partner-logo partner-logo-analytics" viewBox="0 0 96 96" role="img" aria-label="Google Analytics logo">
+        <path d="M65.5 10.5c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5v75c0 4.7-3.8 8.5-8.5 8.5s-8.5-3.8-8.5-8.5v-75Z" fill="#f9ab00"/>
+        <path d="M39.5 38.5c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5v47c0 4.7-3.8 8.5-8.5 8.5s-8.5-3.8-8.5-8.5v-47Z" fill="#e37400"/>
+        <path d="M22 94c6.1 0 11-4.9 11-11s-4.9-11-11-11-11 4.9-11 11 4.9 11 11 11Z" fill="#f9ab00"/>
+      </svg>
+    `,
+  }
   const partners = [
     {
-      badge: 'Meta',
-      title: 'Meta Business Partner',
-      detail: 'Paid social systems',
+      title: 'Meta',
       theme: 'meta',
     },
     {
-      badge: 'Shopify',
-      title: 'Shopify Partner',
-      detail: 'Commerce growth',
+      title: 'Shopify',
       theme: 'shopify',
     },
     {
-      badge: 'Google',
-      title: 'Google Partner',
-      detail: 'Search and demand',
+      title: 'Google',
       theme: 'google',
     },
     {
-      badge: 'GA',
       title: 'Google Analytics',
-      detail: 'Tracking clarity',
       theme: 'analytics',
     },
   ]
@@ -1764,10 +1784,9 @@ function homePartnerSectionMarkup() {
           .map(
             (partner) => `
               <article class="partner-card partner-card-${partner.theme}">
-                <div class="partner-mark" aria-hidden="true">${escapeHtml(partner.badge)}</div>
+                <div class="partner-mark">${partnerLogos[partner.theme] || ''}</div>
                 <div class="partner-copy">
                   <strong>${escapeHtml(partner.title)}</strong>
-                  <p>${escapeHtml(partner.detail)}</p>
                 </div>
               </article>
             `,
@@ -1862,20 +1881,6 @@ function sitePages(siteData) {
             <div class="motion-particle motion-particle-three"></div>
           </div>
           <div class="hero-reel-stage">
-            <div class="reel-phone-frame reel-phone-frame-back">
-              <div class="reel-phone-notch"></div>
-              <div class="reel-phone-screen">
-                <video class="reel-video" src="${homeReelPlaylist[4].src}" autoplay muted playsinline preload="metadata" data-home-reel-video data-reel-index="4" aria-label="Secondary Instagram reel showcase video"></video>
-                <div class="reel-overlay-gradient"></div>
-                <div class="reel-controls">
-                  <div class="reel-heart"></div>
-                  <div class="reel-comment"></div>
-                  <div class="reel-share"></div>
-                </div>
-                <div class="reel-progress"><span></span></div>
-              </div>
-              <div class="reel-phone-home"></div>
-            </div>
             <div class="reel-phone-frame reel-phone-frame-front">
               <div class="reel-phone-notch"></div>
               <div class="reel-phone-screen">
@@ -1918,6 +1923,15 @@ function sitePages(siteData) {
           <h2>Visuals do the selling here.</h2>
         </div>
         ${homePortfolioBookMarkup()}
+        <div class="portfolio-company-panel reveal-up">
+          <span>Growth Revibe</span>
+          <h3>We build creative systems that help brands turn attention into measurable revenue.</h3>
+          <p>
+            Growth Revibe combines performance marketing, ad creative, AI-assisted production, UGC direction,
+            marketplace visuals, and conversion-focused testing. We help eCommerce and DTC brands move faster,
+            launch sharper campaigns, and keep improving every hook, page, and offer with data-backed creative decisions.
+          </p>
+        </div>
       </section>
 
       <section class="horizontal-carousel-section section">
