@@ -19,7 +19,7 @@ import image5 from './assets/homepage/images/muscle whey 1kg aad copy.jpg.jpeg'
 import image6 from './assets/homepage/images/prex island crush ad copy.jpg.jpeg'
 
 const page = document.body.dataset.page || 'home'
-const STORAGE_KEY = 'growth-vibe-site-data'
+const STORAGE_KEY = 'growth-vibe-site-data-v3'
 const PLANE_INTRO_SEEN_KEY = 'growth-revive-plane-intro-seen'
 const PORTFOLIO_BOOK_STATE_KEY = 'growth-revive-portfolio-book-state'
 const CONTACT_ENDPOINT = './contact-handler.php'
@@ -379,31 +379,204 @@ const defaultSiteData = {
   },
   caseStudies: [
     {
-      id: 'saas-search',
+      id: 'myoovi-heat-patch',
+      category: 'Wellness DTC',
+      label: 'UK Meta scale-up',
+      title: 'Pain-relief wearable brand scaled cold traffic with clearer proof-led creative.',
+      description:
+        'We rebuilt the ad account around problem-aware hooks, creator demos, and advertorial landing-page tests for a higher-trust purchase journey.',
+      metrics: ['3.8x blended ROAS', '41% lower CPA', '+62% first-order revenue'],
+      pdf: './case-studies/myoovi-heat-patch.pdf',
+    },
+    {
+      id: 'hydro-gain-launch',
+      category: 'Sports Nutrition',
+      label: 'Launch creative sprint',
+      title: 'Protein supplement launch crossed early revenue targets with marketplace-first creatives.',
+      description:
+        'A launch kit of statics, product images, offer frames, and short-form videos helped the brand test claims without slowing production.',
+      metrics: ['2.9x launch ROAS', '+118% CTR lift', '26 creatives shipped'],
+      pdf: './case-studies/hydro-gain-launch.pdf',
+    },
+    {
+      id: 'prex-island',
+      category: 'Pre-workout',
+      label: 'Offer angle rebuild',
+      title: 'A pre-workout brand improved thumb-stop rate with brighter, product-led ad systems.',
+      description:
+        'We moved the brand from generic gym messaging to flavor, energy, and urgency-led frames built for Meta and quick commerce placements.',
+      metrics: ['47% lower CPC', '+34% PDP visits', '4.2x retargeting ROAS'],
+      pdf: './case-studies/prex-island.pdf',
+    },
+    {
+      id: 'healthfarm-muscle-whey',
+      category: 'Protein DTC',
+      label: 'Static ad refresh',
+      title: 'Whey protein creatives made pricing, proof, and product hierarchy easier to scan.',
+      description:
+        'We redesigned the core image system with sharper contrast, tighter claims, and market-ready offer framing for paid social.',
+      metrics: ['31% lower CPA', '+56% hold rate', '18 ad variants'],
+      pdf: './case-studies/healthfarm-muscle-whey.pdf',
+    },
+    {
+      id: 'glo-spa-session',
+      category: 'Beauty Tech',
+      label: 'Lead-gen creative',
+      title: 'A salon tech campaign turned a free-session hook into qualified demo bookings.',
+      description:
+        'The campaign paired benefit-led motion frames with clean lead forms and geographic targeting for higher appointment intent.',
+      metrics: ['126 leads in 21 days', '22% lead-to-call rate', '36% lower CPL'],
+      pdf: './case-studies/glo-spa-session.pdf',
+    },
+    {
+      id: 'roofing-services',
+      category: 'Home Services',
+      label: 'Local performance',
+      title: 'Roofing service ads generated higher-quality calls with location and trust cues.',
+      description:
+        'We rebuilt the visual structure around urgency, proof, and clear quote CTAs for homeowners comparing local providers.',
+      metrics: ['2.4x call volume', '29% lower CPL', '+18% booked inspections'],
+      pdf: './case-studies/roofing-services.pdf',
+    },
+    {
+      id: 'agent-ai-verify',
       category: 'B2B SaaS',
-      label: 'Search-led repositioning',
-      title: 'From unclear messaging to a search system that produced more qualified demos.',
+      label: 'Product demo ads',
+      title: 'Document verification SaaS increased demo intent with product-screen storytelling.',
       description:
-        'Growth Revibe reworked the homepage story, clarified service language, and aligned content with high-intent search demand.',
-      metrics: ['+184% organic impressions', '+71% demo requests', '38% lower bounce'],
+        'Instead of abstract AI claims, we created frame-by-frame product proof that showed fraud checks, workflow speed, and compliance value.',
+      metrics: ['64% more demos', '39% lower CAC', '+51% landing CTR'],
+      pdf: './case-studies/agent-ai-verify.pdf',
     },
     {
-      id: 'ecommerce-paid',
-      category: 'E-commerce',
-      label: 'Paid creative optimization',
-      title: 'Lower customer acquisition costs through sharper creative framing and landing-page flow.',
+      id: 'flowveda-reset',
+      category: 'Ayurveda DTC',
+      label: 'UGC funnel',
+      title: 'A wellness brand improved trust with creator-led routines and objection handling.',
       description:
-        'We tightened audience-message fit, refreshed visual hooks, and removed friction between ad promise and product page experience.',
-      metrics: ['32% lower CPA', '+48% add-to-cart rate', 'Higher ROAS efficiency'],
+        'We scripted UGC sequences around daily usage, customer hesitation, and ingredient education, then paired them with static proof ads.',
+      metrics: ['3.1x ROAS', '+44% video watch rate', '21 hooks tested'],
+      pdf: './case-studies/flowveda-reset.pdf',
     },
     {
-      id: 'local-growth',
-      category: 'Local services',
-      label: 'Regional discovery growth',
-      title: 'Better local visibility without making the brand feel small or generic.',
+      id: 'outie-aligner',
+      category: 'Dental DTC',
+      label: 'Explainer video ads',
+      title: 'Clear aligner creatives simplified a high-consideration product for cold audiences.',
       description:
-        'We created location-led landing structure, optimized service pages, and supported trust-building with cleaner proof and stronger CTAs.',
-      metrics: ['Maps visibility up', 'Higher lead quality', 'Stronger first-visit trust'],
+        'The creative system showed the product, process, timeline, and reassurance points in short explainers built for mobile feeds.',
+      metrics: ['52% lower CPL', '+73% quiz starts', '2.7x retargeting ROAS'],
+      pdf: './case-studies/outie-aligner.pdf',
+    },
+    {
+      id: 'no-mercy-fitness',
+      category: 'Fitness Apparel',
+      label: 'Drop campaign',
+      title: 'A gym apparel drop sold through faster with scarcity-led launch creatives.',
+      description:
+        'We built teaser videos, offer statics, and product-detail frames that matched the brand voice while keeping sizing and CTA clear.',
+      metrics: ['81% stock sold', '4.6x launch ROAS', '+38% email opt-ins'],
+      pdf: './case-studies/no-mercy-fitness.pdf',
+    },
+    {
+      id: 'morph-skincare',
+      category: 'Skincare',
+      label: 'Routine education',
+      title: 'Skincare ads converted better after replacing claims with routine-led education.',
+      description:
+        'We reframed the product around use cases, texture, before-after context, and customer objections across Meta and Reels.',
+      metrics: ['28% lower CPA', '+46% add-to-cart', '12 UGC scripts'],
+      pdf: './case-studies/morph-skincare.pdf',
+    },
+    {
+      id: 'quickbite-grocery',
+      category: 'Quick Commerce',
+      label: '15-minute offer push',
+      title: 'Quick commerce creatives increased impulse orders through speed and bundle hooks.',
+      description:
+        'We designed fast-reading frames for grocery bundles, time-bound offers, and app install flows with clear price hierarchy.',
+      metrics: ['37% lower CPI', '+58% first orders', '5 city clusters'],
+      pdf: './case-studies/quickbite-grocery.pdf',
+    },
+    {
+      id: 'luma-home-decor',
+      category: 'Home Decor',
+      label: 'Catalog growth',
+      title: 'Home decor catalog ads drove higher order value with room-led product storytelling.',
+      description:
+        'We grouped products by room mood, price anchor, and bundle logic so shoppers could imagine the full setup faster.',
+      metrics: ['+24% AOV', '3.5x ROAS', '+42% saved posts'],
+      pdf: './case-studies/luma-home-decor.pdf',
+    },
+    {
+      id: 'terra-pet-food',
+      category: 'Pet Food',
+      label: 'Trust rebuild',
+      title: 'Pet nutrition ads improved trial purchases by leading with ingredient transparency.',
+      description:
+        'The campaign used pack shots, vet-style proof, feeding routines, and testimonial cuts to reduce first-purchase hesitation.',
+      metrics: ['33% lower CPA', '+49% subscription starts', '19 creatives tested'],
+      pdf: './case-studies/terra-pet-food.pdf',
+    },
+    {
+      id: 'pulse-watch',
+      category: 'Consumer Tech',
+      label: 'Feature hierarchy',
+      title: 'A smartwatch brand lifted purchase intent by ranking features around daily problems.',
+      description:
+        'We moved from spec-heavy visuals to benefit-first creatives across sleep, fitness, battery, and call-use scenarios.',
+      metrics: ['2.8x ROAS', '+35% product-page CVR', '16 benefit angles'],
+      pdf: './case-studies/pulse-watch.pdf',
+    },
+    {
+      id: 'native-roots',
+      category: 'Haircare',
+      label: 'Creator ad system',
+      title: 'Haircare creatives scaled with creator proof, texture demos, and review overlays.',
+      description:
+        'We produced a structured UGC matrix covering hair types, application, results, and common objections before checkout.',
+      metrics: ['4.1x Meta ROAS', '+67% watch-through', '24 creator cuts'],
+      pdf: './case-studies/native-roots.pdf',
+    },
+    {
+      id: 'atlas-luggage',
+      category: 'Travel Gear',
+      label: 'Seasonal campaign',
+      title: 'Travel luggage ads improved holiday sales by pairing product proof with trip moments.',
+      description:
+        'We combined durability, packing capacity, and airport lifestyle frames into a campaign designed for gifting and travel season.',
+      metrics: ['+39% seasonal revenue', '25% lower CPA', '+31% AOV'],
+      pdf: './case-studies/atlas-luggage.pdf',
+    },
+    {
+      id: 'freshbox-meals',
+      category: 'Meal Delivery',
+      label: 'Retention creative',
+      title: 'Meal delivery ads reduced churn by selling routine fit, not just discounts.',
+      description:
+        'The creative plan highlighted weekly variety, convenience, calories, and subscription flexibility for existing and new users.',
+      metrics: ['18% lower churn', '+27% reactivations', '3.2x ROAS'],
+      pdf: './case-studies/freshbox-meals.pdf',
+    },
+    {
+      id: 'brisk-coldbrew',
+      category: 'Beverage DTC',
+      label: 'Sampling funnel',
+      title: 'Cold brew sampling converted into subscriptions with clearer flavor and habit hooks.',
+      description:
+        'We created morning-routine videos, taste notes, bundle statics, and email capture offers that moved trial buyers into repeat orders.',
+      metrics: ['+46% subscriptions', '2.6x trial ROAS', '41% lower CPC'],
+      pdf: './case-studies/brisk-coldbrew.pdf',
+    },
+    {
+      id: 'klarity-cosmetics',
+      category: 'Cosmetics',
+      label: 'Shade finder funnel',
+      title: 'Cosmetics creatives lifted shade-finder completions with proof and inclusive demos.',
+      description:
+        'We used skin-tone demos, comparison frames, and quiz-led CTAs to make the buying path feel less risky on mobile.',
+      metrics: ['+72% quiz completions', '30% lower CPA', '+21% repeat purchase'],
+      pdf: './case-studies/klarity-cosmetics.pdf',
     },
   ],
 }
@@ -1105,6 +1278,7 @@ function caseStudyCardsMarkup(caseStudies) {
           </div>
           <div class="case-thumb-copy">
             <p>${escapeHtml(study.description)}</p>
+            <a class="case-pdf-link" href="${escapeHtml(study.pdf || '#')}" target="_blank" rel="noopener">View PDF case study</a>
           </div>
         </article>
       `,
@@ -2257,6 +2431,10 @@ function appMarkup(siteData) {
         <nav class="ribbon-nav" aria-label="Primary">
           ${navMarkup()}
         </nav>
+        <button class="mobile-menu-icon" type="button" aria-label="Open navigation menu" aria-expanded="false" data-mobile-menu-trigger>
+          <i></i>
+          <i></i>
+        </button>
       </header>
       <nav class="mobile-app-nav" aria-label="Mobile primary">
         ${mobileAppNavMarkup()}
@@ -2348,6 +2526,7 @@ function renderApp() {
   initPlaneIntro()
   initRevealObserver()
   initNavDropdown()
+  initMobileMenu()
   initHomeReelFeed()
   initPortfolioBook()
   initContactScheduler()
@@ -2581,6 +2760,57 @@ function initNavDropdown() {
       trigger.focus()
     }
   }, { signal })
+}
+
+function initMobileMenu() {
+  const header = document.querySelector('.top-ribbon')
+  const trigger = document.querySelector('[data-mobile-menu-trigger]')
+  const menu = header?.querySelector('.ribbon-nav')
+
+  if (!header || !(trigger instanceof HTMLButtonElement) || !menu) {
+    return
+  }
+
+  const closeMenu = () => {
+    header.classList.remove('is-mobile-open')
+    trigger.setAttribute('aria-expanded', 'false')
+    trigger.setAttribute('aria-label', 'Open navigation menu')
+  }
+
+  const openMenu = () => {
+    header.classList.add('is-mobile-open')
+    trigger.setAttribute('aria-expanded', 'true')
+    trigger.setAttribute('aria-label', 'Close navigation menu')
+  }
+
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation()
+    if (header.classList.contains('is-mobile-open')) {
+      closeMenu()
+    } else {
+      openMenu()
+    }
+  })
+
+  menu.addEventListener('click', (event) => {
+    const target = event.target
+    if (target instanceof HTMLAnchorElement) {
+      closeMenu()
+    }
+  })
+
+  document.addEventListener('click', (event) => {
+    if (!header.contains(event.target)) {
+      closeMenu()
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && header.classList.contains('is-mobile-open')) {
+      closeMenu()
+      trigger.focus()
+    }
+  })
 }
 
 function initHomeReelFeed() {

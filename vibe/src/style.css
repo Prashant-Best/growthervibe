@@ -12161,6 +12161,431 @@ body[data-page='services']:not([data-page='admin']) .service-accordion-cta {
   color: #ffffff;
 }
 
+.case-pdf-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 42px;
+  margin-top: 14px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 31, 82, 0.24);
+  background: rgba(184, 31, 82, 0.08);
+  color: #b81f52;
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+.case-pdf-link:hover,
+.case-pdf-link:focus-visible {
+  background: #b81f52;
+  color: #ffffff;
+  outline: none;
+}
+
+body:not([data-page='admin']) .video-rail-progress,
+body:not([data-page='admin']) .reel-progress {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body:not([data-page='admin']) {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  body:not([data-page='admin'])::before,
+  body:not([data-page='admin'])::after,
+  body:not([data-page='admin']) .site-visuals,
+  body:not([data-page='admin']) .brand-atmosphere,
+  body:not([data-page='admin']) .mobile-app-nav {
+    display: none;
+  }
+
+  body:not([data-page='admin']) main {
+    padding: 96px 16px 40px;
+  }
+
+  body:not([data-page='admin']) .top-ribbon {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 96px;
+    margin: 0;
+    transform: none;
+    padding: 24px 24px 18px;
+    border: 0;
+    border-radius: 0;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(230, 58, 110, 0.18), transparent 28%),
+      linear-gradient(135deg, rgba(56, 56, 56, 0.98), rgba(38, 38, 38, 0.98));
+    color: #ffffff;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+  }
+
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 14px;
+    right: 14px;
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    background:
+      radial-gradient(circle at top left, rgba(230, 58, 110, 0.22), transparent 34%),
+      linear-gradient(180deg, rgba(42, 42, 42, 0.98), rgba(23, 23, 23, 0.98));
+    border: 1px solid rgba(255, 95, 162, 0.22);
+    border-radius: 22px;
+    box-shadow:
+      0 24px 54px rgba(0, 0, 0, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: top center;
+    transition:
+      opacity 180ms ease,
+      visibility 180ms ease,
+      transform 180ms ease;
+  }
+
+  body:not([data-page='admin']) .top-ribbon.is-mobile-open .ribbon-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav a,
+  body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.055);
+    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 750;
+    transform: none;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav a:hover,
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav a:focus-visible,
+  body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger:hover,
+  body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger:focus-visible {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 95, 162, 0.28);
+    outline: none;
+    transform: none;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav a.is-active {
+    color: #ffffff;
+    background:
+      linear-gradient(135deg, #e63a6e, #b81f52);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 26px rgba(230, 58, 110, 0.26);
+  }
+
+  body:not([data-page='admin']) .top-ribbon .nav-dropdown {
+    width: 100%;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .service-mega-menu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .service-mega-head {
+    display: none;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .service-mega-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .service-mega-item {
+    min-height: 50px;
+    padding: 12px;
+    border-radius: 12px;
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  body:not([data-page='admin']) .top-ribbon .service-mega-item strong {
+    color: #ffffff;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .brand {
+    width: auto;
+  }
+
+  body:not([data-page='admin']) .brand-mark {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 7px;
+    border-radius: 14px;
+  }
+
+  body:not([data-page='admin']) .brand-text strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  body:not([data-page='admin']) .brand-text small {
+    display: none;
+  }
+
+  body:not([data-page='admin']) .mobile-menu-icon {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    display: grid;
+    gap: 11px;
+    width: 50px;
+    justify-items: stretch;
+  }
+
+  body:not([data-page='admin']) .mobile-menu-icon i {
+    display: block;
+    height: 3px;
+    border-radius: 999px;
+    background: #ff4f8f;
+    box-shadow: 0 0 16px rgba(255, 79, 143, 0.38);
+  }
+
+  body[data-page='home'] .hero-section.page-hero-home {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2px;
+    padding: 0;
+    border-radius: 18px 18px 0 0;
+    background: #b81735;
+    overflow: hidden;
+  }
+
+  body[data-page='home'] .hero-copy {
+    order: 0;
+    padding: 42px 22px 20px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  body[data-page='home'] .hero-logo-lockup {
+    display: none;
+  }
+
+  body[data-page='home'] .hero-logo-badge {
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  body[data-page='home'] .hero-logo-wordmark {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  body[data-page='home'] .hero-copy .eyebrow {
+    justify-content: center;
+    margin-bottom: 28px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  body[data-page='home'] .hero-copy .eyebrow::before {
+    display: none;
+  }
+
+  body[data-page='home'] .hero-copy h1 {
+    max-width: 10.6ch;
+    margin-inline: auto;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.55rem, 13.2vw, 4.15rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: 0;
+    color: #ffffff;
+  }
+
+  body[data-page='home'] .hero-title-line {
+    display: inline;
+  }
+
+  body[data-page='home'] .hero-text {
+    max-width: 31ch;
+    margin: 24px auto 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.08rem;
+    line-height: 1.42;
+  }
+
+  body[data-page='home'] .hero-actions {
+    margin-top: 30px;
+    gap: 14px;
+  }
+
+  body[data-page='home'] .hero-actions .button {
+    min-height: 60px;
+    border-radius: 999px;
+    font-size: 1.08rem;
+  }
+
+  body[data-page='home'] .hero-actions .button-primary {
+    background: #ffffff;
+    color: #111111;
+    box-shadow: none;
+  }
+
+  body[data-page='home'] .hero-actions .button-primary::after {
+    content: '->';
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-left: 12px;
+    border-radius: 50%;
+    background: #171717;
+    color: #ffffff;
+    font-size: 0.88rem;
+  }
+
+  body[data-page='home'] .hero-actions .button-secondary {
+    border-color: rgba(255, 255, 255, 0.44);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+  }
+
+  body[data-page='home'] .hero-client-strip {
+    display: none;
+  }
+
+  body[data-page='home'] .hero-visual {
+    order: 1;
+    min-height: 408px;
+    margin-top: 18px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  body[data-page='home'] .hero-background-motion,
+  body[data-page='home'] .reel-phone-notch,
+  body[data-page='home'] .reel-phone-home,
+  body[data-page='home'] .reel-controls,
+  body[data-page='home'] .reel-glow,
+  body[data-page='home'] .reel-shine {
+    display: none;
+  }
+
+  body[data-page='home'] .hero-reel-stage {
+    justify-content: flex-start;
+    min-height: 408px;
+    width: 100%;
+    max-width: none;
+    padding-left: 16px;
+    perspective: none;
+  }
+
+  body[data-page='home'] .reel-phone-frame {
+    flex: 0 0 auto;
+    width: min(72vw, 310px);
+    height: min(112vw, 520px);
+    border-radius: 18px;
+    background: transparent;
+    box-shadow: none;
+    animation: none;
+  }
+
+  body[data-page='home'] .reel-phone-frame-front {
+    transform: none;
+  }
+
+  body[data-page='home'] .reel-phone-frame-back {
+    position: relative;
+    left: auto;
+    top: auto;
+    order: 2;
+    margin-left: 18px;
+    opacity: 0.76;
+    transform: none;
+    animation: none;
+  }
+
+  body[data-page='home'] .reel-phone-screen {
+    inset: 0;
+    height: 100%;
+    border-radius: 18px;
+    background: #111111;
+  }
+
+  body[data-page='home'] .reel-overlay-gradient {
+    background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.24));
+  }
+
+  body[data-page='home'] .trust-strip {
+    margin-top: 42px;
+    padding: 26px 10px 10px;
+    border: 0;
+    border-radius: 0;
+    background: #ffffff;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  body[data-page='home'] .trust-strip p {
+    color: #b81735;
+    font-size: 1.22rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  body:not([data-page='admin']) .video-rail-wrap::before,
+  body:not([data-page='admin']) .video-rail-wrap::after {
+    display: none;
+  }
+
+  body:not([data-page='admin']) .video-rail-card {
+    border-color: rgba(0, 0, 0, 0.1);
+    background: #2a2a2a;
+  }
+}
+
 @media (max-width: 640px) {
   body[data-page='home'] .portfolio-section {
     overflow: hidden;
