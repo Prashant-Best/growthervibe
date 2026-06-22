@@ -12235,11 +12235,19 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
     left: 14px;
     right: 14px;
     display: grid;
-    gap: 8px;
-    padding: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px;
     background:
-      radial-gradient(circle at top left, rgba(230, 58, 110, 0.22), transparent 34%),
-      linear-gradient(180deg, rgba(42, 42, 42, 0.98), rgba(23, 23, 23, 0.98));
+      linear-gradient(rgba(255, 79, 143, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 79, 143, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at top left, rgba(230, 58, 110, 0.26), transparent 34%),
+      linear-gradient(180deg, rgba(35, 35, 35, 0.98), rgba(16, 16, 16, 0.98));
+    background-size:
+      28px 28px,
+      28px 28px,
+      auto,
+      auto;
     border: 1px solid rgba(255, 95, 162, 0.22);
     border-radius: 22px;
     box-shadow:
@@ -12255,6 +12263,19 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
       transform 180ms ease;
   }
 
+  body:not([data-page='admin']) .top-ribbon .ribbon-nav::before {
+    content: 'MENU MATRIX';
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 4px 2px;
+    color: rgba(255, 143, 183, 0.78);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+  }
+
   body:not([data-page='admin']) .top-ribbon.is-mobile-open .ribbon-nav {
     opacity: 1;
     visibility: visible;
@@ -12265,17 +12286,21 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
   body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    min-height: 52px;
-    padding: 0 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 74px;
+    padding: 12px 10px;
+    border: 1px solid rgba(255, 95, 162, 0.2);
     border-radius: 16px;
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.055);
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 62%),
+      rgba(255, 255, 255, 0.055);
     box-shadow: none;
-    font-size: 1rem;
+    text-align: center;
+    font-size: 0.92rem;
     font-weight: 750;
+    line-height: 1.15;
     transform: none;
   }
 
@@ -12283,8 +12308,10 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
   body:not([data-page='admin']) .top-ribbon .ribbon-nav a:focus-visible,
   body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger:hover,
   body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger:focus-visible {
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 95, 162, 0.28);
+    background:
+      radial-gradient(circle at top, rgba(255, 95, 162, 0.24), transparent 68%),
+      rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 95, 162, 0.42);
     outline: none;
     transform: none;
   }
@@ -12292,13 +12319,23 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
   body:not([data-page='admin']) .top-ribbon .ribbon-nav a.is-active {
     color: #ffffff;
     background:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
       linear-gradient(135deg, #e63a6e, #b81f52);
+    background-size: 18px 18px, 18px 18px, auto;
     border-color: rgba(255, 255, 255, 0.16);
     box-shadow: 0 12px 26px rgba(230, 58, 110, 0.26);
   }
 
   body:not([data-page='admin']) .top-ribbon .nav-dropdown {
+    grid-column: span 2;
     width: 100%;
+  }
+
+  body:not([data-page='admin']) .top-ribbon .nav-dropdown-trigger {
+    justify-content: space-between;
+    min-height: 58px;
+    padding-inline: 16px;
   }
 
   body:not([data-page='admin']) .top-ribbon .service-mega-menu {
@@ -12317,12 +12354,13 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
   }
 
   body:not([data-page='admin']) .top-ribbon .service-mega-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   body:not([data-page='admin']) .top-ribbon .service-mega-item {
-    min-height: 50px;
-    padding: 12px;
+    min-height: 62px;
+    padding: 10px;
     border-radius: 12px;
     border-color: rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.06);
@@ -12330,6 +12368,8 @@ body:not([data-page='admin']) .image-rail-copy > span:empty {
 
   body:not([data-page='admin']) .top-ribbon .service-mega-item strong {
     color: #ffffff;
+    font-size: 0.78rem;
+    line-height: 1.15;
   }
 
   body:not([data-page='admin']) .top-ribbon .brand {

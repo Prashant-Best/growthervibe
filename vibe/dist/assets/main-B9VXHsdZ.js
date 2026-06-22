@@ -577,7 +577,6 @@
               </div>
             </button>
             <div class="video-rail-copy image-rail-copy">
-              <span>${O(e.tag)}</span>
               <strong>${O(e.title)}</strong>
               <p>${O(e.caption)}</p>
             </div>

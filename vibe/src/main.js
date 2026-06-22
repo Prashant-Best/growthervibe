@@ -1424,7 +1424,6 @@ function imageGalleryMarkup() {
               </div>
             </button>
             <div class="video-rail-copy image-rail-copy">
-              <span>${escapeHtml(img.tag)}</span>
               <strong>${escapeHtml(img.title)}</strong>
               <p>${escapeHtml(img.caption)}</p>
             </div>
