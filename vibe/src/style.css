@@ -12189,6 +12189,10 @@ body:not([data-page='admin']) .reel-progress {
   display: none;
 }
 
+body:not([data-page='admin']) .image-rail-copy > span:empty {
+  display: none;
+}
+
 @media (max-width: 640px) {
   body:not([data-page='admin']) {
     background: #ffffff;
